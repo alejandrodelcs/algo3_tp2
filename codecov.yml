@@ -4,7 +4,3 @@ ignore:
   - "src/main/java/edu/fiuba/algo3/App.java"
   - "src/main/java/edu/fiuba/algo3/Main.java"
   - "src/main/java/edu/fiuba/algo3/SystemInfo.java"
-permissions:
-  actions: read
-  contents: read
-  security-events: write
