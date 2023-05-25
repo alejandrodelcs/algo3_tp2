@@ -7,8 +7,8 @@ Trabajo Práctico número 2 de la materia Algoritmos y Programación III de FIUB
 ## Grupo {N}
 
 * **Integrante 1** - [Zoilo Pazos](https://github.com/zzoip)
-* **Integrante 2** - [integrante2](https://github.com/integrante2)
-* **Integrante 3** - [integrante3](https://github.com/integrante3)
+* **Integrante 2** - [Alejandro Del Carpio](https://github.com/alejandrodelcs)
+* **Integrante 3** - [Liu Gutierrez](https://github.com/liuvaneshka)
 * **Integrante 4** - [integrante4](https://github.com/integrante4)
 
 Corrector: **{Corrector}**
