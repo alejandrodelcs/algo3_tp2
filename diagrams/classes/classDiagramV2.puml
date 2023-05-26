@@ -1,0 +1,50 @@
+@startuml
+class AlgoDefense{
+}
+
+class GameBoard{
+}
+
+class Enemy{
+}
+
+class Spider{}
+
+class Ant{}
+
+class Player{}
+
+class Resource{}
+
+Class Defense{}
+
+class Tower{}
+
+class White{}
+
+class Silver{}
+
+Abstract Plot {}
+
+class Stone{}
+
+class Dirt{}
+
+class Path{}
+
+Player --> Resource
+AlgoDefense "1" --> "1" GameBoard
+AlgoDefense "1" --> "1..*" Player
+GameBoard - Player
+GameBoard "1" *-- "0..*" Defense
+GameBoard *-- Plot
+Plot <|-- Stone
+Plot <|-- Dirt
+Plot <|-- Path
+Defense <.. Tower
+Tower <|-- White
+Tower <|-- Silver
+GameBoard "1"  *-- "0..*" Enemy
+Enemy <.. Ant
+Enemy <.. Spider
+@enduml
