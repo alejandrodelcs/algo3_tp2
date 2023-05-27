@@ -1,5 +1,7 @@
 package edu.fiuba.algo3.entrega_1;
 
+import edu.fiuba.algo3.modelo.Player;
+import edu.fiuba.algo3.modelo.PlayerIsDeadGameOver;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -45,8 +47,7 @@ public class PlayerTest {
     public void whenPlayerHasZeroLivePointsPlayerHasLost(){
         Player player = new Player("Player");
 
-        assertThrows(PlayerIsDeadGameOver.class,()->{
-            player.getsDamage(20);});
+        assertThrows(PlayerIsDeadGameOver.class,()-> player.getsDamage(20));
 
     }
 }
