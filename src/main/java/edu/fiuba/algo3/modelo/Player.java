@@ -1,12 +1,12 @@
 package edu.fiuba.algo3.modelo;
 
 public class Player {
-    private final String playersName;
     private int playersLifePoints;
     private int playersCredits;
 
     public Player(String playersName) {
-        this.playersName = playersName;
+        PlayersName playerName = new PlayersName();
+        playerName.validateName(playersName);
         this.playersLifePoints = 20;
         this.playersCredits = 100;
     }
@@ -35,4 +35,6 @@ public class Player {
         playersCredits += credits;
     }
 
+    public void buildsADefense(Tower towerStub, Gameboard gameboardStub) {
+    }
 }
