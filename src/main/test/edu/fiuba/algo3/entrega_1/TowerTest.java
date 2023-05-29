@@ -1,9 +1,6 @@
 package edu.fiuba.algo3.entrega_1;
 
-import edu.fiuba.algo3.modelo.Defense.TowerIsUnderConstruction;
-import edu.fiuba.algo3.modelo.Defense.WhiteTower;
-import edu.fiuba.algo3.modelo.Defense.SilverTower;
-import edu.fiuba.algo3.modelo.Defense.Enemy;
+import edu.fiuba.algo3.modelo.Defense.*;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
@@ -37,12 +34,29 @@ public class TowerTest {
         Enemy enemyStub = Mockito.mock(Enemy.class);
         Mockito.when(enemyStub.isWithinAttackRange()).thenReturn(false);
         WhiteTower.constructionFinished();
-        assertThrows(TowerIsUnderConstruction.class,()->{
+        assertThrows(EnemyIsOutOfRange.class,()->{
             WhiteTower.Attack(enemyStub);});
+    }
+    @Test
+    void test05NewSilverTowerCannotAttackTheEnemy() {
+        SilverTower SilverTower = new SilverTower();
+        Enemy enemyStub = Mockito.mock(Enemy.class);
+        Mockito.when(enemyStub.isWithinAttackRange()).thenReturn(true);
+        assertThrows(TowerIsUnderConstruction.class,()->{
+            SilverTower.Attack(enemyStub);});
+    }
+    @Test
+    void test06SilverTowerOperationalAttacksAnEnemyOutOfRange() {
+        SilverTower SilverTower = new SilverTower();
+        Enemy enemyStub = Mockito.mock(Enemy.class);
+        Mockito.when(enemyStub.isWithinAttackRange()).thenReturn(false);
+        SilverTower.constructionFinished();
+        assertThrows(EnemyIsOutOfRange.class,()->{
+            SilverTower.Attack(enemyStub);});
     }
     /*
     @Test
-    void test05WhiteTowerOperationalAttacksAnEnemyWithinRange() {
+    void test07WhiteTowerOperationalAttacksAnEnemyWithinRange() {
         WhiteTower WhiteTower = new WhiteTower();
         Enemy enemyStub = Mockito.mock(Enemy.class);
         Mockito.when(enemyStub.isWithinAttackRange()).thenReturn(true);
