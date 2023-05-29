@@ -1,10 +1,9 @@
 package edu.fiuba.algo3.entrega_1;
 
-import edu.fiuba.algo3.modelo.Player;
-import edu.fiuba.algo3.modelo.PlayerIsDeadGameOver;
+import edu.fiuba.algo3.modelo.*;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.*;
+import org.mockito.Mockito;
 
 public class PlayerTest {
 
@@ -12,8 +11,8 @@ public class PlayerTest {
     public void whenNewGameIsOnPlayerHasTwentyLifePointsAndOneHundredCredits(){
         Player player = new Player("Player");
 
-        assertEquals(20, player.getPlayerLifePoints());
-        assertEquals(100, player.getPlayerCredits());
+        Assertions.assertEquals(20, player.getPlayerLifePoints());
+        Assertions.assertEquals(100, player.getPlayerCredits());
     }
 
     @Test
@@ -22,7 +21,7 @@ public class PlayerTest {
 
         player.getsDamage(10);
 
-        assertEquals(10, player.getPlayerLifePoints());
+        Assertions.assertEquals(10, player.getPlayerLifePoints());
     }
 
     @Test
@@ -31,7 +30,7 @@ public class PlayerTest {
 
         player.chargedCredits(10);
 
-        assertEquals(90, player.getPlayerCredits());
+        Assertions.assertEquals(90, player.getPlayerCredits());
     }
 
     @Test
@@ -40,14 +39,29 @@ public class PlayerTest {
 
         player.getsCredit(10);
 
-        assertEquals(110,player.getPlayerCredits());
+        Assertions.assertEquals(110,player.getPlayerCredits());
     }
 
     @Test
     public void whenPlayerHasZeroLivePointsPlayerHasLost(){
         Player player = new Player("Player");
 
-        assertThrows(PlayerIsDeadGameOver.class,()-> player.getsDamage(20));
+        Assertions.assertThrows(PlayerIsDeadGameOver.class,()-> player.getsDamage(20));
+
+    }
+    @Test
+    public void PlayerBuildsADefense(){
+        //Player player = new Player("Player");
+        //Tower towerStub = Mockito.mock(Tower.class);
+        //Gameboard gameboardStub = Mockito.mock(Gameboard.class);
+        //player.buildsADefense(towerStub,gameboardStub);
+
+        //Assertions.assertEquals(90, player.getPlayerCredits() );
+    }
+    @Test
+    public void CreatePlayerWithInvalidNameShouldThrowRuntimeError(){
+
+        Assertions.assertThrows(InvalidPlayersName.class,()-> new Player("Roy"));
 
     }
 }
