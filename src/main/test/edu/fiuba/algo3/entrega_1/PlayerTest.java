@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.entrega_1;
 
 import edu.fiuba.algo3.modelo.*;
+import edu.fiuba.algo3.modelo.Defense.WhiteTower;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -51,12 +52,12 @@ public class PlayerTest {
     }
     @Test
     public void PlayerBuildsADefense(){
-        //Player player = new Player("Player");
-        //Tower towerStub = Mockito.mock(Tower.class);
-        //Gameboard gameboardStub = Mockito.mock(Gameboard.class);
-        //player.buildsADefense(towerStub,gameboardStub);
+        Player player = new Player("Player");
+        WhiteTower whiteTower = new WhiteTower();
+        Gameboard gameboardStub = Mockito.mock(Gameboard.class);
+        player.buildsADefense(whiteTower,gameboardStub);
 
-        //Assertions.assertEquals(90, player.getPlayerCredits() );
+        Assertions.assertEquals(90, player.getPlayerCredits() );
     }
     @Test
     public void CreatePlayerWithInvalidNameShouldThrowRuntimeError(){

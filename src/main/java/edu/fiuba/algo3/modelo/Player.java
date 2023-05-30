@@ -1,5 +1,7 @@
 package edu.fiuba.algo3.modelo;
 
+import edu.fiuba.algo3.modelo.Defense.WhiteTower;
+
 public class Player {
     private int playersLifePoints;
     private int playersCredits;
@@ -35,6 +37,10 @@ public class Player {
         playersCredits += credits;
     }
 
-    //public void buildsADefense(Tower towerStub, Gameboard gameboardStub) {
-    //}
+    public void buildsADefense(WhiteTower whiteTower, Gameboard gameboardStub) {
+        int creditsToBeCharged =  whiteTower.getCredits();
+        this.chargedCredits(creditsToBeCharged);
+
+    }
+
 }
