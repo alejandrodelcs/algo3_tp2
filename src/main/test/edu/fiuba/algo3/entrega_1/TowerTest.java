@@ -2,8 +2,8 @@ package edu.fiuba.algo3.entrega_1;
 
 import edu.fiuba.algo3.modelo.Defense.*;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mockito;
-
+//import org.mockito.Mockito;
+//import edu.fiuba.algo3.modelo.Enemy.*;
 import static org.junit.jupiter.api.Assertions.*;
 public class TowerTest {
     @Test
@@ -21,16 +21,12 @@ public class TowerTest {
 
 
     @Test
-    void test03NewWhiteTowerCannotAttackTheEnemy() {
-        /*
+    void test03NewWhiteTowerCannotAttackTheEnemy() {/*
         WhiteTower WhiteTower = new WhiteTower();
-        Enemy enemyStub = Mockito.mock(Enemy.class);
-        Mockito.when(enemyStub.isWithinAttackRange()).thenReturn(true);
+        Spider enemy = new Spider();
         assertThrows(TowerIsUnderConstruction.class,()->{
-            WhiteTower.Attack(enemyStub);});
-
-         */
-    }
+            WhiteTower.Attack(enemy);});
+   */ }
     @Test
     void test04WhiteTowerOperationalAttacksAnEnemyOutOfRange() {
         /*

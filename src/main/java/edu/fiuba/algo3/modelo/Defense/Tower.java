@@ -1,5 +1,7 @@
 package edu.fiuba.algo3.modelo.Defense;
 
+import edu.fiuba.algo3.modelo.Enemy.Enemy;
+
 public abstract class Tower {
     protected int credits;
     protected int rangeAttack;
@@ -13,8 +15,8 @@ public abstract class Tower {
         this.damage = damage;
         this.cont = cont;
     }
-    public void Attack(Enemy enemy){
-        state.Attack(this,enemy);
+    public void Attack(Enemy enemy, boolean isOnRange){
+        state.Attack(this,enemy,isOnRange);
     }
     public void constructionFinished (){
         state = new OperationalState();
@@ -34,4 +36,7 @@ public abstract class Tower {
         }
     }
 
+    public int getAttackRange() {
+        return rangeAttack;
+    }
 }

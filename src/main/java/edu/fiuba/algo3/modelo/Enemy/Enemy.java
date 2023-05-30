@@ -68,9 +68,7 @@ class edu.fiuba.algo3.modelo.Enemy.Spider extends edu.fiuba.algo3.modelo.Enemy.E
     }
 }*/
 
-import java.util.Random;
-
-abstract class Enemy {
+public abstract class Enemy {
     private int speed;
     private int damage;
     private int health;

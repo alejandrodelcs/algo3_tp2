@@ -2,11 +2,16 @@ package edu.fiuba.algo3.entrega_1;
 
 import edu.fiuba.algo3.modelo.AlgoDefense;
 import edu.fiuba.algo3.modelo.Defense.*;
+import edu.fiuba.algo3.modelo.Enemy.Spider;
+import edu.fiuba.algo3.modelo.GameBoard.NonConstructibleArea;
 import edu.fiuba.algo3.modelo.Player;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.awt.*;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 //import java.awt.*;
 
@@ -60,6 +65,43 @@ public class AlgoDefenseTest {
         player.chargedCredits(95);
         Assertions.assertFalse(player.canBuy(value));
     }
+    @Test
+    public void test04(){
+        Player player = new Player("Player");
+        WhiteTower whiteTower = new WhiteTower();
+        SilverTower silverTower = new SilverTower();
+        AlgoDefense algoDefense = new AlgoDefense(player);
+        Point coordenatesDirtPlot = new Point(2,3);
+        Point coordenatesStonePlot = new Point(3,3);
+        ConstructionState construction = new ConstructionState();
+
+        algoDefense.buildsADefense(whiteTower,coordenatesDirtPlot);
+
+        Assertions.assertEquals(construction.getClass(),whiteTower.getStatus().getClass());
+        assertThrows(NonConstructibleArea.class,()->{
+            algoDefense.buildsADefense(silverTower, coordenatesStonePlot);;});
+    }
+
+    @Test
+    public void test05(){
+        Player player = new Player("Player");
+        WhiteTower whiteTower = new WhiteTower();
+        SilverTower silverTower = new SilverTower();
+        Spider spider = new Spider();
+        AlgoDefense algoDefense = new AlgoDefense(player);
+        Point coordenatesDirtPlot = new Point(2,3);
+        Point coordenatesEnemy = new Point(3,3);
+
+        algoDefense.buildsADefense(whiteTower,coordenatesDirtPlot);
+        algoDefense.newTurn();
+        algoDefense.newTurn();
+        algoDefense.spawnAnEnemy(spider,coordenatesEnemy);
+        boolean isOnRange = algoDefense.enemyIsOnRange(whiteTower,coordenatesEnemy,coordenatesDirtPlot);
+        whiteTower.Attack(spider,isOnRange);
+
+        assertEquals(1,spider.getHealth());
+    }
+
 }
 
 
