@@ -1,10 +1,12 @@
 package edu.fiuba.algo3.modelo.GameBoard;
 import edu.fiuba.algo3.modelo.Defense.Tower;
+import edu.fiuba.algo3.modelo.Enemy.Enemy;
 
 import java.awt.*;
 
 public class GameBoard {
     private Plot[][] plots;
+    //private Path firstEnemyPath;
 
     public GameBoard() {
         plots = new Plot[5][5];
@@ -24,9 +26,20 @@ public class GameBoard {
         return plotToCheck.readyToBuild();
     }
 
-    public void buildDefense(Tower tower, Point coordinates) {
-
+    public void buildDefense(Tower tower, Point coordinates){
+        int x = (int) Math.round(coordinates.getX());
+        int y = (int) Math.round(coordinates.getY());
+        Plot plotToCheck = plots[x][y];
+        plotToCheck.setDefense(tower);
     }
+
+    public void spawnEnemy(Enemy enemy, Point coordinates){
+        int x = (int) Math.round(coordinates.getX());
+        int y = (int) Math.round(coordinates.getY());
+        Plot plotToCheck = plots[x][y];
+        plotToCheck.setEnemy(enemy);
+    }
+
     /*ArrayList<plot> RunAway = ArrayList<plot>();*/
 }
 /*

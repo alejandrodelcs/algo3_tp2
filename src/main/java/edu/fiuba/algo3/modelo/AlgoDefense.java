@@ -1,11 +1,11 @@
 package edu.fiuba.algo3.modelo;
 
 import edu.fiuba.algo3.modelo.Defense.Tower;
+import edu.fiuba.algo3.modelo.Enemy.Enemy;
 import edu.fiuba.algo3.modelo.GameBoard.GameBoard;
 import edu.fiuba.algo3.modelo.GameBoard.NonConstructibleArea;
 
 import java.awt.*;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class AlgoDefense {
@@ -31,6 +31,10 @@ public class AlgoDefense {
         }
         //add an exception for when the player does not have enough credits
     }
+
+    public void spawnAnEnemy(Enemy enemy, Point coordinates){
+        gameboard.spawnEnemy(enemy, coordinates);
+    }
     public void newTurn() {
         turn += 1;
         for (Tower tower:towers) {
@@ -39,5 +43,10 @@ public class AlgoDefense {
     }
     public int getTurn() {
         return turn;
+    }
+
+    public boolean enemyIsOnRange(Tower tower,Point coordenatesEnemy, Point coordenatesDirtPlot) {
+        double distance = coordenatesEnemy.distance(coordenatesDirtPlot.getX(),coordenatesDirtPlot.getY());
+        return(tower.getAttackRange()>=distance);
     }
 }

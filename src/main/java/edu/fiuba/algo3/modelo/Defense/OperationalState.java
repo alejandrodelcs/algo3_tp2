@@ -1,12 +1,14 @@
 package edu.fiuba.algo3.modelo.Defense;
 
+import edu.fiuba.algo3.modelo.Enemy.Enemy;
+
 public class OperationalState implements State{
     @Override
-    public void Attack(Tower tower,Enemy enemy){
-        if(!enemy.isWithinAttackRange()){
+    public void Attack(Tower tower, Enemy enemy, boolean isOnRange){
+        if(!isOnRange){
             throw new EnemyIsOutOfRange();
         }else{
-            enemy.receiveDamage(tower.getDamage());
+            enemy.takeDamage(tower.getDamage());
         }
     }
 }
