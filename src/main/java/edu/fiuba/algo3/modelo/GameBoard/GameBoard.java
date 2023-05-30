@@ -11,9 +11,10 @@ public class GameBoard {
 
         for (int i = 0; i < plots.length; i++) {
             for (int j = 0; j < plots[i].length; j++) {
-                plots[i][j] = new Plot();
+                plots[i][j] = new Dirt();
             }
         }
+        plots[3][3] = new Stone();
     }
     public boolean availableForBuilding(Tower tower, Point coordinates) {
 

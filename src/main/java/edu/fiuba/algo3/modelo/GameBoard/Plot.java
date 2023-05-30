@@ -1,11 +1,11 @@
 package edu.fiuba.algo3.modelo.GameBoard;
 
-public class Plot {
+public abstract class Plot {
 
-    private boolean occupy = false;
-    private String type = "Dirt";
-    public  boolean readyToBuild() {
-
-        return true;
+    protected boolean occupy;
+    public Plot(){
+        this.occupy = false;
     }
+    public abstract boolean readyToBuild();
+    boolean itsOccupied(){ return occupy;}
 }
