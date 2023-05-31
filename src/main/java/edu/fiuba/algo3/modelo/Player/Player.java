@@ -57,7 +57,7 @@ public class Player {
     }
 
     public Tower selectTower() {
-        return new WhiteTower();//TODO//Implement
+        return new WhiteTower();//TODO//Implement(HardCoded)
     }
 }
 

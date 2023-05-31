@@ -3,15 +3,11 @@ package edu.fiuba.algo3.entrega_1;
 import edu.fiuba.algo3.modelo.AlgoDefense;
 import edu.fiuba.algo3.modelo.Defense.*;
 import edu.fiuba.algo3.modelo.Enemy.Enemy;
-import edu.fiuba.algo3.modelo.Enemy.Spider;
-import edu.fiuba.algo3.modelo.GameBoard.NonConstructibleArea;
 import edu.fiuba.algo3.modelo.GameBoard.GameBoard;
 import edu.fiuba.algo3.modelo.Player.Player;
-import edu.fiuba.algo3.modelo.Player.PlayersName;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import java.awt.*;
 import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -20,7 +16,9 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 //import java.awt.*;
 
 public class AlgoDefenseTest {
+
     @Test
+
     public void test01VerifyPlayerStartsWithLifeAndCredits(){
         // Player player = new Player(); //TODO/ Here the player should be created with the corresponding parameters
         GameBoard gameBoard = new GameBoard();//TODO/ Have to finish(Constructor parameters inside a JSON)
@@ -30,11 +28,12 @@ public class AlgoDefenseTest {
         // initialize a game(you need the player, the map of the game, and the enemys)
 
 
-        Assertions.assertEquals(true,algoDefense.canPlayerBuy(new WhiteTower()));
-        algoDefense.buildsADefense();//now the player has not credits so can not buy another tower
-        Assertions.assertEquals(false,algoDefense.canPlayerBuy(new WhiteTower()));
+        Assertions.assertEquals(true,algoDefense.canPlayerBuyTower(new WhiteTower()));
+        algoDefense.buildsATower();//now the player has not credits so can not buy another tower
+        Assertions.assertEquals(false,algoDefense.canPlayerBuyTower(new WhiteTower()));
         Assertions.assertEquals(20, player.getPlayerLifePoints());
     }
+
     @Test
     public void test03VerifyPlayerHasCredits(){
         // Player player = new Player(); //TODO/ Here the player should be created with the corresponding parameters
@@ -44,18 +43,19 @@ public class AlgoDefenseTest {
         AlgoDefense algoDefense = new AlgoDefense(player,gameBoard,enemyArrayList);
         // initialize a game(you need the player, the map of the game, and the enemys)
 
-        algoDefense.buildsADefense();
-        algoDefense.buildsADefense();
-        algoDefense.buildsADefense();
-        algoDefense.buildsADefense();
-        algoDefense.buildsADefense();
-        algoDefense.buildsADefense();
-        algoDefense.buildsADefense();
-        algoDefense.buildsADefense();
-        algoDefense.buildsADefense();//here the player has 90 credits
-        Assertions.assertEquals(true,algoDefense.canPlayerBuy(new WhiteTower()));
-        algoDefense.buildsADefense();//now the player has not credits so can not buy another tower
-        Assertions.assertEquals(false,algoDefense.canPlayerBuy(new WhiteTower()));
+        algoDefense.buildsATower();
+        algoDefense.buildsATower();
+        algoDefense.buildsATower();
+        algoDefense.buildsATower();
+        algoDefense.buildsATower();
+        algoDefense.buildsATower();
+        algoDefense.buildsATower();
+        algoDefense.buildsATower();
+        algoDefense.buildsATower();//here the player has 10 credits
+        Assertions.assertEquals(false,algoDefense.canPlayerBuyTower(new SilverTower()));//SilverTower
+        Assertions.assertEquals(true,algoDefense.canPlayerBuyTower(new WhiteTower()));
+        algoDefense.buildsATower();//now the player has not credits so can not buy another tower
+        Assertions.assertEquals(false,algoDefense.canPlayerBuyTower(new WhiteTower()));
     }
 }
 /*
