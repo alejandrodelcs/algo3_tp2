@@ -46,13 +46,3 @@ public class GameBoard {
 
     /*ArrayList<plot> RunAway = ArrayList<plot>();*/
 }
-/*
-abstract class plot{
-    ArrayList<Enemys> enemys = new ArrayList<Enemys>();
-    ArrayList<Defense> defenses = new ArrayList<Defense>();
-}
-
-class Stone extends plot{
-    public Stone(ArrayList<defense>);
-}
-*/
