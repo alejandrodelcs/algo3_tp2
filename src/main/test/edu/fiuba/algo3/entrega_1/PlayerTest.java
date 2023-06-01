@@ -1,10 +1,10 @@
 package edu.fiuba.algo3.entrega_1;
 
-import edu.fiuba.algo3.modelo.*;
-import edu.fiuba.algo3.modelo.Defense.WhiteTower;
+import edu.fiuba.algo3.modelo.Player.InvalidPlayersName;
+import edu.fiuba.algo3.modelo.Player.Player;
+import edu.fiuba.algo3.modelo.Player.PlayerIsDeadGameOver;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mockito;
 
 public class PlayerTest {
 
