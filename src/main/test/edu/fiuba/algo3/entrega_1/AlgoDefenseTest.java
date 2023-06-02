@@ -21,15 +21,19 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 //import java.awt.*;
 
 public class AlgoDefenseTest {
+
   /*
      @Test
-    public void test01VerifyPlayerStartsWithLifeAndCredits(){
+    public void test01VerifyPlayerStartsWithLifeAndCredits(){ //TODO/ With Occupiable interface
         // Player player = new Player(); //TODO/ Here the player should be created with the corresponding parameters
         GameBoard gameBoard = new GameBoard();//TODO/ Have to finish(Constructor parameters inside a JSON)
         ArrayList<Enemy> enemyArrayList = new ArrayList<Enemy>();//TODO/ Have to finish(Constructor parameters inside a JSON)
         Player player = new Player("Player");
         AlgoDefense algoDefense = new AlgoDefense(player,gameBoard,enemyArrayList);
         // initialize a game(you need the player, the map of the game, and the enemys)
+
+        //TODO: When using the interface, it is necessary to add an exception when the player doesn't have enough available credits.
+        // In test 1, the player's credits are not deducted because an attempt to build a tower in an occupied location is made
         Assertions.assertEquals(100, player.getPlayerCredits());
 
         Assertions.assertEquals(true,algoDefense.canPlayerBuyTower(new WhiteTower()));
