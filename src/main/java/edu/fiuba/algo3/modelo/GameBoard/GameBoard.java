@@ -2,6 +2,7 @@ package edu.fiuba.algo3.modelo.GameBoard;
 import edu.fiuba.algo3.modelo.Defense.Tower;
 import edu.fiuba.algo3.modelo.Enemy.Enemy;
 
+
 import java.awt.*;
 import java.util.ArrayList;
 
@@ -46,13 +47,3 @@ public class GameBoard {
 
     /*ArrayList<plot> RunAway = ArrayList<plot>();*/
 }
-/*
-abstract class plot{
-    ArrayList<Enemys> enemys = new ArrayList<Enemys>();
-    ArrayList<Defense> defenses = new ArrayList<Defense>();
-}
-
-class Stone extends plot{
-    public Stone(ArrayList<defense>);
-}
-*/
