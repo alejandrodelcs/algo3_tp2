@@ -1,13 +1,13 @@
 package edu.fiuba.algo3.entrega_1;
 import edu.fiuba.algo3.modelo.AlgoDefense;
 import edu.fiuba.algo3.modelo.Defense.*;
-import edu.fiuba.algo3.modelo.Enemy.Spider;
-import edu.fiuba.algo3.modelo.GameBoard.NonConstructibleArea;
-import edu.fiuba.algo3.modelo.JsonFacade;
-import edu.fiuba.algo3.modelo.Player;
+import edu.fiuba.algo3.modelo.Enemy.*;
+import edu.fiuba.algo3.modelo.GameBoard.*;
+import edu.fiuba.algo3.modelo.Player.Player;
 import org.json.JSONObject;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import java.util.ArrayList;
 
 import java.io.IOException;
 import org.json.JSONArray;
