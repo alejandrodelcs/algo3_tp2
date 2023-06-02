@@ -10,13 +10,15 @@ import java.util.Objects;
 
 
 public class JSONreader {
-    public static void main(String[] args) {
+    public JSONObject getObject() {
+        JSONObject error = new JSONObject();
         JSONParser parser = new JSONParser();
         try {
             Object obj = parser.parse(new FileReader("C:\\Users\\ruymo\\uba\\ALGO3\\TP2\\algo3_tp2\\src\\main\\java\\edu\\fiuba\\algo3\\modelo\\Parser\\mapa.json"));
             JSONObject jsonObject = (JSONObject) obj;
             JSONObject mapaObject = (JSONObject) jsonObject.get("Mapa");
             //System.out.print(mapaObject.toString());
+            /*
             for (Object key : mapaObject.keySet()) {
                 JSONArray rowArray = (JSONArray) mapaObject.get(key);
                 for (Object element : rowArray) {
@@ -25,9 +27,13 @@ public class JSONreader {
                 System.out.println();
             }
 
+             */
+            return mapaObject;
+
         } catch (FileNotFoundException e) {
         } catch (IOException e) {
         } catch (ParseException e) {
         }
+        return error;
     }
 }
