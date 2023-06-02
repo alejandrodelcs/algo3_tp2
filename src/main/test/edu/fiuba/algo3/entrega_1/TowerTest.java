@@ -1,6 +1,6 @@
 package edu.fiuba.algo3.entrega_1;
 
-import edu.fiuba.algo3.modelo.Defense.*;
+import edu.fiuba.algo3.modelo.defense.*;
 import org.junit.jupiter.api.Test;
 //import org.mockito.Mockito;
 //import edu.fiuba.algo3.modelo.Enemy.*;

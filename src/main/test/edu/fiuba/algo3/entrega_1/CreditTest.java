@@ -1,7 +1,7 @@
 package edu.fiuba.algo3.entrega_1;
 
 import edu.fiuba.algo3.modelo.Credit;
-import edu.fiuba.algo3.modelo.Exceptions.InsufficientCredits;
+import edu.fiuba.algo3.modelo.exceptions.InsufficientCredits;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
