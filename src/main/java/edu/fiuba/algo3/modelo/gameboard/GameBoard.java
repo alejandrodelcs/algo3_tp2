@@ -17,7 +17,7 @@ public class GameBoard {
 
     public GameBoard(JSONObject mapaJsonObject) {
 
-        plots = new Plot[15][15];
+        plots = new Plot[mapaJsonObject.keySet().size()][mapaJsonObject.values().size()];
 
         initializeMap(mapaJsonObject);
     }
