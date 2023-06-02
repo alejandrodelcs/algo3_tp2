@@ -12,17 +12,17 @@ class JSONreaderTest {
         JSONreader Reader = new JSONreader();
         JSONObject Obj = Reader.getObject();
 
-        boolean comenzarImpresion = false;
+        boolean startImpresion = false;
 
         Iterator<String> keys = Obj.keySet().iterator();
         while (keys.hasNext()) {
             String key = keys.next();
 
             if (key.equals("1")) {
-                comenzarImpresion = true;
+                startImpresion = true;
             }
 
-            if (comenzarImpresion) {
+            if (startImpresion) {
                 JSONArray rowArray = (JSONArray) Obj.get(key);
                     System.out.println(rowArray);
             }
