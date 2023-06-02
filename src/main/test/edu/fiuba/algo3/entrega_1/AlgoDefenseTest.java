@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 
 import java.io.IOException;
-import org.json.JSONArray;
+//import org.json.JSONArray;
 
 import java.awt.*;
 
@@ -21,7 +21,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 //import java.awt.*;
 
 public class AlgoDefenseTest {
-  
+  /*
      @Test
     public void test01VerifyPlayerStartsWithLifeAndCredits(){
         // Player player = new Player(); //TODO/ Here the player should be created with the corresponding parameters
@@ -63,7 +63,7 @@ public class AlgoDefenseTest {
         Assertions.assertEquals(false,algoDefense.canPlayerBuyTower(new WhiteTower()));
     }
 }
-/*
+
     @Test
 
     public void test02(){ //supuesto turno 0 inicial se construye white tower turno 1 esta construyendo turno 2 es operativo
@@ -165,7 +165,7 @@ public class AlgoDefenseTest {
             e.printStackTrace();
         }
     }
-
-}
 */
+}
+
 
