@@ -1,7 +1,11 @@
-package edu.fiuba.algo3.modelo;
+package edu.fiuba.algo3.modelo.Player;
 
 import edu.fiuba.algo3.modelo.Defense.Tower;
+import edu.fiuba.algo3.modelo.Defense.WhiteTower;
 import edu.fiuba.algo3.modelo.GameBoard.GameBoard;
+
+import java.awt.*;
+import java.util.ArrayList;
 
 public class Player {
     private int playersLifePoints;
@@ -46,4 +50,14 @@ public class Player {
     }
 
     public boolean canBuy(int value) { return (this.getPlayerCredits() - value)>=0;}
+
+    public Point selectPlaceDefense(ArrayList<Point> listOfPlacesWhereADefenseCanBeBuild) {
+        //TODO//implement
+        return null;
+    }
+
+    public Tower selectTower() {
+        return new WhiteTower();//TODO//Implement(HardCoded)
+    }
 }
+
