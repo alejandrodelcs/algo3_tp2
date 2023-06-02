@@ -1,9 +1,9 @@
 package edu.fiuba.algo3.entrega_1;
 
 import edu.fiuba.algo3.modelo.Credit;
-import edu.fiuba.algo3.modelo.Player.InvalidPlayersName;
+import edu.fiuba.algo3.modelo.Exceptions.InvalidPlayersName;
 import edu.fiuba.algo3.modelo.Player.Player;
-import edu.fiuba.algo3.modelo.Player.PlayerIsDeadGameOver;
+import edu.fiuba.algo3.modelo.Exceptions.PlayerIsDeadGameOver;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

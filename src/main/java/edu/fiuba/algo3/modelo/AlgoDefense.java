@@ -3,9 +3,8 @@ package edu.fiuba.algo3.modelo;
 import edu.fiuba.algo3.modelo.Defense.Tower;
 import edu.fiuba.algo3.modelo.Enemy.Enemy;
 import edu.fiuba.algo3.modelo.GameBoard.GameBoard;
-import edu.fiuba.algo3.modelo.GameBoard.NonConstructibleArea;
+import edu.fiuba.algo3.modelo.Exceptions.NonConstructibleArea;
 import edu.fiuba.algo3.modelo.Player.Player;
-import edu.fiuba.algo3.modelo.Parser.JSONreader;
 
 import java.awt.*;
 import java.util.ArrayList;

@@ -1,4 +1,4 @@
-package edu.fiuba.algo3.modelo.GameBoard;
+package edu.fiuba.algo3.modelo.Exceptions;
 
 public class NonConstructibleArea extends RuntimeException{
 }

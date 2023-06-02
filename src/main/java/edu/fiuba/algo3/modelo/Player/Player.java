@@ -3,6 +3,8 @@ package edu.fiuba.algo3.modelo.Player;
 import edu.fiuba.algo3.modelo.Credit;
 import edu.fiuba.algo3.modelo.Defense.Tower;
 import edu.fiuba.algo3.modelo.Defense.WhiteTower;
+import edu.fiuba.algo3.modelo.Exceptions.InvalidPlayersName;
+import edu.fiuba.algo3.modelo.Exceptions.PlayerIsDeadGameOver;
 import edu.fiuba.algo3.modelo.GameBoard.GameBoard;
 
 import java.awt.*;

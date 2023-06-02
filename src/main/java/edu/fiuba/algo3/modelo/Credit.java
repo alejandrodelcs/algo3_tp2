@@ -1,6 +1,6 @@
 package edu.fiuba.algo3.modelo;
 
-import edu.fiuba.algo3.modelo.Player.PlayerIsDeadGameOver;
+import edu.fiuba.algo3.modelo.Exceptions.InsufficientCredits;
 
 public class Credit {
     private int quantity;
