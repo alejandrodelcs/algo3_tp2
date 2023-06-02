@@ -1,6 +1,6 @@
 package edu.fiuba.algo3.modelo.GameBoard;
 
-public class Avaliable implements Occupiable{
+public class Available implements Occupiable{
     @Override
     public boolean itsOccupied(){return false;}
 }
