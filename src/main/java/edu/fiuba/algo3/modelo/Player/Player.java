@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.modelo.Player;
 
+import edu.fiuba.algo3.modelo.Credit;
 import edu.fiuba.algo3.modelo.Defense.Tower;
 import edu.fiuba.algo3.modelo.Defense.WhiteTower;
 import edu.fiuba.algo3.modelo.GameBoard.GameBoard;
@@ -8,21 +9,32 @@ import java.awt.*;
 import java.util.ArrayList;
 
 public class Player {
+    private String playersName;
     private int playersLifePoints;
-    private int playersCredits;
+    private Credit playersCredits;
 
     public Player(String playersName) {
-        PlayersName playerName = new PlayersName();
-        playerName.validateName(playersName);
-        this.playersLifePoints = 20;
-        this.playersCredits = 100;
 
+        validateName(playersName);
+        this.playersName = playersName;
+        this.playersLifePoints = 20;
+        this.playersCredits = new Credit(100);
+
+    }
+
+    private void validateName(String name) {
+        int minimumLengthNameCharacters = 6;
+        int nameSize = name.length();
+
+        if(nameSize<minimumLengthNameCharacters){
+            throw new InvalidPlayersName();
+        }
     }
 
     public int getPlayerLifePoints() {
         return playersLifePoints;
     }
-    public int getPlayerCredits() {
+    public Credit getPlayerCredits() {
         return playersCredits;
     }
 
@@ -35,21 +47,21 @@ public class Player {
         }
     }
 
-    public void chargedCredits(int credits) {
-        playersCredits -= credits;
+    public void chargedCredits(Credit credits) {
+        playersCredits.chargedCredits(credits);
     }
 
-    public void getsCredit(int credits) {
-        playersCredits += credits;
+    public void getsCredit(Credit credits) {
+        playersCredits.subtractCredits(credits);
     }
 
     public void buildsADefense(Tower tower, GameBoard gameboard) {
-        int creditsToBeCharged =  tower.getCredits();
+        Credit creditsToBeCharged =  tower.getCredits();
         this.chargedCredits(creditsToBeCharged);
 
     }
 
-    public boolean canBuy(int value) { return (this.getPlayerCredits() - value)>=0;}
+    public boolean canBuy(int value) { return (this.getPlayerCredits().getQuantity() - value)>=0;}
 
     public Point selectPlaceDefense(ArrayList<Point> listOfPlacesWhereADefenseCanBeBuild) {
         //TODO//implement

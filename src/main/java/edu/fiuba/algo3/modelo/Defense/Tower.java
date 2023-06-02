@@ -1,15 +1,16 @@
 package edu.fiuba.algo3.modelo.Defense;
 
+import edu.fiuba.algo3.modelo.Credit;
 import edu.fiuba.algo3.modelo.Enemy.Enemy;
 
 public abstract class Tower {
-    protected int credits;
+    protected Credit credits;
     protected int rangeAttack;
     protected int damage;
     protected State state = new ConstructionState();
     protected int cont;
 
-    public Tower(int credits, int rangeAttack, int damage, int cont){
+    public Tower(Credit credits, int rangeAttack, int damage, int cont){
         this.credits = credits;
         this.rangeAttack = rangeAttack;
         this.damage = damage;
@@ -21,7 +22,7 @@ public abstract class Tower {
     public void constructionFinished (){
         state = new OperationalState();
     }
-    public int getCredits() {
+    public Credit getCredits() {
         return credits;
     }
     public int getDamage() {

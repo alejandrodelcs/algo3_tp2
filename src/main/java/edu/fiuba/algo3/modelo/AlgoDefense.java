@@ -61,7 +61,7 @@ public class AlgoDefense {
         return(tower.getAttackRange()>=distance);
     }
     public boolean canPlayerBuyTower( Tower tower ){//TODO: here a player can buy "anything" not only towers
-        return player.canBuy(tower.getCredits());
+        return player.canBuy(tower.getCredits().getQuantity()); //TODO: should get quantity
     }
 
 }
