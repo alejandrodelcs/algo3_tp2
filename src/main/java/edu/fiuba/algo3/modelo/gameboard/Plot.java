@@ -6,14 +6,12 @@ import edu.fiuba.algo3.modelo.enemy.Enemy;
 public abstract class Plot {
     protected Tower tower;
     protected Enemy enemy;
-    protected boolean occupy;
-    public Plot(){
-        this.occupy = false;
-    }
-    public abstract boolean readyToBuild();
-    boolean itsOccupied(){ return occupy;}
+    protected Occupiable state;
+    public Plot(){;}
+    public boolean readyToBuild(){return !state.itsOccupied();}//TODO: See if the boolean can be removed
     public void setDefense(Tower tower){
             this.tower = tower;
+            this.state = new Ocuppied();
         }
     public void setEnemy(Enemy enemy){
         this.enemy = enemy;
