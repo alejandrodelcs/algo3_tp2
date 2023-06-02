@@ -10,14 +10,14 @@ public class TowerTest {
     public void test01NewWhiteTowerHas10Credits() {
         WhiteTower WhiteTower = new WhiteTower();
 
-        assertEquals(10, WhiteTower.getCredits());
+        assertEquals(10, WhiteTower.getCredits().getQuantity());
     }
 
     @Test
     public void test02NewSilverTowerHas20Credits() {
         SilverTower SilverTower = new SilverTower();
 
-        assertEquals(20, SilverTower.getCredits());
+        assertEquals(20, SilverTower.getCredits().getQuantity());
     }
 
 }
