@@ -19,6 +19,8 @@ public class AlgoDefenseTest {
         // initialize a game(you need the player, the map of the game, and the enemys)
         Assertions.assertEquals(new Credit(100), player.getPlayerCredits());
 
+        //TODO: When using the interface, it is necessary to add an exception when the player doesn't have enough available credits.
+        // In test 1, the player's credits are not deducted because an attempt to build a tower in an occupied location is made
         Assertions.assertEquals(true,algoDefense.canPlayerBuyTower(new WhiteTower()));
         Assertions.assertEquals(20, player.getPlayerLifePoints());
     }

@@ -26,15 +26,15 @@ public class AlgoDefense {
     public void buildsATower() {
         Point coordinatesPosibleConstruction = new Point(4,2);
         Tower tower = player.selectTower();//TODO: here the player select what to build
-
-        if(!gameboard.availableForBuilding(tower, coordinatesPosibleConstruction)){
-            throw new NonConstructibleArea();
-        }
         if(canPlayerBuyTower(tower)){
             player.chargedCredits(tower.getCredits());
             gameboard.buildDefense(tower, coordinatesPosibleConstruction);
             towers.add(tower);
         }
+        if(!gameboard.availableForBuilding(tower, coordinatesPosibleConstruction)){
+            throw new NonConstructibleArea();
+        }
+
         //add an exception for when the player does not have enough credits
     }
 
