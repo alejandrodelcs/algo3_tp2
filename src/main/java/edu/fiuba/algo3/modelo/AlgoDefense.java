@@ -31,7 +31,7 @@ public class AlgoDefense {
             gameboard.buildDefense(tower, coordinatesPosibleConstruction);
             towers.add(tower);
         }
-        if(!gameboard.availableForBuilding(tower, ExampleOfCoordinates)){
+        if(!gameboard.availableForBuilding(tower, coordinatesPosibleConstruction)){
             throw new NonConstructibleArea();
         }
 

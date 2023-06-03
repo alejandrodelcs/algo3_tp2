@@ -7,11 +7,11 @@ public abstract class Plot {
     protected Tower tower;
     protected Enemy enemy;
     protected Occupiable state;
-    public Plot(){;}
+
     public boolean readyToBuild(){return !state.itsOccupied();}//TODO: See if the boolean can be removed
     public void setDefense(Tower tower){
             this.tower = tower;
-            this.state = new Ocuppied();
+            this.state = new Occupied();
         }
     public void setEnemy(Enemy enemy){
         this.enemy = enemy;
