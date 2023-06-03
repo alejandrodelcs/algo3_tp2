@@ -13,6 +13,7 @@ public class PlayerTest {
     public void whenNewGameIsOnPlayerHasTwentyLifePointsAndOneHundredCredits(){
         Player player = new Player("Player");
 
+
         Assertions.assertEquals(20, player.getPlayerLifePoints());
         Assertions.assertEquals(100, player.getPlayerCredits().getQuantity());//TODO: change get quantity test behavior
     }

@@ -6,20 +6,22 @@ import edu.fiuba.algo3.modelo.defense.WhiteTower;
 import edu.fiuba.algo3.modelo.exceptions.InvalidPlayersName;
 import edu.fiuba.algo3.modelo.exceptions.PlayerIsDeadGameOver;
 import edu.fiuba.algo3.modelo.gameboard.GameBoard;
+import edu.fiuba.algo3.modelo.health.Damageable;
+import edu.fiuba.algo3.modelo.health.Health;
 
 import java.awt.*;
 import java.util.ArrayList;
 
 public class Player {
     private String playersName;
-    private int playersLifePoints;
+    private Health playersLifePoints;
     private Credit playersCredits;
 
     public Player(String playersName) {
 
         validateName(playersName);
         this.playersName = playersName;
-        this.playersLifePoints = 20;
+        this.playersLifePoints = new Damageable(20);
         this.playersCredits = new Credit(100);
 
     }
@@ -33,7 +35,7 @@ public class Player {
         }
     }
 
-    public int getPlayerLifePoints() {
+    public Health getPlayerLifePoints() {
         return playersLifePoints;
     }
     public Credit getPlayerCredits() {
@@ -42,9 +44,8 @@ public class Player {
 
     public void getsDamage(int damage) {
 
-        playersLifePoints -= damage;
-
-        if (playersLifePoints <= 0) {
+        playersLifePoints.takeDamage(damage);
+        if (playersLifePoints.entityDied()) {
             throw new PlayerIsDeadGameOver();
         }
     }
