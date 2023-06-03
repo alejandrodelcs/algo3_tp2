@@ -10,24 +10,34 @@ class JSONreaderTest {
     @Test
     void testPrintMap() {
         JSONreader Reader = new JSONreader();
-        JSONObject Obj = Reader.getObject();
-
-        boolean comenzarImpresion = false;
+        JSONObject mapaObject = Reader.getObject();
+        for (int i = 1; i <= mapaObject.size(); i++) {
+            String key = String.valueOf(i);
+            JSONArray rowArray = (JSONArray) mapaObject.get(key);
+            for (Object element : rowArray) {
+                System.out.print(element.toString() + " ");
+            }
+            System.out.println();
+        }
+/*
+        boolean startImpresion = false;
 
         Iterator<String> keys = Obj.keySet().iterator();
         while (keys.hasNext()) {
             String key = keys.next();
 
             if (key.equals("1")) {
-                comenzarImpresion = true;
+                startImpresion = true;
             }
 
-            if (comenzarImpresion) {
+            if (startImpresion) {
                 JSONArray rowArray = (JSONArray) Obj.get(key);
                     System.out.println(rowArray);
             }
 
         }
+
+ */
     }
 
 }

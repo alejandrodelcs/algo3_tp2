@@ -1,7 +1,5 @@
 package edu.fiuba.algo3.entrega_1;
 
-//import org.json.JSONArray;
-
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -9,32 +7,28 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 //import java.awt.*;
 
 public class AlgoDefenseTest {
-
   /*
      @Test
-    public void test01VerifyPlayerStartsWithLifeAndCredits(){ //TODO/ With Occupiable interface
+    public void test01VerifyPlayerStartsWithLifeAndCredits(){
+         JSONreader Reader = new JSONreader();
         // Player player = new Player(); //TODO/ Here the player should be created with the corresponding parameters
-        GameBoard gameBoard = new GameBoard();//TODO/ Have to finish(Constructor parameters inside a JSON)
+        GameBoard gameBoard = new GameBoard(Reader.getObject());//TODO/ Have to finish(Constructor parameters inside a JSON)
         ArrayList<Enemy> enemyArrayList = new ArrayList<Enemy>();//TODO/ Have to finish(Constructor parameters inside a JSON)
         Player player = new Player("Player");
         AlgoDefense algoDefense = new AlgoDefense(player,gameBoard,enemyArrayList);
         // initialize a game(you need the player, the map of the game, and the enemys)
-
-        //TODO: When using the interface, it is necessary to add an exception when the player doesn't have enough available credits.
-        // In test 1, the player's credits are not deducted because an attempt to build a tower in an occupied location is made
-        Assertions.assertEquals(100, player.getPlayerCredits());
+        Assertions.assertEquals(new Credit(100), player.getPlayerCredits());
 
         Assertions.assertEquals(true,algoDefense.canPlayerBuyTower(new WhiteTower()));
-        algoDefense.buildsATower();//now the player has not credits so can not buy another tower
-        Assertions.assertEquals(false,algoDefense.canPlayerBuyTower(new WhiteTower()));
         Assertions.assertEquals(20, player.getPlayerLifePoints());
     }
 
     @Test
   
     public void test03VerifyPlayerHasCredits(){
+        JSONreader Reader = new JSONreader();
         // Player player = new Player(); //TODO/ Here the player should be created with the corresponding parameters
-        GameBoard gameBoard = new GameBoard();//TODO/ Have to finish(Constructor parameters inside a JSON)
+        GameBoard gameBoard = new GameBoard(Reader.getObject());//TODO/ Have to finish(Constructor parameters inside a JSON)
         ArrayList<Enemy> enemyArrayList = new ArrayList<Enemy>();//TODO/ Have to finish(Constructor parameters inside a JSON)
         Player player = new Player("Player");
         AlgoDefense algoDefense = new AlgoDefense(player,gameBoard,enemyArrayList);
@@ -56,6 +50,8 @@ public class AlgoDefenseTest {
     }
 }
 
+   */
+/*
     @Test
 
     public void test02(){ //supuesto turno 0 inicial se construye white tower turno 1 esta construyendo turno 2 es operativo
@@ -157,7 +153,7 @@ public class AlgoDefenseTest {
             e.printStackTrace();
         }
     }
+
 */
 }
-
 
