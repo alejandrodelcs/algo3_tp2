@@ -1,11 +1,10 @@
 package edu.fiuba.algo3.entrega_1;
 
-import edu.fiuba.algo3.modelo.Credit;
-import edu.fiuba.algo3.modelo.exceptions.InvalidPlayersName;
-import edu.fiuba.algo3.modelo.player.Player;
-import edu.fiuba.algo3.modelo.exceptions.PlayerIsDeadGameOver;
+import edu.fiuba.algo3.modelo.*;
+import edu.fiuba.algo3.modelo.Defense.WhiteTower;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
 
 public class PlayerTest {
 
@@ -14,7 +13,7 @@ public class PlayerTest {
         Player player = new Player("Player");
 
         Assertions.assertEquals(20, player.getPlayerLifePoints());
-        Assertions.assertEquals(100, player.getPlayerCredits().getQuantity());//TODO: change get quantity test behavior
+        Assertions.assertEquals(100, player.getPlayerCredits());
     }
 
     @Test
@@ -29,22 +28,19 @@ public class PlayerTest {
     @Test
     public void whenPlayerGetsChargedWithTenCreditsPlayerShouldEndUpWithNinetyCredits(){
         Player player = new Player("Player");
-        Credit credit = new Credit(10);
 
-        player.getsCredit(credit);
+        player.chargedCredits(10);
 
-        Assertions.assertEquals(90, player.getPlayerCredits().getQuantity());//TODO: test behaviour
+        Assertions.assertEquals(90, player.getPlayerCredits());
     }
 
     @Test
     public void whenPlayerEarnsTenCreditsPlayerShouldEndUpWithAHoundredAndTenCredits(){
         Player player = new Player("Player");
-        Credit credit = new Credit(10);
 
+        player.getsCredit(10);
 
-        player.chargedCredits(credit);
-
-        Assertions.assertEquals(110,player.getPlayerCredits().getQuantity());
+        Assertions.assertEquals(110,player.getPlayerCredits());
     }
 
     @Test
