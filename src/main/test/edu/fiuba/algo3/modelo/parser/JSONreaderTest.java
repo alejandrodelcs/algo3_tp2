@@ -10,8 +10,16 @@ class JSONreaderTest {
     @Test
     void testPrintMap() {
         JSONreader Reader = new JSONreader();
-        JSONObject Obj = Reader.getObject();
-
+        JSONObject mapaObject = Reader.getObject();
+        for (int i = 1; i <= mapaObject.size(); i++) {
+            String key = String.valueOf(i);
+            JSONArray rowArray = (JSONArray) mapaObject.get(key);
+            for (Object element : rowArray) {
+                System.out.print(element.toString() + " ");
+            }
+            System.out.println();
+        }
+/*
         boolean startImpresion = false;
 
         Iterator<String> keys = Obj.keySet().iterator();
@@ -28,6 +36,8 @@ class JSONreaderTest {
             }
 
         }
+
+ */
     }
 
 }

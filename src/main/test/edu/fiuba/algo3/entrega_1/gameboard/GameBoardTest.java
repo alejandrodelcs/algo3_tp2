@@ -1,17 +1,17 @@
 package edu.fiuba.algo3.entrega_1.gameboard;
 
-//mport edu.fiuba.algo3.modelo.GameBoard.GameBoard;
-
+import edu.fiuba.algo3.modelo.gameboard.GameBoard;
+import org.junit.jupiter.api.Test;
+import edu.fiuba.algo3.modelo.parser.JSONreader;
 
 class GameBoardTest {
-    /*
+
     @Test
     public void AGameBoardIsCreated(){
-        var new_board = new GameBoard();
-        var New_tile =
-
-
+        JSONreader Reader = new JSONreader();
+        GameBoard game = new GameBoard(Reader.getObject());
+        game.printMap();
     }
-*/
+
 
 }

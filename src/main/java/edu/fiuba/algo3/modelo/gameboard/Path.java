@@ -1,7 +1,7 @@
 package edu.fiuba.algo3.modelo.gameboard;
 
-public class Stone extends Plot{
-    public Stone(){super();}
+public class Path extends Plot{
+    public Path(){super();}
     @Override
     public boolean readyToBuild(){
         return false;
@@ -9,6 +9,6 @@ public class Stone extends Plot{
 
     @Override
     public String Show() {
-        return "xxx";
+        return "ooo";
     }
 }
