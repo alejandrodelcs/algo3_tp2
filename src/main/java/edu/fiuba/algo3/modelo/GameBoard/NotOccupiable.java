@@ -1,6 +1,6 @@
-package edu.fiuba.algo3.modelo.GameBoard;
+package edu.fiuba.algo3.modelo.gameboard;
 
-import edu.fiuba.algo3.modelo.Defense.TowerIsUnderConstruction;
+import edu.fiuba.algo3.modelo.exceptions.NonConstructibleArea;
 
 public class NotOccupiable implements Occupiable{
     @Override
