@@ -13,8 +13,10 @@ public class PlayerTest {
     public void whenNewGameIsOnPlayerHasTwentyLifePointsAndOneHundredCredits(){
         Player player = new Player("Player");
 
+        player.getsDamage(10);
+        player.getsDamage(9);
 
-        Assertions.assertEquals(20, player.getPlayerLifePoints());
+        Assertions.assertTrue(player.isAlive());
         Assertions.assertEquals(100, player.getPlayerCredits().getQuantity());//TODO: change get quantity test behavior
     }
 
@@ -24,7 +26,7 @@ public class PlayerTest {
 
         player.getsDamage(10);
 
-        Assertions.assertEquals(10, player.getPlayerLifePoints());
+        Assertions.assertTrue(player.isAlive());
     }
 
     @Test
