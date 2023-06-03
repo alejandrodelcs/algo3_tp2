@@ -13,8 +13,6 @@ public abstract class Plot {
             this.tower = tower;
             this.state = new Occupied();
         }
-    public void setEnemy(Enemy enemy){
-        this.enemy = enemy;
-    }
+    public abstract void setEnemy(Enemy enemy);
     public abstract String Show();
 }
