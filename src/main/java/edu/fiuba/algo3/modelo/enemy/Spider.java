@@ -1,12 +1,14 @@
 package edu.fiuba.algo3.modelo.enemy;
 
+import edu.fiuba.algo3.modelo.damage.Damage;
+
 import java.util.Random;
 
 public class Spider extends Enemy {
     private static final int CREDITS_MIN_RANGE = 0;
     private static final int CREDITS_MAX_RANGE = 10;
 
-    public Spider(int speed, int damage, int healthPoints) {
+    public Spider(int speed, Damage damage, int healthPoints) {
         super(speed, damage, healthPoints);
     }
 
