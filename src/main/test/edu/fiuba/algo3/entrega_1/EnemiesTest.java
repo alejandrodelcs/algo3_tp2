@@ -1,5 +1,5 @@
 package edu.fiuba.algo3.entrega_1;
-import edu.fiuba.algo3.modelo.enemy.*;
+import edu.fiuba.algo3.modelo.Enemy.*;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 

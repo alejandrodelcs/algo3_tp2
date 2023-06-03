@@ -1,11 +1,9 @@
 package edu.fiuba.algo3.modelo;
 
-import edu.fiuba.algo3.modelo.defense.Tower;
-import edu.fiuba.algo3.modelo.enemy.Enemy;
-import edu.fiuba.algo3.modelo.gameboard.GameBoard;
-import edu.fiuba.algo3.modelo.exceptions.NonConstructibleArea;
-import edu.fiuba.algo3.modelo.player.Player;
-import edu.fiuba.algo3.modelo.parser.JSONreader;
+import edu.fiuba.algo3.modelo.Defense.Tower;
+import edu.fiuba.algo3.modelo.Enemy.Enemy;
+import edu.fiuba.algo3.modelo.GameBoard.GameBoard;
+import edu.fiuba.algo3.modelo.GameBoard.NonConstructibleArea;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -13,26 +11,22 @@ import java.util.ArrayList;
 public class AlgoDefense {
     private Player player;
     private GameBoard gameboard;
-    private int turn;//TODO: Should be a class
-    private ArrayList<Enemy> enemyArrayLists;
+    private int turn;
 
     private ArrayList<Tower> towers;
-    public AlgoDefense(Player aPLayer,GameBoard gameboard, ArrayList<Enemy> enemies){
-        this.player = aPLayer;
-        this.gameboard = gameboard;
+    public AlgoDefense(Player player){
+        this.player = player;
+        this.gameboard = new GameBoard();
         this.towers = new ArrayList<>();
-        this.enemyArrayLists = enemies;
     }
-    public void buildsATower() {
-        Point coordinatesPosibleConstruction = new Point(4,2);
-        Tower tower = player.selectTower();//TODO: here the player select what to build
-
-        if(!gameboard.availableForBuilding(tower, coordinatesPosibleConstruction)){
+    public void buildsADefense(Tower tower, Point coordinates) {
+        int value = tower.getCredits();
+        if(!gameboard.availableForBuilding(tower, coordinates)){
             throw new NonConstructibleArea();
         }
-        if(canPlayerBuyTower(tower)){
-            player.chargedCredits(tower.getCredits());
-            gameboard.buildDefense(tower, coordinatesPosibleConstruction);
+        if(player.canBuy(value)){
+            player.chargedCredits(value);
+            gameboard.buildDefense(tower, coordinates);
             towers.add(tower);
         }
         //add an exception for when the player does not have enough credits
@@ -55,8 +49,4 @@ public class AlgoDefense {
         double distance = coordenatesEnemy.distance(coordenatesDirtPlot.getX(),coordenatesDirtPlot.getY());
         return(tower.getAttackRange()>=distance);
     }
-    public boolean canPlayerBuyTower( Tower tower ){//TODO: here a player can buy "anything" not only towers
-        return player.canBuy(tower.getCredits().getQuantity());
-    }
-
 }
