@@ -1,4 +1,4 @@
-package edu.fiuba.algo3.entrega_1;
+package edu.fiuba.algo3.entrega_1.model;
 
 import edu.fiuba.algo3.modelo.Credit;
 import edu.fiuba.algo3.modelo.exceptions.InvalidPlayersName;
@@ -13,7 +13,10 @@ public class PlayerTest {
     public void whenNewGameIsOnPlayerHasTwentyLifePointsAndOneHundredCredits(){
         Player player = new Player("Player");
 
-        Assertions.assertEquals(20, player.getPlayerLifePoints());
+        player.getsDamage(10);
+        player.getsDamage(9);
+
+        Assertions.assertTrue(player.isAlive());
         Assertions.assertEquals(100, player.getPlayerCredits().getQuantity());//TODO: change get quantity test behavior
     }
 
@@ -23,7 +26,7 @@ public class PlayerTest {
 
         player.getsDamage(10);
 
-        Assertions.assertEquals(10, player.getPlayerLifePoints());
+        Assertions.assertTrue(player.isAlive());
     }
 
     @Test

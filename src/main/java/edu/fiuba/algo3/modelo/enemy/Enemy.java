@@ -1,13 +1,14 @@
 package edu.fiuba.algo3.modelo.enemy;
 
+import edu.fiuba.algo3.modelo.damage.Damage;
 import edu.fiuba.algo3.modelo.health.*;
 
 public abstract class Enemy {
     private int speed;
-    private int damage;
+    private Damage damage;
     private Health health;
 
-    public Enemy(int speed, int damage, int healthPoints) {
+    public Enemy(int speed, Damage damage, int healthPoints) {
         this.speed = speed;
         this.damage = damage;
         this.health = new Damageable(healthPoints);
@@ -17,7 +18,7 @@ public abstract class Enemy {
         return speed;
     }
 
-    public int getDamage() {
+    public Damage getDamage() {
         return damage;
     }
 

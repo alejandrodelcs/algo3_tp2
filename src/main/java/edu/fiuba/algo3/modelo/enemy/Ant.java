@@ -1,9 +1,11 @@
 package edu.fiuba.algo3.modelo.enemy;
 
+import edu.fiuba.algo3.modelo.damage.Damage;
+
 public class Ant extends Enemy {
     private static final int REWARD_THRESHOLD = 10;
 
-    public Ant(int speed, int damage, int healthPoints) {
+    public Ant(int speed, Damage damage, int healthPoints) {
         super(speed, damage, healthPoints);
     }
 

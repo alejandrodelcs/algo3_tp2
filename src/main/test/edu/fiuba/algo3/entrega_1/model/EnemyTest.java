@@ -1,4 +1,4 @@
-package edu.fiuba.algo3.entrega_1;
+package edu.fiuba.algo3.entrega_1.model;
 import edu.fiuba.algo3.modelo.enemy.*;
 import edu.fiuba.algo3.modelo.exceptions.EnemyDoesNotExist;
 import org.junit.jupiter.api.Test;
