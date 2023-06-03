@@ -6,18 +6,13 @@ public class Spider extends Enemy {
     private static final int CREDITS_MIN_RANGE = 0;
     private static final int CREDITS_MAX_RANGE = 10;
 
-    public Spider() {
-        super(2, 2, 2);
+    public Spider(int speed, int damage, int healthPoints) {
+        super(speed, damage, healthPoints);
     }
 
     @Override
     public int getReward() {
         return 0; // Not used for edu.fiuba.algo3.modelo.Enemy.Spider enemy
-    }
-
-    @Override
-    public void destroy() {
-        // Destroy logic for edu.fiuba.algo3.modelo.Enemy.Spider enemy
     }
 
     @Override
