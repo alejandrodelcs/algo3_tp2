@@ -1,6 +1,6 @@
 package edu.fiuba.algo3.entrega_1;
 
-import edu.fiuba.algo3.modelo.Defense.*;
+import edu.fiuba.algo3.modelo.defense.*;
 import org.junit.jupiter.api.Test;
 //import org.mockito.Mockito;
 //import edu.fiuba.algo3.modelo.Enemy.*;
@@ -10,14 +10,14 @@ public class TowerTest {
     public void test01NewWhiteTowerHas10Credits() {
         WhiteTower WhiteTower = new WhiteTower();
 
-        assertEquals(10, WhiteTower.getCredits());
+        assertEquals(10, WhiteTower.getCredits().getQuantity());
     }
 
     @Test
     public void test02NewSilverTowerHas20Credits() {
         SilverTower SilverTower = new SilverTower();
 
-        assertEquals(20, SilverTower.getCredits());
+        assertEquals(20, SilverTower.getCredits().getQuantity());
     }
 
 }
