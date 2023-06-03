@@ -12,7 +12,7 @@ public class JSONreader {
         JSONObject error = new JSONObject();
         JSONParser parser = new JSONParser();
         try {
-            Object obj = parser.parse(new FileReader("C:\\Users\\ruymo\\uba\\ALGO3\\TP2\\algo3_tp2\\src\\main\\java\\edu\\fiuba\\algo3\\modelo\\Parser\\mapa.json"));
+            Object obj = parser.parse(new FileReader("C:\\Users\\odill\\IdeaProjects\\algo3_tp2\\src\\main\\java\\edu\\fiuba\\algo3\\modelo\\parser\\mapa.json"));
             JSONObject jsonObject = (JSONObject) obj;
             JSONObject mapaObject = (JSONObject) jsonObject.get("Mapa");
             return mapaObject;
