@@ -2,6 +2,7 @@ package edu.fiuba.algo3.modelo.player;
 
 import edu.fiuba.algo3.modelo.Credit;
 import edu.fiuba.algo3.modelo.defense.Tower;
+import edu.fiuba.algo3.modelo.defense.TowerFactory;
 import edu.fiuba.algo3.modelo.defense.WhiteTower;
 import edu.fiuba.algo3.modelo.exceptions.InvalidPlayersName;
 import edu.fiuba.algo3.modelo.exceptions.PlayerIsDeadGameOver;
@@ -72,7 +73,8 @@ public class Player {
     }
 
     public Tower selectTower() {
-        return new WhiteTower();//TODO//Implement(HardCoded)
+        TowerFactory factory = new TowerFactory();
+        return factory.createTower("WhiteTower");//TODO//Implement(HardCoded)
     }
 
     public boolean isAlive() {

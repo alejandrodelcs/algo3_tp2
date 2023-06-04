@@ -20,7 +20,7 @@ public class PlotTest {
     @Test
     public void test01canBuildATowerOnAnAvailableDirtPlot(){
         Plot dirt = new Dirt();
-        Tower tower = new WhiteTower();
+        Tower tower = mock(Tower.class);
 
         Assertions.assertTrue(dirt.readyToBuild());
         dirt.setDefense(tower);
