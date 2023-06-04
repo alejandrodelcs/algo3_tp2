@@ -4,6 +4,6 @@ import edu.fiuba.algo3.modelo.Credit;
 
 public class SilverTower extends Tower{
 
-    public SilverTower(){ super (new Credit(20),5,2, 2);}
+    public SilverTower(Credit credit, int rangeAttack,int damage,int cont){ super(credit,rangeAttack,damage,cont);}
 
 }
