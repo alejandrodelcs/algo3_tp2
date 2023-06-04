@@ -5,7 +5,6 @@ import edu.fiuba.algo3.modelo.enemy.Enemy;
 import edu.fiuba.algo3.modelo.gameboard.GameBoard;
 import edu.fiuba.algo3.modelo.exceptions.NonConstructibleArea;
 import edu.fiuba.algo3.modelo.player.Player;
-import edu.fiuba.algo3.modelo.parser.JSONreader;
 
 import java.awt.*;
 import java.util.ArrayList;

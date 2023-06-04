@@ -40,4 +40,6 @@ public abstract class Enemy {
     };
 
     public abstract int generateCredits();
+
+    public abstract String Show();
 }

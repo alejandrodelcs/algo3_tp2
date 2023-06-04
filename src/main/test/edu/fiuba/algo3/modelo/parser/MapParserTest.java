@@ -4,12 +4,10 @@ import org.json.simple.JSONArray;
 import org.junit.jupiter.api.Test;
 
 
-import java.util.Iterator;
-
-class JSONreaderTest {
+class MapParserTest {
     @Test
     void testPrintMap() {
-        JSONreader Reader = new JSONreader();
+        MapParser Reader = new MapParser();
         JSONObject mapaObject = Reader.getObject();
         for (int i = 1; i <= mapaObject.size(); i++) {
             String key = String.valueOf(i);
@@ -19,6 +17,22 @@ class JSONreaderTest {
             }
             System.out.println();
         }
+    }
+
+    @Test
+    void  testPrintEnemies(){
+        EnemiesParser Reader = new EnemiesParser();
+        JSONArray enemyObject = Reader.getArray();
+
+        //System.out.println(enemyObject.toString());
+
+        for (Object o : enemyObject) {
+
+            JSONObject rowObject = (JSONObject) o;
+            System.out.println(rowObject.toString());
+        }
+    }
+
 /*
         boolean startImpresion = false;
 
@@ -38,6 +52,6 @@ class JSONreaderTest {
         }
 
  */
-    }
+
 
 }
