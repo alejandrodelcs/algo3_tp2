@@ -13,6 +13,7 @@ public class MapParser {
 
     public Plot[][] plots;
 
+
     public JSONObject getObject() {
         String fileRelativeSource = "src\\main\\java\\edu\\fiuba\\algo3\\modelo\\parser\\mapa.json";
         String fileName = "Mapa";
@@ -32,8 +33,10 @@ public class MapParser {
     }
     /*ArrayList<plot> RunAway = ArrayList<plot>();*/
     public GameBoard initializeMap(){
+
         MapParser reader = new MapParser();
         JSONObject mapaJsonObject =  reader.getObject();
+        plots = new Plot[mapaJsonObject.keySet().size()][mapaJsonObject.values().size()];
 
         for (int i = 1; i <= mapaJsonObject.size(); i++) {
             String key = String.valueOf(i);
@@ -54,11 +57,10 @@ public class MapParser {
                 }
                 j++;
             }
-            plots = new Plot[mapaJsonObject.keySet().size()][mapaJsonObject.values().size()];
+
         }
 
         return new GameBoard(plots);
 
-        //System.out.println();
     }
 }

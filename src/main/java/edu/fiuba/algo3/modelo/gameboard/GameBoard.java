@@ -13,8 +13,8 @@ public class GameBoard {
 
     //private Path firstEnemyPath;
 
-    public GameBoard(Plot[][] plots) {
-        this.plots = plots;
+    public GameBoard(Plot[][] expectedPlots) {
+        plots = expectedPlots;
         //plots = new Plot[mapaJsonObject.keySet().size()][mapaJsonObject.values().size()];
 
 
