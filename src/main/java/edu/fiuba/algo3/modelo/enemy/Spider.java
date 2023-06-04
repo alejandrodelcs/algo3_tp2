@@ -22,4 +22,8 @@ public class Spider extends Enemy {
         Random random = new Random();
         return random.nextInt(CREDITS_MAX_RANGE - CREDITS_MIN_RANGE + 1) + CREDITS_MIN_RANGE;
     }
+    @Override
+    public String Show() {
+        return "Spider";
+    }
 }

@@ -19,5 +19,10 @@ public class Ant extends Enemy {
     public int generateCredits() {
         return getReward();
     }
+
+    @Override
+    public String Show() {
+        return "Ant";
+    }
 }
 

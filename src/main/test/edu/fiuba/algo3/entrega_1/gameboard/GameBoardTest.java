@@ -8,8 +8,10 @@ class GameBoardTest {
 
     @Test
     public void AGameBoardIsCreated(){
+        String fileRelativeSource = "src\\main\\java\\edu\\fiuba\\algo3\\modelo\\parser\\mapa.json";
+        String fileName = "Mapa";
         JSONreader Reader = new JSONreader();
-        GameBoard game = new GameBoard(Reader.getObject());
+        GameBoard game = new GameBoard(Reader.getObject(fileName,fileRelativeSource));
         game.printMap();
     }
 
