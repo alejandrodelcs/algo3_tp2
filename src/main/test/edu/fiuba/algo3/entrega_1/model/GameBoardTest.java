@@ -1,4 +1,4 @@
-package edu.fiuba.algo3.entrega_1.gameboard;
+package edu.fiuba.algo3.entrega_1.model;
 
 import edu.fiuba.algo3.modelo.facade.EnemyFacade;
 import edu.fiuba.algo3.modelo.facade.GameboardFacade;
