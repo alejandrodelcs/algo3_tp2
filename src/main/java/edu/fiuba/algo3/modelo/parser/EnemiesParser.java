@@ -65,14 +65,13 @@ public class EnemiesParser {
 
         List enemiesStrategy = new ArrayList();
 
+        EnemyFactory enemyFactory = new EnemyFactory();
         while(antAmount>0){
-            EnemyFactory enemyFactory = new EnemyFactory();
             Enemy anAnt = enemyFactory.createEnemy("Ant");
             enemiesStrategy.add(anAnt);
             antAmount--;
         }
         while (spiderAmount>0){
-            EnemyFactory enemyFactory = new EnemyFactory();
             Enemy aSpider = enemyFactory.createEnemy("Spider");
             enemiesStrategy.add(aSpider);
             spiderAmount --;

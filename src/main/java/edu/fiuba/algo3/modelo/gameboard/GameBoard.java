@@ -8,8 +8,8 @@ import java.util.ArrayList;
 
 public class GameBoard {
     private Plot[][] plots;
-    private ArrayList<Plot> enemyPath;
-    private ArrayList<Plot> avalableBuildingPlots;
+    private ArrayList<Point> enemyPath;
+    private ArrayList<Plot> availableBuildingPlots;
 
     //private Path firstEnemyPath;
 
@@ -41,6 +41,24 @@ public class GameBoard {
         plotToCheck.setEnemy(enemy);
     }
 
+    public void constructPath(){
+        enemyPath = new ArrayList<Point>();
+        Plot aPath = new Path();
+        for (int i = 0; i < plots.length; i++) {
+            for (int j = 0; j < plots[i].length; j++) {
+                //TODO Check this below
+                if(plots[i][j].getClass() == aPath.getClass()){
+                    Point aPoint = new Point(j, i);
+                    enemyPath.add(aPoint);
+                }
+            }
+        }
+        for (Point plot:enemyPath
+             ) {
+            System.out.print(((int) plot.getX()) + ", ");
+            System.out.println(((int) plot.getY()));
+        }
+    }
 
     public void printMap(){
         for (int i = 0; i < plots.length; i++) {
