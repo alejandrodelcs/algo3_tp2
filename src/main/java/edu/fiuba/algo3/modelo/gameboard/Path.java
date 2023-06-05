@@ -10,6 +10,7 @@ public class Path extends Plot{
     }
     @Override
     public void setEnemy(ArrayList<Enemy> enemyList) {this.enemyArrayList =enemyList;}
+    public void addEnemyToPath(Enemy newEnemy){ this.enemyArrayList.add(enemy); }
     @Override
     public String Show() {
         return "ooo";

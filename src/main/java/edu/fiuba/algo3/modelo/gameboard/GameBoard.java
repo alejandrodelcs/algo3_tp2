@@ -77,12 +77,11 @@ public class GameBoard {
                 }
             }
         }
-        /*
         for (Point plot:enemyPath
              ) {
             System.out.print(((int) plot.getX()) + ", ");
             System.out.println(((int) plot.getY()));
-        }*/
+        }
         return enemyPath;
     }
 
@@ -95,8 +94,33 @@ public class GameBoard {
         }
     }
 
-    public void moveEnemies(ArrayList<Enemy> enemies) {
+    public void moveEnemies() {
+        int pathCounter = 0;
 
+        for (Point coordinatePath : enemyPath) {
+            int x = (int) Math.round(coordinatePath.getX());
+            int y = (int) Math.round(coordinatePath.getY());
+            if (plots[y][x].enemiesInPlot().isEmpty()){break;}
+            ArrayList<Enemy> enemiesInPath = plots[y][x].enemiesInPlot();
+            for (Enemy enemy : enemiesInPath) {
+                int nextPath = pathCounter + enemy.getSpeed();
+                Point newPath = enemyPath.get(nextPath);
+                if (nextPath < enemyPath.size() ){
+                    int newX = (int) Math.round(newPath.getX());
+                    int newY = (int) Math.round(newPath.getY());
+                    plots[newY][newX].addEnemyToPath(enemy);
+                    enemiesInPath.remove(enemy);
+                }
+                else{
+                    newPath = enemyPath.get(enemyPath.size() - 1);
+                    int newX = (int) Math.round(newPath.getX());
+                    int newY = (int) Math.round(newPath.getY());
+                    plots[newX][newY].addEnemyToPath(enemy);
+                    enemiesInPath.remove(enemy);
+                }
+                pathCounter++;
+            }
+        }
     }
 }
 

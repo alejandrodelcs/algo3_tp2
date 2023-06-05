@@ -16,4 +16,5 @@ public class Dirt extends Plot{
     }
     @Override
     public ArrayList<Enemy> enemiesInPlot(){throw new ThereCannotBeEnemiesInThisPlot();}
+    public void addEnemyToPath(Enemy newEnemy){};
 }

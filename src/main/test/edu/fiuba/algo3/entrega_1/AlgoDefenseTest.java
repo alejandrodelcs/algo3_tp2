@@ -178,7 +178,9 @@ public class AlgoDefenseTest {
       Assertions.assertThrows(NonConstructibleArea.class,()-> algoDefense.buildsATower(coordenatesToStone, silverTower));
 
     }
+
     @Test
+
     public void test05VerifyThatTowersAttackWithinExpectedRange(){
       Player player = new Player("Player");
       AlgoDefense algoDefense = new AlgoDefense(player);
@@ -186,12 +188,9 @@ public class AlgoDefenseTest {
       String whiteTower = "WhiteTower";
 
       algoDefense.buildsATower(coordenatesToDirt, whiteTower);
-      //algoDefense.nextTurn();
-
-
-
-
-
+      algoDefense.nextTurn();
     }
+
+
 }
 

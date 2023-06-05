@@ -18,6 +18,7 @@ public abstract class Plot {
         }
     public abstract void setEnemy(ArrayList<Enemy> enemyList);
     public abstract String Show();
+    public abstract void addEnemyToPath(Enemy newEnemy);
 
     public abstract ArrayList<Enemy> enemiesInPlot();
 }

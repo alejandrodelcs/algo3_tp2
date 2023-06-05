@@ -25,7 +25,6 @@ public class AlgoDefense {
 
     private ArrayList<Tower> towers;
 
-    private ArrayList<Enemy> enemies;
     public AlgoDefense(Player aPLayer){
         this.player = aPLayer;
         this.gameboard = new GameboardFacade().loadMap();
@@ -34,14 +33,13 @@ public class AlgoDefense {
         this.turn = new Turn(enemyStrategy);
         this.towerFactory = new TowerFactory();
         this.enemyFactory = new EnemyFactory();
-        this.enemies = new ArrayList<Enemy>();
 
     }
 
     public void nextTurn() {
-        enemies = turn.passTurn();
-        spawnAnEnemy(enemies);
-        gameboard.moveEnemies(enemies);
+        ArrayList<Enemy> newEnemies = turn.passTurn();
+        gameboard.moveEnemies();
+        spawnAnEnemy(newEnemies);
         turn.updateTowers(towers,gameboard);
     }
 
