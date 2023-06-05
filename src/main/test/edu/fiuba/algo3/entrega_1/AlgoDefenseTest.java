@@ -186,7 +186,7 @@ public class AlgoDefenseTest {
       String whiteTower = "WhiteTower";
 
       algoDefense.buildsATower(coordenatesToDirt, whiteTower);
-      algoDefense.nextTurn();
+      //algoDefense.nextTurn();
 
 
 

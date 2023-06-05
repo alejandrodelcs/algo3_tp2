@@ -45,7 +45,7 @@ public class GameBoard {
         return enemiesInrange;
     }
 
-    private ArrayList<Plot> expectedRange(int range, Point coordinates) {
+    public ArrayList<Plot> expectedRange(int range, Point coordinates) {
         ArrayList<Plot> pathInRange = new ArrayList<Plot>();
 
         for (Point point: enemyPath) {
@@ -97,7 +97,6 @@ public class GameBoard {
     }
 
     public void moveEnemies(ArrayList<Enemy> enemies) {
-
 
     }
 }
