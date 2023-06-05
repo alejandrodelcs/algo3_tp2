@@ -16,7 +16,6 @@ public abstract class Tower {
     protected Point point;
     protected int rangeAttack;
 
-    protected ArrayList<Plot> pathsInRange;
 
 
     public Tower(Credit credits, int rangeAttack, Damage damage, int constructionTurns,Point cordinatesTower){
@@ -40,14 +39,6 @@ public abstract class Tower {
 
     public void attack(Enemy enemy){state.Attack(this,enemy);}
 
-    public ArrayList<Enemy> enemiesInRange(){
-        ArrayList<Enemy> enemiesInRange = new ArrayList<Enemy>();
-
-        for (Plot pathInRange: pathsInRange) {
-            //enemiesInRange.addAll(pathInRange.getEnemies());
-        }
-        return enemiesInRange;
-    }
 
     public int getRange() { return rangeAttack;}
 
