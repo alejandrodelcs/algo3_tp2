@@ -11,14 +11,12 @@ public class ConstructionState implements State{
     }
     @Override
     public void Attack(Tower tower, Enemy enemy){
-        throw new TowerIsUnderConstruction();
+        cont -= 1;
+        if(cont >= 0){
+            throw new TowerIsUnderConstruction();
+        }
+        tower.constructionFinished();
+        tower.attack(enemy);
     }
 
-    @Override
-    public void update(Tower tower){
-        cont -= 1;
-        if(cont == 0){
-           tower.constructionFinished();
-        }
-    };
 }

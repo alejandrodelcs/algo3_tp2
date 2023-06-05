@@ -4,6 +4,7 @@ import edu.fiuba.algo3.modelo.defense.Tower;
 import edu.fiuba.algo3.modelo.enemy.Enemy;
 
 import java.util.ArrayList;
+import java.util.Collection;
 
 public abstract class Plot {
     protected Tower tower;
@@ -17,4 +18,6 @@ public abstract class Plot {
         }
     public abstract void setEnemy(ArrayList<Enemy> enemyList);
     public abstract String Show();
+
+    public abstract ArrayList<Enemy> enemiesInPlot();
 }

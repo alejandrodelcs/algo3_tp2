@@ -14,4 +14,6 @@ public class Path extends Plot{
     public String Show() {
         return "ooo";
     }
+    @Override
+    public ArrayList<Enemy> enemiesInPlot(){return enemyArrayList;}
 }

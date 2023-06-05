@@ -39,11 +39,10 @@ public class AlgoDefense {
     }
 
     public void nextTurn() {
-        enemies = turn.passTurn(towers);
+        enemies = turn.passTurn();
         spawnAnEnemy(enemies);
         gameboard.moveEnemies(enemies);
-
-
+        turn.updateTowers(towers,gameboard);
     }
 
     public void buildsATower(Point coordinatesPosibleConstruction, String typeOfTower) {
@@ -65,9 +64,6 @@ public class AlgoDefense {
     public void spawnAnEnemy(ArrayList<Enemy> enemyArrayList){
         gameboard.spawnEnemy(enemyArrayList);
 
-    }
-    public void newTurn() {
-        turn.passTurn(towers);
     }
 
 

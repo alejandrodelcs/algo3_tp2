@@ -34,9 +34,15 @@ public class GameBoard {
         int y = (int) Math.round(coordinates.getY());
         Plot plotToCheck = plots[x][y];
         plotToCheck.setDefense(tower);
-        int range = tower.getRange(); // TODO: object attack has range
-        tower.setPathRange(expectedRange(range, coordinates));
-
+    }
+    public ArrayList<Enemy> enemiesInRange(Tower tower){
+        ArrayList<Enemy> enemiesInrange = new ArrayList<Enemy>();
+        ArrayList<Plot> pathsInRange = expectedRange(tower.getRange(),tower.getPoint());
+        for (Plot path:pathsInRange
+             ) {
+            enemiesInrange.addAll(path.enemiesInPlot());
+        }
+        return enemiesInrange;
     }
 
     private ArrayList<Plot> expectedRange(int range, Point coordinates) {
@@ -92,7 +98,7 @@ public class GameBoard {
 
     public void moveEnemies(ArrayList<Enemy> enemies) {
 
-        }
+
     }
 }
 

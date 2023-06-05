@@ -24,7 +24,6 @@ public abstract class Tower {
         this.state = new ConstructionState(constructionTurns);
         this.point = cordinatesTower;
         this.rangeAttack = rangeAttack;
-        //this.pathsInRange = gameBoard.getPathWithinRange(point,rangeAttack);
     }
 
     public void constructionFinished (){
@@ -37,9 +36,8 @@ public abstract class Tower {
         return damage;
     }
 
-    public void updateStatus() {
-        state.update(this);
-    }
+
+    public void attack(Enemy enemy){state.Attack(this,enemy);}
 
     public ArrayList<Enemy> enemiesInRange(){
         ArrayList<Enemy> enemiesInRange = new ArrayList<Enemy>();
@@ -52,11 +50,7 @@ public abstract class Tower {
 
     public int getRange() { return rangeAttack;}
 
-    public void setPathRange(ArrayList<Plot> plotsPath) {
-        this.pathsInRange = plotsPath;
-    }
-
-    public void attack(Enemy enemy){
-
+    public Point getPoint() {
+        return point;
     }
 }
