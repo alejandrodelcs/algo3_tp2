@@ -49,10 +49,6 @@ public class AlgoDefense {
         return turn;
     }
 
-    public boolean enemyIsOnRange(Tower tower,Point coordenatesEnemy, Point coordenatesDirtPlot) {
-        double distance = coordenatesEnemy.distance(coordenatesDirtPlot.getX(),coordenatesDirtPlot.getY());
-        return(tower.getAttackRange()>=distance);
-    }
     public boolean canPlayerBuyTower( Tower tower ){//TODO: here a player can buy "anything" not only towers
         return player.canBuy(tower.getCredits().getQuantity());
     }

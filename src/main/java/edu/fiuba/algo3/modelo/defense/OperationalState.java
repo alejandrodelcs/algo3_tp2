@@ -12,6 +12,10 @@ public class OperationalState implements State{
     }
     @Override
     public void update(Tower tower){
-        tower.checkAttack();
+        ArrayList<Enemy> enemies = tower.enemiesInRange();
+        for (Enemy enemy: enemies
+             ) {
+            this.Attack(tower,enemy);
+        }
     };
 }

@@ -3,6 +3,7 @@ package edu.fiuba.algo3.modelo.defense;
 import edu.fiuba.algo3.modelo.Credit;
 import edu.fiuba.algo3.modelo.damage.Damage;
 import edu.fiuba.algo3.modelo.enemy.Enemy;
+import edu.fiuba.algo3.modelo.gameboard.Plot;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -12,22 +13,18 @@ public abstract class Tower {
     protected Damage damage;
     protected State state;
     protected Point point;
-    protected int rangeAttack;
 
-    protected ArrayList<Point> pathsInRange;
+    protected ArrayList<Plot> pathsInRange;
 
 
-    public Tower(Credit credits, int rangeAttack, Damage damage, int cont, ArrayList<Point> pathsInRange){
+    public Tower(Credit credits, int rangeAttack, Damage damage, int constructionTurns,Point cordinatesTower){
         this.credits = credits;
-        this.rangeAttack = rangeAttack;
         this.damage = damage;
-        this.state = new ConstructionState(cont);
-        this.pathsInRange = pathsInRange ;
+        this.state = new ConstructionState(constructionTurns);
+        this.point = cordinatesTower;
+        //this.pathsInRange = gameBoard.getPathWithinRange(point,rangeAttack);
+    }
 
-    }
-    public void Attack(Enemy enemy){
-        state.Attack(this,enemy);
-    }
     public void constructionFinished (){
         state = new OperationalState();
     }
@@ -38,17 +35,17 @@ public abstract class Tower {
         return damage;
     }
 
-    public void updateStatus(){
+    public void updateStatus() {
         state.update(this);
     }
 
-    public int getAttackRange() {
-        return rangeAttack;
-    }
+    public ArrayList<Enemy> enemiesInRange(){
+        ArrayList<Enemy> enemiesInRange = new ArrayList<Enemy>();
 
-    public void checkAttack() {
-        for (Point pathInRange: pathsInRange) {
-
+        for (Plot pathInRange: pathsInRange) {
+            //enemiesInRange.addAll(pathInRange.getEnemies());
         }
+        return enemiesInRange;
     }
+
 }
