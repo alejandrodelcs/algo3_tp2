@@ -34,11 +34,10 @@ public class GameBoard {
         plotToCheck.setDefense(tower);
     }
 
-    public void spawnEnemy(Enemy enemy, Point coordinates){
-        int x = (int) Math.round(coordinates.getX());
-        int y = (int) Math.round(coordinates.getY());
-        Plot plotToCheck = plots[x][y];
-        plotToCheck.setEnemy(enemy);
+    public void spawnEnemy(ArrayList<Enemy> enemyArrayList){
+        int x = (int) Math.round(enemyPath.get(0).getX());
+        int y = (int) Math.round(enemyPath.get(0).getY());
+        this.plots[x][y].setEnemy(enemyArrayList);
     }
 
     public void constructPath(){
