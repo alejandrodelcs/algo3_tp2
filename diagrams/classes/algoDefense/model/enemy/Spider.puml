@@ -1,0 +1,16 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+package model {
+    class Spider {
+        - CREDITS_MIN_RANGE: int
+        - CREDITS_MAX_RANGE: int
+
+        + Spider(int speed, Damage damage, int healthPoints)
+        + getReward(): int
+        + generateCredits(): int
+        + show(): String
+    }
+}
+
+@enduml

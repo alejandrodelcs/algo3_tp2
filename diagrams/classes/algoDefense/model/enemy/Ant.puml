@@ -1,0 +1,15 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+package model {
+    class Ant {
+        - REWARD_TRESHHOLD: int
+
+        + Ant(int speed, Damage damage, int healthPoints)
+        + getReward(): int
+        + generateCredits(): int
+        + show(): String
+    }
+}
+
+@enduml

@@ -1,0 +1,12 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+package model {
+    class EnemyFactory {
+
+
+        + createEnemy(String enemyType): Enemy
+    }
+}
+
+@enduml

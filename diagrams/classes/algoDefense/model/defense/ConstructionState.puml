@@ -1,0 +1,10 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+package model {
+    class ConstructionState {
+        + attack(Tower tower, Enemy enemy, boolean isOnRange)
+    }
+}
+
+@enduml

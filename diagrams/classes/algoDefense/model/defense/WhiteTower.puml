@@ -1,0 +1,10 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+package model {
+    class WhiteTower {
+        +WhiteTower(Credit credit, int rangeAttack, int damage, int cont)
+    }
+}
+
+@enduml
