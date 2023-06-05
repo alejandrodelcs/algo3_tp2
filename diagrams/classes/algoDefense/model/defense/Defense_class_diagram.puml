@@ -1,19 +1,11 @@
 @startuml
 'https://plantuml.com/class-diagram
 
-!include Tower.puml
-!include WhiteTower.puml
-!include SilverTower.puml
 !include TowerFactory.puml
-!include State.puml
-!include ConstructionState.puml
-!include OperationalState.puml
+!include Tower_class_diagram.puml
+!include State_class_diagram.puml
 
-OperationalState -.> State
-State <.- ConstructionState
-TowerFactory --> Tower
-Tower -> State
-Tower <|-- WhiteTower
-Tower <|-- SilverTower
-
+TowerFactory -> Tower
+Tower --> State
+top to bottom direction
 @enduml

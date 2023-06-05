@@ -1,0 +1,16 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+package model {
+    class Credit {
+        - quantity: int
+        + Credit(int cant)
+        + Credit()
+        + chargedCredits(Credit creditLoad): void
+        + getQuantity(): int
+        + equalTo(Credit credit): boolean
+        + substractCredits(Credit credit): void
+    }
+}
+
+@enduml

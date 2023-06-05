@@ -1,6 +1,7 @@
 @startuml
 'https://plantuml.com/class-diagram
-
+'TODO: enemy has a Damage private
+'TODO: enemy has a Health private
 package model {
     abstract class Enemy {
         - Speed: int

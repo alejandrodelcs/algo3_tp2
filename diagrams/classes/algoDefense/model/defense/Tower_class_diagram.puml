@@ -1,0 +1,8 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+!include WhiteTower.puml
+!include SilverTower.puml
+
+
+@enduml

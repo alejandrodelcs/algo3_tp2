@@ -2,8 +2,8 @@
 'https://plantuml.com/class-diagram
 
 package model {
-    class TowerFactory {
-        + createTower(String towerType): Tower
+    class Available {
+        + itsOccupied(): boolean
     }
 }
 

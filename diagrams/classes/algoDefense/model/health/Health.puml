@@ -1,0 +1,11 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+package model {
+    interface Health {
+        takeDamage(int damage): void
+        entityDied(): boolean
+    }
+}
+
+@enduml

@@ -3,7 +3,7 @@
 
 package model {
     interface State {
-        attack(Tower tower, Enemy enemy, boolean isOnRange)
+        ~ attack(Tower tower, Enemy enemy, boolean isOnRange): void
     }
 }
 

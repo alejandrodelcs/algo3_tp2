@@ -1,6 +1,7 @@
 @startuml
 'https://plantuml.com/class-diagram
-
+'TODO: tower has a Credit instance protected
+'TODO: tower has a State protected
 package model {
     abstract class Tower {
         # rangeAttack: int

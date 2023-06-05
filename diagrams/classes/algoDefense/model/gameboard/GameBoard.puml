@@ -1,0 +1,15 @@
+@startuml
+'https://plantuml.com/class-diagram
+'TODO: GambeBoard has Plot[][], ArrayList<Point> and ArrayList<Plot> all private
+package model {
+    class GameBoard {
+        + GameBoard(Plot[][] expectedPlots)
+        + availableForBuilding(Tower tower, Point coordinates): boolean
+        + buildDefense(Tower tower, Point coordinates): void
+        + spawnEnemy(Enemy enemy, Point coordinates): void
+        + constructPath(): void
+        + printMap(): void
+    }
+}
+
+@enduml

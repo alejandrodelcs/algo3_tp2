@@ -1,12 +1,14 @@
 @startuml
 'https://plantuml.com/class-diagram
 
-!include Enemy_class.puml
+!include Enemy.puml
 !include Ant.puml
 !include Spider.puml
 !include EnemyFactory.puml
+!include ../health/Health.puml
 
 EnemyFactory --> Enemy
+Health <- Enemy
 Enemy <|-- Ant
 Enemy <|-- Spider
 

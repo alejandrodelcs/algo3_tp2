@@ -1,0 +1,9 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+!include Gameboard.puml
+!include Plot_class_diagram.puml
+
+GameBoard -> Plot
+
+@enduml

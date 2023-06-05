@@ -1,9 +1,9 @@
 @startuml
 'https://plantuml.com/class-diagram
-
+!include State.puml
 package model {
-    class OperationalState {
-        + attack(Tower tower, Enemy enemy, boolean isOnRange)
+    class OperationalState extends State{
+        + attack(Tower tower, Enemy enemy, boolean isOnRange): void
     }
 }
 
