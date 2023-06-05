@@ -10,7 +10,6 @@ import edu.fiuba.algo3.modelo.facade.GameboardFacade;
 import edu.fiuba.algo3.modelo.gameboard.GameBoard;
 import edu.fiuba.algo3.modelo.exceptions.NonConstructibleArea;
 import edu.fiuba.algo3.modelo.player.Player;
-import edu.fiuba.algo3.modelo.Turn;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -25,16 +24,28 @@ public class AlgoDefense {
     private EnemyFactory enemyFactory;
 
     private ArrayList<Tower> towers;
+
+    private ArrayList<Enemy> enemies;
     public AlgoDefense(Player aPLayer){
         this.player = aPLayer;
         this.gameboard = new GameboardFacade().loadMap();
-        this.towers = new ArrayList<>();
+        this.towers = new ArrayList<Tower>();
         this.enemyStrategy = new EnemyFacade().loadEnemiesStrategy();
         this.turn = new Turn(enemyStrategy);
         this.towerFactory = new TowerFactory();
         this.enemyFactory = new EnemyFactory();
+        this.enemies = new ArrayList<Enemy>();
 
     }
+
+    public void nextTurn() {
+        enemies = turn.passTurn(towers);
+        spawnAnEnemy(enemies);
+        gameboard.moveEnemies(enemies);
+
+
+    }
+
     public void buildsATower(Point coordinatesPosibleConstruction, String typeOfTower) {
 
         if(!gameboard.availableForBuilding(coordinatesPosibleConstruction)){
@@ -51,9 +62,9 @@ public class AlgoDefense {
         towers.add(tower);
     }
 
-    public void spawnAnEnemy(int numberTurn){
-        ArrayList<Enemy> enemyArrayList = (ArrayList<Enemy>) enemyStrategy.get(numberTurn);
+    public void spawnAnEnemy(ArrayList<Enemy> enemyArrayList){
         gameboard.spawnEnemy(enemyArrayList);
+
     }
     public void newTurn() {
         turn.passTurn(towers);

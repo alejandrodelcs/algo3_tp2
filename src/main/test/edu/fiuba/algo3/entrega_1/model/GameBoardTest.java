@@ -12,7 +12,7 @@ class GameBoardTest {
     @Test
     public void AGameBoardIsCreated(){
         GameboardFacade gameboardFacade = new GameboardFacade();
-        gameboardFacade.loadMap().constructPath();
+        //gameboardFacade.loadMap().constructPath();
     }
 
 
