@@ -1,6 +1,22 @@
 package edu.fiuba.algo3.entrega_1;
 
 
+import com.tngtech.archunit.lang.ArchRule;
+import edu.fiuba.algo3.modelo.AlgoDefense;
+import edu.fiuba.algo3.modelo.Turn;
+import edu.fiuba.algo3.modelo.defense.Tower;
+import edu.fiuba.algo3.modelo.defense.TowerFactory;
+import edu.fiuba.algo3.modelo.exceptions.NonConstructibleArea;
+import edu.fiuba.algo3.modelo.exceptions.PlayerIsDeadGameOver;
+import edu.fiuba.algo3.modelo.facade.EnemyFacade;
+import edu.fiuba.algo3.modelo.facade.GameboardFacade;
+import edu.fiuba.algo3.modelo.player.Player;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+import java.awt.*;
+import java.util.ArrayList;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
@@ -157,5 +173,18 @@ public class AlgoDefenseTest {
     }
 
 */
+    @Test
+    public void test04VerifyThatTowerCanNotBeBuildOnStoneButCanBeBuildOnDirt(){
+      Player player = new Player("Player");
+      AlgoDefense algoDefense = new AlgoDefense(player);
+      Point coordenatesToStone = new Point(0,0);
+      Point coordenatesToDirt = new Point(3,3);
+      String silverTower = "SilverTower";
+      algoDefense.buildsATower(coordenatesToDirt, silverTower);
+
+      Assertions.assertTrue(algoDefense.isOccupyByADefense(coordenatesToDirt));
+      Assertions.assertThrows(NonConstructibleArea.class,()-> algoDefense.buildsATower(coordenatesToStone, silverTower));
+
+    }
 }
 

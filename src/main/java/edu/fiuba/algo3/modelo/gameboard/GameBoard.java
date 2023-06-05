@@ -19,7 +19,7 @@ public class GameBoard {
 
 
     }
-    public boolean availableForBuilding(Tower tower, Point coordinates) {
+    public boolean availableForBuilding(Point coordinates) {
 
         int x = (int) Math.round(coordinates.getX());
         int y = (int) Math.round(coordinates.getY());

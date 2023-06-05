@@ -6,7 +6,7 @@ import edu.fiuba.algo3.modelo.exceptions.TheEnemyCannotBeOutsideTheRunway;
 import java.util.ArrayList;
 
 public class Stone extends Plot{
-    public Stone(){state = new NotOccupiable();}
+    public Stone(){state = new NotPlotAvailability();}
 
     @Override
     public void setEnemy(ArrayList<Enemy> enemyList) {throw new TheEnemyCannotBeOutsideTheRunway();}

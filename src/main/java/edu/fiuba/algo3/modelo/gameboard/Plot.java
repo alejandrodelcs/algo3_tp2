@@ -8,7 +8,7 @@ import java.util.ArrayList;
 public abstract class Plot {
     protected Tower tower;
     protected Enemy enemy;
-    protected Occupiable state;
+    protected PlotAvailability state;
 
     public boolean readyToBuild(){return !state.itsOccupied();}//TODO: See if the boolean can be removed
     public void setDefense(Tower tower){
