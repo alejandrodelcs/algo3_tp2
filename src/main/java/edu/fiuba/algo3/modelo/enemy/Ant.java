@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.modelo.enemy;
 
+import edu.fiuba.algo3.modelo.Credit;
 import edu.fiuba.algo3.modelo.damage.Damage;
 
 public class Ant extends Enemy {
@@ -16,8 +17,8 @@ public class Ant extends Enemy {
     }
 
     @Override
-    public int generateCredits() {
-        return getReward();
+    public Credit generateCredits() {
+        return new Credit(getReward());
     }
 
     @Override
