@@ -4,6 +4,7 @@ import edu.fiuba.algo3.modelo.Credit;
 import edu.fiuba.algo3.modelo.damage.Damage;
 import edu.fiuba.algo3.modelo.enemy.Enemy;
 import edu.fiuba.algo3.modelo.gameboard.Plot;
+import javafx.scene.shape.Path;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -57,6 +58,8 @@ public abstract class Tower {
     }
 
     public void attack(Enemy enemy){
-
+        for(Plot path : pathsInRange){
+            //path.getEnemyArrayList();
+        }
     }
 }

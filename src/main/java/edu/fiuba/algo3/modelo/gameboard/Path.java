@@ -14,4 +14,5 @@ public class Path extends Plot{
     public String Show() {
         return "ooo";
     }
+    public ArrayList<Enemy> getEnemyArrayList(){return enemyArrayList;}
 }
