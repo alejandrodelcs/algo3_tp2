@@ -41,31 +41,33 @@ public class TowerTest {
 
        assertThrows(TowerIsUnderConstruction.class,()->{SilverTower.attack(enemy);});
     }
-/*
+
     @Test
     void test06WhiteTowerAttackWhenEnemyIsWithinRangeEnemyTakesDamage() {
-        Enemy enemy = Mockito.mock(Spider.class);
+        EnemyFactory factoryEnemies = new EnemyFactory();
+        Enemy ant = factoryEnemies.createEnemy("Ant");
         TowerFactory factory = new TowerFactory();
         Point cordenates = new Point(3,3);
         Tower WhiteTower = factory.createTower("WhiteTower",cordenates);
 
         WhiteTower.constructionFinished();
-        WhiteTower.attack(enemy);
+        WhiteTower.attack(ant);
 
-        verify(enemy).takeDamage(WhiteTower.getDamage());
+        Assertions.assertTrue(ant.enemyDied());
     }
 
     @Test
     void test07SilverTowerAttackWhenEnemyIsWithinRangeEnemyTakesDamage() {
-        Enemy enemy = Mockito.mock(Spider.class);
+        EnemyFactory factoryEnemies = new EnemyFactory();
+        Enemy spider = factoryEnemies.createEnemy("Spider");
         TowerFactory factory = new TowerFactory();
         Point cordenates = new Point(3,3);
         Tower SilverTower = factory.createTower("SilverTower",cordenates);
 
         SilverTower.constructionFinished();
-        SilverTower.attack(enemy);
+        SilverTower.attack(spider);
 
-        verify(enemy).takeDamage(SilverTower.getDamage());
+        Assertions.assertTrue(spider.enemyDied());
     }
-*/
+
 }

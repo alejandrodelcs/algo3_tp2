@@ -8,7 +8,7 @@ import java.util.ArrayList;
 public class OperationalState implements State{
     @Override
     public void Attack(Tower tower, Enemy enemy){
-       //enemy.takeDamage(tower.getDamage());
+       enemy.takeDamage(tower.getDamage());
     }
 
 }

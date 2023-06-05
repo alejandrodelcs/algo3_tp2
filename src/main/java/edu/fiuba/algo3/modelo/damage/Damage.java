@@ -14,4 +14,8 @@ public class Damage {
     public void applyDamage(Health lifePoints){
         lifePoints.takeDamage(amountOfDamage);
     }
+
+    public int getQuantity() {
+        return amountOfDamage;
+    }
 }
