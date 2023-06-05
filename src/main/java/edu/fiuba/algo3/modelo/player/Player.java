@@ -55,7 +55,7 @@ public class Player {
         playersCredits.chargedCredits(credits);
     }
 
-    public void getsCredit(Credit credits) {
+    public void subtractCredits(Credit credits) {
         playersCredits.subtractCredits(credits);
     }
 
