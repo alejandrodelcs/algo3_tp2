@@ -1,7 +1,19 @@
 package edu.fiuba.algo3.modelo;
 
 
-public interface Turn {
-    void executeTurn();
-  boolean passTurn();
+import edu.fiuba.algo3.modelo.defense.Tower;
+
+public class Turn {
+    private int count;
+    public Turn(){
+
+    }
+
+    void executeTurn(){
+        count+=1;
+
+    };
+
+    void passTurn() {
+    }
 }

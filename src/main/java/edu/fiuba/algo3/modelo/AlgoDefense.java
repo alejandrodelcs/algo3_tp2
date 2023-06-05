@@ -22,8 +22,7 @@ public class AlgoDefense {
         this.towers = new ArrayList<>();
         this.enemyArrayLists = enemies;
     }
-    public void buildsATower() {
-        Point coordinatesPosibleConstruction = new Point(4,2);
+    public void buildsATower(Point coordinatesPosibleConstruction) {
         Tower tower = player.selectTower();//TODO: here the player select what to build
         if(canPlayerBuyTower(tower)){
             player.chargedCredits(tower.getCredits());
