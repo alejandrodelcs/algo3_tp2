@@ -38,8 +38,7 @@ public class GameBoard {
     public ArrayList<Enemy> enemiesInRange(Tower tower){
         ArrayList<Enemy> enemiesInrange = new ArrayList<Enemy>();
         ArrayList<Plot> pathsInRange = expectedRange(tower.getRange(),tower.getPoint());
-        for (Plot path:pathsInRange
-             ) {
+        for (Plot path:pathsInRange) {
             enemiesInrange.addAll(path.enemiesInPlot());
         }
         return enemiesInrange;
