@@ -13,7 +13,7 @@ public class Credit {
     }
 
     public void chargedCredits(Credit creditLoad) {
-        quantity+= creditLoad.getQuantity();//TODO: See if the getter can be removed
+        quantity += creditLoad.getQuantity();//TODO: See if the getter can be removed
     }
     public int getQuantity() {
         return quantity;
@@ -24,9 +24,13 @@ public class Credit {
     }
 
     public void subtractCredits(Credit credit) {
-        if ((quantity - credit.getQuantity()) <= 0) {
+        if ((quantity - credit.getQuantity()) < 0) {
             throw new InsufficientCredits();
         }
         quantity -= credit.getQuantity();
+    }
+
+    public boolean areNegative() {
+        return quantity < 0;
     }
 }
