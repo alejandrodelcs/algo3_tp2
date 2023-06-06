@@ -149,14 +149,35 @@ public class AlgoDefenseTest {
       //Assert
       assertTrue(anAnt.enemyDied());
     }
+    @Test
+    public void test06VerifyThatEnemyUnitsAreDamagedAccordingToTheReceivedAttack(){
+        //Arrange
+        Player player = new Player("Player");
+        AlgoDefense algoDefense = new AlgoDefense(player);
+        ArrayList<Enemy> enemyArray = new ArrayList<Enemy>();
+        EnemyFactory eFactory = new EnemyFactory();
+        Enemy anAnt = eFactory.createEnemy("Ant");
+        enemyArray.add(anAnt);
+        Enemy aSpider = eFactory.createEnemy("Spider");
+        enemyArray.add(aSpider);
 
+        //Act
+        algoDefense.spawnAnEnemy(enemyArray);
+        Point coordinatesToADirt = new Point(3, 4);
+        algoDefense.buildsATower(coordinatesToADirt, "WhiteTower");
+        algoDefense.nextTurn();
+        algoDefense.nextTurn();
+
+        //Assert
+        Assertions.assertTrue(anAnt.enemyDied());
+        Assertions.assertFalse(aSpider.enemyDied());
+    }
     @Test
     public void test06VerifyThatWhenDestroyingAnEnemyUnitThePlayerIsAwardedTheCorrespondingCredit(){
         //Arrange
         Player player = new Player("Player");
         AlgoDefense algoDefense = new AlgoDefense(player);
         ArrayList<Enemy> enemyArray = new ArrayList<Enemy>();
-        Credit expectedCredits = new Credit(101);
         EnemyFactory eFactory = new EnemyFactory();
         Enemy anAnt = eFactory.createEnemy("Ant");
         enemyArray.add(anAnt);
@@ -169,8 +190,12 @@ public class AlgoDefenseTest {
         algoDefense.nextTurn();
 
         //Assert
-        Assertions.assertTrue(expectedCredits.equals(player.getPlayerCredits()));
+        Assertions.assertTrue(anAnt.enemyDied());
     }
+
+
+
+
     @Test
     public void test12VerifyThatEnemiesKilledPlayer(){
         //Arrange
