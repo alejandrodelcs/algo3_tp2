@@ -1,0 +1,17 @@
+@startuml
+'https://plantuml.com/class-diagram
+'TODO: MapParser has a Plot instances matrix
+!include ../gameboard/Plot.puml
+
+package model {
+    class MapParser {
+    - Plot[][] plots
+
+    + getObject(): JSONObject
+    + initializeMap(): GameBoard
+    }
+}
+
+MapParser --> "0..*" Plot
+
+@enduml

@@ -1,0 +1,14 @@
+@startuml
+'https://plantuml.com/class-diagram
+!include State.puml
+package model {
+    class ConstructionState extends State {
+        - cont: int
+        - state: boolean
+        + ConstructionState(int cont)
+        + attack(Tower tower, Enemy enemy, boolean isOnRange): void
+        + isItBuild(): boolean
+    }
+}
+
+@enduml

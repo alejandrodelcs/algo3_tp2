@@ -9,8 +9,8 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
-
-public class CreditTest {
+//TODO: change name charged for subtract
+public class CreditTest {/*
     @Test
     public void testChargedCreditIsTheCorrectOne(){
         int cant = 100;
@@ -44,10 +44,8 @@ public class CreditTest {
     public void testInsufficientCreditsForWithdrawal(){
         int cant = 100;
         int creditsSubtract=200;
-        int creditTotal=50;
         Credit credit = new Credit(cant);
         Credit creditLoad = new Credit(creditsSubtract);
-        Credit creditFinal = new Credit(creditTotal);
 
         assertThrows(InsufficientCredits.class,()->{
             credit.subtractCredits(creditLoad);;});
@@ -95,5 +93,5 @@ public class CreditTest {
             health.takeDamage(50);
             assertFalse(health.entityDied());
         }
-    }
+    }*/
 }

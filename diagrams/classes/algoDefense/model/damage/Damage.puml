@@ -1,0 +1,14 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+package model {
+    class Damage {
+        - amountOfDamage: int
+
+        + Damage(int damage)
+        + applyDamage(Health lifePoints): void
+        + getQuantity(): int
+    }
+}
+
+@enduml

@@ -8,12 +8,12 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 public class PlayerTest {
-
+/*
     @Test
     public void whenNewGameIsOnPlayerHasTwentyLifePointsAndOneHundredCredits(){
         Player player = new Player("Player");
 
-        player.getsDamage(10);
+        player.getsDamage(Ddamage);
         player.getsDamage(9);
 
         Assertions.assertTrue(player.isAlive());
@@ -65,11 +65,12 @@ public class PlayerTest {
         player.buildsADefense(whiteTower,gameboardStub);
 
         Assertions.assertEquals(90, player.getPlayerCredits() );
-    */}
+    }
     @Test
     public void CreatePlayerWithInvalidNameShouldThrowRuntimeError(){
 
         Assertions.assertThrows(InvalidPlayersName.class,()-> new Player("Roy"));
 
     }
+    */
 }

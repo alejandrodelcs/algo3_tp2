@@ -1,0 +1,20 @@
+@startuml
+'https://plantuml.com/class-diagram
+package model {
+    abstract class Enemy {
+        # speed: int
+        # point: enemyCoordinates
+
+        + Enemy(int speed, Damage damage, int healthPoints)
+        + getSpeed(): int
+        + getDamage(): Damage
+        + getHealth(): Health
+        + takeDamage(Damage damageReceive): void
+        + enemyDied(): bool
+        + generateCredits(): Credit {abstract}
+        + show(): String
+    }
+}
+
+
+@enduml

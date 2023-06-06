@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.modelo;
 
+import edu.fiuba.algo3.modelo.damage.Damage;
 import edu.fiuba.algo3.modelo.defense.Tower;
 import edu.fiuba.algo3.modelo.defense.TowerFactory;
 import edu.fiuba.algo3.modelo.enemy.Enemy;
@@ -38,7 +39,9 @@ public class AlgoDefense {
         ArrayList<Enemy> newEnemies = turn.passTurn();
         gameboard.moveEnemies();
         spawnAnEnemy(newEnemies);
-        turn.updateTowers(towers,gameboard);
+        turn.updateTowers(towers,gameboard,player);
+        gameboard.printMap();
+        damageThePlayer();
     }
     public void buildsATower(Point coordinatesPosibleConstruction, String typeOfTower) {
 
@@ -51,7 +54,7 @@ public class AlgoDefense {
         if(!canPlayerBuyTower(tower)){
             throw new InsufficientCredits();
         }
-        player.chargedCredits(tower.getCredits());
+        player.subtractCredits(tower.getCredits());
         gameboard.buildDefense(tower, coordinatesPosibleConstruction);
         towers.add(tower);
     }
@@ -64,5 +67,16 @@ public class AlgoDefense {
     }
     public boolean isOccupyByADefense(Point coordenatesToDirt) {
         return (!gameboard.availableForBuilding(coordenatesToDirt));
+    }
+    public void damageThePlayer(){
+        ArrayList<Enemy> finalListOfEnemies = gameboard.getEnemiesInThelastPath();
+        for(Enemy enemy : finalListOfEnemies){
+            player.getsDamage(enemy.getDamage());
+        }
+    }
+
+
+    public boolean towerOperatingInPLot(Point coordinates) {
+        return gameboard.towerOperatingInPlot(coordinates);
     }
 }

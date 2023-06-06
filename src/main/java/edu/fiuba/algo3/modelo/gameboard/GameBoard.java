@@ -1,4 +1,5 @@
 package edu.fiuba.algo3.modelo.gameboard;
+import edu.fiuba.algo3.modelo.damage.Damage;
 import edu.fiuba.algo3.modelo.defense.Tower;
 import edu.fiuba.algo3.modelo.enemy.Enemy;
 
@@ -13,9 +14,10 @@ public class GameBoard {
     public GameBoard(Plot[][] expectedPlots) {
         plots = expectedPlots;
         enemyPath = constructPath();
-        //plots = new Plot[mapaJsonObject.keySet().size()][mapaJsonObject.values().size()];
 
-
+        int x = (int) Math.round(enemyPath.get(enemyPath.size()-1).getX());
+        int y = (int) Math.round(enemyPath.get(enemyPath.size()-1).getY());
+        plots[y][x].setEnemy(new ArrayList<Enemy>());
     }
     public boolean availableForBuilding(Point coordinates) {
 
@@ -98,7 +100,9 @@ public class GameBoard {
                     Point newPathCoordinates = enemyPath.get(listEnemyIndex);
                     int newX = (int) Math.round(newPathCoordinates.getX());
                     int newY = (int) Math.round(newPathCoordinates.getY());
-                    plots[newY][newX].addEnemyToPath(enemy);
+                    if(!(enemy.enemyDied())) {
+                        plots[newY][newX].addEnemyToPath(enemy);
+                    }
                 } else {
                     if ((listEnemyIndex - enemyPath.size() + 1) < enemy.getSpeed()) {
                         Point newPathCoordinates = enemyPath.get(enemyPath.size() - 1);
@@ -113,5 +117,20 @@ public class GameBoard {
             }
             pathListIndex--;
         }
+    }
+    public ArrayList<Enemy> getEnemiesInThelastPath(){
+        int finalX = (int) Math.round(enemyPath.get(enemyPath.size()-1).getX());
+        int finalY = (int) Math.round(enemyPath.get(enemyPath.size()-1).getY());
+        return plots[finalY][finalX].enemiesInPlot();
+    }
+
+    public boolean towerOperatingInPlot(Point coordinates) {
+        int finalX = (int) Math.round(coordinates.getX());
+        int finalY = (int) Math.round(coordinates.getY());
+        Tower defense = plots[finalX][finalY].getDefense();
+        if (defense == null){
+            return false;
+        }
+        return defense.isItBuild();
     }
 }

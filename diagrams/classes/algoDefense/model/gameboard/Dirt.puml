@@ -1,0 +1,14 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+package model {
+    class Dirt {
+        + Dirt()
+        + setEnemy(Enemy enemy): void
+        + display(): String
+        + enemiesInPlot(): ArrayList<Enemy>
+        + addEnemyToPath(Enemy newEnemy): void
+    }
+}
+
+@enduml

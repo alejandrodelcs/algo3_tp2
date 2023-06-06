@@ -1,0 +1,12 @@
+@startuml
+'https://plantuml.com/class-diagram
+!include Tower.puml
+package model {
+    class SilverTower {
+        + SilverTower(Credit credit, int rangeAttack, int damage, int cont, Point coordinatesTower)
+    }
+}
+
+SilverTower --|> Tower
+
+@enduml

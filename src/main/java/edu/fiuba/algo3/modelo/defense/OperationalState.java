@@ -9,6 +9,14 @@ public class OperationalState implements State{
     @Override
     public void Attack(Tower tower, Enemy enemy){
        enemy.takeDamage(tower.getDamage());
+       if(enemy.enemyDied()){
+           //player.chargedCredits(enemy.generateCredits());//TODO: There could be a credit manager class
+       }
     }
+    @Override
+    public boolean isItBuild(){
+        return true;
+    }
+
 
 }

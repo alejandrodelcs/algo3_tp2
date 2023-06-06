@@ -1,0 +1,8 @@
+@startuml
+'https://plantuml.com/class-diagram
+!include model/AlgoDefense_class.puml
+!include model/enemy/Enemy.puml
+!include model/enemy/Ant.puml
+!include model/enemy/Spider.puml
+
+@enduml

@@ -1,9 +1,11 @@
 package edu.fiuba.algo3.modelo.player;
 
 import edu.fiuba.algo3.modelo.Credit;
+import edu.fiuba.algo3.modelo.damage.Damage;
 import edu.fiuba.algo3.modelo.defense.Tower;
 import edu.fiuba.algo3.modelo.defense.TowerFactory;
 import edu.fiuba.algo3.modelo.defense.WhiteTower;
+import edu.fiuba.algo3.modelo.exceptions.InsufficientCredits;
 import edu.fiuba.algo3.modelo.exceptions.InvalidPlayersName;
 import edu.fiuba.algo3.modelo.exceptions.PlayerIsDeadGameOver;
 import edu.fiuba.algo3.modelo.gameboard.GameBoard;
@@ -36,32 +38,32 @@ public class Player {
         }
     }
 
-    public Health getPlayerLifePoints() {
-        return playersLifePoints;
-    }
     public Credit getPlayerCredits() {
         return playersCredits;
     }
 
-    public void getsDamage(int damage) {
+    public void getsDamage(Damage damage) {
 
-        playersLifePoints.takeDamage(damage);
+        damage.applyDamage(playersLifePoints);
         if (playersLifePoints.entityDied()) {
             throw new PlayerIsDeadGameOver();
         }
     }
 
-    public void chargedCredits(Credit credits) {
-        playersCredits.chargedCredits(credits);
+    public void chargeCredits(Credit credits) {
+        playersCredits.chargeCredits(credits);
     }
 
-    public void getsCredit(Credit credits) {
+    public void subtractCredits(Credit credits) {
         playersCredits.subtractCredits(credits);
+        if (playersCredits.areNegative()) {
+            throw new InsufficientCredits();
+        }
     }
 
-    public void buildsADefense(Tower tower, GameBoard gameboard) {
+    public void buildsADefense(Tower tower) {
         Credit creditsToBeCharged =  tower.getCredits();
-        this.chargedCredits(creditsToBeCharged);
+        this.subtractCredits(creditsToBeCharged);
 
     }
 

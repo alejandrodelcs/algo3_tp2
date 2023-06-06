@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.modelo.enemy;
 
+import edu.fiuba.algo3.modelo.Credit;
 import edu.fiuba.algo3.modelo.damage.Damage;
 
 import java.util.Random;
@@ -12,15 +13,12 @@ public class Spider extends Enemy {
         super(speed, damage, healthPoints);
     }
 
-    @Override
-    public int getReward() {
-        return 0; // Not used for edu.fiuba.algo3.modelo.Enemy.Spider enemy
-    }
+
 
     @Override
-    public int generateCredits() {
+    public Credit generateCredits() {
         Random random = new Random();
-        return random.nextInt(CREDITS_MAX_RANGE - CREDITS_MIN_RANGE + 1) + CREDITS_MIN_RANGE;
+        return new Credit(random.nextInt(CREDITS_MAX_RANGE - CREDITS_MIN_RANGE + 1) + CREDITS_MIN_RANGE);
     }
     @Override
     public String Show() {

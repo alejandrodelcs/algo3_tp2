@@ -1,0 +1,19 @@
+@startuml
+'https://plantuml.com/class-diagram
+package model {
+    abstract class Tower {
+        # rangeAttack: int
+        # point: Point
+
+        + Tower(Credit credits, int rangeAttack, int damage, int cont)
+        + attack(Enemy enemy, boolean isOnRange): void
+        + constructionFinished(): void
+        + getCredits(): Credits
+        + getDamage(): int
+        + getStatus(): State
+        + updateStatus(): void
+        + getAttackRange(): int
+    }
+}
+
+@enduml

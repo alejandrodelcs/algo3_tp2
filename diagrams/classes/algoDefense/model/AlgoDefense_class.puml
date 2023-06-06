@@ -1,0 +1,17 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+package model {
+    class AlgoDefense {
+        - turn: int
+
+        + AlgoDefense(Player aPLayer,GameBoard gameboard, ArrayList<Enemy> enemies)
+        + buildsATower(): void
+        + spawnAnEnemy(Enemy enemy, Point coordinates): void
+        + newTurn(): void
+        + enemyIsOnRange(Tower tower,Point coordenatesEnemy, Point coordenatesDirtPlot): boolean
+        + canPlayerBuyATower(Tower tower)
+    }
+}
+
+@enduml

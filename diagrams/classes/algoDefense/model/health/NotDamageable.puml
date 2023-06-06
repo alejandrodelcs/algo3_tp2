@@ -1,0 +1,15 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+package model {
+    class NotDamageable {
+        - healthPoints: int
+
+        + NotDamageable(int healthPoints)
+        + takeDamage(int damage): void
+        + entityDied(): boolean
+        + getHealthPoints(): int
+    }
+}
+
+@enduml

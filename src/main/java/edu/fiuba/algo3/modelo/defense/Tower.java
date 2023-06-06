@@ -3,11 +3,8 @@ package edu.fiuba.algo3.modelo.defense;
 import edu.fiuba.algo3.modelo.Credit;
 import edu.fiuba.algo3.modelo.damage.Damage;
 import edu.fiuba.algo3.modelo.enemy.Enemy;
-import edu.fiuba.algo3.modelo.gameboard.Plot;
-import javafx.scene.shape.Path;
 
 import java.awt.*;
-import java.util.ArrayList;
 
 public abstract class Tower {
     protected Credit credits;
@@ -47,4 +44,6 @@ public abstract class Tower {
     public Point getPoint() {
         return point;
     }
+
+    public boolean isItBuild() {return state.isItBuild();}
 }

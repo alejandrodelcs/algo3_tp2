@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.modelo.enemy;
 
+import edu.fiuba.algo3.modelo.Credit;
 import edu.fiuba.algo3.modelo.damage.Damage;
 import edu.fiuba.algo3.modelo.health.*;
 
@@ -35,18 +36,15 @@ public abstract class Enemy implements Cloneable{
     public void takeDamage(Damage damageReceive) {
         int amount = damageReceive.getQuantity();
         health.takeDamage(amount);
-        if (health.entityDied()) {
-            generateCredits();
-        }
     }
 
-    public abstract int getReward();
+
 
     public Boolean enemyDied(){
         return health.entityDied();
     };
 
-    public abstract int generateCredits();
+    public abstract Credit generateCredits();
 
     public abstract String Show();
 

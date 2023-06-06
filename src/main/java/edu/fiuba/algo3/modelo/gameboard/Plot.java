@@ -15,10 +15,12 @@ public abstract class Plot {
             this.tower = tower;
             this.state = new Occupied();
         }
-    public abstract void setEnemy(ArrayList<Enemy> enemyList);
+    public abstract void  setEnemy(ArrayList<Enemy> enemyList);
     public abstract String display();
     public abstract void addEnemyToPath(Enemy newEnemy);
 
     public abstract ArrayList<Enemy> enemiesInPlot();
+
+    public Tower   getDefense(){return tower;}
 
 }

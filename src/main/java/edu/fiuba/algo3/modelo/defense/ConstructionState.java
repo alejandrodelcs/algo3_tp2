@@ -6,6 +6,7 @@ import edu.fiuba.algo3.modelo.exceptions.TowerIsUnderConstruction;
 public class ConstructionState implements State{
 
     private int cont;
+    private boolean state;
     public ConstructionState(int cont){
         this.cont = cont;
     }
@@ -18,6 +19,10 @@ public class ConstructionState implements State{
         }
         tower.constructionFinished();
         tower.attack(enemy);
+    }
+    @Override
+    public boolean isItBuild(){
+        return false;
     }
 
 }

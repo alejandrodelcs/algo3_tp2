@@ -5,4 +5,5 @@ import edu.fiuba.algo3.modelo.enemy.Enemy;
 public interface State {
     void Attack(Tower tower, Enemy enemy);
 
+    boolean isItBuild();
 }
