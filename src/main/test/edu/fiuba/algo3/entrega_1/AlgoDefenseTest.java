@@ -249,7 +249,7 @@ public class AlgoDefenseTest {
         assertTrue(player.isAlive());
     }
     @Test
-    public void test13PlayerWinsTheGame(){
+    public void test18PlayerWinsTheGame(){
         //Arrange
         Player player = new Player("Player");
         AlgoDefense algoDefense = new AlgoDefense(player);
@@ -299,6 +299,7 @@ public class AlgoDefenseTest {
         //algoDefense.nextTurn(); //In this turn the player dies
 
         //Assert
+
         assertTrue(player.isAlive());
     }
 

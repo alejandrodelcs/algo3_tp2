@@ -15,8 +15,4 @@ public class NotDamageable implements Health{
         return false;
     }
 
-    public int getHealthPoints() {
-        return healthPoints;
-    }
-
 }
