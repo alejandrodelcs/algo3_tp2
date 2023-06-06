@@ -2,22 +2,21 @@ package edu.fiuba.algo3.entrega_1;
 
 import edu.fiuba.algo3.modelo.AlgoDefense;
 import edu.fiuba.algo3.modelo.Credit;
-import edu.fiuba.algo3.modelo.Turn;
 import edu.fiuba.algo3.modelo.damage.Damage;
 import edu.fiuba.algo3.modelo.defense.*;
 import edu.fiuba.algo3.modelo.enemy.Enemy;
 import edu.fiuba.algo3.modelo.enemy.EnemyFactory;
 import edu.fiuba.algo3.modelo.exceptions.*;
-import edu.fiuba.algo3.modelo.facade.EnemyFacade;
-import edu.fiuba.algo3.modelo.facade.GameboardFacade;
-import edu.fiuba.algo3.modelo.gameboard.GameBoard;
+import edu.fiuba.algo3.modelo.gameboard.*;
+import edu.fiuba.algo3.modelo.parser.EnemiesParser;
 import edu.fiuba.algo3.modelo.player.Player;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.function.Executable;
 
 import java.awt.*;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
-import java.util.Dictionary;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -173,6 +172,17 @@ public class AlgoDefenseTest {
         Assertions.assertFalse(aSpider.enemyDied());
     }
     @Test
+    public void test07VerifyThatEnemiesMovesOnlyInPath(){
+        Stone stone = new Stone();
+        EnemyFactory enemyFactory = new EnemyFactory();
+        Enemy ant = enemyFactory.createEnemy("Ant");
+        stone.addEnemyToPath(ant);
+        ArrayList<Enemy> listEnemy = new ArrayList<Enemy>();
+        listEnemy.add(ant);
+        Assertions.assertThrows(TheEnemyCannotBeOutsideTheRunway.class,()->stone.setEnemy(listEnemy));
+
+    }
+    @Test
     public void test08VerifyThatWhenDestroyingAnEnemyUnitThePlayerIsAwardedTheCorrespondingCredit(){
         //Arrange
         Player player = new Player("Player");
@@ -189,6 +199,32 @@ public class AlgoDefenseTest {
         Assertions.assertTrue(creditsExpected.equalTo(player.getPlayerCredits()));
     }
 
+    @Test
+    public void test09VerifyEnemiesMoveAsExpected() {
+        Player player = new Player("Player");
+        AlgoDefense algoDefense = new AlgoDefense(player);
+        ArrayList<Enemy> enemyArray = new ArrayList<Enemy>();
+        EnemyFactory eFactory = new EnemyFactory();
+        Enemy anAnt = eFactory.createEnemy("Ant");
+        Enemy aSpider = eFactory.createEnemy("Spider");
+        enemyArray.add(anAnt);
+        enemyArray.add(aSpider);
+
+        Point coordinatesToADirt = new Point(4, 6);
+        algoDefense.buildsATower(coordinatesToADirt, "SilverTower");
+        algoDefense.spawnAnEnemy(enemyArray);
+        algoDefense.nextTurn();
+
+        assertFalse(anAnt.enemyDied());
+        assertFalse(aSpider.enemyDied());
+
+        algoDefense.nextTurn();
+        assertTrue(aSpider.enemyDied());
+        assertFalse(anAnt.enemyDied());
+
+        algoDefense.nextTurn();
+        assertTrue(anAnt.enemyDied());
+    }
 
 
 
@@ -197,9 +233,6 @@ public class AlgoDefenseTest {
         //Arrange
         Player player = new Player("Player");
         AlgoDefense algoDefense = new AlgoDefense(player);
-
-
-
 
         //Act
         algoDefense.nextTurn();
@@ -226,7 +259,7 @@ public class AlgoDefenseTest {
         assertTrue(player.isAlive());
     }
     @Test
-    public void test13PlayerWinsTheGame(){
+    public void test18PlayerWinsTheGame(){
         //Arrange
         Player player = new Player("Player");
         AlgoDefense algoDefense = new AlgoDefense(player);
@@ -273,10 +306,23 @@ public class AlgoDefenseTest {
         algoDefense.nextTurn();
         algoDefense.nextTurn();
         //algoDefense.nextTurn();
-        //algoDefense.nextTurn(); en esta linea el jugador se muere
+        //algoDefense.nextTurn(); //In this turn the player dies
 
         //Assert
+
         assertTrue(player.isAlive());
+    }
+
+    @Test
+    public void test13VerifyThatEnemiesJSONfileIsValid(){
+        EnemiesParser enemiesParser = new EnemiesParser("invalidfile");
+
+        //exception.expect(FileNotFoundException.class);
+        //Assertions.assertThrows(FileNotFoundException.class, ()-> enemiesParser.getArray());
+    }
+    @Test
+    public void test14VerifyThatMapJSONfileIsValid(){
+
     }
 
 }

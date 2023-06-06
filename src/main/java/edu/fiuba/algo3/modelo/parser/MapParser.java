@@ -13,10 +13,16 @@ public class MapParser {
 
     public Plot[][] plots;
 
+    private String fileName;
+
+    private String fileRelativeSource;
+
+    public MapParser(){
+        this.fileName = "Mapa";
+        this.fileRelativeSource = "src\\main\\java\\edu\\fiuba\\algo3\\modelo\\parser\\mapa.json";
+    }
 
     public JSONObject getObject() {
-        String fileRelativeSource = "src\\main\\java\\edu\\fiuba\\algo3\\modelo\\parser\\mapa.json";
-        String fileName = "Mapa";
         JSONObject error = new JSONObject();
         JSONParser parser = new JSONParser();
         try {
@@ -60,7 +66,9 @@ public class MapParser {
 
         }
 
+
         return new GameBoard(plots);
 
     }
+
 }

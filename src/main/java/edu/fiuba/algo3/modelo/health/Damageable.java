@@ -15,7 +15,4 @@ public class Damageable implements Health{
         return (healthPoints <= 0);
     }
 
-    public int getHealthPoints() {
-        return healthPoints;
-    }
 }
