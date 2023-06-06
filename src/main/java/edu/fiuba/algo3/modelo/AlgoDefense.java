@@ -65,4 +65,6 @@ public class AlgoDefense {
     public boolean isOccupyByADefense(Point coordenatesToDirt) {
         return (!gameboard.availableForBuilding(coordenatesToDirt));
     }
+
+
 }
