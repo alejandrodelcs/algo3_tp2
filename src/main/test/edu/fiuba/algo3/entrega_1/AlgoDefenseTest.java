@@ -2,24 +2,21 @@ package edu.fiuba.algo3.entrega_1;
 
 import edu.fiuba.algo3.modelo.AlgoDefense;
 import edu.fiuba.algo3.modelo.Credit;
-import edu.fiuba.algo3.modelo.Turn;
 import edu.fiuba.algo3.modelo.damage.Damage;
 import edu.fiuba.algo3.modelo.defense.*;
 import edu.fiuba.algo3.modelo.enemy.Enemy;
 import edu.fiuba.algo3.modelo.enemy.EnemyFactory;
 import edu.fiuba.algo3.modelo.exceptions.*;
-import edu.fiuba.algo3.modelo.facade.EnemyFacade;
-import edu.fiuba.algo3.modelo.facade.GameboardFacade;
-import edu.fiuba.algo3.modelo.gameboard.GameBoard;
 import edu.fiuba.algo3.modelo.gameboard.*;
 import edu.fiuba.algo3.modelo.parser.EnemiesParser;
 import edu.fiuba.algo3.modelo.player.Player;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.function.Executable;
 
 import java.awt.*;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
-import java.util.Dictionary;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -318,12 +315,13 @@ public class AlgoDefenseTest {
 
     @Test
     public void test13VerifyThatEnemiesJSONfileIsValid(){
+        EnemiesParser enemiesParser = new EnemiesParser("invalidfile");
 
-       // throw()
+        //exception.expect(FileNotFoundException.class);
+        //Assertions.assertThrows(FileNotFoundException.class, ()-> enemiesParser.getArray());
     }
     @Test
-    public void test14VerifyTheMap(){
-
+    public void test14VerifyThatMapJSONfileIsValid(){
 
     }
 
