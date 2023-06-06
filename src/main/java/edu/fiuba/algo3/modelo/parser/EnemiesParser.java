@@ -13,8 +13,14 @@ import java.io.IOException;
 import java.util.*;
 
 public class EnemiesParser {
+
+    private String fileRelativeSource;
+
+    public EnemiesParser(String fileSource){
+        this.fileRelativeSource = fileSource;
+    }
+
     public JSONArray getArray() {
-        String fileRelativeSource = "src\\main\\java\\edu\\fiuba\\algo3\\modelo\\parser\\enemigos.json";
         JSONArray error = new JSONArray();
         JSONParser parser = new JSONParser();
         try {
@@ -29,10 +35,10 @@ public class EnemiesParser {
     }
 
     public Dictionary parserFile(){
-
+        String file = "src\\main\\java\\edu\\fiuba\\algo3\\modelo\\parser\\enemigos.json";
         Dictionary enemyStrategy = new Hashtable();
         ArrayList<Enemy> enemies;
-        EnemiesParser reader = new EnemiesParser();
+        EnemiesParser reader = new EnemiesParser(file);
         JSONArray enemyObject = reader.getArray();
 
         for (Object o : enemyObject) {
@@ -43,7 +49,6 @@ public class EnemiesParser {
             String turnValue = turn.toString();
             int turnNumber = Integer.parseInt(turnValue);
 
-            //System.out.println(rowObject.get("enemigos"));
             JSONObject enemiesByTurn = (JSONObject) rowObject.get("enemigos");
 
             Object ant = enemiesByTurn.get("hormiga");

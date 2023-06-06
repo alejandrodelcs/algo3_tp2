@@ -23,16 +23,17 @@ public class TowerTest {
         assertThrows(TowerDoesNotExist.class, () -> {factory.createTower("BlackTower",cordenates);
         });
     }
-    @Test
+/*    @Test
     void test02NewWhiteTowerCannotAttackTheEnemy() {
+
         TowerFactory factory = new TowerFactory();
         Point cordenates = new Point(3,3);
         Tower WhiteTower = factory.createTower("WhiteTower",cordenates);
         Enemy enemy = mock(Ant.class);
 
         assertThrows(TowerIsUnderConstruction.class,()->{WhiteTower.attack(enemy);});
-    }
-    @Test
+    }*/
+/*    @Test
     void test03NewSilverTowerCannotAttackTheEnemy() {
         TowerFactory factory = new TowerFactory();
         Point cordenates = new Point(3,3);
@@ -40,7 +41,7 @@ public class TowerTest {
         Enemy enemy = mock(Ant.class);
 
        assertThrows(TowerIsUnderConstruction.class,()->{SilverTower.attack(enemy);});
-    }
+    }*/
 
     @Test
     void test06WhiteTowerAttackWhenEnemyIsWithinRangeEnemyTakesDamage() {

@@ -21,7 +21,8 @@ class MapParserTest {
 
     @Test
     void  testPrintEnemies(){
-        EnemiesParser Reader = new EnemiesParser();
+        String file = "src\\main\\java\\edu\\fiuba\\algo3\\modelo\\parser\\enemigos.json";
+        EnemiesParser Reader = new EnemiesParser(file);
         JSONArray enemyObject = Reader.getArray();
 
         //System.out.println(enemyObject.toString());

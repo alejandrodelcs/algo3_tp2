@@ -189,6 +189,32 @@ public class AlgoDefenseTest {
         Assertions.assertTrue(creditsExpected.equalTo(player.getPlayerCredits()));
     }
 
+    @Test
+    public void test09VerifyEnemiesMoveAsExpected() {
+        Player player = new Player("Player");
+        AlgoDefense algoDefense = new AlgoDefense(player);
+        ArrayList<Enemy> enemyArray = new ArrayList<Enemy>();
+        EnemyFactory eFactory = new EnemyFactory();
+        Enemy anAnt = eFactory.createEnemy("Ant");
+        Enemy aSpider = eFactory.createEnemy("Spider");
+        enemyArray.add(anAnt);
+        enemyArray.add(aSpider);
+
+        Point coordinatesToADirt = new Point(4, 6);
+        algoDefense.buildsATower(coordinatesToADirt, "SilverTower");
+        algoDefense.spawnAnEnemy(enemyArray);
+        algoDefense.nextTurn();
+
+        assertFalse(anAnt.enemyDied());
+        assertFalse(aSpider.enemyDied());
+
+        algoDefense.nextTurn();
+        assertTrue(aSpider.enemyDied());
+        assertFalse(anAnt.enemyDied());
+
+        algoDefense.nextTurn();
+        assertTrue(anAnt.enemyDied());
+    }
 
 
 
@@ -197,9 +223,6 @@ public class AlgoDefenseTest {
         //Arrange
         Player player = new Player("Player");
         AlgoDefense algoDefense = new AlgoDefense(player);
-
-
-
 
         //Act
         algoDefense.nextTurn();
@@ -273,10 +296,21 @@ public class AlgoDefenseTest {
         algoDefense.nextTurn();
         algoDefense.nextTurn();
         //algoDefense.nextTurn();
-        //algoDefense.nextTurn(); en esta linea el jugador se muere
+        //algoDefense.nextTurn(); //In this turn the player dies
 
         //Assert
         assertTrue(player.isAlive());
+    }
+
+    @Test
+    public void test13VerifyThatEnemiesJSONfileIsValid(){
+
+       // throw()
+    }
+    @Test
+    public void test14VerifyTheMap(){
+
+
     }
 
 }
