@@ -51,7 +51,7 @@ public class GameBoard {
             double distance = 0;
             distance = point.distance(coordinates.getX(),coordinates.getY());
             if(distance <= range){
-                Plot plotToCheck = plots[point.x][point.y];
+                Plot plotToCheck = plots[point.y][point.x];
                 pathInRange.add(plotToCheck);
             }
         }
@@ -61,7 +61,7 @@ public class GameBoard {
     public void spawnEnemy(ArrayList<Enemy> enemyArrayList){
         int x = (int) Math.round(enemyPath.get(0).getX());
         int y = (int) Math.round(enemyPath.get(0).getY());
-        this.plots[x][y].setEnemy(enemyArrayList);
+        this.plots[y][x].setEnemy(enemyArrayList);
 
     }
 
@@ -77,11 +77,11 @@ public class GameBoard {
                 }
             }
         }
-        for (Point plot:enemyPath
-             ) {
-            System.out.print(((int) plot.getX()) + ", ");
-            System.out.println(((int) plot.getY()));
-        }
+//        for (Point plot:enemyPath
+//             ) {
+//            System.out.print(((int) plot.getX()) + ", ");
+//            System.out.println(((int) plot.getY()));
+//        }
         return enemyPath;
     }
 
@@ -94,33 +94,69 @@ public class GameBoard {
         }
     }
 
-    public void moveEnemies() {
-        int pathCounter = 0;
+    public void moveEnemies(){
+        //int pathListIndex = enemyPath.size() - 1;
+        int pathListIndex = 0;
 
-        for (Point coordinatePath : enemyPath) {
-            int x = (int) Math.round(coordinatePath.getX());
-            int y = (int) Math.round(coordinatePath.getY());
-            if (plots[y][x].enemiesInPlot().isEmpty()){break;}
-            ArrayList<Enemy> enemiesInPath = plots[y][x].enemiesInPlot();
-            for (Enemy enemy : enemiesInPath) {
-                int nextPath = pathCounter + enemy.getSpeed();
-                Point newPath = enemyPath.get(nextPath);
-                if (nextPath < enemyPath.size() ){
-                    int newX = (int) Math.round(newPath.getX());
-                    int newY = (int) Math.round(newPath.getY());
-                    plots[newY][newX].addEnemyToPath(enemy);
-                    enemiesInPath.remove(enemy);
+        for (int i = (enemyPath.size() - 1); i >= 0; i--) {
+            int x = (int) Math.round(enemyPath.get(i).getX());
+            int y = (int) Math.round(enemyPath.get(i).getY());
+            ArrayList<Enemy> enemiesInPath = new ArrayList<>(plots[y][x].enemiesInPlot());
+            System.out.println(enemiesInPath);
+            if ((enemiesInPath != null) && !(enemiesInPath.isEmpty())) {
+                for (Enemy enemy : enemiesInPath) {
+                    if (enemy != null) {
+                        int listEnemyIndex = pathListIndex + enemy.getSpeed();
+                        Point newPathCoordinates = enemyPath.get(listEnemyIndex);
+                        //Point endPath = enemyPath.get(enemyPath.size() - 1);
+                        int newX = (int) Math.round(newPathCoordinates.getX());
+                        int newY = (int) Math.round(newPathCoordinates.getY());
+                        plots[newY][newX].addEnemyToPath(enemy);
+                        //System.out.println(endPath.toString());
+                        //System.out.println(enemy);
+                    }
+                    pathListIndex++;
                 }
-                else{
-                    newPath = enemyPath.get(enemyPath.size() - 1);
-                    int newX = (int) Math.round(newPath.getX());
-                    int newY = (int) Math.round(newPath.getY());
-                    plots[newX][newY].addEnemyToPath(enemy);
-                    enemiesInPath.remove(enemy);
-                }
-                pathCounter++;
+                //enemiesInPath.clear();
+                plots[y][x].enemiesInPlot().clear();
             }
+
+
         }
+
+        System.out.println(" ");
+        //System.out.println(enemyPath.);
+       // this.printMap();
+
     }
+
 }
 
+
+/*                        if (newPathCoordinates.equals(endPath)) {
+                            System.out.println("else   else else else");
+                            newPathCoordinates = enemyPath.get(enemyPath.size());
+                            int newX = (int) Math.round(newPathCoordinates.getX());
+                            int newY = (int) Math.round(newPathCoordinates.getY());
+                            plots[newY][newX].addEnemyToPath(enemy);
+                        }
+                        else {
+                            int newX = (int) Math.round(newPathCoordinates.getX());
+                            int newY = (int) Math.round(newPathCoordinates.getY());
+                            plots[newY][newX].addEnemyToPath(enemy);
+
+                            //plots[y][x].enemiesInPlot().remove(enemy);
+                        }*/
+
+            /*
+            ArrayList<Enemy> auxList = new ArrayList<Enemy>();
+            ArrayList<Enemy> enemiesInPlot = plots[y][x].enemiesInPlot();
+            for (Enemy enemy:
+                 enemiesInPlot) {
+                auxList.add(enemy);
+            }
+            for (Enemy enemy:
+                 auxList) {
+                plots[y][x].enemiesInPlot().remove(enemy);
+            }
+            */

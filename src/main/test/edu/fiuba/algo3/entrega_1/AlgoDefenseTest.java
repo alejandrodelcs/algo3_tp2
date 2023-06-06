@@ -184,11 +184,31 @@ public class AlgoDefenseTest {
     public void test05VerifyThatTowersAttackWithinExpectedRange(){
       Player player = new Player("Player");
       AlgoDefense algoDefense = new AlgoDefense(player);
-      Point coordenatesToDirt = new Point(3,3);
-      String whiteTower = "WhiteTower";
+     // Point coordinatesToDirt = new Point(3,3);
+      //String whiteTower = "WhiteTower";
 
-      algoDefense.buildsATower(coordenatesToDirt, whiteTower);
+      //algoDefense.buildsATower(coordinatesToDirt, whiteTower);
+
       algoDefense.nextTurn();
+      algoDefense.nextTurn();
+      algoDefense.nextTurn();
+      algoDefense.nextTurn();
+      algoDefense.nextTurn();
+      algoDefense.nextTurn();
+      algoDefense.nextTurn();
+      algoDefense.nextTurn();
+      algoDefense.nextTurn();
+      algoDefense.nextTurn();
+//      algoDefense.nextTurn();
+//      algoDefense.nextTurn();
+//      algoDefense.nextTurn();
+//      algoDefense.nextTurn();
+//      algoDefense.nextTurn();
+//      algoDefense.nextTurn();
+//      algoDefense.nextTurn();
+//      algoDefense.nextTurn();
+//      algoDefense.nextTurn();
+//      algoDefense.nextTurn();
     }
 
 
