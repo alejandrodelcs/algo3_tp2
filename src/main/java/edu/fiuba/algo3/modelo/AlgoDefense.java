@@ -22,7 +22,6 @@ public class AlgoDefense {
     private Dictionary enemyStrategy;
     private TowerFactory towerFactory;
     private EnemyFactory enemyFactory;
-
     private ArrayList<Tower> towers;
 
     public AlgoDefense(Player aPLayer){
@@ -35,14 +34,12 @@ public class AlgoDefense {
         this.enemyFactory = new EnemyFactory();
 
     }
-
     public void nextTurn() {
         ArrayList<Enemy> newEnemies = turn.passTurn();
         gameboard.moveEnemies();
         spawnAnEnemy(newEnemies);
         turn.updateTowers(towers,gameboard);
     }
-
     public void buildsATower(Point coordinatesPosibleConstruction, String typeOfTower) {
 
         if(!gameboard.availableForBuilding(coordinatesPosibleConstruction)){
@@ -58,17 +55,13 @@ public class AlgoDefense {
         gameboard.buildDefense(tower, coordinatesPosibleConstruction);
         towers.add(tower);
     }
-
     public void spawnAnEnemy(ArrayList<Enemy> enemyArrayList){
         gameboard.spawnEnemy(enemyArrayList);
 
     }
-
-
     public boolean canPlayerBuyTower( Tower tower ){//TODO: here a player can buy "anything" not only towers
         return player.canBuy(tower.getCredits().getQuantity());
     }
-
     public boolean isOccupyByADefense(Point coordenatesToDirt) {
         return (!gameboard.availableForBuilding(coordenatesToDirt));
     }

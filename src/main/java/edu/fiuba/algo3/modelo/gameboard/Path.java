@@ -7,6 +7,7 @@ import java.util.ArrayList;
 
 public class Path extends Plot{
     public ArrayList<Enemy> enemyArrayList;
+
     public Path(){
         this.state = new NotPlotAvailability();
         this.enemyArrayList = new ArrayList<Enemy>();
@@ -14,10 +15,8 @@ public class Path extends Plot{
     @Override
     public void setEnemy(ArrayList<Enemy> enemyList) {this.enemyArrayList = enemyList;}
     public void addEnemyToPath(Enemy newEnemy){ this.enemyArrayList.add(newEnemy); }
-
-
     @Override
-    public String Show() {
+    public String display() {
 
         if(enemyArrayList == null || enemyArrayList.isEmpty()){
             return "zzz";
@@ -25,9 +24,10 @@ public class Path extends Plot{
         return "ooo";
     }
     @Override
-    public ArrayList<Enemy> enemiesInPlot(){return enemyArrayList;}
-
-    public void initilizeArrayList(){
-        //enemyArrayList = new;
+    public ArrayList<Enemy> enemiesInPlot(){
+        if (enemyArrayList != null) {
+            return enemyArrayList;
+        }
+        return new ArrayList<Enemy>();
     }
 }
