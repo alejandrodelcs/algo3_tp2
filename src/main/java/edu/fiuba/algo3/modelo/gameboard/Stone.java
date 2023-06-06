@@ -12,7 +12,7 @@ public class Stone extends Plot{
     @Override
     public void setEnemy(ArrayList<Enemy> enemyList) {throw new TheEnemyCannotBeOutsideTheRunway();}
     @Override
-    public String Show() {
+    public String display() {
         return "xxx";
     }
     @Override

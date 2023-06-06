@@ -11,7 +11,7 @@ public class Dirt extends Plot{
     @Override
     public void setEnemy(ArrayList<Enemy> enemyList) {throw new TheEnemyCannotBeOutsideTheRunway();}
     @Override
-    public String Show() {
+    public String display() {
         return "...";
     }
     @Override
