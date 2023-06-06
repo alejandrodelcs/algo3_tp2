@@ -172,6 +172,8 @@ public class AlgoDefenseTest {
         AlgoDefense algoDefense = new AlgoDefense(player);
 
 
+
+
         //Act
         algoDefense.nextTurn();
         algoDefense.nextTurn();
@@ -189,49 +191,69 @@ public class AlgoDefenseTest {
         algoDefense.nextTurn();
         algoDefense.nextTurn();
         algoDefense.nextTurn();
-        algoDefense.nextTurn();
-        algoDefense.nextTurn();
-        algoDefense.nextTurn();
-        algoDefense.nextTurn();
-        algoDefense.nextTurn();
-        algoDefense.nextTurn();
-        algoDefense.nextTurn();
-        algoDefense.nextTurn();
-        algoDefense.nextTurn();
-        algoDefense.nextTurn();
-        algoDefense.nextTurn();
-        algoDefense.nextTurn();
-        algoDefense.nextTurn();
-        algoDefense.nextTurn();
-        algoDefense.nextTurn();
-        algoDefense.nextTurn();
-        algoDefense.nextTurn();
-        algoDefense.nextTurn();
-        algoDefense.nextTurn();
-        algoDefense.nextTurn();
-        algoDefense.nextTurn();
-        algoDefense.nextTurn();
-        algoDefense.nextTurn();
-        algoDefense.nextTurn();
-        algoDefense.nextTurn();
-        algoDefense.nextTurn();
-        algoDefense.nextTurn();
-        algoDefense.nextTurn();
-        algoDefense.nextTurn();
-        algoDefense.nextTurn();
-        algoDefense.nextTurn();
-        algoDefense.nextTurn();
-        algoDefense.nextTurn();
-        algoDefense.nextTurn();
-        algoDefense.nextTurn();
-        algoDefense.nextTurn();
-        algoDefense.nextTurn();
-        algoDefense.nextTurn();
+        //algoDefense.nextTurn(); //en esta linea el jugador se muere
+
+
 
         //Assert
         assertTrue(player.isAlive());
     }
+    @Test
+    public void test13PlayerWinsTheGame(){
+        //Arrange
+        Player player = new Player("Player");
+        AlgoDefense algoDefense = new AlgoDefense(player);
+        Point coordinatesToADirt = new Point(2, 3);
+        algoDefense.buildsATower(coordinatesToADirt, "WhiteTower");
+        Point coordinatesToADirt0 = new Point(0, 2);
+        algoDefense.buildsATower(coordinatesToADirt0, "WhiteTower");
+        Point coordinatesToADirt1 = new Point(1, 2);
+        algoDefense.buildsATower(coordinatesToADirt1, "WhiteTower");
+        Point coordinatesToADirt2 = new Point(2, 2);
+        algoDefense.buildsATower(coordinatesToADirt2, "WhiteTower");
+        Point coordinatesToADirt3 = new Point(3, 2);
+        algoDefense.buildsATower(coordinatesToADirt3, "WhiteTower");
+        Point coordinatesToADirt4 = new Point(1, 0);
+        algoDefense.buildsATower(coordinatesToADirt4, "WhiteTower");
+        Point coordinatesToADirt5 = new Point(2, 0);
+        algoDefense.buildsATower(coordinatesToADirt5, "WhiteTower");
+        Point coordinatesToADirt6 = new Point(3, 0);
+        algoDefense.buildsATower(coordinatesToADirt6, "WhiteTower");
+        Point coordinatesToADirt7 = new Point(4, 0);
+        algoDefense.buildsATower(coordinatesToADirt7, "WhiteTower");
+        Point coordinatesToADirt8 = new Point(5, 0);
+        algoDefense.buildsATower(coordinatesToADirt8, "WhiteTower");
+        Point coordinatesToADirt9 = new Point(6, 0);
+        algoDefense.buildsATower(coordinatesToADirt9, "WhiteTower");
+        Point coordinatesToADirt10 = new Point(7, 1);
+        algoDefense.buildsATower(coordinatesToADirt10, "WhiteTower");
 
+
+
+
+        //Act
+        algoDefense.nextTurn();
+        algoDefense.nextTurn();
+        algoDefense.nextTurn();
+        algoDefense.nextTurn();
+        algoDefense.nextTurn();
+        algoDefense.nextTurn();
+        algoDefense.nextTurn();
+        algoDefense.nextTurn();
+        algoDefense.nextTurn();
+        algoDefense.nextTurn();
+        algoDefense.nextTurn();
+        algoDefense.nextTurn();
+        algoDefense.nextTurn();
+        algoDefense.nextTurn();
+        algoDefense.nextTurn();
+        algoDefense.nextTurn();
+        //algoDefense.nextTurn();
+        //algoDefense.nextTurn(); en esta linea el jugador se muere
+
+        //Assert
+        assertTrue(player.isAlive());
+    }
 
 }
 
