@@ -54,7 +54,7 @@ public class AlgoDefense {
         if(!canPlayerBuyTower(tower)){
             throw new InsufficientCredits();
         }
-        player.chargedCredits(tower.getCredits());
+        player.subtractCredits(tower.getCredits());
         gameboard.buildDefense(tower, coordinatesPosibleConstruction);
         towers.add(tower);
     }

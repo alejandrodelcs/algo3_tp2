@@ -44,10 +44,8 @@ public class CreditTest {
     public void testInsufficientCreditsForWithdrawal(){
         int cant = 100;
         int creditsSubtract=200;
-        int creditTotal=50;
         Credit credit = new Credit(cant);
         Credit creditLoad = new Credit(creditsSubtract);
-        Credit creditFinal = new Credit(creditTotal);
 
         assertThrows(InsufficientCredits.class,()->{
             credit.subtractCredits(creditLoad);;});

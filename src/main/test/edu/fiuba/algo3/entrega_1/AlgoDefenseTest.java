@@ -177,17 +177,16 @@ public class AlgoDefenseTest {
         //Arrange
         Player player = new Player("Player");
         AlgoDefense algoDefense = new AlgoDefense(player);
-        ArrayList<Enemy> enemyArray = new ArrayList<Enemy>();
-        Credit creditsExpected = new Credit(101);
+        Credit creditsExpected = new Credit(91);
 
         //Act
-        Point coordinatesToADirt = new Point(3, 4);
+        Point coordinatesToADirt = new Point(4, 0);
         algoDefense.buildsATower(coordinatesToADirt, "WhiteTower");
         algoDefense.nextTurn();
         algoDefense.nextTurn();
 
         //Assert
-        Assertions.assertTrue(creditsExpected.equals(player.getPlayerCredits()));
+        Assertions.assertTrue(creditsExpected.equalTo(player.getPlayerCredits()));
     }
 
 

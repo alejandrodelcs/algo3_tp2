@@ -20,7 +20,7 @@ public class Credit {
     }
 
     public boolean equalTo(Credit credit) {
-        return (quantity == credit.getQuantity());
+        return (quantity== credit.getQuantity());
     }
 
     public void subtractCredits(Credit credit) {
