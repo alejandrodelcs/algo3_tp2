@@ -37,7 +37,9 @@ public abstract class Tower {
     }
 
 
-    public void attack(Enemy enemy){state.Attack(this,enemy);}
+    public void attack(Enemy enemy){
+        if(!(enemy == null)){
+            state.Attack(this,enemy);}}
 
 
     public int getRange() { return rangeAttack;}

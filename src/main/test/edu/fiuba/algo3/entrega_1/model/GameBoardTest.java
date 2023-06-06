@@ -14,6 +14,7 @@ class GameBoardTest {
         GameboardFacade gameboardFacade = new GameboardFacade();
         GameBoard gameboard = gameboardFacade.loadMap();
         gameboard.constructPath();
+        gameboard.printMap();
 
     }
 

@@ -19,4 +19,5 @@ public class Stone extends Plot{
     public ArrayList<Enemy> enemiesInPlot(){throw new ThereCannotBeEnemiesInThisPlot();}
     public void addEnemyToPath(Enemy newEnemy){};
 
+
 }

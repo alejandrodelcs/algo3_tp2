@@ -21,4 +21,5 @@ public abstract class Plot {
     public abstract void addEnemyToPath(Enemy newEnemy);
 
     public abstract ArrayList<Enemy> enemiesInPlot();
+
 }

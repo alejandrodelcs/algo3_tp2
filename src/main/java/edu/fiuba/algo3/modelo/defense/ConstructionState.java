@@ -13,7 +13,8 @@ public class ConstructionState implements State{
     public void Attack(Tower tower, Enemy enemy){
         cont -= 1;
         if(cont >= 0){
-            throw new TowerIsUnderConstruction();
+            return;
+            //throw new TowerIsUnderConstruction();
         }
         tower.constructionFinished();
         tower.attack(enemy);

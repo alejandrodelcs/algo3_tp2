@@ -6,7 +6,7 @@ import edu.fiuba.algo3.modelo.health.*;
 
 import java.awt.*;
 
-public abstract class Enemy {
+public abstract class Enemy implements Cloneable{
     private int speed;
     private Damage damage;
     private Health health;
@@ -19,6 +19,7 @@ public abstract class Enemy {
         this.health = new Damageable(healthPoints);
         this.enemyCoordinates = new Point();
     }
+
 
     public int getSpeed() {
         return speed;
