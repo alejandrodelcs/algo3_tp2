@@ -51,7 +51,11 @@ public class Player {
     }
 
     public void chargedCredits(Credit credits) {
-        playersCredits.chargedCredits(credits);
+
+        playersCredits.subtractCredits(credits);
+        if (playersCredits.areNegative()) {
+            throw new InsufficientCredits();
+        }
     }
 
     public void subtractCredits(Credit credits) {
