@@ -39,7 +39,7 @@ public class AlgoDefense {
         ArrayList<Enemy> newEnemies = turn.passTurn();
         gameboard.moveEnemies();
         spawnAnEnemy(newEnemies);
-        turn.updateTowers(towers,gameboard);
+        turn.updateTowers(towers,gameboard,player);
         gameboard.printMap();
         damageThePlayer();
     }
@@ -75,4 +75,8 @@ public class AlgoDefense {
         }
     }
 
+
+    public boolean towerOperatingInPLot(Point coordinates) {
+        return gameboard.towerOperatingInPlot(coordinates);
+    }
 }

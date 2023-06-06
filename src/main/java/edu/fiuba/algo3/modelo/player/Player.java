@@ -25,7 +25,7 @@ public class Player {
         validateName(playersName);
         this.playersName = playersName;
         this.playersLifePoints = new Damageable(20);
-        this.playersCredits = new Credit(1000);
+        this.playersCredits = new Credit(100);
 
     }
 
