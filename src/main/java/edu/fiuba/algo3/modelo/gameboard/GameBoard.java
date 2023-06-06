@@ -13,9 +13,6 @@ public class GameBoard {
     public GameBoard(Plot[][] expectedPlots) {
         plots = expectedPlots;
         enemyPath = constructPath();
-        //plots = new Plot[mapaJsonObject.keySet().size()][mapaJsonObject.values().size()];
-
-
     }
     public boolean availableForBuilding(Point coordinates) {
 
