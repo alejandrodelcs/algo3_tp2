@@ -9,11 +9,13 @@ package model {
 
         + Player(String playersName)
         + validateName(String name): void
-        + getPlayerLifePoints(): Health
         + getPlayerCredits(): Credits
-        + getsDamage(int damage): void
+        + getsDamage(Damage damage): void
         + chargeCredits(Credit credits): void
-        + getsCredit(Credit credits): void
+        + substractCredit(Credit credits): void
+        + buildsADefense(Tower tower): void
+        + canBuy(int value): boolean
+        + isAlive(): boolean
     }
 }
 

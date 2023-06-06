@@ -1,12 +1,14 @@
 @startuml
 'https://plantuml.com/class-diagram
-'TODO: Plot has a Tower, an Enemy, an Occupiable all protected
 package model {
     abstract class Plot {
         + readyToBuild(): boolean
         + setDefense(Tower tower): void
-        + setEnemy(Enemy enemy): void {abstract}
-        + show(): String {abstract}
+        + setEnemy(ArrayList<Enemy> enemyList): void {abstract}
+        + addEnemyToPath(Enemy newEnemy) {abstract}
+        + enemiesInPlot(): ArrayList<Enemy> {abstract}
+        + display(): String {abstract}
+        + getDefense(): Tower
     }
 }
 

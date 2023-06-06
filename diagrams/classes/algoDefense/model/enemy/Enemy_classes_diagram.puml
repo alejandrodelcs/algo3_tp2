@@ -6,9 +6,11 @@
 !include Spider.puml
 !include EnemyFactory.puml
 !include ../health/Health.puml
+!include ../damage/Damage.puml
 
 EnemyFactory --> Enemy
 Health <- Enemy
+Enemy ->Damage
 Enemy <|-- Ant
 Enemy <|-- Spider
 

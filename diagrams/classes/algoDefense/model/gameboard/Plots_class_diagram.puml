@@ -1,0 +1,13 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+!include Plot.puml
+!include ../defense/Tower.puml
+!include PlotAvailability.puml
+!include ../enemy/Enemy.puml
+
+Plot -->"0..1 " Tower
+PlotAvailability "1"<- Plot
+Plot ->"0..*" Enemy
+
+@enduml

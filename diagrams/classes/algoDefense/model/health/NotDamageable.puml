@@ -3,7 +3,7 @@
 
 package model {
     class NotDamageable {
-        + healthPoints: int
+        - healthPoints: int
 
         + NotDamageable(int healthPoints)
         + takeDamage(int damage): void

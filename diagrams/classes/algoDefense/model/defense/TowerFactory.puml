@@ -3,7 +3,7 @@
 
 package model {
     class TowerFactory {
-        + createTower(String towerType): Tower
+        + createTower(String towerType, Point coordinates): Tower
     }
 }
 

@@ -6,7 +6,7 @@ package model {
     class EnemiesParser {
         + getArray(): JSONArray
         + parserFile(): Dictionary
-        - loadEnemies(int antAmount, int spiderAmount): List
+        - loadEnemies(int antAmount, int spiderAmount): ArrayList<Enemy>
     }
 }
 

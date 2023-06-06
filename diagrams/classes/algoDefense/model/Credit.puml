@@ -10,6 +10,7 @@ package model {
         + getQuantity(): int
         + equalTo(Credit credit): boolean
         + substractCredits(Credit credit): void
+        + areNegative(): boolean
     }
 }
 

@@ -5,7 +5,9 @@ package model {
     class Path {
         + Path()
         + setEnemy(Enemy enemy): void
-        + show(): String
+        + addEnemyToPath(Enemy newEnemy): void
+        + display(): String
+        + enemiesInPlot(): ArrayList<Enemy>
     }
 }
 

@@ -7,8 +7,7 @@ package model {
         - CREDITS_MAX_RANGE: int
 
         + Spider(int speed, Damage damage, int healthPoints)
-        + getReward(): int
-        + generateCredits(): int
+        + generateCredits(): Credit
         + show(): String
     }
 }

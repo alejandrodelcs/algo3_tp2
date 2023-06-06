@@ -4,8 +4,10 @@
 !include TowerFactory.puml
 !include Tower_class_diagram.puml
 !include State_class_diagram.puml
+!include ../Credit.puml
 
 TowerFactory -> Tower
 Tower --> State
+Credit <-- Tower
 top to bottom direction
 @enduml

@@ -1,14 +1,19 @@
 @startuml
 'https://plantuml.com/class-diagram
-'TODO: GambeBoard has Plot[][], ArrayList<Point> and ArrayList<Plot> all private
+'TODO: GambeBoard has ArrayList<Point> and ArrayList<Plot> all private
 package model {
     class GameBoard {
+        - enemyPath: ArrayList<Point>
         + GameBoard(Plot[][] expectedPlots)
         + availableForBuilding(Tower tower, Point coordinates): boolean
         + buildDefense(Tower tower, Point coordinates): void
-        + spawnEnemy(Enemy enemy, Point coordinates): void
-        + constructPath(): void
+        + enemiesInRange(Tower tower): ArrayList<Enemy>
+        + expectedRange(int range, Point coordinates): ArrayList<Plot>
+        + spawnEnemy(ArrayList<Enemy> enemyArrayList): void
+        + constructPath(): ArrayList<Point>
         + printMap(): void
+        + moveEnemies(): void
+        + getEnemiesInTheLastPath(): ArrayList<Enemy>
     }
 }
 

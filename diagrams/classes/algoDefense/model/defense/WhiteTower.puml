@@ -4,7 +4,7 @@
 
 package model {
     class WhiteTower {
-        + WhiteTower(Credit credit, int rangeAttack, int damage, int cont)
+        + WhiteTower(Credit credit, int rangeAttack, Damage damage, int constructionTurns, Points coordinatesTower)
     }
 }
 

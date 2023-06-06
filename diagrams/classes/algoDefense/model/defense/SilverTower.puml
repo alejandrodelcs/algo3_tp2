@@ -3,7 +3,7 @@
 !include Tower.puml
 package model {
     class SilverTower {
-        + SilverTower(Credit credit, int rangeAttack, int damage, int cont)
+        + SilverTower(Credit credit, int rangeAttack, int damage, int cont, Point coordinatesTower)
     }
 }
 

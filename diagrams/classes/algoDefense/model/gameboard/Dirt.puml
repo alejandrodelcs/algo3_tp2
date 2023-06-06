@@ -5,7 +5,9 @@ package model {
     class Dirt {
         + Dirt()
         + setEnemy(Enemy enemy): void
-        + show(): String
+        + display(): String
+        + enemiesInPlot(): ArrayList<Enemy>
+        + addEnemyToPath(Enemy newEnemy): void
     }
 }
 

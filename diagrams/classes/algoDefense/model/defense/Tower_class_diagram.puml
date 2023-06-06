@@ -3,6 +3,7 @@
 
 !include WhiteTower.puml
 !include SilverTower.puml
-
+!include ../damage/Damage.puml
+Tower -> Damage
 
 @enduml

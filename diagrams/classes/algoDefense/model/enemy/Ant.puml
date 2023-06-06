@@ -7,7 +7,7 @@ package model {
 
         + Ant(int speed, Damage damage, int healthPoints)
         + getReward(): int
-        + generateCredits(): int
+        + generateCredits(): Credit
         + show(): String
     }
 }

@@ -4,6 +4,6 @@
 !include Gameboard.puml
 !include Plot_class_diagram.puml
 
-GameBoard -> Plot
+GameBoard ->"1...*" Plot
 
 @enduml

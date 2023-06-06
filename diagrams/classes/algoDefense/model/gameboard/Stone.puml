@@ -4,7 +4,8 @@
 package model {
     class Stone {
         + Stone()
-        + setEnemy(Enemy enemy): void
+        + setEnemy(ArrayList<Enemy> enemyList): void
+        + enemiesInPlot(): AttayList<Enemy>
         + show(): String
     }
 }
