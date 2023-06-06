@@ -123,4 +123,14 @@ public class GameBoard {
         int finalY = (int) Math.round(enemyPath.get(enemyPath.size()-1).getY());
         return plots[finalY][finalX].enemiesInPlot();
     }
+
+    public boolean towerOperatingInPlot(Point coordinates) {
+        int finalX = (int) Math.round(coordinates.getX());
+        int finalY = (int) Math.round(coordinates.getY());
+        Tower defense = plots[finalX][finalY].getDefense();
+        if (defense == null){
+            return false;
+        }
+        return defense.isItBuild();
+    }
 }

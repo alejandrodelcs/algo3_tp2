@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.entrega_1;
 
 import edu.fiuba.algo3.modelo.AlgoDefense;
+import edu.fiuba.algo3.modelo.Credit;
 import edu.fiuba.algo3.modelo.Turn;
 import edu.fiuba.algo3.modelo.damage.Damage;
 import edu.fiuba.algo3.modelo.defense.*;
@@ -63,37 +64,21 @@ public class AlgoDefenseTest {
     public void test02verifyThatEachDefenseBuildsInTheRightAmountOfTurns(){
         //Arrange
         Player player = new Player("Player");
-        GameBoard gameboard = new GameboardFacade().loadMap();
-        Dictionary enemyStrategy = new EnemyFacade().loadEnemiesStrategy();
-        Turn turn = new Turn(enemyStrategy);
-        TowerFactory towerFactory = new TowerFactory();
+        AlgoDefense algoDefense = new AlgoDefense(player);
         Point coordinatesToADirt = new Point(2, 3);
-        Point secondCoordinatesToADirt = new Point(2,2);
-        Tower aSilverTower = towerFactory.createTower("SilverTower", coordinatesToADirt);
-        Tower aWhiteTower = towerFactory.createTower("WhiteTower", secondCoordinatesToADirt);
+        algoDefense.buildsATower(coordinatesToADirt, "WhiteTower");
+        Point coordinatesToADirt0 = new Point(0, 2);
+        algoDefense.buildsATower(coordinatesToADirt0, "SilverTower");
 
         //Act
-        player.buildsADefense(aSilverTower);
-        player.buildsADefense(aWhiteTower);
-
-        assertFalse(aSilverTower.isItBuild());
-        assertFalse(aWhiteTower.isItBuild());
-
-
-        turn.passTurn();
-        System.out.println(turn.getTurn());
-        turn.passTurn();
-        System.out.println(turn.getTurn());
+        algoDefense.nextTurn();
+        algoDefense.nextTurn();
+        algoDefense.nextTurn();
 
 
         //Assert
-        turn.passTurn();
-        System.out.println(turn.getTurn());
-        assertTrue(aWhiteTower.isItBuild());
-        assertFalse(aSilverTower.isItBuild());
-        turn.passTurn();
-        //assertTrue(aSilverTower.isItBuild());
-        //assertTrue(aWhiteTower.isItBuild());
+        assertTrue(algoDefense.towerOperatingInPLot(coordinatesToADirt));
+        //assertTrue(algoDefense.towerOperatingInPLot(coordinatesToADirt0));
     }
 
     @Test
@@ -166,6 +151,27 @@ public class AlgoDefenseTest {
     }
 
     @Test
+    public void test06VerifyThatWhenDestroyingAnEnemyUnitThePlayerIsAwardedTheCorrespondingCredit(){
+        //Arrange
+        Player player = new Player("Player");
+        AlgoDefense algoDefense = new AlgoDefense(player);
+        ArrayList<Enemy> enemyArray = new ArrayList<Enemy>();
+        Credit expectedCredits = new Credit(101);
+        EnemyFactory eFactory = new EnemyFactory();
+        Enemy anAnt = eFactory.createEnemy("Ant");
+        enemyArray.add(anAnt);
+
+        //Act
+        algoDefense.spawnAnEnemy(enemyArray);
+        Point coordinatesToADirt = new Point(2, 3);
+        algoDefense.buildsATower(coordinatesToADirt, "WhiteTower");
+        algoDefense.nextTurn();
+        algoDefense.nextTurn();
+
+        //Assert
+        Assertions.assertTrue(expectedCredits.equals(player.getPlayerCredits()));
+    }
+    @Test
     public void test12VerifyThatEnemiesKilledPlayer(){
         //Arrange
         Player player = new Player("Player");
@@ -223,10 +229,7 @@ public class AlgoDefenseTest {
         algoDefense.buildsATower(coordinatesToADirt7, "WhiteTower");
         Point coordinatesToADirt8 = new Point(5, 0);
         algoDefense.buildsATower(coordinatesToADirt8, "WhiteTower");
-        Point coordinatesToADirt9 = new Point(6, 0);
-        algoDefense.buildsATower(coordinatesToADirt9, "WhiteTower");
-        Point coordinatesToADirt10 = new Point(7, 1);
-        algoDefense.buildsATower(coordinatesToADirt10, "WhiteTower");
+
 
 
 

@@ -9,7 +9,6 @@ public class ConstructionState implements State{
     private boolean state;
     public ConstructionState(int cont){
         this.cont = cont;
-        this.state = false;
     }
     @Override
     public void Attack(Tower tower, Enemy enemy){
@@ -21,8 +20,9 @@ public class ConstructionState implements State{
         tower.constructionFinished();
         tower.attack(enemy);
     }
+    @Override
     public boolean isItBuild(){
-        return state;
+        return false;
     }
 
 }
