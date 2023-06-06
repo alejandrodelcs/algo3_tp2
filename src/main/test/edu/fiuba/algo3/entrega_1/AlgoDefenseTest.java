@@ -11,6 +11,8 @@ import edu.fiuba.algo3.modelo.exceptions.*;
 import edu.fiuba.algo3.modelo.facade.EnemyFacade;
 import edu.fiuba.algo3.modelo.facade.GameboardFacade;
 import edu.fiuba.algo3.modelo.gameboard.GameBoard;
+import edu.fiuba.algo3.modelo.gameboard.*;
+import edu.fiuba.algo3.modelo.parser.EnemiesParser;
 import edu.fiuba.algo3.modelo.player.Player;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -171,6 +173,17 @@ public class AlgoDefenseTest {
         //Assert
         Assertions.assertTrue(anAnt.enemyDied());
         Assertions.assertFalse(aSpider.enemyDied());
+    }
+    @Test
+    public void test07VerifyThatEnemiesMovesOnlyInPath(){
+        Stone stone = new Stone();
+        EnemyFactory enemyFactory = new EnemyFactory();
+        Enemy ant = enemyFactory.createEnemy("Ant");
+        stone.addEnemyToPath(ant);
+        ArrayList<Enemy> listEnemy = new ArrayList<Enemy>();
+        listEnemy.add(ant);
+        Assertions.assertThrows(TheEnemyCannotBeOutsideTheRunway.class,()->stone.setEnemy(listEnemy));
+
     }
     @Test
     public void test08VerifyThatWhenDestroyingAnEnemyUnitThePlayerIsAwardedTheCorrespondingCredit(){
