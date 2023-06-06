@@ -10,5 +10,8 @@ public class OperationalState implements State{
     public void Attack(Tower tower, Enemy enemy){
        enemy.takeDamage(tower.getDamage());
     }
+    public boolean isItBuild(){
+        return true;
+    }
 
 }
