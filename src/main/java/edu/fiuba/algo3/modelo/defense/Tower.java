@@ -1,43 +1,50 @@
 package edu.fiuba.algo3.modelo.defense;
 
 import edu.fiuba.algo3.modelo.Credit;
+import edu.fiuba.algo3.modelo.damage.Damage;
 import edu.fiuba.algo3.modelo.enemy.Enemy;
+import edu.fiuba.algo3.modelo.gameboard.Plot;
+import javafx.scene.shape.Path;
+
+import java.awt.*;
+import java.util.ArrayList;
 
 public abstract class Tower {
     protected Credit credits;
+    protected Damage damage;
+    protected State state;
+    protected Point point;
     protected int rangeAttack;
-    protected int damage;
-    protected State state = new ConstructionState();
-    protected int cont;
 
-    public Tower(Credit credits, int rangeAttack, int damage, int cont){
+
+
+    public Tower(Credit credits, int rangeAttack, Damage damage, int constructionTurns,Point cordinatesTower){
         this.credits = credits;
-        this.rangeAttack = rangeAttack;
         this.damage = damage;
-        this.cont = cont;
+        this.state = new ConstructionState(constructionTurns);
+        this.point = cordinatesTower;
+        this.rangeAttack = rangeAttack;
     }
-    public void Attack(Enemy enemy, boolean isOnRange){
-        state.Attack(this,enemy,isOnRange);
-    }
+
     public void constructionFinished (){
         state = new OperationalState();
     }
     public Credit getCredits() {
         return credits;
     }
-    public int getDamage() {
+    public Damage getDamage() {
         return damage;
     }
 
-    public State getStatus(){return state;}
-    public void updateStatus(){
-        cont -= 1;
-        if(cont == 0){
-            state = new OperationalState();
-        }
-    }
 
-    public int getAttackRange() {
-        return rangeAttack;
+    public void attack(Enemy enemy){
+        if(!(enemy == null)){
+            state.Attack(this,enemy);}}
+
+
+    public int getRange() { return rangeAttack;}
+
+    public Point getPoint() {
+        return point;
     }
 }

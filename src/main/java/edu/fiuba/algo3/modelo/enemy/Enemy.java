@@ -3,16 +3,22 @@ package edu.fiuba.algo3.modelo.enemy;
 import edu.fiuba.algo3.modelo.damage.Damage;
 import edu.fiuba.algo3.modelo.health.*;
 
-public abstract class Enemy {
+import java.awt.*;
+
+public abstract class Enemy implements Cloneable{
     private int speed;
     private Damage damage;
     private Health health;
+
+    private Point enemyCoordinates;
 
     public Enemy(int speed, Damage damage, int healthPoints) {
         this.speed = speed;
         this.damage = damage;
         this.health = new Damageable(healthPoints);
+        this.enemyCoordinates = new Point();
     }
+
 
     public int getSpeed() {
         return speed;
@@ -26,7 +32,8 @@ public abstract class Enemy {
         return health;
     }
 
-    public void takeDamage(int amount) {
+    public void takeDamage(Damage damageReceive) {
+        int amount = damageReceive.getQuantity();
         health.takeDamage(amount);
         if (health.entityDied()) {
             generateCredits();
@@ -42,4 +49,8 @@ public abstract class Enemy {
     public abstract int generateCredits();
 
     public abstract String Show();
+
+    public void updateCoordinates(Point coordinates){
+        enemyCoordinates = coordinates;
+    }
 }

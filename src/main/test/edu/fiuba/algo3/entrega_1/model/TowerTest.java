@@ -10,6 +10,8 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
+import java.awt.*;
+
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
@@ -17,70 +19,55 @@ public class TowerTest {
     @Test
     public void test01TryingToCreateADifferentEnemyThrowsExceptions() {
         TowerFactory factory = new TowerFactory();
-        assertThrows(TowerDoesNotExist.class, () -> {
-            factory.createTower("BlackTower");
+        Point cordenates = new Point(3,3);
+        assertThrows(TowerDoesNotExist.class, () -> {factory.createTower("BlackTower",cordenates);
         });
     }
     @Test
     void test02NewWhiteTowerCannotAttackTheEnemy() {
         TowerFactory factory = new TowerFactory();
-        Tower WhiteTower = factory.createTower("WhiteTower");
+        Point cordenates = new Point(3,3);
+        Tower WhiteTower = factory.createTower("WhiteTower",cordenates);
         Enemy enemy = mock(Ant.class);
 
-        assertThrows(TowerIsUnderConstruction.class,()->{
-            WhiteTower.Attack(enemy,true);});
+        assertThrows(TowerIsUnderConstruction.class,()->{WhiteTower.attack(enemy);});
     }
     @Test
     void test03NewSilverTowerCannotAttackTheEnemy() {
         TowerFactory factory = new TowerFactory();
-        Tower SilverTower = factory.createTower("SilverTower");
+        Point cordenates = new Point(3,3);
+        Tower SilverTower = factory.createTower("SilverTower",cordenates);
         Enemy enemy = mock(Ant.class);
 
-        assertThrows(TowerIsUnderConstruction.class,()->{
-            SilverTower.Attack(enemy,true);});
+       assertThrows(TowerIsUnderConstruction.class,()->{SilverTower.attack(enemy);});
     }
-    @Test
-    void test04WhiteTowerOperationalAttacksAnEnemyOutOfRange() {
-        TowerFactory factory = new TowerFactory();
-        Tower WhiteTower = factory.createTower("WhiteTower");
-        Enemy enemy = mock(Ant.class);
-        WhiteTower.constructionFinished();
 
-        assertThrows(EnemyIsOutOfRange.class,()->{
-            WhiteTower.Attack(enemy,false);});
-    }
-    @Test
-    void test05SilverTowerOperationalAttacksAnEnemyOutOfRange() {
-        TowerFactory factory = new TowerFactory();
-        Tower SilverTower = factory.createTower("SilverTower");
-        Enemy enemy = mock(Ant.class);
-        SilverTower.constructionFinished();
-
-        assertThrows(EnemyIsOutOfRange.class,()->{
-            SilverTower.Attack(enemy,false);});
-    }
     @Test
     void test06WhiteTowerAttackWhenEnemyIsWithinRangeEnemyTakesDamage() {
-        Enemy enemy = Mockito.mock(Spider.class);
+        EnemyFactory factoryEnemies = new EnemyFactory();
+        Enemy ant = factoryEnemies.createEnemy("Ant");
         TowerFactory factory = new TowerFactory();
-        Tower WhiteTower = factory.createTower("WhiteTower");
+        Point cordenates = new Point(3,3);
+        Tower WhiteTower = factory.createTower("WhiteTower",cordenates);
 
         WhiteTower.constructionFinished();
-        WhiteTower.Attack(enemy,true);
+        WhiteTower.attack(ant);
 
-        verify(enemy).takeDamage(WhiteTower.getDamage());
+        Assertions.assertTrue(ant.enemyDied());
     }
 
     @Test
     void test07SilverTowerAttackWhenEnemyIsWithinRangeEnemyTakesDamage() {
-        Enemy enemy = Mockito.mock(Spider.class);
+        EnemyFactory factoryEnemies = new EnemyFactory();
+        Enemy spider = factoryEnemies.createEnemy("Spider");
         TowerFactory factory = new TowerFactory();
-        Tower SilverTower = factory.createTower("SilverTower");
+        Point cordenates = new Point(3,3);
+        Tower SilverTower = factory.createTower("SilverTower",cordenates);
 
         SilverTower.constructionFinished();
-        SilverTower.Attack(enemy,true);
+        SilverTower.attack(spider);
 
-        verify(enemy).takeDamage(SilverTower.getDamage());
+        Assertions.assertTrue(spider.enemyDied());
     }
 
 }

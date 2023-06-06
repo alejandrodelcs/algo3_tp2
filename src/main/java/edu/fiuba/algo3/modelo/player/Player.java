@@ -74,7 +74,7 @@ public class Player {
 
     public Tower selectTower() {
         TowerFactory factory = new TowerFactory();
-        return factory.createTower("WhiteTower");//TODO//Implement(HardCoded)
+        return factory.createTower("WhiteTower",new Point(2,3));//TODO//Implement(HardCoded)
     }
 
     public boolean isAlive() {

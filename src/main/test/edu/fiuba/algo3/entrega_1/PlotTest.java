@@ -16,7 +16,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.mock;
 
 
-public class PlotTest {
+public class PlotTest {/*
     @Test
     public void test01canBuildATowerOnAnAvailableDirtPlot(){
         Plot dirt = new Dirt();
@@ -71,6 +71,6 @@ public class PlotTest {
         assertThrows(NonConstructibleArea.class, () -> {
             path.setEnemy(enemy);
         });
-    }*/
-
+    }
+*/
 }

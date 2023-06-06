@@ -1,8 +1,18 @@
 package edu.fiuba.algo3.entrega_1;
 
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import edu.fiuba.algo3.modelo.AlgoDefense;
+import edu.fiuba.algo3.modelo.enemy.Enemy;
+import edu.fiuba.algo3.modelo.enemy.EnemyFactory;
+import edu.fiuba.algo3.modelo.exceptions.NonConstructibleArea;
+import edu.fiuba.algo3.modelo.player.Player;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+import java.awt.*;
+import java.util.ArrayList;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 //import java.awt.*;
 
@@ -157,5 +167,83 @@ public class AlgoDefenseTest {
     }
 
 */
+    @Test
+    public void test04VerifyThatTowerCanNotBeBuildOnStoneButCanBeBuildOnDirt(){
+      Player player = new Player("Player");
+      AlgoDefense algoDefense = new AlgoDefense(player);
+      Point coordenatesToStone = new Point(0,0);
+      Point coordenatesToDirt = new Point(3,3);
+      String silverTower = "SilverTower";
+      algoDefense.buildsATower(coordenatesToDirt, silverTower);
+
+      Assertions.assertTrue(algoDefense.isOccupyByADefense(coordenatesToDirt));
+      Assertions.assertThrows(NonConstructibleArea.class,()-> algoDefense.buildsATower(coordenatesToStone, silverTower));
+
+    }
+
+    @Test
+
+    public void test05VerifyThatTowersAttackWithinExpectedRange(){
+
+      Player player = new Player("Player");
+      AlgoDefense algoDefense = new AlgoDefense(player);
+/*      ArrayList<Enemy> enemyArray = new ArrayList<Enemy>();
+      EnemyFactory eFactory = new EnemyFactory();
+      Enemy anAnt = eFactory.createEnemy("Ant");
+      enemyArray.add(anAnt);
+
+      //Spawnea la arania
+      algoDefense.spawnAnEnemy(enemyArray);
+      Point coordinatesToADirt = new Point(2, 3);
+      algoDefense.buildsATower(coordinatesToADirt, "WhiteTower");
+      algoDefense.nextTurn();
+      algoDefense.nextTurn();
+      assertTrue(anAnt.enemyDied());*/
+
+
+
+      // Point coordinatesToDirt = new Point(3,3);
+      //String whiteTower = "WhiteTower";
+
+      //algoDefense.buildsATower(coordinatesToDirt, whiteTower);
+
+      algoDefense.nextTurn();
+      algoDefense.nextTurn();
+      algoDefense.nextTurn();
+      algoDefense.nextTurn();
+      algoDefense.nextTurn();
+      algoDefense.nextTurn();
+      algoDefense.nextTurn();
+      algoDefense.nextTurn();
+      algoDefense.nextTurn();
+      algoDefense.nextTurn();
+      algoDefense.nextTurn();
+      algoDefense.nextTurn();
+      algoDefense.nextTurn();
+      algoDefense.nextTurn();
+      algoDefense.nextTurn();
+      algoDefense.nextTurn();
+      algoDefense.nextTurn();
+      algoDefense.nextTurn();
+      algoDefense.nextTurn();
+      algoDefense.nextTurn();
+      algoDefense.nextTurn();
+      algoDefense.nextTurn();
+      algoDefense.nextTurn();
+      algoDefense.nextTurn();
+      algoDefense.nextTurn();
+      algoDefense.nextTurn();
+      algoDefense.nextTurn();
+      algoDefense.nextTurn();
+      algoDefense.nextTurn();
+      algoDefense.nextTurn();
+      algoDefense.nextTurn();
+      algoDefense.nextTurn();
+      algoDefense.nextTurn();
+      algoDefense.nextTurn();
+      algoDefense.nextTurn();
+    }
+
+
 }
 

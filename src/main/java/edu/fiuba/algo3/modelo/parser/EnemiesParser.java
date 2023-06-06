@@ -31,7 +31,7 @@ public class EnemiesParser {
     public Dictionary parserFile(){
 
         Dictionary enemyStrategy = new Hashtable();
-        List enemies;
+        ArrayList<Enemy> enemies;
         EnemiesParser reader = new EnemiesParser();
         JSONArray enemyObject = reader.getArray();
 
@@ -61,9 +61,9 @@ public class EnemiesParser {
 
         return enemyStrategy;
     }
-    private List loadEnemies(int antAmount, int spiderAmount){
+    private ArrayList<Enemy> loadEnemies(int antAmount, int spiderAmount){
 
-        List enemiesStrategy = new ArrayList();
+        ArrayList<Enemy> enemiesStrategy = new ArrayList<Enemy>();
 
         EnemyFactory enemyFactory = new EnemyFactory();
         while(antAmount>0){
