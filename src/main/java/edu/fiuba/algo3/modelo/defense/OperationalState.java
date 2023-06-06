@@ -17,9 +17,6 @@ public class OperationalState implements State{
     public boolean isItBuild(){
         return true;
     }
-    @Override
-    public boolean isItBuild(){
-        return true;
-    }
+
 
 }

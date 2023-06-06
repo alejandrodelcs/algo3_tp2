@@ -12,7 +12,7 @@ public class Credit {
         this.quantity = 0;
     }
 
-    public void chargedCredits(Credit creditLoad) {
+    public void chargeCredits(Credit creditLoad) {
         quantity += creditLoad.getQuantity();//TODO: See if the getter can be removed
     }
     public int getQuantity() {

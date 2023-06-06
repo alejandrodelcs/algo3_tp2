@@ -29,7 +29,7 @@ public class Turn {
                  ) {
                 singleTower.attack(enemy);
                 if(enemy.enemyDied()){
-                    player.chargedCredits(enemy.generateCredits());
+                    player.chargeCredits(enemy.generateCredits());
                 }
             }
         }

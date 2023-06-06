@@ -50,12 +50,8 @@ public class Player {
         }
     }
 
-    public void chargedCredits(Credit credits) {
-
-        playersCredits.subtractCredits(credits);
-        if (playersCredits.areNegative()) {
-            throw new InsufficientCredits();
-        }
+    public void chargeCredits(Credit credits) {
+        playersCredits.chargeCredits(credits);
     }
 
     public void subtractCredits(Credit credits) {
@@ -67,7 +63,7 @@ public class Player {
 
     public void buildsADefense(Tower tower) {
         Credit creditsToBeCharged =  tower.getCredits();
-        this.chargedCredits(creditsToBeCharged);
+        this.subtractCredits(creditsToBeCharged);
 
     }
 
