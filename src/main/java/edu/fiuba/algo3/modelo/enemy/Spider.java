@@ -13,10 +13,7 @@ public class Spider extends Enemy {
         super(speed, damage, healthPoints);
     }
 
-    @Override
-    public int getReward() {
-        return 0; // Not used for edu.fiuba.algo3.modelo.Enemy.Spider enemy
-    }
+
 
     @Override
     public Credit generateCredits() {

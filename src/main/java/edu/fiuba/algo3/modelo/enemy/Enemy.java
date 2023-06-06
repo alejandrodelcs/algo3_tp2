@@ -35,12 +35,9 @@ public abstract class Enemy {
     public void takeDamage(Damage damageReceive) {
         int amount = damageReceive.getQuantity();
         health.takeDamage(amount);
-        if (health.entityDied()) {
-            generateCredits();
-        }
     }
 
-    public abstract int getReward();
+
 
     public Boolean enemyDied(){
         return health.entityDied();

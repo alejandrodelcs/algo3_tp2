@@ -10,8 +10,8 @@ public class Ant extends Enemy {
         super(speed, damage, healthPoints);
     }
 
-    @Override
-    public int getReward() {
+
+    private int getReward() {
         //TODO: missing the logic so that when player kills "REWARD_TRESHHOLD" or more ants, this method returns 2 instead of 1.
         return 1;
     }
