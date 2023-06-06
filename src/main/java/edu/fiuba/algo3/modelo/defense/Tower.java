@@ -47,4 +47,6 @@ public abstract class Tower {
     public Point getPoint() {
         return point;
     }
+
+    public boolean isBuild() {}
 }
