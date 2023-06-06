@@ -2,9 +2,11 @@ package edu.fiuba.algo3.entrega_1;
 
 
 import edu.fiuba.algo3.modelo.AlgoDefense;
+import edu.fiuba.algo3.modelo.damage.Damage;
+import edu.fiuba.algo3.modelo.defense.*;
 import edu.fiuba.algo3.modelo.enemy.Enemy;
 import edu.fiuba.algo3.modelo.enemy.EnemyFactory;
-import edu.fiuba.algo3.modelo.exceptions.NonConstructibleArea;
+import edu.fiuba.algo3.modelo.exceptions.*;
 import edu.fiuba.algo3.modelo.player.Player;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -17,52 +19,69 @@ import static org.junit.jupiter.api.Assertions.*;
 //import java.awt.*;
 
 public class AlgoDefenseTest {
-  /*
+
      @Test
-    public void test01VerifyPlayerStartsWithLifeAndCredits(){
-         JSONreader Reader = new JSONreader();
-        // Player player = new Player(); //TODO/ Here the player should be created with the corresponding parameters
-        GameBoard gameBoard = new GameBoard(Reader.getObject());//TODO/ Have to finish(Constructor parameters inside a JSON)
-        ArrayList<Enemy> enemyArrayList = new ArrayList<Enemy>();//TODO/ Have to finish(Constructor parameters inside a JSON)
-        Player player = new Player("Player");
-        AlgoDefense algoDefense = new AlgoDefense(player,gameBoard,enemyArrayList);
-        // initialize a game(you need the player, the map of the game, and the enemys)
-        Assertions.assertEquals(new Credit(100), player.getPlayerCredits());
+    public void test01VerifyPlayerStartsWithTwentyLifePointsAndAHundredCredits(){
+       Player player = new Player("Player");
+       TowerFactory towerFactory = new TowerFactory();
+       Point coordinatesToADirt = new Point(2, 3);
+       Point secondCoordinatesToADirt = new Point(2, 4);
+       Point thirdCoordinatesToADirt = new Point(2, 5);
+       Point fourthCoordinatesToADirt = new Point(2, 6);
+       Point fifthCoordinatesToADirt = new Point(2, 7);
+       Point invalidCoordinatesToADirt = new Point(2, 8);
+       Tower aSilverTower = towerFactory.createTower("SilverTower", coordinatesToADirt);
+       Tower aSecondSilverTower = towerFactory.createTower("SilverTower", secondCoordinatesToADirt);
+       Tower aThirdSilverTower = towerFactory.createTower("SilverTower", thirdCoordinatesToADirt);
+       Tower aFourthSilverTower = towerFactory.createTower("SilverTower", fourthCoordinatesToADirt);
+       Tower aFifthSilverTower = towerFactory.createTower("SilverTower", fifthCoordinatesToADirt);
+       Tower invalidSilverTower = towerFactory.createTower("SilverTower", invalidCoordinatesToADirt);
+       Damage tenDamage = new Damage(10);
+       Damage nineDamage = new Damage(9);
 
-        //TODO: When using the interface, it is necessary to add an exception when the player doesn't have enough available credits.
-        // In test 1, the player's credits are not deducted because an attempt to build a tower in an occupied location is made
-        Assertions.assertEquals(true,algoDefense.canPlayerBuyTower(new WhiteTower()));
-        Assertions.assertEquals(20, player.getPlayerLifePoints());
+       player.buildsADefense(aSilverTower);
+       player.buildsADefense(aSecondSilverTower);
+       player.buildsADefense(aThirdSilverTower);
+       player.buildsADefense(aFourthSilverTower);
+       player.buildsADefense(aFifthSilverTower);
+
+       player.getsDamage(tenDamage);
+       player.getsDamage(nineDamage);
+
+       assertThrows(InsufficientCredits.class, () -> player.buildsADefense(invalidSilverTower));
+
+       Assertions.assertTrue(player.isAlive());
     }
 
-    @Test
-  
-    public void test03VerifyPlayerHasCredits(){
-        JSONreader Reader = new JSONreader();
-        // Player player = new Player(); //TODO/ Here the player should be created with the corresponding parameters
-        GameBoard gameBoard = new GameBoard(Reader.getObject());//TODO/ Have to finish(Constructor parameters inside a JSON)
-        ArrayList<Enemy> enemyArrayList = new ArrayList<Enemy>();//TODO/ Have to finish(Constructor parameters inside a JSON)
-        Player player = new Player("Player");
-        AlgoDefense algoDefense = new AlgoDefense(player,gameBoard,enemyArrayList);
-        // initialize a game(you need the player, the map of the game, and the enemys)
+  /*
+@Test
 
-        algoDefense.buildsATower();
-        algoDefense.buildsATower();
-        algoDefense.buildsATower();
-        algoDefense.buildsATower();
-        algoDefense.buildsATower();
-        algoDefense.buildsATower();
-        algoDefense.buildsATower();
-        algoDefense.buildsATower();
-        algoDefense.buildsATower();//here the player has 10 credits
-        Assertions.assertEquals(false,algoDefense.canPlayerBuyTower(new SilverTower()));//SilverTower
-        Assertions.assertEquals(true,algoDefense.canPlayerBuyTower(new WhiteTower()));
-        algoDefense.buildsATower();//now the player has not credits so can not buy another tower
-        Assertions.assertEquals(false,algoDefense.canPlayerBuyTower(new WhiteTower()));
-    }
+public void test03VerifyPlayerHasCredits(){
+    JSONreader Reader = new JSONreader();
+    // Player player = new Player(); //TODO/ Here the player should be created with the corresponding parameters
+    GameBoard gameBoard = new GameBoard(Reader.getObject());//TODO/ Have to finish(Constructor parameters inside a JSON)
+    ArrayList<Enemy> enemyArrayList = new ArrayList<Enemy>();//TODO/ Have to finish(Constructor parameters inside a JSON)
+    Player player = new Player("Player");
+    AlgoDefense algoDefense = new AlgoDefense(player,gameBoard,enemyArrayList);
+    // initialize a game(you need the player, the map of the game, and the enemys)
+
+    algoDefense.buildsATower();
+    algoDefense.buildsATower();
+    algoDefense.buildsATower();
+    algoDefense.buildsATower();
+    algoDefense.buildsATower();
+    algoDefense.buildsATower();
+    algoDefense.buildsATower();
+    algoDefense.buildsATower();
+    algoDefense.buildsATower();//here the player has 10 credits
+    Assertions.assertEquals(false,algoDefense.canPlayerBuyTower(new SilverTower()));//SilverTower
+    Assertions.assertEquals(true,algoDefense.canPlayerBuyTower(new WhiteTower()));
+    algoDefense.buildsATower();//now the player has not credits so can not buy another tower
+    Assertions.assertEquals(false,algoDefense.canPlayerBuyTower(new WhiteTower()));
+}
 }
 
-   */
+*/
 /*
     @Test
 
@@ -174,74 +193,35 @@ public class AlgoDefenseTest {
       Point coordenatesToStone = new Point(0,0);
       Point coordenatesToDirt = new Point(3,3);
       String silverTower = "SilverTower";
+
+      //Act
       algoDefense.buildsATower(coordenatesToDirt, silverTower);
 
+      //Asseert
       Assertions.assertTrue(algoDefense.isOccupyByADefense(coordenatesToDirt));
       Assertions.assertThrows(NonConstructibleArea.class,()-> algoDefense.buildsATower(coordenatesToStone, silverTower));
 
     }
 
     @Test
-
     public void test05VerifyThatTowersAttackWithinExpectedRange(){
-
+      //Arrange
       Player player = new Player("Player");
       AlgoDefense algoDefense = new AlgoDefense(player);
-/*      ArrayList<Enemy> enemyArray = new ArrayList<Enemy>();
+      ArrayList<Enemy> enemyArray = new ArrayList<Enemy>();
       EnemyFactory eFactory = new EnemyFactory();
       Enemy anAnt = eFactory.createEnemy("Ant");
       enemyArray.add(anAnt);
 
-      //Spawnea la arania
+      //Act
       algoDefense.spawnAnEnemy(enemyArray);
       Point coordinatesToADirt = new Point(2, 3);
       algoDefense.buildsATower(coordinatesToADirt, "WhiteTower");
       algoDefense.nextTurn();
       algoDefense.nextTurn();
-      assertTrue(anAnt.enemyDied());*/
 
-
-
-      // Point coordinatesToDirt = new Point(3,3);
-      //String whiteTower = "WhiteTower";
-
-      //algoDefense.buildsATower(coordinatesToDirt, whiteTower);
-
-      algoDefense.nextTurn();
-      algoDefense.nextTurn();
-      algoDefense.nextTurn();
-      algoDefense.nextTurn();
-      algoDefense.nextTurn();
-      algoDefense.nextTurn();
-      algoDefense.nextTurn();
-      algoDefense.nextTurn();
-      algoDefense.nextTurn();
-      algoDefense.nextTurn();
-      algoDefense.nextTurn();
-      algoDefense.nextTurn();
-      algoDefense.nextTurn();
-      algoDefense.nextTurn();
-      algoDefense.nextTurn();
-      algoDefense.nextTurn();
-      algoDefense.nextTurn();
-      algoDefense.nextTurn();
-      algoDefense.nextTurn();
-      algoDefense.nextTurn();
-      algoDefense.nextTurn();
-      algoDefense.nextTurn();
-      algoDefense.nextTurn();
-      algoDefense.nextTurn();
-      algoDefense.nextTurn();
-      algoDefense.nextTurn();
-      algoDefense.nextTurn();
-      algoDefense.nextTurn();
-      algoDefense.nextTurn();
-      algoDefense.nextTurn();
-      algoDefense.nextTurn();
-      algoDefense.nextTurn();
-      algoDefense.nextTurn();
-      algoDefense.nextTurn();
-      algoDefense.nextTurn();
+      //Assert
+      assertTrue(anAnt.enemyDied());
     }
 
 
