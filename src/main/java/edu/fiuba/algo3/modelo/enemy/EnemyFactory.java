@@ -11,6 +11,6 @@ public class EnemyFactory {
         return new Spider(2, new Damage(2), 2);
     }
     public Enemy createAnt() {
-        return new Ant(1, new Damage(1), 2);
+        return new Ant(1, new Damage(1), 1);
     }
 }

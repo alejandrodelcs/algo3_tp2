@@ -1,10 +1,11 @@
 package edu.fiuba.algo3.entrega_1.model;
 import edu.fiuba.algo3.modelo.enemy.*;
 import edu.fiuba.algo3.modelo.exceptions.EnemyDoesNotExist;
+import edu.fiuba.algo3.modelo.damage.Damage;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
-public class EnemyTest {/*
+public class EnemyTest {
 
     @Test
     public void test01WhenInstancingAnAntItIsAlive() {
@@ -17,7 +18,7 @@ public class EnemyTest {/*
     public void test02AntIsAttackedAndItDies() {
         EnemyFactory enemyFactory = new EnemyFactory();
         Enemy anAnt = enemyFactory.createAnt();
-        anAnt.takeDamage(1);
+        anAnt.takeDamage(new Damage(1));
         assertTrue(anAnt.enemyDied());
     }
 
@@ -25,7 +26,7 @@ public class EnemyTest {/*
     public void test03AntAttackedStrongerDies() {
         EnemyFactory enemyFactory = new EnemyFactory();
         Enemy anAnt = enemyFactory.createAnt();
-        anAnt.takeDamage(2);
+        anAnt.takeDamage(new Damage(2));
         assertTrue(anAnt.enemyDied());
     }
 
@@ -40,7 +41,7 @@ public class EnemyTest {/*
     public void test05SpiderAttackedWithOneDamagePointIsAlive() {
         EnemyFactory enemyFactory = new EnemyFactory();
         Enemy aSpider = enemyFactory.createSpider();
-        aSpider.takeDamage(1);
+        aSpider.takeDamage(new Damage(1));
         assertFalse(aSpider.enemyDied());
     }
 
@@ -48,7 +49,7 @@ public class EnemyTest {/*
     public void test06SpiderAttackedWithTwoDamagePointsDies() {
         EnemyFactory enemyFactory = new EnemyFactory();
         Enemy aSpider = enemyFactory.createSpider();
-        aSpider.takeDamage(2);
+        aSpider.takeDamage(new Damage(2));
         assertTrue(aSpider.enemyDied());
     }
 
@@ -56,8 +57,8 @@ public class EnemyTest {/*
     public void test07SpiderAttackedWithOneDamagePointTwiceDies() {
         EnemyFactory enemyFactory = new EnemyFactory();
         Enemy aSpider = enemyFactory.createSpider();
-        aSpider.takeDamage(1);
-        aSpider.takeDamage(1);
+        aSpider.takeDamage(new Damage(1));
+        aSpider.takeDamage(new Damage(1));
         assertTrue(aSpider.enemyDied());
     }
 
@@ -65,15 +66,7 @@ public class EnemyTest {/*
     public void test08SpiderAttackedWithMoreThanTwoDamagePointsDies() {
         EnemyFactory enemyFactory = new EnemyFactory();
         Enemy aSpider = enemyFactory.createSpider();
-        aSpider.takeDamage(4);
+        aSpider.takeDamage(new Damage(4));
         assertTrue(aSpider.enemyDied());
     }
-
-    @Test
-    public void test09TryingToCreateADifferentEnemyThrowsException() {
-        EnemyFactory enemyFactory = new EnemyFactory();
-        assertThrows(EnemyDoesNotExist.class, () -> {
-            enemyFactory.createEnemy("Lechuza");
-        });
-    }*/
 }
