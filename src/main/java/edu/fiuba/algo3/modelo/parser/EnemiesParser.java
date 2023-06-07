@@ -27,9 +27,7 @@ public class EnemiesParser {
             Object obj = parser.parse(new FileReader(fileRelativeSource));
             return (JSONArray) obj;
 
-        } catch (FileNotFoundException e) {
-        } catch (IOException e) {
-        } catch (ParseException e) {
+        } catch (ParseException | IOException ignored) {
         }
         return error;
     }

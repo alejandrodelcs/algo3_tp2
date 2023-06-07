@@ -28,12 +28,9 @@ public class MapParser {
         try {
             Object obj = parser.parse(new FileReader(fileRelativeSource));
             JSONObject jsonObject = (JSONObject) obj;
-            JSONObject mapaObject = (JSONObject) jsonObject.get(fileName);
-            return mapaObject;
+            return (JSONObject) jsonObject.get(fileName);
 
-        } catch (FileNotFoundException e) {
-        } catch (IOException e) {
-        } catch (ParseException e) {
+        } catch (ParseException | IOException ignored) {
         }
         return error;
     }
