@@ -21,6 +21,7 @@ public class EnemiesParser {
         FileHandler fileHandler = new FileHandler(fileSource);
         this.fileRelativeSource = fileSource;
     }
+
     public JSONArray getArray() {
         JSONArray error = new JSONArray();
         JSONParser parser = new JSONParser();
