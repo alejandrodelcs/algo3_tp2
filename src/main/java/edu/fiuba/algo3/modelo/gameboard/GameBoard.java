@@ -2,6 +2,7 @@ package edu.fiuba.algo3.modelo.gameboard;
 import edu.fiuba.algo3.modelo.defense.Defense;
 import edu.fiuba.algo3.modelo.defense.Tower;
 import edu.fiuba.algo3.modelo.enemy.Enemy;
+import edu.fiuba.algo3.modelo.speed.Speed;
 
 
 import java.awt.*;
@@ -174,5 +175,5 @@ public class GameBoard {
         int finalY = (int) Math.round(enemyPath.get(enemyPath.size()-1).getY());
         return plots[finalY][finalX].enemiesInPlot();
     }
-                
+
 }
