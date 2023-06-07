@@ -30,7 +30,11 @@ public class Credit {
         quantity -= credit.getQuantity();
     }
 
-    public boolean areNegative() {
+    public boolean areNegative() { //TODO: bad coding practice you must ask true and positive
         return quantity < 0;
+    }
+
+    public boolean arePositive() {
+        return  quantity > 0;
     }
 }

@@ -1,6 +1,8 @@
 package edu.fiuba.algo3.entrega_1.model;
 
 import edu.fiuba.algo3.modelo.Credit;
+import edu.fiuba.algo3.modelo.damage.Damage;
+import edu.fiuba.algo3.modelo.exceptions.InsufficientCredits;
 import edu.fiuba.algo3.modelo.exceptions.InvalidPlayersName;
 import edu.fiuba.algo3.modelo.player.Player;
 import edu.fiuba.algo3.modelo.exceptions.PlayerIsDeadGameOver;
@@ -8,53 +10,32 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 public class PlayerTest {
-/*
+
     @Test
     public void whenNewGameIsOnPlayerHasTwentyLifePointsAndOneHundredCredits(){
         Player player = new Player("Player");
+        Damage tenDamage = new Damage(10);
+        Damage nineDamage = new Damage(9);
+        Damage deathDamage = new Damage(1);
+        Credit ninetyNineCredit = new Credit(99);
 
-        player.getsDamage(Ddamage);
-        player.getsDamage(9);
 
+        player.getsDamage(tenDamage);
         Assertions.assertTrue(player.isAlive());
-        Assertions.assertEquals(100, player.getPlayerCredits().getQuantity());//TODO: change get quantity test behavior
-    }
+        player.getsDamage(nineDamage);
+        player.subtractCredits(ninetyNineCredit);
 
-    @Test
-    public void playerGetsLifePointsReducedByTenPointDamage(){
-        Player player = new Player("Player");
+        Assertions.assertTrue(player.hasFunds());
+        Assertions.assertThrows(PlayerIsDeadGameOver.class,()-> player.getsDamage(deathDamage));
 
-        player.getsDamage(10);
-
-        Assertions.assertTrue(player.isAlive());
-    }
-
-    @Test
-    public void whenPlayerGetsChargedWithTenCreditsPlayerShouldEndUpWithNinetyCredits(){
-        Player player = new Player("Player");
-        Credit credit = new Credit(10);
-
-        player.getsCredit(credit);
-
-        Assertions.assertEquals(90, player.getPlayerCredits().getQuantity());//TODO: test behaviour
-    }
-
-    @Test
-    public void whenPlayerEarnsTenCreditsPlayerShouldEndUpWithAHoundredAndTenCredits(){
-        Player player = new Player("Player");
-        Credit credit = new Credit(10);
-
-
-        player.chargedCredits(credit);
-
-        Assertions.assertEquals(110,player.getPlayerCredits().getQuantity());
     }
 
     @Test
     public void whenPlayerHasZeroLivePointsPlayerHasLost(){
         Player player = new Player("Player");
+        Damage deathDamage = new Damage(100);
 
-        Assertions.assertThrows(PlayerIsDeadGameOver.class,()-> player.getsDamage(20));
+        Assertions.assertThrows(PlayerIsDeadGameOver.class,()-> player.getsDamage(deathDamage));
 
     }
     @Test
@@ -65,6 +46,8 @@ public class PlayerTest {
         player.buildsADefense(whiteTower,gameboardStub);
 
         Assertions.assertEquals(90, player.getPlayerCredits() );
+
+       */
     }
     @Test
     public void CreatePlayerWithInvalidNameShouldThrowRuntimeError(){
@@ -72,5 +55,5 @@ public class PlayerTest {
         Assertions.assertThrows(InvalidPlayersName.class,()-> new Player("Roy"));
 
     }
-    */
+
 }

@@ -1,4 +1,4 @@
-package edu.fiuba.algo3.parser;
+package edu.fiuba.algo3.modelo.parser;
 
 import edu.fiuba.algo3.modelo.enemy.Enemy;
 import edu.fiuba.algo3.modelo.enemy.EnemyFactory;
