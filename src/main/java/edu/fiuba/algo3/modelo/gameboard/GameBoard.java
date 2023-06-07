@@ -26,8 +26,8 @@ public class GameBoard {
         Plot plotToCheck = plots[x][y];
         return plotToCheck.readyToBuild();
     }
-    public void buildDefense(Tower tower, Point coordinates){
-
+    public void buildDefense(Tower tower){
+        Point coordinates = tower.getPoint();
         int x = (int) Math.round(coordinates.getX());
         int y = (int) Math.round(coordinates.getY());
         Plot plotToCheck = plots[x][y];

@@ -3,6 +3,7 @@ package edu.fiuba.algo3.modelo;
 import edu.fiuba.algo3.modelo.damage.Damage;
 import edu.fiuba.algo3.modelo.defense.Tower;
 import edu.fiuba.algo3.modelo.defense.TowerFactory;
+import edu.fiuba.algo3.modelo.defense.WhiteTowerFactory;
 import edu.fiuba.algo3.modelo.enemy.Enemy;
 import edu.fiuba.algo3.modelo.enemy.EnemyFactory;
 import edu.fiuba.algo3.modelo.exceptions.InsufficientCredits;
@@ -31,7 +32,6 @@ public class AlgoDefense {
         this.towers = new ArrayList<Tower>();
         this.enemyStrategy = new EnemyFacade().loadEnemiesStrategy();
         this.turn = new Turn(enemyStrategy);
-        this.towerFactory = new TowerFactory();
         this.enemyFactory = new EnemyFactory();
 
     }
@@ -43,19 +43,17 @@ public class AlgoDefense {
         gameboard.printMap();
         damageThePlayer();
     }
-    public void buildsATower(Point coordinatesPosibleConstruction, String typeOfTower) {
+    public void buildsATower(Tower tower) {
 
-        if(!gameboard.availableForBuilding(coordinatesPosibleConstruction)){
+        if(!gameboard.availableForBuilding(tower.getPoint())){
             throw new NonConstructibleArea();
         }
-
-        Tower tower = towerFactory.createTower(typeOfTower, coordinatesPosibleConstruction);//TODO: here the player select what to build
 
         if(!canPlayerBuyTower(tower)){
             throw new InsufficientCredits();
         }
         player.subtractCredits(tower.getCredits());
-        gameboard.buildDefense(tower, coordinatesPosibleConstruction);
+        gameboard.buildDefense(tower);
         towers.add(tower);
     }
     public void spawnAnEnemy(ArrayList<Enemy> enemyArrayList){

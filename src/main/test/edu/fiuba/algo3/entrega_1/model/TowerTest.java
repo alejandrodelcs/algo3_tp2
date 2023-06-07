@@ -16,40 +16,37 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 public class TowerTest {
-    @Test
-    public void test01TryingToCreateADifferentEnemyThrowsExceptions() {
-        TowerFactory factory = new TowerFactory();
-        Point cordenates = new Point(3,3);
-        assertThrows(TowerDoesNotExist.class, () -> {factory.createTower("BlackTower",cordenates);
-        });
-    }
-/*    @Test
+
+  @Test
     void test02NewWhiteTowerCannotAttackTheEnemy() {
 
-        TowerFactory factory = new TowerFactory();
+        TowerFactory factory = new WhiteTowerFactory();
         Point cordenates = new Point(3,3);
-        Tower WhiteTower = factory.createTower("WhiteTower",cordenates);
+        Tower WhiteTower = factory.createTower(cordenates);
         Enemy enemy = mock(Ant.class);
 
-        assertThrows(TowerIsUnderConstruction.class,()->{WhiteTower.attack(enemy);});
-    }*/
-/*    @Test
+        WhiteTower.attack(enemy);
+        Assertions.assertFalse(enemy.enemyDied());
+    }
+    @Test
     void test03NewSilverTowerCannotAttackTheEnemy() {
-        TowerFactory factory = new TowerFactory();
+        TowerFactory factory = new SilverTowerFactory();
         Point cordenates = new Point(3,3);
-        Tower SilverTower = factory.createTower("SilverTower",cordenates);
+        Tower SilverTower = factory.createTower(cordenates);
         Enemy enemy = mock(Ant.class);
 
-       assertThrows(TowerIsUnderConstruction.class,()->{SilverTower.attack(enemy);});
-    }*/
+        SilverTower.attack(enemy);
+        Assertions.assertFalse(enemy.enemyDied());
+    }
 
     @Test
     void test06WhiteTowerAttackWhenEnemyIsWithinRangeEnemyTakesDamage() {
         EnemyFactory factoryEnemies = new EnemyFactory();
         Enemy ant = factoryEnemies.createEnemy("Ant");
-        TowerFactory factory = new TowerFactory();
+
         Point cordenates = new Point(3,3);
-        Tower WhiteTower = factory.createTower("WhiteTower",cordenates);
+        TowerFactory factory = new WhiteTowerFactory();
+        Tower WhiteTower = factory.createTower(cordenates);
 
         WhiteTower.constructionFinished();
         WhiteTower.attack(ant);
@@ -61,9 +58,10 @@ public class TowerTest {
     void test07SilverTowerAttackWhenEnemyIsWithinRangeEnemyTakesDamage() {
         EnemyFactory factoryEnemies = new EnemyFactory();
         Enemy spider = factoryEnemies.createEnemy("Spider");
-        TowerFactory factory = new TowerFactory();
+
+        TowerFactory factory = new SilverTowerFactory();
         Point cordenates = new Point(3,3);
-        Tower SilverTower = factory.createTower("SilverTower",cordenates);
+        Tower SilverTower = factory.createTower(cordenates);
 
         SilverTower.constructionFinished();
         SilverTower.attack(spider);
