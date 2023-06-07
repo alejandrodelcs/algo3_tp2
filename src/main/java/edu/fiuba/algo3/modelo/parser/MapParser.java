@@ -1,4 +1,4 @@
-package edu.fiuba.algo3.modelo.parser;
+package edu.fiuba.algo3.parser;
 import edu.fiuba.algo3.modelo.gameboard.*;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
