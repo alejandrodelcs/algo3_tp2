@@ -11,6 +11,7 @@ import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
 import java.awt.*;
+import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
@@ -18,53 +19,61 @@ import static org.mockito.Mockito.*;
 public class TowerTest {
 
   @Test
-    void test02NewWhiteTowerCannotAttackTheEnemy() {
+    void test01NewWhiteTowerCannotAttackTheEnemy() {
 
         TowerFactory factory = new WhiteTowerFactory();
         Point cordenates = new Point(3,3);
         Tower WhiteTower = factory.createTower(cordenates);
         Enemy enemy = mock(Ant.class);
+        ArrayList<Enemy> enemies = new ArrayList<>();
+        enemies.add(enemy);
 
-        WhiteTower.attack(enemy);
+        WhiteTower.attack(enemies);
         Assertions.assertFalse(enemy.enemyDied());
     }
     @Test
-    void test03NewSilverTowerCannotAttackTheEnemy() {
+    void test02NewSilverTowerCannotAttackTheEnemy() {
         TowerFactory factory = new SilverTowerFactory();
         Point cordenates = new Point(3,3);
         Tower SilverTower = factory.createTower(cordenates);
         Enemy enemy = mock(Ant.class);
+        ArrayList<Enemy> enemies = new ArrayList<>();
+        enemies.add(enemy);
 
-        SilverTower.attack(enemy);
+        SilverTower.attack(enemies);
         Assertions.assertFalse(enemy.enemyDied());
     }
 
     @Test
-    void test06WhiteTowerAttackWhenEnemyIsWithinRangeEnemyTakesDamage() {
+    void test03WhiteTowerAttackWhenEnemyIsWithinRangeEnemyTakesDamage() {
         EnemyFactory factoryEnemies = new EnemyFactory();
         Enemy ant = factoryEnemies.createEnemy("Ant");
 
         Point cordenates = new Point(3,3);
         TowerFactory factory = new WhiteTowerFactory();
         Tower WhiteTower = factory.createTower(cordenates);
+        ArrayList<Enemy> enemies = new ArrayList<>();
+        enemies.add(ant);
 
         WhiteTower.constructionFinished();
-        WhiteTower.attack(ant);
+        WhiteTower.attack(enemies);
 
         Assertions.assertTrue(ant.enemyDied());
     }
 
     @Test
-    void test07SilverTowerAttackWhenEnemyIsWithinRangeEnemyTakesDamage() {
+    void test04SilverTowerAttackWhenEnemyIsWithinRangeEnemyTakesDamage() {
         EnemyFactory factoryEnemies = new EnemyFactory();
         Enemy spider = factoryEnemies.createEnemy("Spider");
+        ArrayList<Enemy> enemies = new ArrayList<>();
+        enemies.add(spider);
 
         TowerFactory factory = new SilverTowerFactory();
         Point cordenates = new Point(3,3);
         Tower SilverTower = factory.createTower(cordenates);
 
         SilverTower.constructionFinished();
-        SilverTower.attack(spider);
+        SilverTower.attack(enemies);
 
         Assertions.assertTrue(spider.enemyDied());
     }

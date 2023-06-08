@@ -33,28 +33,15 @@ public class GameBoard {
         Plot plotToCheck = plots[x][y];
         plotToCheck.setDefense(tower);
     }
-    public ArrayList<Enemy> getEnemies(Tower tower){
+    public ArrayList<Enemy> getEnemies(){
         ArrayList<Enemy> enemies = new ArrayList<Enemy>();
         for (Point point:enemyPath) {
-
             Plot plotToCheck = plots[point.y][point.x];
-            enemies.addAll();
+            enemies.addAll(plotToCheck.enemiesInPlot());
         }
         return enemies;
     }
-    public ArrayList<Plot> expectedRange(int range, Point coordinates) {
-        ArrayList<Plot> pathInRange = new ArrayList<Plot>();
 
-        for (Point point: enemyPath) {
-            double distance = 0;
-            distance = point.distance(coordinates.getX(),coordinates.getY());
-            if(distance <= range){
-
-                pathInRange.add(plotToCheck);
-            }
-        }
-        return pathInRange;
-    }
     public void spawnEnemy(ArrayList<Enemy> enemyArrayList){
         int x = (int) Math.round(enemyPath.get(0).getX());
         int y = (int) Math.round(enemyPath.get(0).getY());
