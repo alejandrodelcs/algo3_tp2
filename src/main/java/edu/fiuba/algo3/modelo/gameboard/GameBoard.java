@@ -162,10 +162,9 @@ public class GameBoard {
             if (!shouldClear && (x != lastX || y != lastY)) {
                 shouldClear = true;
             }
-            if (enemyPath.get(enemyPath.size() - 1).getX() != x || enemyPath.get(enemyPath.size() - 1).getY() != y) {
-                plots[y][x].enemiesInPlot().clear();
-            }
-            pathListIndex--;
+        }
+        if (shouldClear) {
+            plots[(int) lastY][(int) lastX].enemiesInPlot().clear();
         }
     }
 
