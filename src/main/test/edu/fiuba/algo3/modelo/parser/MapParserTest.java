@@ -34,25 +34,4 @@ class MapParserTest {
         }
     }
 
-/*
-        boolean startImpresion = false;
-
-        Iterator<String> keys = Obj.keySet().iterator();
-        while (keys.hasNext()) {
-            String key = keys.next();
-
-            if (key.equals("1")) {
-                startImpresion = true;
-            }
-
-            if (startImpresion) {
-                JSONArray rowArray = (JSONArray) Obj.get(key);
-                    System.out.println(rowArray);
-            }
-
-        }
-
- */
-
-
 }

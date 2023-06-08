@@ -6,13 +6,13 @@
     <version>0.0.1</version>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.source>17</maven.compiler.source>
-        <maven.compiler.target>17</maven.compiler.target>
-        <junit.jupiter.version>5.9.2</junit.jupiter.version>
-        <mockito-mockito-core-version>5.2.0</mockito-mockito-core-version>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
+        <junit.jupiter.version>5.4.0</junit.jupiter.version>
+        <mockito-mockito-core-version>3.3.0</mockito-mockito-core-version>
         <maven-surefire-version>3.0.0-M3</maven-surefire-version>
-        <archunit-version>1.0.0</archunit-version>
-        <javafx-version>21-ea+17</javafx-version>
+        <archunit-version>0.21.0</archunit-version>
+        <javafx-version>15.0.1</javafx-version>
         <main-class>edu.fiuba.algo3.Main</main-class>
     </properties>
     <dependencies>
@@ -42,12 +42,7 @@
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-simple</artifactId>
-            <version>2.0.5</version>
-        </dependency>
-        <dependency>
-            <groupId>org.gaixie.json</groupId>
-            <artifactId>json</artifactId>
-            <version>1.0.0</version>
+            <version>1.7.30</version>
         </dependency>
         <dependency>
             <groupId>com.googlecode.json-simple</groupId>
@@ -94,8 +89,7 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.8.0</version>
                 <configuration>
-                    <source>17</source>
-                    <target>17</target>
+                    <release>11</release>
                 </configuration>
             </plugin>
             <plugin>
@@ -131,7 +125,6 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>${maven-surefire-version}</version>
                 <configuration>
-                    <!--suppress UnresolvedMavenProperty -->
                     <argLine>${argLine} -XX:MaxPermSize=256m</argLine>
                 </configuration>
             </plugin>
