@@ -11,16 +11,14 @@ public abstract class Tower {
     protected Credit credits;
     protected Damage damage;
     protected State state;
-    protected Point point;
+    protected Point coordinates;
     protected Range rangeAttack;
-
-
 
     public Tower(Credit credits, Range rangeAttack, Damage damage, int constructionTurns,Point cordinatesTower){
         this.credits = credits;
         this.damage = damage;
         this.state = new ConstructionState(constructionTurns);
-        this.point = cordinatesTower;
+        this.coordinates = cordinatesTower;
         this.rangeAttack = rangeAttack;
     }
 
@@ -33,12 +31,10 @@ public abstract class Tower {
     public Damage getDamage() {
         return damage;
     }
-
     public void attack(ArrayList<Enemy> enemies){
             state.Attack(this,enemies);}
 
     public Point getPoint() {
-        return point;
+        return coordinates;
     }
-
 }
