@@ -8,6 +8,6 @@ import java.awt.*;
 public class WhiteTowerFactory implements TowerFactory{
     @Override
     public Tower createTower(Point cordinates) {
-        return new WhiteTower( new Credit(10),3,new Damage(1),1,cordinates);
+        return new WhiteTower( new Credit(10),new Range(3),new Damage(1),1,cordinates);
     }
 }

@@ -33,13 +33,14 @@ public class GameBoard {
         Plot plotToCheck = plots[x][y];
         plotToCheck.setDefense(tower);
     }
-    public ArrayList<Enemy> enemiesInRange(Tower tower){
-        ArrayList<Enemy> enemiesInrange = new ArrayList<Enemy>();
-        ArrayList<Plot> pathsInRange = expectedRange(tower.getRange(),tower.getPoint());
-        for (Plot path:pathsInRange) {
-            enemiesInrange.addAll(path.enemiesInPlot());
+    public ArrayList<Enemy> getEnemies(Tower tower){
+        ArrayList<Enemy> enemies = new ArrayList<Enemy>();
+        for (Point point:enemyPath) {
+
+            Plot plotToCheck = plots[point.y][point.x];
+            enemies.addAll();
         }
-        return enemiesInrange;
+        return enemies;
     }
     public ArrayList<Plot> expectedRange(int range, Point coordinates) {
         ArrayList<Plot> pathInRange = new ArrayList<Plot>();
@@ -48,7 +49,7 @@ public class GameBoard {
             double distance = 0;
             distance = point.distance(coordinates.getX(),coordinates.getY());
             if(distance <= range){
-                Plot plotToCheck = plots[point.y][point.x];
+
                 pathInRange.add(plotToCheck);
             }
         }
@@ -124,13 +125,4 @@ public class GameBoard {
         return plots[finalY][finalX].enemiesInPlot();
     }
 
-    public boolean towerOperatingInPlot(Point coordinates) {
-        int finalX = (int) Math.round(coordinates.getX());
-        int finalY = (int) Math.round(coordinates.getY());
-        Tower defense = plots[finalX][finalY].getDefense();
-        if (defense == null){
-            return false;
-        }
-        return defense.isItBuild();
-    }
 }

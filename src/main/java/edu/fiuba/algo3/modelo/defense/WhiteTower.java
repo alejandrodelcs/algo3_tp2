@@ -7,7 +7,7 @@ import java.awt.*;
 
 public class WhiteTower extends Tower{
 
-    public WhiteTower(Credit credit, int rangeAttack,Damage damage,int constructionTurns, Point cordinatesTower){
+    public WhiteTower(Credit credit, Range rangeAttack, Damage damage, int constructionTurns, Point cordinatesTower){
         super(credit,rangeAttack,damage,constructionTurns, cordinatesTower);}
 
 }

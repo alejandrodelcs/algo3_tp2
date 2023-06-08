@@ -23,15 +23,13 @@ public class Turn {
     }
 
     public void updateTowers(ArrayList<Tower> towers, GameBoard gameBoard, Player player) {
+        ArrayList<Enemy> enemies = gameBoard.getEnemies();
         for(Tower singleTower: towers ){
-            ArrayList<Enemy> enemiesInRange = gameBoard.enemiesInRange(singleTower);
-            for (Enemy enemy: enemiesInRange
-                 ) {
-                singleTower.attack(enemy);
-                if(enemy.enemyDied()){
+                singleTower.attack(enemies);
+                /*if(enemy.enemyDied()){
                     player.chargeCredits(enemy.generateCredits());
-                }
-            }
+                }*/
+            //TODO: Check if the enemy is dead outside of this function for the credit refund
         }
     }
     public int getTurn(){

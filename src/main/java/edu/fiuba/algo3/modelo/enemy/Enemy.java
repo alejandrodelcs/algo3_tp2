@@ -29,6 +29,8 @@ public abstract class Enemy implements Cloneable{
         return damage;
     }
 
+    public Point getPoint(){return enemyCoordinates;}
+
     public Health getHealth() {
         return health;
     }

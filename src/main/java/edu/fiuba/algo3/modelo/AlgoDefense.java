@@ -73,11 +73,6 @@ public class AlgoDefense {
         }
     }
 
-
-    public boolean towerOperatingInPLot(Point coordinates) {
-        return gameboard.towerOperatingInPlot(coordinates);
-    }
-
     public void loadEnemies() {
         //TODO: can pick a random JSON file REF
         //this.gameboard = new GameboardFacade().loadMap();

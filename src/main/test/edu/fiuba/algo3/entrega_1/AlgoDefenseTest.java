@@ -80,7 +80,7 @@ public class AlgoDefenseTest {
 
 
         //Assert
-        assertTrue(algoDefense.towerOperatingInPLot(coordinatesToADirt));
+        //assertTrue(algoDefense.towerOperatingInPLot(coordinatesToADirt));
         //assertTrue(algoDefense.towerOperatingInPLot(coordinatesToADirt0));
     }
 

@@ -6,14 +6,16 @@ import edu.fiuba.algo3.modelo.exceptions.EnemyIsOutOfRange;
 import java.util.ArrayList;
 
 public class OperationalState implements State{
-    @Override
-    public void Attack(Tower tower, Enemy enemy){
-       enemy.takeDamage(tower.getDamage());
+    private Range rangeAttack;
+    public OperationalState(Range range){
+        this.rangeAttack = range;
     }
     @Override
-    public boolean isItBuild(){
-        return true;
+    public void Attack(Tower tower, ArrayList<Enemy> enemies){
+        for (Enemy enemy:enemies
+             ) {
+            rangeAttack.isInRange(tower,enemy);
+        }
     }
-
 
 }
