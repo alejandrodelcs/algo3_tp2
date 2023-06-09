@@ -45,8 +45,14 @@ public class GameBoard {
     public void spawnEnemy(ArrayList<Enemy> enemyArrayList){
         int x = (int) Math.round(enemyPath.get(0).getX());
         int y = (int) Math.round(enemyPath.get(0).getY());
+        Point point = new Point(y,x);
         this.plots[y][x].setEnemy(enemyArrayList);
-
+        if (!(enemyArrayList ==null)){
+            for (Enemy enemy:enemyArrayList
+                 ) {
+                enemy.updateCoordinates(point);
+            }
+        }
     }
     public ArrayList<Point> constructPath(){
         enemyPath = new ArrayList<Point>();
@@ -90,6 +96,7 @@ public class GameBoard {
                     int newY = (int) Math.round(newPathCoordinates.getY());
                     if(!(enemy.enemyDied())) {
                         plots[newY][newX].addEnemyToPath(enemy);
+                        enemy.updateCoordinates(new Point(newY,newX));
                     }
                 } else {
                     if ((listEnemyIndex - enemyPath.size() + 1) < enemy.getSpeed()) {
@@ -97,6 +104,7 @@ public class GameBoard {
                         int newX = (int) Math.round(newPathCoordinates.getX());
                         int newY = (int) Math.round(newPathCoordinates.getY());
                         plots[newY][newX].addEnemyToPath(enemy);
+                        enemy.updateCoordinates(new Point(newY, newX));
                     }
                 }
             }

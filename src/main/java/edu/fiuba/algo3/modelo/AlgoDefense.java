@@ -22,7 +22,6 @@ public class AlgoDefense {
     private GameBoard gameboard;
     private Turn turn;
     private Dictionary enemyStrategy;
-    private TowerFactory towerFactory;
     private EnemyFactory enemyFactory;
     private ArrayList<Tower> towers;
 

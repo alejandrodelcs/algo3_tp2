@@ -14,7 +14,9 @@ public class OperationalState implements State{
     public void Attack(Tower tower, ArrayList<Enemy> enemies){
         for (Enemy enemy:enemies
              ) {
-            rangeAttack.isInRange(tower,enemy);
+                if (rangeAttack.isInRange(tower,enemy)) {
+                    enemy.takeDamage(tower.getDamage());
+                }
         }
     }
 

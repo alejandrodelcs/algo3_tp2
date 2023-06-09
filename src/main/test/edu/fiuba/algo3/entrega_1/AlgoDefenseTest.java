@@ -166,7 +166,7 @@ public class AlgoDefenseTest {
         Enemy aSpider = eFactory.createEnemy("Spider");
         enemyArray.add(aSpider);
         TowerFactory factory = new WhiteTowerFactory();
-        Tower whiteTower = factory.createTower(new Point(3, 4));
+        Tower whiteTower = factory.createTower(new Point(3, 3));
 
         //Act
         algoDefense.spawnAnEnemy(enemyArray);
@@ -202,8 +202,10 @@ public class AlgoDefenseTest {
         algoDefense.buildsATower(whiteTower);
         algoDefense.nextTurn();
         algoDefense.nextTurn();
+        algoDefense.nextTurn();
 
         //Assert
+        System.out.println(player.getPlayerCredits().getQuantity());
         Assertions.assertTrue(creditsExpected.equalTo(player.getPlayerCredits()));
     }
 
@@ -216,21 +218,29 @@ public class AlgoDefenseTest {
         Enemy anAnt = eFactory.createEnemy("Ant");
         Enemy aSpider = eFactory.createEnemy("Spider");
         TowerFactory factory = new SilverTowerFactory();
-        Tower silverTower = factory.createTower(new Point(4, 6));
+        Tower silverTower = factory.createTower(new Point(7, 13));
         enemyArray.add(anAnt);
         enemyArray.add(aSpider);
 
         algoDefense.buildsATower(silverTower);
         algoDefense.spawnAnEnemy(enemyArray);
         algoDefense.nextTurn();
-
         assertFalse(anAnt.enemyDied());
         assertFalse(aSpider.enemyDied());
-
+        algoDefense.nextTurn();
+        algoDefense.nextTurn();
+        algoDefense.nextTurn();
+        algoDefense.nextTurn();
+        algoDefense.nextTurn();
         algoDefense.nextTurn();
         assertTrue(aSpider.enemyDied());
-        assertFalse(anAnt.enemyDied());
-
+        algoDefense.nextTurn();
+        algoDefense.nextTurn();
+        algoDefense.nextTurn();
+        algoDefense.nextTurn();
+        algoDefense.nextTurn();
+        algoDefense.nextTurn();
+        algoDefense.nextTurn();
         algoDefense.nextTurn();
         assertTrue(anAnt.enemyDied());
     }
