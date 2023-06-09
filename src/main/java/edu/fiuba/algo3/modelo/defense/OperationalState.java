@@ -12,12 +12,13 @@ public class OperationalState implements State{
     }
     @Override
     public void Attack(Tower tower, ArrayList<Enemy> enemies){
-        for (Enemy enemy:enemies
-             ) {
-                if (rangeAttack.isInRange(tower,enemy)) {
-                    enemy.takeDamage(tower.getDamage());
-                }
+        int i = enemies.size() - 1;
+        while (i >= 0 && !rangeAttack.isInRange(tower, enemies.get(i))) {
+            i--;
+        }
+        if (i >= 0) {
+            Enemy enemy = enemies.get(i);
+            enemy.takeDamage(tower.getDamage());
         }
     }
-
 }

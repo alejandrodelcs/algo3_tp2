@@ -173,6 +173,7 @@ public class AlgoDefenseTest {
         algoDefense.buildsATower(whiteTower);
         algoDefense.nextTurn();
         algoDefense.nextTurn();
+        algoDefense.nextTurn();
 
         //Assert
         Assertions.assertTrue(anAnt.enemyDied());
@@ -196,7 +197,7 @@ public class AlgoDefenseTest {
         AlgoDefense algoDefense = new AlgoDefense(player);
         Credit creditsExpected = new Credit(91);
         TowerFactory factory = new WhiteTowerFactory();
-        Tower whiteTower = factory.createTower(new Point(4, 0));
+        Tower whiteTower = factory.createTower(new Point(2, 3));
 
         //Act
         algoDefense.buildsATower(whiteTower);
@@ -205,7 +206,6 @@ public class AlgoDefenseTest {
         algoDefense.nextTurn();
 
         //Assert
-        System.out.println(player.getPlayerCredits().getQuantity());
         Assertions.assertTrue(creditsExpected.equalTo(player.getPlayerCredits()));
     }
 
@@ -234,6 +234,9 @@ public class AlgoDefenseTest {
         algoDefense.nextTurn();
         algoDefense.nextTurn();
         assertTrue(aSpider.enemyDied());
+        algoDefense.nextTurn();
+        algoDefense.nextTurn();
+        algoDefense.nextTurn();
         algoDefense.nextTurn();
         algoDefense.nextTurn();
         algoDefense.nextTurn();
