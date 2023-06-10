@@ -2,6 +2,7 @@ package edu.fiuba.algo3.modelo.gameboard;
 import edu.fiuba.algo3.modelo.damage.Damage;
 import edu.fiuba.algo3.modelo.defense.Tower;
 import edu.fiuba.algo3.modelo.enemy.Enemy;
+import edu.fiuba.algo3.modelo.speed.Speed;
 
 
 import java.awt.*;
@@ -54,7 +55,7 @@ public class GameBoard {
             }
         }
     }
-    public ArrayList<Point> constructPath(){
+   public ArrayList<Point> constructPath(){
         enemyPath = new ArrayList<Point>();
         Plot aPath = new Path();
         for (int i = 0; i < plots.length; i++) {
@@ -73,51 +74,50 @@ public class GameBoard {
 //        }
         return enemyPath;
     }
+
     public void printMap(){
-        for (int i = 0; i < plots.length; i++) {
-            for (int j = 0; j < plots[i].length; j++) {
-                System.out.print(plots[i][j].display());
+        for (Object[] row : plots) {
+            for (Object plot : row) {
+                System.out.print(((Plot) plot).display());
             }
             System.out.println();
         }
     }
-    public void moveEnemies(){
-        int pathListIndex = enemyPath.size() - 1;
 
-        for (int i = (enemyPath.size() - 1); i >= 0; i--) {
-            int x = (int) Math.round(enemyPath.get(i).getX());
-            int y = (int) Math.round(enemyPath.get(i).getY());
-            ArrayList<Enemy> enemiesInPath = new ArrayList<>(plots[y][x].enemiesInPlot());
-            for (Enemy enemy : enemiesInPath) {
-                int listEnemyIndex = pathListIndex + enemy.getSpeed();
-                if (listEnemyIndex <= enemyPath.size() - 1) {
-                    Point newPathCoordinates = enemyPath.get(listEnemyIndex);
-                    int newX = (int) Math.round(newPathCoordinates.getX());
-                    int newY = (int) Math.round(newPathCoordinates.getY());
-                    if(!(enemy.enemyDied())) {
-                        plots[newY][newX].addEnemyToPath(enemy);
-                        enemy.updateCoordinates(new Point(newY,newX));
-                    }
-                } else {
-                    if ((listEnemyIndex - enemyPath.size() + 1) < enemy.getSpeed()) {
-                        Point newPathCoordinates = enemyPath.get(enemyPath.size() - 1);
-                        int newX = (int) Math.round(newPathCoordinates.getX());
-                        int newY = (int) Math.round(newPathCoordinates.getY());
-                        plots[newY][newX].addEnemyToPath(enemy);
-                        enemy.updateCoordinates(new Point(newY, newX));
-                    }
+    public void moveEnemies() {
+        long lastX = Math.round(enemyPath.get(enemyPath.size() - 1).getX());
+        long lastY = Math.round(enemyPath.get(enemyPath.size() - 1).getY());
+        boolean shouldClear = false;
+        for (int i = enemyPath.size() - 1; i > 0; i--) {
+            long x = Math.round(enemyPath.get(i).getX());
+            long y = Math.round(enemyPath.get(i).getY());
+            for (Enemy enemy : plots[(int) y][(int) x].enemiesInPlot()) {
+                Plot enemyCoordinates = enemy.updateCoordinates(i, enemyPath, plots);
+                if (!enemy.enemyDied()) {
+                    enemyCoordinates.addEnemyToPath(enemy);
                 }
             }
-            if (enemyPath.get(enemyPath.size() - 1).getX() != x || enemyPath.get(enemyPath.size() - 1).getY() != y) {
-                plots[y][x].enemiesInPlot().clear();
+            if (!shouldClear && (x != lastX || y != lastY)) {
+                shouldClear = true;
             }
-            pathListIndex--;
+        }
+        if (shouldClear) {
+            plots[(int) lastY][(int) lastX].enemiesInPlot().clear();
         }
     }
+
+
     public ArrayList<Enemy> getEnemiesInThelastPath(){
         int finalX = (int) Math.round(enemyPath.get(enemyPath.size()-1).getX());
         int finalY = (int) Math.round(enemyPath.get(enemyPath.size()-1).getY());
         return plots[finalY][finalX].enemiesInPlot();
     }
 
+
+    public boolean towerOperatingInPlot(Point coordinates) {
+        int x = (int) coordinates.getX();
+        int y = (int) coordinates.getY();
+        Tower defense = plots[x][y].getDefense();
+        return defense != null && defense.isItBuild();
+    }
 }
