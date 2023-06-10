@@ -11,7 +11,7 @@ public class Range {
     public Range(int range){
         this.distance = range;}
 
-    public boolean isInRange(Tower tower, Enemy enemy){
-        return ( tower.getPoint().distance(enemy.getPoint()) <= distance );
+    public boolean isInRange(Defense defense, Enemy enemy){
+        return ( defense.getPoint().distance(enemy.getPoint()) <= distance );
     }
 }

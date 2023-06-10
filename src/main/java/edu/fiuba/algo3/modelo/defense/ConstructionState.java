@@ -7,15 +7,15 @@ import java.util.ArrayList;
 public class ConstructionState implements State {
 
     private int remainingConstructionTurns;
-    public ConstructionState(int towerConstructionTurns){
-        this.remainingConstructionTurns = towerConstructionTurns;
+    public ConstructionState(int defenseConstructionTurns){
+        this.remainingConstructionTurns = defenseConstructionTurns;
     }
     @Override
-    public void attack(Tower tower, ArrayList<Enemy> enemies){
+    public void attack(Defense defense, ArrayList<Enemy> enemies){
         remainingConstructionTurns -= 1;
         if(remainingConstructionTurns < 0){
-            tower.constructionFinished();
-            tower.attack(enemies);
+            defense.constructionFinished();
+            defense.attack(enemies);
         }
     }
 

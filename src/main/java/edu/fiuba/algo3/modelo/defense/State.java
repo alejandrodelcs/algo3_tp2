@@ -6,6 +6,5 @@ import edu.fiuba.algo3.modelo.enemy.Enemy;
 import java.util.ArrayList;
 
 public interface State {
-    void attack(Tower tower, ArrayList<Enemy> enemies);
-
+    void attack(Defense defense,ArrayList<Enemy> enemies);
 }

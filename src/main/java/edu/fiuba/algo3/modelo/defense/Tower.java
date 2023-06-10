@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.modelo.defense;
 
 import edu.fiuba.algo3.modelo.Credit;
+import edu.fiuba.algo3.modelo.attack.SimpleRangeAttack;
 import edu.fiuba.algo3.modelo.damage.Damage;
 import edu.fiuba.algo3.modelo.enemy.Enemy;
 
@@ -9,8 +10,6 @@ import java.awt.*;
 import java.util.ArrayList;
 
 public abstract class Tower extends Defense{
-
-    protected Damage damage;
 
     protected Range rangeAttack;
 
@@ -23,12 +22,7 @@ public abstract class Tower extends Defense{
     }
 
     public void constructionFinished (){
-        state = new OperationalState(rangeAttack);
+        state = new OperationalState(new SimpleRangeAttack(rangeAttack));
     }
 
-    public Damage getDamage() {
-        return damage;
-    }
-    public void attack(ArrayList<Enemy> enemies){
-        state.attack(this,enemies);}
 }
