@@ -8,11 +8,10 @@ import edu.fiuba.algo3.modelo.enemy.Enemy;
 import java.awt.*;
 import java.util.ArrayList;
 
-public abstract class Tower {
-    protected Credit credits;
+public abstract class Tower extends Defense{
+
     protected Damage damage;
-    protected State state;
-    protected Point coordinates;
+
     protected Range rangeAttack;
 
     public Tower(Credit credits, Range rangeAttack, Damage damage, int constructionTurns,Point cordinatesTower){
@@ -26,16 +25,10 @@ public abstract class Tower {
     public void constructionFinished (){
         state = new OperationalState(rangeAttack);
     }
-    public Credit getCredits() {
-        return credits;
-    }
+
     public Damage getDamage() {
         return damage;
     }
     public void attack(ArrayList<Enemy> enemies){
-            state.attack(this,enemies);}
-
-    public Point getPoint() {
-        return coordinates;
-    }
+        state.Attack(this,enemies);}
 }
