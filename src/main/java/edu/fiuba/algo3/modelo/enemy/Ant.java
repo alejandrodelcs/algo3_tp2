@@ -34,8 +34,9 @@ public class Ant extends Enemy {
     }
 
     @Override
-    public  Plot updateCoordinates(int positionInPath, ArrayList<Point> enemyPath, Plot[][] plots){
-        return speed.enemyCoordinatesVelocityCalculator(positionInPath, enemyPath, plots);
+    public Point updateCoordinates(int positionInPath, ArrayList<Point> enemyPath, Plot[][] plots){
+        enemyCoordinates = speed.enemyCoordinatesVelocityCalculator(positionInPath, enemyPath, plots);
+        return enemyCoordinates;
     }
 }
 

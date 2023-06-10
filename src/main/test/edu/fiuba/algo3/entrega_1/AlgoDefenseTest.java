@@ -140,7 +140,7 @@ public class AlgoDefenseTest {
       AlgoDefense algoDefense = new AlgoDefense(player);
       ArrayList<Enemy> enemyArray = new ArrayList<Enemy>();
       EnemyFactory eFactory = new EnemyFactory();
-      Enemy anAnt = eFactory.createEnemy("Ant");
+      Enemy anAnt = eFactory.createAnt();
       enemyArray.add(anAnt);
       TowerFactory factory = new WhiteTowerFactory();
       Tower whiteTower = factory.createTower(new Point(2, 3));
@@ -161,9 +161,9 @@ public class AlgoDefenseTest {
         AlgoDefense algoDefense = new AlgoDefense(player);
         ArrayList<Enemy> enemyArray = new ArrayList<Enemy>();
         EnemyFactory eFactory = new EnemyFactory();
-        Enemy anAnt = eFactory.createEnemy("Ant");
+        Enemy anAnt = eFactory.createAnt();
         enemyArray.add(anAnt);
-        Enemy aSpider = eFactory.createEnemy("Spider");
+        Enemy aSpider = eFactory.createSpider();
         enemyArray.add(aSpider);
         TowerFactory factory = new WhiteTowerFactory();
         Tower whiteTower = factory.createTower(new Point(3, 3));
@@ -183,7 +183,7 @@ public class AlgoDefenseTest {
     public void test07VerifyThatEnemiesMovesOnlyInPath(){
         Stone stone = new Stone();
         EnemyFactory enemyFactory = new EnemyFactory();
-        Enemy ant = enemyFactory.createEnemy("Ant");
+        Enemy ant = enemyFactory.createAnt();
         stone.addEnemyToPath(ant);
         ArrayList<Enemy> listEnemy = new ArrayList<Enemy>();
         listEnemy.add(ant);
@@ -215,8 +215,8 @@ public class AlgoDefenseTest {
         AlgoDefense algoDefense = new AlgoDefense(player);
         ArrayList<Enemy> enemyArray = new ArrayList<Enemy>();
         EnemyFactory eFactory = new EnemyFactory();
-        Enemy anAnt = eFactory.createEnemy("Ant");
-        Enemy aSpider = eFactory.createEnemy("Spider");
+        Enemy anAnt = eFactory.createAnt();
+        Enemy aSpider = eFactory.createSpider();
         TowerFactory factory = new SilverTowerFactory();
         Tower silverTower = factory.createTower(new Point(7, 13));
         enemyArray.add(anAnt);

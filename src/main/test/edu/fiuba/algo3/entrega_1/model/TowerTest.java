@@ -50,8 +50,8 @@ public class TowerTest {
     @Test
     void test03WhiteTowerAttackWhenEnemyIsWithinRangeEnemyTakesDamage() {
         EnemyFactory factoryEnemies = new EnemyFactory();
-        Enemy ant = factoryEnemies.createEnemy("Ant");
-        ant.updateCoordinates(new Point(2,2));
+        Enemy ant = factoryEnemies.createAnt();
+        ant.updateCoordinates2(new Point(2,2));
         Point cordenates = new Point(3,3);
         TowerFactory factory = new WhiteTowerFactory();
         Tower WhiteTower = factory.createTower(cordenates);
@@ -67,8 +67,8 @@ public class TowerTest {
     @Test
     void test04SilverTowerAttackWhenEnemyIsWithinRangeEnemyTakesDamage() {
         EnemyFactory factoryEnemies = new EnemyFactory();
-        Enemy spider = factoryEnemies.createEnemy("Spider");
-        spider.updateCoordinates(new Point(2,2));
+        Enemy spider = factoryEnemies.createSpider();
+        spider.updateCoordinates2(new Point(2,2));
         ArrayList<Enemy> enemies = new ArrayList<>();
         enemies.add(spider);
 

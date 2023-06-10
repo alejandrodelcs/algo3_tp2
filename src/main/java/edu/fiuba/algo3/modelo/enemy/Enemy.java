@@ -51,5 +51,9 @@ public abstract class Enemy implements Cloneable{
 
     public abstract String Show();
 
-    public abstract Plot updateCoordinates(int positionInPath, ArrayList<Point> enemyPath, Plot[][] plots);
+    public abstract Point updateCoordinates(int positionInPath, ArrayList<Point> enemyPath, Plot[][] plots);
+
+    public void updateCoordinates2(Point coordinates){
+        enemyCoordinates = coordinates;
+    }
 }
