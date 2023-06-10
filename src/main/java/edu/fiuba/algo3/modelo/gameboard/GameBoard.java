@@ -97,7 +97,11 @@ public class GameBoard {
             for (Enemy enemy : plots[(int) y][(int) x].enemiesInPlot()) {
                 Point enemyCoordinates = enemy.updateCoordinates(i, enemyPath, plots);
                 if (!enemy.enemyDied()) {
-                    enemyCoordinates.addEnemyToPath(enemy);
+                    int newx = (int) Math.round(enemyCoordinates.getX());
+                    int newy = (int) Math.round(enemyCoordinates.getY());
+                    if(((newx != ((int) y)) || (newy != ((int) x))) && (lastY != y || lastX != x)) {
+                        plots[newx][newy].addEnemyToPath(enemy);
+                    }
                 }
             }
 

@@ -14,7 +14,7 @@ public abstract class Enemy implements Cloneable{
     private Damage damage;
     private Health health;
 
-    private Point enemyCoordinates;
+    protected Point enemyCoordinates;
 
     public Enemy(Speed speed, Damage damage, int healthPoints) {
         this.speed = speed;
