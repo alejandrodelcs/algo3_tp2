@@ -1,5 +1,5 @@
 package edu.fiuba.algo3.modelo.gameboard;
-import edu.fiuba.algo3.modelo.defense.Defense;
+import edu.fiuba.algo3.modelo.damage.Damage;
 import edu.fiuba.algo3.modelo.defense.Tower;
 import edu.fiuba.algo3.modelo.enemy.Enemy;
 import edu.fiuba.algo3.modelo.speed.Speed;
@@ -154,7 +154,7 @@ public class GameBoard {
             long x = Math.round(enemyPath.get(i).getX());
             long y = Math.round(enemyPath.get(i).getY());
             for (Enemy enemy : plots[(int) y][(int) x].enemiesInPlot()) {
-                Plot enemyCoordinates = enemy.updateCoordinates(i, enemyPath, plots);
+                Point enemyCoordinates = enemy.updateCoordinates(i, enemyPath, plots);
                 if (!enemy.enemyDied()) {
                     enemyCoordinates.addEnemyToPath(enemy);
                 }
@@ -181,6 +181,10 @@ public class GameBoard {
         }
         if (shouldClear) {
             plots[(int) lastY][(int) lastX].enemiesInPlot().clear();
+        }
+        for (Point point:
+             enemyPath) {
+            System.out.println(plots[(int)point.getY()][(int)point.getX()].enemiesInPlot());
         }
     }
 
