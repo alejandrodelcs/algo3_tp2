@@ -16,14 +16,13 @@ public class Speed {
         return speed;
     }
 
-    public Point enemyCoordinatesVelocityCalculator(int positionInPath, ArrayList<Point> enemyPath, Plot[][] plots){
+    public Plot enemyCoordinatesVelocityCalculator(int positionInPath, ArrayList<Point> enemyPath, Plot[][] plots){
         this.displacement = positionInPath + speed;
         int sizePath = enemyPath.size() - 1;
         int index = Math.min(this.displacement, sizePath);
         long newX = (int) enemyPath.get(index).getX();;
         long newY = (int) enemyPath.get(index).getY();
-
-        return new Point((int)newY,(int)newX);
+        return plots[(int) newY][(int) newX];
     }
 
 }

@@ -144,6 +144,22 @@ public class GameBoard {
 //                        enemy.updateCoordinates2(new Point(newY, newX));
                     }
                 }
+
+    public void moveEnemies() {
+        long lastX = Math.round(enemyPath.get(enemyPath.size() - 1).getX());
+        long lastY = Math.round(enemyPath.get(enemyPath.size() - 1).getY());
+        boolean shouldClear = false;
+        for (int i = enemyPath.size() - 1; i > 0; i--) {
+            long x = Math.round(enemyPath.get(i).getX());
+            long y = Math.round(enemyPath.get(i).getY());
+            for (Enemy enemy : plots[(int) y][(int) x].enemiesInPlot()) {
+                Plot enemyCoordinates = enemy.updateCoordinates(i, enemyPath, plots);
+                if (!enemy.enemyDied()) {
+                    enemyCoordinates.addEnemyToPath(enemy);
+                }
+            }
+            if (!shouldClear && (x != lastX || y != lastY)) {
+                shouldClear = true;
             }
             if (enemyPath.get(enemyPath.size() - 1).getX() != x || enemyPath.get(enemyPath.size() - 1).getY() != y) {
                 plots[y][x].enemiesInPlot().clear();
@@ -158,5 +174,5 @@ public class GameBoard {
         int finalY = (int) Math.round(enemyPath.get(enemyPath.size()-1).getY());
         return plots[finalY][finalX].enemiesInPlot();
     }
-
+                
 }
