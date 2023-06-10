@@ -30,5 +30,5 @@ public abstract class Tower extends Defense{
         return damage;
     }
     public void attack(ArrayList<Enemy> enemies){
-        state.Attack(this,enemies);}
+        state.attack(this,enemies);}
 }
