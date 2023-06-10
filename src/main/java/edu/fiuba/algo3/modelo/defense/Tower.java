@@ -5,26 +5,25 @@ import edu.fiuba.algo3.modelo.damage.Damage;
 import edu.fiuba.algo3.modelo.enemy.Enemy;
 
 import java.awt.*;
+import java.util.ArrayList;
 
 public abstract class Tower {
     protected Credit credits;
     protected Damage damage;
     protected State state;
-    protected Point point;
-    protected int rangeAttack;
+    protected Point coordinates;
+    protected Range rangeAttack;
 
-
-
-    public Tower(Credit credits, int rangeAttack, Damage damage, int constructionTurns,Point cordinatesTower){
+    public Tower(Credit credits, Range rangeAttack, Damage damage, int constructionTurns,Point cordinatesTower){
         this.credits = credits;
         this.damage = damage;
         this.state = new ConstructionState(constructionTurns);
-        this.point = cordinatesTower;
+        this.coordinates = cordinatesTower;
         this.rangeAttack = rangeAttack;
     }
 
     public void constructionFinished (){
-        state = new OperationalState();
+        state = new OperationalState(rangeAttack);
     }
     public Credit getCredits() {
         return credits;
@@ -32,18 +31,10 @@ public abstract class Tower {
     public Damage getDamage() {
         return damage;
     }
-
-
-    public void attack(Enemy enemy){
-        if(!(enemy == null)){
-            state.Attack(this,enemy);}}
-
-
-    public int getRange() { return rangeAttack;}
+    public void attack(ArrayList<Enemy> enemies){
+            state.Attack(this,enemies);}
 
     public Point getPoint() {
-        return point;
+        return coordinates;
     }
-
-    public boolean isItBuild() {return state.isItBuild();}
 }

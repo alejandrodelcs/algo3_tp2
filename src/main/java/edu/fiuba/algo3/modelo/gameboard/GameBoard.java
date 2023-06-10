@@ -26,39 +26,33 @@ public class GameBoard {
         Plot plotToCheck = plots[x][y];
         return plotToCheck.readyToBuild();
     }
-    public void buildDefense(Tower tower, Point coordinates){
-
+    public void buildDefense(Tower tower){
+        Point coordinates = tower.getPoint();
         int x = (int) Math.round(coordinates.getX());
         int y = (int) Math.round(coordinates.getY());
         Plot plotToCheck = plots[x][y];
         plotToCheck.setDefense(tower);
     }
-    public ArrayList<Enemy> enemiesInRange(Tower tower){
-        ArrayList<Enemy> enemiesInrange = new ArrayList<Enemy>();
-        ArrayList<Plot> pathsInRange = expectedRange(tower.getRange(),tower.getPoint());
-        for (Plot path:pathsInRange) {
-            enemiesInrange.addAll(path.enemiesInPlot());
+    public ArrayList<Enemy> getEnemies(){
+        ArrayList<Enemy> enemies = new ArrayList<Enemy>();
+        for (Point point:enemyPath) {
+            Plot plotToCheck = plots[point.y][point.x];
+            enemies.addAll(plotToCheck.enemiesInPlot());
         }
-        return enemiesInrange;
+        return enemies;
     }
-    public ArrayList<Plot> expectedRange(int range, Point coordinates) {
-        ArrayList<Plot> pathInRange = new ArrayList<Plot>();
 
-        for (Point point: enemyPath) {
-            double distance = 0;
-            distance = point.distance(coordinates.getX(),coordinates.getY());
-            if(distance <= range){
-                Plot plotToCheck = plots[point.y][point.x];
-                pathInRange.add(plotToCheck);
-            }
-        }
-        return pathInRange;
-    }
     public void spawnEnemy(ArrayList<Enemy> enemyArrayList){
         int x = (int) Math.round(enemyPath.get(0).getX());
         int y = (int) Math.round(enemyPath.get(0).getY());
+        Point point = new Point(y,x);
         this.plots[y][x].setEnemy(enemyArrayList);
-
+        if (!(enemyArrayList ==null)){
+            for (Enemy enemy:enemyArrayList
+                 ) {
+                enemy.updateCoordinates(point);
+            }
+        }
     }
     public ArrayList<Point> constructPath(){
         enemyPath = new ArrayList<Point>();
@@ -102,6 +96,7 @@ public class GameBoard {
                     int newY = (int) Math.round(newPathCoordinates.getY());
                     if(!(enemy.enemyDied())) {
                         plots[newY][newX].addEnemyToPath(enemy);
+                        enemy.updateCoordinates(new Point(newY,newX));
                     }
                 } else {
                     if ((listEnemyIndex - enemyPath.size() + 1) < enemy.getSpeed()) {
@@ -109,6 +104,7 @@ public class GameBoard {
                         int newX = (int) Math.round(newPathCoordinates.getX());
                         int newY = (int) Math.round(newPathCoordinates.getY());
                         plots[newY][newX].addEnemyToPath(enemy);
+                        enemy.updateCoordinates(new Point(newY, newX));
                     }
                 }
             }
@@ -124,13 +120,4 @@ public class GameBoard {
         return plots[finalY][finalX].enemiesInPlot();
     }
 
-    public boolean towerOperatingInPlot(Point coordinates) {
-        int finalX = (int) Math.round(coordinates.getX());
-        int finalY = (int) Math.round(coordinates.getY());
-        Tower defense = plots[finalX][finalY].getDefense();
-        if (defense == null){
-            return false;
-        }
-        return defense.isItBuild();
-    }
 }

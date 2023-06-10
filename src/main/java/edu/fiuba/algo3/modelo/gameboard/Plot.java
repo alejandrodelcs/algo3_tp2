@@ -21,6 +21,6 @@ public abstract class Plot {
 
     public abstract ArrayList<Enemy> enemiesInPlot();
 
-    public Tower   getDefense(){return tower;}
+    public Tower getDefense(){return tower;}
 
 }
