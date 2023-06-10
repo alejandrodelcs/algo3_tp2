@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.entrega_1.model;
 
+import edu.fiuba.algo3.modelo.damage.Damage;
 import edu.fiuba.algo3.modelo.defense.*;
 import edu.fiuba.algo3.modelo.enemy.*;
 import org.junit.jupiter.api.Assertions;
@@ -17,21 +18,21 @@ public class TowerTest {
         TowerFactory factory = new WhiteTowerFactory();
         Point cordenates = new Point(3,3);
         Tower WhiteTower = factory.createTower(cordenates);
-        Enemy enemy = mock(Ant.class);
-        when(enemy.getPoint()).thenReturn(new Point(4,4));
+        Enemy enemyMock = mock(Ant.class);
+        when(enemyMock.getPoint()).thenReturn(new Point(4,4));
         ArrayList<Enemy> enemies = new ArrayList<>();
-        enemies.add(enemy);
+        enemies.add(enemyMock);
 
         WhiteTower.attack(enemies);
-        verify(enemy, never()).takeDamage(WhiteTower.getDamage());
-        Assertions.assertFalse(enemy.enemyDied());
+        verify(enemyMock, never()).takeDamage(WhiteTower.getDamage());
+        Assertions.assertFalse(enemyMock.enemyDied());
     }
     @Test
     void test02NewSilverTowerUnderConstructionCannotAttackEnemy() {
         TowerFactory factory = new SilverTowerFactory();
         Point cordenates = new Point(3,3);
         Tower SilverTower = factory.createTower(cordenates);
-        Enemy enemy = mock(Ant.class);
+        Enemy enemy = mock(Spider.class);
         when(enemy.getPoint()).thenReturn(new Point(4,4));
         ArrayList<Enemy> enemies = new ArrayList<>();
         enemies.add(enemy);
