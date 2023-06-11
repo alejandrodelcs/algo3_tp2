@@ -1,8 +1,6 @@
 package edu.fiuba.algo3.modelo.gameboard;
-import edu.fiuba.algo3.modelo.damage.Damage;
 import edu.fiuba.algo3.modelo.defense.Tower;
 import edu.fiuba.algo3.modelo.enemy.Enemy;
-import edu.fiuba.algo3.modelo.speed.Speed;
 
 
 import java.awt.*;
