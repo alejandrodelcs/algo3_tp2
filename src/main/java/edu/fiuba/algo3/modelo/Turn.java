@@ -34,7 +34,4 @@ public class Turn {
             }
         }
     }
-    public int getTurn(){
-        return currentTurn;
-    }
 }

@@ -2,12 +2,19 @@ package edu.fiuba.algo3.modelo.enemy;
 
 import edu.fiuba.algo3.modelo.Credit;
 import edu.fiuba.algo3.modelo.damage.Damage;
+import edu.fiuba.algo3.modelo.gameboard.Plot;
+import edu.fiuba.algo3.modelo.speed.Speed;
+
+import java.awt.*;
+import java.util.ArrayList;
 
 public class Ant extends Enemy {
     private static final int REWARD_THRESHOLD = 10;
 
-    public Ant(int speed, Damage damage, int healthPoints) {
+
+    public Ant(Speed speed, Damage damage, int healthPoints) {
         super(speed, damage, healthPoints);
+        this.speed = speed;
     }
 
 
@@ -24,6 +31,12 @@ public class Ant extends Enemy {
     @Override
     public String Show() {
         return "Ant";
+    }
+
+    @Override
+    public Point updateCoordinates(int positionInPath, ArrayList<Point> enemyPath, Plot[][] plots){
+        enemyCoordinates = speed.enemyCoordinatesVelocityCalculator(positionInPath, enemyPath, plots);
+        return enemyCoordinates;
     }
 }
 

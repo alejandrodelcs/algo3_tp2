@@ -11,18 +11,18 @@ public class ModelDependenciesTest {
     private final String MODEL = "..modelo..";
     private final String JAVA_LANG = "java..";
     private final String JUNIT = "org.junit..";
+    private final String JSIMPLE = "org.json.simple..";
 
-    //TODO: add json simple module as a valid reference
-  /*  @Test
+    @Test
     public void elModeloSoloPuedeReferenciarClasesDelModeloAdemasJavaAdemasJunit() {
         JavaClasses importedClasses = new ClassFileImporter().importPackages("edu.fiuba.algo3.modelo");
 
-        String[] listOfPackages = {MODEL, JAVA_LANG, JUNIT};
+        String[] listOfPackages = {MODEL, JAVA_LANG, JUNIT, JSIMPLE};
 
         ArchRule myRule = classes().that().resideInAPackage(MODEL)
                 .should().onlyDependOnClassesThat().resideInAnyPackage(listOfPackages);
 
         myRule.check(importedClasses);
     }
-*/
+
 }

@@ -4,6 +4,7 @@ import edu.fiuba.algo3.modelo.Credit;
 import edu.fiuba.algo3.modelo.damage.Damage;
 import edu.fiuba.algo3.modelo.enemy.Enemy;
 
+
 import java.awt.*;
 import java.util.ArrayList;
 
@@ -32,7 +33,7 @@ public abstract class Tower {
         return damage;
     }
     public void attack(ArrayList<Enemy> enemies){
-            state.Attack(this,enemies);}
+            state.attack(this,enemies);}
 
     public Point getPoint() {
         return coordinates;

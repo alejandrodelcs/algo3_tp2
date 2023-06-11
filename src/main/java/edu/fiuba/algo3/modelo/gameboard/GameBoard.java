@@ -2,6 +2,7 @@ package edu.fiuba.algo3.modelo.gameboard;
 import edu.fiuba.algo3.modelo.damage.Damage;
 import edu.fiuba.algo3.modelo.defense.Tower;
 import edu.fiuba.algo3.modelo.enemy.Enemy;
+import edu.fiuba.algo3.modelo.speed.Speed;
 
 
 import java.awt.*;
@@ -50,11 +51,12 @@ public class GameBoard {
         if (!(enemyArrayList ==null)){
             for (Enemy enemy:enemyArrayList
                  ) {
-                enemy.updateCoordinates(point);
+                enemy.updateCoordinates2(point);
             }
         }
     }
-    public ArrayList<Point> constructPath(){
+
+   public ArrayList<Point> constructPath(){
         enemyPath = new ArrayList<Point>();
         Plot aPath = new Path();
         for (int i = 0; i < plots.length; i++) {
@@ -73,15 +75,51 @@ public class GameBoard {
 //        }
         return enemyPath;
     }
+
     public void printMap(){
-        for (int i = 0; i < plots.length; i++) {
-            for (int j = 0; j < plots[i].length; j++) {
-                System.out.print(plots[i][j].display());
+        for (Object[] row : plots) {
+            for (Object plot : row) {
+                System.out.print(((Plot) plot).display());
             }
             System.out.println();
         }
     }
-    public void moveEnemies(){
+
+    public void moveEnemies() {
+        long lastX = Math.round(enemyPath.get(enemyPath.size() - 1).getX());
+        long lastY = Math.round(enemyPath.get(enemyPath.size() - 1).getY());
+
+        for (int i = enemyPath.size() - 1; i >= 0; i--) {
+            boolean shouldClear = false;
+
+            long x = Math.round(enemyPath.get(i).getX());
+            long y = Math.round(enemyPath.get(i).getY());
+            for (Enemy enemy : plots[(int) y][(int) x].enemiesInPlot()) {
+                Point enemyCoordinates = enemy.updateCoordinates(i, enemyPath, plots);
+                if (!enemy.enemyDied()) {
+                    int newx = (int) Math.round(enemyCoordinates.getX());
+                    int newy = (int) Math.round(enemyCoordinates.getY());
+                    if(((newx != ((int) y)) || (newy != ((int) x))) && (lastY != y || lastX != x)) {
+                        plots[newx][newy].addEnemyToPath(enemy);
+                    }
+                }
+            }
+
+            if (!shouldClear && (x != lastX || y != lastY)) {
+                shouldClear = true;
+            }
+            if (shouldClear) {
+                plots[(int) y][(int) x].enemiesInPlot().clear();
+
+            }
+        }
+        for (Point point:
+             enemyPath) {
+            System.out.println(plots[(int)point.getY()][(int)point.getX()].enemiesInPlot());
+        }
+    }
+
+    public void moveEnemies_(){
         int pathListIndex = enemyPath.size() - 1;
 
         for (int i = (enemyPath.size() - 1); i >= 0; i--) {
@@ -96,7 +134,7 @@ public class GameBoard {
                     int newY = (int) Math.round(newPathCoordinates.getY());
                     if(!(enemy.enemyDied())) {
                         plots[newY][newX].addEnemyToPath(enemy);
-                        enemy.updateCoordinates(new Point(newY,newX));
+                        enemy.updateCoordinates2(new Point(newY,newX));
                     }
                 } else {
                     if ((listEnemyIndex - enemyPath.size() + 1) < enemy.getSpeed()) {
@@ -104,7 +142,7 @@ public class GameBoard {
                         int newX = (int) Math.round(newPathCoordinates.getX());
                         int newY = (int) Math.round(newPathCoordinates.getY());
                         plots[newY][newX].addEnemyToPath(enemy);
-                        enemy.updateCoordinates(new Point(newY, newX));
+                        enemy.updateCoordinates2(new Point(newY, newX));
                     }
                 }
             }
@@ -114,6 +152,8 @@ public class GameBoard {
             pathListIndex--;
         }
     }
+
+
     public ArrayList<Enemy> getEnemiesInThelastPath(){
         int finalX = (int) Math.round(enemyPath.get(enemyPath.size()-1).getX());
         int finalY = (int) Math.round(enemyPath.get(enemyPath.size()-1).getY());

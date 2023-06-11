@@ -2,18 +2,21 @@ package edu.fiuba.algo3.modelo.enemy;
 
 import edu.fiuba.algo3.modelo.Credit;
 import edu.fiuba.algo3.modelo.damage.Damage;
+import edu.fiuba.algo3.modelo.gameboard.Plot;
 import edu.fiuba.algo3.modelo.health.*;
+import edu.fiuba.algo3.modelo.speed.Speed;
 
 import java.awt.*;
+import java.util.ArrayList;
 
 public abstract class Enemy implements Cloneable{
-    private int speed;
+    protected Speed speed;
     private Damage damage;
     private Health health;
 
-    private Point enemyCoordinates;
+    protected Point enemyCoordinates;
 
-    public Enemy(int speed, Damage damage, int healthPoints) {
+    public Enemy(Speed speed, Damage damage, int healthPoints) {
         this.speed = speed;
         this.damage = damage;
         this.health = new Damageable(healthPoints);
@@ -21,9 +24,7 @@ public abstract class Enemy implements Cloneable{
     }
 
 
-    public int getSpeed() {
-        return speed;
-    }
+    public int getSpeed() { return speed.getSpeed();  }
 
     public Damage getDamage() {
         return damage;
@@ -50,7 +51,9 @@ public abstract class Enemy implements Cloneable{
 
     public abstract String Show();
 
-    public void updateCoordinates(Point coordinates){
+    public abstract Point updateCoordinates(int positionInPath, ArrayList<Point> enemyPath, Plot[][] plots);
+
+    public void updateCoordinates2(Point coordinates){
         enemyCoordinates = coordinates;
     }
 }

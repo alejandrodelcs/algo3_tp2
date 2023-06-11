@@ -78,5 +78,9 @@ public class Player {
     public boolean isAlive() {
         return(!playersLifePoints.entityDied());
     }
+
+    public boolean hasFunds() {
+        return playersCredits.arePositive();
+    }
 }
 

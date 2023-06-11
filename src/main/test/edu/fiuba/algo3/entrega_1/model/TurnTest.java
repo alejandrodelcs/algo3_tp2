@@ -1,4 +1,4 @@
-package edu.fiuba.algo3.entrega_1;
+package edu.fiuba.algo3.entrega_1.model;
 import edu.fiuba.algo3.modelo.exceptions.TowerIsUnderConstruction;
 import edu.fiuba.algo3.modelo.defense.Tower;
 import edu.fiuba.algo3.modelo.defense.TowerFactory;
@@ -27,7 +27,7 @@ public class TurnTest {/*
         ArrayList<Tower> listTower =  new ArrayList<Tower>();
         listTower.add(tower);
         turn.passTurn(listTower);
-        Enemy newSpider = new EnemyFactory().createEnemy("Spider");
+        Enemy newSpider = new EnemyFactory().createSpider();
         //Assertions.assertThrows(TowerIsUnderConstruction.class,() -> {
             //listTower.get(0).attack(newSpider); } );TODO: Tower Attack implementation
     }
@@ -40,7 +40,7 @@ public class TurnTest {/*
         listTower.add(tower);
         turn.passTurn(listTower);
         turn.passTurn(listTower);
-        Enemy newSpider = new EnemyFactory().createEnemy("Spider");
+        Enemy newSpider = new EnemyFactory().createSpider();
         //listTower.get(0).attack(newSpider);
         //Assertions.assertTrue(newSpider.enemyDied());
     }*/
