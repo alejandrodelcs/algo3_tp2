@@ -55,7 +55,7 @@ public class AlgoDefenseTest {
        Assertions.assertTrue(player.isAlive());
 
        assertThrows(PlayerIsDeadGameOver.class, () -> player.getsDamage(theOneThatKills));
-    }/*
+    }
 
     @Test
     public void test02verifyThatEachDefenseBuildsInTheRightAmountOfTurns(){
@@ -66,8 +66,8 @@ public class AlgoDefenseTest {
         TowerFactory silverFactory = new SilverTowerFactory();
         Point coordinatesToADirt = new Point(2, 3);
         Point coordinatesToADirt0 = new Point(0, 2);
-        Tower whiteTower = whiteFactory.createTower(coordinatesToADirt);
-        Tower silverTower = silverFactory.createTower(coordinatesToADirt0);
+        Defense whiteTower = whiteFactory.createTower(coordinatesToADirt);
+        Defense silverTower = silverFactory.createTower(coordinatesToADirt0);
         algoDefense.buildsADefense(whiteTower);
         algoDefense.buildsADefense(silverTower);
 
@@ -93,12 +93,12 @@ public class AlgoDefenseTest {
         Point fourthCoordinatesToADirt = new Point(2, 6);
         Point fifthCoordinatesToADirt = new Point(2, 7);
         Point invalidCoordinatesToADirt = new Point(2, 8);
-        Tower aSilverTower = towerFactory.createTower(coordinatesToADirt);
-        Tower aSecondSilverTower = towerFactory.createTower(secondCoordinatesToADirt);
-        Tower aThirdSilverTower = towerFactory.createTower(thirdCoordinatesToADirt);
-        Tower aFourthSilverTower = towerFactory.createTower( fourthCoordinatesToADirt);
-        Tower aFifthSilverTower = towerFactory.createTower(fifthCoordinatesToADirt);
-        Tower invalidSilverTower = towerFactory.createTower(invalidCoordinatesToADirt);
+        Defense aSilverTower = towerFactory.createTower(coordinatesToADirt);
+        Defense aSecondSilverTower = towerFactory.createTower(secondCoordinatesToADirt);
+        Defense aThirdSilverTower = towerFactory.createTower(thirdCoordinatesToADirt);
+        Defense aFourthSilverTower = towerFactory.createTower( fourthCoordinatesToADirt);
+        Defense aFifthSilverTower = towerFactory.createTower(fifthCoordinatesToADirt);
+        Defense invalidSilverTower = towerFactory.createTower(invalidCoordinatesToADirt);
         Damage tenDamage = new Damage(10);
         Damage nineDamage = new Damage(9);
 
@@ -120,8 +120,8 @@ public class AlgoDefenseTest {
       TowerFactory factory = new SilverTowerFactory();
       Point coordenatesToStone = new Point(0,0);
       Point coordenatesToDirt = new Point(3,3);
-      Tower silverTower = factory.createTower(coordenatesToDirt);
-      Tower silverTower2 = factory.createTower(coordenatesToStone);
+      Defense silverTower = factory.createTower(coordenatesToDirt);
+      Defense silverTower2 = factory.createTower(coordenatesToStone);
       //Act
       algoDefense.buildsADefense(silverTower);
 
@@ -141,7 +141,7 @@ public class AlgoDefenseTest {
       Enemy anAnt = eFactory.createAnt();
       enemyArray.add(anAnt);
       TowerFactory factory = new WhiteTowerFactory();
-      Tower whiteTower = factory.createTower(new Point(2, 3));
+      Defense whiteTower = factory.createTower(new Point(2, 3));
 
       //Act
       algoDefense.spawnAnEnemy(enemyArray);
@@ -164,7 +164,7 @@ public class AlgoDefenseTest {
         Enemy aSpider = eFactory.createSpider();
         enemyArray.add(aSpider);
         TowerFactory factory = new WhiteTowerFactory();
-        Tower whiteTower = factory.createTower(new Point(3, 3));
+        Defense whiteTower = factory.createTower(new Point(3, 3));
 
         //Act
         algoDefense.spawnAnEnemy(enemyArray);
@@ -195,7 +195,7 @@ public class AlgoDefenseTest {
         AlgoDefense algoDefense = new AlgoDefense(player);
         Credit creditsExpected = new Credit(91);
         TowerFactory factory = new WhiteTowerFactory();
-        Tower whiteTower = factory.createTower(new Point(2, 3));
+        Defense whiteTower = factory.createTower(new Point(2, 3));
 
         //Act
         algoDefense.buildsADefense(whiteTower);
@@ -216,7 +216,7 @@ public class AlgoDefenseTest {
         Enemy anAnt = eFactory.createAnt();
         Enemy aSpider = eFactory.createSpider();
         TowerFactory factory = new SilverTowerFactory();
-        Tower silverTower = factory.createTower(new Point(7, 13));
+        Defense silverTower = factory.createTower(new Point(7, 13));
         enemyArray.add(anAnt);
         enemyArray.add(aSpider);
 
@@ -296,16 +296,16 @@ public class AlgoDefenseTest {
         Point coordinatesToADirt7 = new Point(4, 0);
         Point coordinatesToADirt8 = new Point(5, 0);
 
-        Tower whiteTower = factory.createTower(coordinatesToADirt);
-        Tower whiteTower0 = factory.createTower(coordinatesToADirt0);
-        Tower whiteTower1 = factory.createTower(coordinatesToADirt1);
-        Tower whiteTower2 = factory.createTower(coordinatesToADirt2);
-        Tower whiteTower3 = factory.createTower(coordinatesToADirt3);
-        Tower whiteTower4 = factory.createTower(coordinatesToADirt4);
-        Tower whiteTower5 = factory.createTower(coordinatesToADirt5);
-        Tower whiteTower6= factory.createTower(coordinatesToADirt6);
-        Tower whiteTower7 = factory.createTower(coordinatesToADirt7);
-        Tower whiteTower8 = factory.createTower(coordinatesToADirt8);
+        Defense whiteTower = factory.createTower(coordinatesToADirt);
+        Defense whiteTower0 = factory.createTower(coordinatesToADirt0);
+        Defense whiteTower1 = factory.createTower(coordinatesToADirt1);
+        Defense whiteTower2 = factory.createTower(coordinatesToADirt2);
+        Defense whiteTower3 = factory.createTower(coordinatesToADirt3);
+        Defense whiteTower4 = factory.createTower(coordinatesToADirt4);
+        Defense whiteTower5 = factory.createTower(coordinatesToADirt5);
+        Defense whiteTower6= factory.createTower(coordinatesToADirt6);
+        Defense whiteTower7 = factory.createTower(coordinatesToADirt7);
+        Defense whiteTower8 = factory.createTower(coordinatesToADirt8);
 
         //Act
         algoDefense.buildsADefense(whiteTower);
@@ -354,6 +354,6 @@ public class AlgoDefenseTest {
     public void test14VerifyThatMapJSONfileIsValid(){
 
     }
-*/
+
 }
 

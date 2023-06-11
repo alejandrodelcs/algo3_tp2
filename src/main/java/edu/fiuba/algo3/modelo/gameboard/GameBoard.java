@@ -1,4 +1,5 @@
 package edu.fiuba.algo3.modelo.gameboard;
+import edu.fiuba.algo3.modelo.defense.Defense;
 import edu.fiuba.algo3.modelo.defense.Tower;
 import edu.fiuba.algo3.modelo.enemy.Enemy;
 
@@ -25,7 +26,7 @@ public class GameBoard {
         Plot plotToCheck = plots[x][y];
         return plotToCheck.readyToBuild();
     }
-    public void buildDefense(Tower defense){
+    public void buildDefense(Defense defense){
         Point coordinates = defense.getPoint();
         int x = (int) Math.round(coordinates.getX());
         int y = (int) Math.round(coordinates.getY());

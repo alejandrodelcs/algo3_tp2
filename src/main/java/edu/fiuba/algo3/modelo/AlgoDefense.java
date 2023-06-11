@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.modelo;
 
+import edu.fiuba.algo3.modelo.defense.Defense;
 import edu.fiuba.algo3.modelo.defense.Tower;
 import edu.fiuba.algo3.modelo.enemy.Enemy;
 import edu.fiuba.algo3.modelo.enemy.EnemyFactory;
@@ -20,12 +21,12 @@ public class AlgoDefense {
     private Turn turn;
     private Dictionary enemyStrategy;
     private EnemyFactory enemyFactory;
-    private ArrayList<Tower> defenses;
+    private ArrayList<Defense> defenses;
 
     public AlgoDefense(Player aPLayer){
         this.player = aPLayer;
         this.gameboard = new GameboardFacade().loadMap();
-        this.defenses = new ArrayList<Tower>();
+        this.defenses = new ArrayList<Defense>();
         this.enemyStrategy = new EnemyFacade().loadEnemiesStrategy();
         this.turn = new Turn(enemyStrategy);
         this.enemyFactory = new EnemyFactory();
@@ -39,7 +40,7 @@ public class AlgoDefense {
         gameboard.printMap();
         damageThePlayer();
     }
-    public void buildsADefense(Tower defense) {
+    public void buildsADefense(Defense defense) {
 
         if(!gameboard.availableForBuilding(defense.getPoint())){
             throw new NonConstructibleArea();
@@ -56,7 +57,7 @@ public class AlgoDefense {
         gameboard.spawnEnemy(enemyArrayList);
 
     }
-    public boolean canPlayerBuyTower( Tower defense ){//TODO: here a player can buy "anything" not only towers
+    public boolean canPlayerBuyTower( Defense defense ){//TODO: here a player can buy "anything" not only towers
         return player.canBuy(defense.getCredits().getQuantity());
     }
     public boolean isOccupyByADefense(Point coordenatesToDirt) {
