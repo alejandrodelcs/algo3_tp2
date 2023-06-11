@@ -5,4 +5,5 @@ import java.awt.*;
 public interface TowerFactory {
     Tower createTower(Point cordinates);
 
+
 }

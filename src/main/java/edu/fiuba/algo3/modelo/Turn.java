@@ -22,10 +22,10 @@ public class Turn {
         return newEnemies;
     }
 
-    public void updateTowers(ArrayList<Tower> towers, GameBoard gameBoard, Player player) {
+    public void updateDefense(ArrayList<Tower> defenses, GameBoard gameBoard, Player player) {
         ArrayList<Enemy> enemies = gameBoard.getEnemies();
-        for(Tower singleTower: towers ){
-                singleTower.attack(enemies);
+        for(Tower aDefense: defenses ){
+                aDefense.attack(enemies);
         }
         for (Enemy enemy: enemies
              ) {

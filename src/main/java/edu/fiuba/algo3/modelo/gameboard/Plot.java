@@ -6,13 +6,13 @@ import edu.fiuba.algo3.modelo.enemy.Enemy;
 import java.util.ArrayList;
 
 public abstract class Plot {
-    protected Tower tower;
+    protected Tower defense;
     protected Enemy enemy;
     protected PlotAvailability state;
 
     public boolean readyToBuild(){return !state.itsOccupied();}//TODO: See if the boolean can be removed
-    public void setDefense(Tower tower){
-            this.tower = tower;
+    public void setDefense(Tower defense){
+            this.defense = defense;
             this.state = new Occupied();
         }
     public abstract void  setEnemy(ArrayList<Enemy> enemyList);
@@ -21,6 +21,6 @@ public abstract class Plot {
 
     public abstract ArrayList<Enemy> enemiesInPlot();
 
-    public Tower getDefense(){return tower;}
+    public Tower getDefense(){return defense;}
 
 }
