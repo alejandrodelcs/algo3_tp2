@@ -1,8 +1,7 @@
 package edu.fiuba.algo3.modelo.gameboard;
-import edu.fiuba.algo3.modelo.damage.Damage;
+import edu.fiuba.algo3.modelo.defense.Defense;
 import edu.fiuba.algo3.modelo.defense.Tower;
 import edu.fiuba.algo3.modelo.enemy.Enemy;
-import edu.fiuba.algo3.modelo.speed.Speed;
 
 
 import java.awt.*;
@@ -27,12 +26,12 @@ public class GameBoard {
         Plot plotToCheck = plots[x][y];
         return plotToCheck.readyToBuild();
     }
-    public void buildDefense(Tower tower){
-        Point coordinates = tower.getPoint();
+    public void buildDefense(Defense defense){
+        Point coordinates = defense.getPoint();
         int x = (int) Math.round(coordinates.getX());
         int y = (int) Math.round(coordinates.getY());
         Plot plotToCheck = plots[x][y];
-        plotToCheck.setDefense(tower);
+        plotToCheck.setDefense(defense);
     }
     public ArrayList<Enemy> getEnemies(){
         ArrayList<Enemy> enemies = new ArrayList<Enemy>();

@@ -1,16 +1,6 @@
 package edu.fiuba.algo3.entrega_1.model;
 
 import edu.fiuba.algo3.modelo.defense.Tower;
-import edu.fiuba.algo3.modelo.defense.WhiteTower;
-import edu.fiuba.algo3.modelo.enemy.Enemy;
-import edu.fiuba.algo3.modelo.exceptions.NonConstructibleArea;
-import edu.fiuba.algo3.modelo.exceptions.TheEnemyCannotBeOutsideTheRunway;
-import edu.fiuba.algo3.modelo.gameboard.Path;
-import edu.fiuba.algo3.modelo.gameboard.Stone;
-import edu.fiuba.algo3.modelo.gameboard.Dirt;
-import edu.fiuba.algo3.modelo.gameboard.Plot;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.mock;

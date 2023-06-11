@@ -1,23 +1,17 @@
 package edu.fiuba.algo3.modelo.defense;
 
+import edu.fiuba.algo3.modelo.attack.Attack;
 import edu.fiuba.algo3.modelo.enemy.Enemy;
 
 import java.util.ArrayList;
 
 public class OperationalState implements State {
-    private Range rangeAttack;
-    public OperationalState(Range range){
-        this.rangeAttack = range;
+    private Attack attack;
+    public OperationalState(Attack newAttack){
+        this.attack = newAttack;
     }
     @Override
-    public void attack(Tower tower, ArrayList<Enemy> enemies){
-        int i = enemies.size() - 1;
-        while (i >= 0 && !rangeAttack.isInRange(tower, enemies.get(i))) {
-            i--;
-        }
-        if (i >= 0) {
-            Enemy enemy = enemies.get(i);
-            enemy.takeDamage(tower.getDamage());
-        }
+    public void attack(Defense defense, ArrayList<Enemy> enemies){
+        attack.performAttack(defense,enemies);
     }
 }

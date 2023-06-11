@@ -2,13 +2,11 @@ package edu.fiuba.algo3.modelo.player;
 
 import edu.fiuba.algo3.modelo.Credit;
 import edu.fiuba.algo3.modelo.damage.Damage;
+import edu.fiuba.algo3.modelo.defense.Defense;
 import edu.fiuba.algo3.modelo.defense.Tower;
-import edu.fiuba.algo3.modelo.defense.TowerFactory;
-import edu.fiuba.algo3.modelo.defense.WhiteTower;
 import edu.fiuba.algo3.modelo.exceptions.InsufficientCredits;
 import edu.fiuba.algo3.modelo.exceptions.InvalidPlayersName;
 import edu.fiuba.algo3.modelo.exceptions.PlayerIsDeadGameOver;
-import edu.fiuba.algo3.modelo.gameboard.GameBoard;
 import edu.fiuba.algo3.modelo.health.Damageable;
 import edu.fiuba.algo3.modelo.health.Health;
 
@@ -61,8 +59,8 @@ public class Player {
         }
     }
 
-    public void buildsADefense(Tower tower) {
-        Credit creditsToBeCharged =  tower.getCredits();
+    public void buildsADefense(Defense defense) {
+        Credit creditsToBeCharged =  defense.getCredits();
         this.subtractCredits(creditsToBeCharged);
 
     }

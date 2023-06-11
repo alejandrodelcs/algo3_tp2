@@ -1,9 +1,7 @@
 package edu.fiuba.algo3.modelo;
 
-import edu.fiuba.algo3.modelo.damage.Damage;
+import edu.fiuba.algo3.modelo.defense.Defense;
 import edu.fiuba.algo3.modelo.defense.Tower;
-import edu.fiuba.algo3.modelo.defense.TowerFactory;
-import edu.fiuba.algo3.modelo.defense.WhiteTowerFactory;
 import edu.fiuba.algo3.modelo.enemy.Enemy;
 import edu.fiuba.algo3.modelo.enemy.EnemyFactory;
 import edu.fiuba.algo3.modelo.exceptions.InsufficientCredits;
@@ -23,12 +21,12 @@ public class AlgoDefense {
     private Turn turn;
     private Dictionary enemyStrategy;
     private EnemyFactory enemyFactory;
-    private ArrayList<Tower> towers;
+    private ArrayList<Defense> defenses;
 
     public AlgoDefense(Player aPLayer){
         this.player = aPLayer;
         this.gameboard = new GameboardFacade().loadMap();
-        this.towers = new ArrayList<Tower>();
+        this.defenses = new ArrayList<Defense>();
         this.enemyStrategy = new EnemyFacade().loadEnemiesStrategy();
         this.turn = new Turn(enemyStrategy);
         this.enemyFactory = new EnemyFactory();
@@ -38,29 +36,29 @@ public class AlgoDefense {
         ArrayList<Enemy> newEnemies = turn.passTurn();
         gameboard.moveEnemies();
         spawnAnEnemy(newEnemies);
-        turn.updateTowers(towers,gameboard,player);
+        turn.updateDefense(defenses,gameboard,player);
         gameboard.printMap();
         damageThePlayer();
     }
-    public void buildsATower(Tower tower) {
+    public void buildsADefense(Defense defense) {
 
-        if(!gameboard.availableForBuilding(tower.getPoint())){
+        if(!gameboard.availableForBuilding(defense.getPoint())){
             throw new NonConstructibleArea();
         }
 
-        if(!canPlayerBuyTower(tower)){
+        if(!canPlayerBuyTower(defense)){
             throw new InsufficientCredits();
         }
-        player.subtractCredits(tower.getCredits());
-        gameboard.buildDefense(tower);
-        towers.add(tower);
+        player.subtractCredits(defense.getCredits());
+        gameboard.buildDefense(defense);
+        defenses.add(defense);
     }
     public void spawnAnEnemy(ArrayList<Enemy> enemyArrayList){
         gameboard.spawnEnemy(enemyArrayList);
 
     }
-    public boolean canPlayerBuyTower( Tower tower ){//TODO: here a player can buy "anything" not only towers
-        return player.canBuy(tower.getCredits().getQuantity());
+    public boolean canPlayerBuyTower( Defense defense ){//TODO: here a player can buy "anything" not only towers
+        return player.canBuy(defense.getCredits().getQuantity());
     }
     public boolean isOccupyByADefense(Point coordenatesToDirt) {
         return (!gameboard.availableForBuilding(coordenatesToDirt));

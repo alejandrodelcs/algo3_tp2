@@ -1,23 +1,6 @@
 package edu.fiuba.algo3.entrega_1.model;
-import edu.fiuba.algo3.modelo.exceptions.TowerIsUnderConstruction;
 import edu.fiuba.algo3.modelo.defense.Tower;
-import edu.fiuba.algo3.modelo.defense.TowerFactory;
-import edu.fiuba.algo3.modelo.defense.WhiteTower;
-import edu.fiuba.algo3.modelo.enemy.Enemy;
-import edu.fiuba.algo3.modelo.enemy.EnemyFactory;
-import edu.fiuba.algo3.modelo.facade.EnemyFacade;
-import edu.fiuba.algo3.modelo.facade.GameboardFacade;
-import edu.fiuba.algo3.modelo.gameboard.GameBoard;
-import edu.fiuba.algo3.modelo.exceptions.NonConstructibleArea;
-import edu.fiuba.algo3.modelo.player.Player;
-import edu.fiuba.algo3.modelo.Turn;
 
-import java.awt.*;
-import java.util.ArrayList;
-import java.util.Dictionary;
-
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
 public class TurnTest {/*
     @Test
     public void test01TowerDoesNotFinishBuild(){

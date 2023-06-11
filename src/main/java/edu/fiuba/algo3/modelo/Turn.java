@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.modelo;
 
 
+import edu.fiuba.algo3.modelo.defense.Defense;
 import edu.fiuba.algo3.modelo.defense.Tower;
 import edu.fiuba.algo3.modelo.enemy.Enemy;
 import edu.fiuba.algo3.modelo.gameboard.GameBoard;
@@ -22,10 +23,10 @@ public class Turn {
         return newEnemies;
     }
 
-    public void updateTowers(ArrayList<Tower> towers, GameBoard gameBoard, Player player) {
+    public void updateDefense(ArrayList<Defense> defenses, GameBoard gameBoard, Player player) {
         ArrayList<Enemy> enemies = gameBoard.getEnemies();
-        for(Tower singleTower: towers ){
-                singleTower.attack(enemies);
+        for(Defense aDefense: defenses ){
+                aDefense.attack(enemies);
         }
         for (Enemy enemy: enemies
              ) {
