@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.modelo.defense;
 
 import edu.fiuba.algo3.modelo.Credit;
+import edu.fiuba.algo3.modelo.attack.Attack;
 import edu.fiuba.algo3.modelo.damage.Damage;
 import edu.fiuba.algo3.modelo.enemy.Enemy;
 
@@ -11,7 +12,7 @@ public abstract class Defense {
     protected Credit credits;
     protected Point coordinates;
     protected State state;
-
+    protected Attack attack;
 
     public Credit getCredits() {
         return credits;
