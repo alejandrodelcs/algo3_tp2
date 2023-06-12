@@ -39,7 +39,7 @@ public class Owl extends Enemy {
     }
 
     @Override
-    public void move() {
+    public void acelerate() {
         // Move the owl towards the end
     }
 

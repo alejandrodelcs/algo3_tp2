@@ -22,7 +22,7 @@ public class Mole extends Enemy {
     }
 
     @Override
-    public void move() {
+    public void acelerate() {
         moves++;
         if (moves >= MOVES_NEEDED_FOR_SPEED_2 && moves < MOVES_NEEDED_FOR_SPEED_3) {
             speed = new Speed(2);

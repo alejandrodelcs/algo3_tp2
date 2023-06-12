@@ -41,7 +41,7 @@ public class Spider extends Enemy {
     }
 
     @Override
-    public void move() {
+    public void acelerate() {
         // Move the spider towards the end
     }
 
