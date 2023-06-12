@@ -9,18 +9,21 @@ import edu.fiuba.algo3.modelo.speed.Speed;
 import java.awt.*;
 import java.util.ArrayList;
 
+/*
 public abstract class Enemy implements Cloneable{
     protected Speed speed;
     private Damage damage;
     private Health health;
+    protected Credit creditsReward;
 
     protected Point enemyCoordinates;
 
-    public Enemy(Speed speed, Damage damage, int healthPoints) {
+    public Enemy(Speed speed, Damage damage, Health healthPoints, int creditsReward) {
         this.speed = speed;
         this.damage = damage;
-        this.health = new Damageable(healthPoints);
+        this.health = healthPoints;
         this.enemyCoordinates = new Point();
+        this.creditsReward = new Credit(creditsReward);
     }
 
 
@@ -56,4 +59,52 @@ public abstract class Enemy implements Cloneable{
     public void updateCoordinates2(Point coordinates){
         enemyCoordinates = coordinates;
     }
+}*/
+
+public abstract class Enemy {
+    protected Speed speed;
+    protected Damage damage;
+    protected Health health;
+    protected Credit creditsReward;
+    protected Point enemyCoordinates;
+
+    public Enemy(Speed speed, Damage damage, Health health, Credit credit) {
+        this.speed = speed;
+        this.damage = damage;
+        this.health = health;
+        this.enemyCoordinates = new Point();
+        this.creditsReward = credit;
+    }
+
+    public int getSpeed() {
+        return speed.getSpeed();
+    }
+
+    public Damage getDamage() {
+        return damage;
+    }
+
+    public Point getPoint(){return enemyCoordinates;}
+
+    public Health getHealth() {
+        return health;
+    }
+
+    public void takeDamage(Damage damageReceive) {
+        int amount = damageReceive.getQuantity();
+        health.takeDamage(amount);
+    }
+
+    public boolean enemyDied() {
+        return health.entityDied();
+    }
+
+    public abstract void move();
+
+    public abstract Credit generateCredits();
+
+    public abstract String Show();
+
+    public abstract Point updateCoordinates(int positionInPath, ArrayList<Point> enemyPath, Plot[][] plots);
+
 }

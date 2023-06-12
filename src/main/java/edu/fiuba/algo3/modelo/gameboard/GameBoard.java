@@ -50,7 +50,7 @@ public class GameBoard {
         if (!(enemyArrayList ==null)){
             for (Enemy enemy:enemyArrayList
                  ) {
-                enemy.updateCoordinates2(point);
+//                enemy.updateCoordinates2(point);
             }
         }
     }
@@ -133,7 +133,7 @@ public class GameBoard {
                     int newY = (int) Math.round(newPathCoordinates.getY());
                     if(!(enemy.enemyDied())) {
                         plots[newY][newX].addEnemyToPath(enemy);
-                        enemy.updateCoordinates2(new Point(newY,newX));
+//                        enemy.updateCoordinates2(new Point(newY,newX));
                     }
                 } else {
                     if ((listEnemyIndex - enemyPath.size() + 1) < enemy.getSpeed()) {
@@ -141,7 +141,7 @@ public class GameBoard {
                         int newX = (int) Math.round(newPathCoordinates.getX());
                         int newY = (int) Math.round(newPathCoordinates.getY());
                         plots[newY][newX].addEnemyToPath(enemy);
-                        enemy.updateCoordinates2(new Point(newY, newX));
+//                        enemy.updateCoordinates2(new Point(newY, newX));
                     }
                 }
             }
