@@ -1,7 +1,9 @@
 package edu.fiuba.algo3.modelo.parser;
 
+import edu.fiuba.algo3.modelo.enemy.AntFactory;
 import edu.fiuba.algo3.modelo.enemy.Enemy;
 import edu.fiuba.algo3.modelo.enemy.EnemyFactory;
+import edu.fiuba.algo3.modelo.enemy.SpiderFactory;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -68,14 +70,16 @@ public class EnemiesParser {
 
         ArrayList<Enemy> enemiesStrategy = new ArrayList<Enemy>();
 
-        EnemyFactory enemyFactory = new EnemyFactory();
+        EnemyFactory antFactory = new AntFactory();
+        EnemyFactory spiderFactory = new SpiderFactory();
+
         while(antAmount>0){
-            Enemy anAnt = enemyFactory.createAnt();
+            Enemy anAnt = antFactory.createEnemy();
             enemiesStrategy.add(anAnt);
             antAmount--;
         }
         while (spiderAmount>0){
-            Enemy aSpider = enemyFactory.createSpider();
+            Enemy aSpider = spiderFactory.createEnemy();
             enemiesStrategy.add(aSpider);
             spiderAmount --;
         }

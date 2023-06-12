@@ -4,8 +4,10 @@ import edu.fiuba.algo3.modelo.AlgoDefense;
 import edu.fiuba.algo3.modelo.Credit;
 import edu.fiuba.algo3.modelo.damage.Damage;
 import edu.fiuba.algo3.modelo.defense.*;
+import edu.fiuba.algo3.modelo.enemy.AntFactory;
 import edu.fiuba.algo3.modelo.enemy.Enemy;
 import edu.fiuba.algo3.modelo.enemy.EnemyFactory;
+import edu.fiuba.algo3.modelo.enemy.SpiderFactory;
 import edu.fiuba.algo3.modelo.exceptions.*;
 import edu.fiuba.algo3.modelo.gameboard.*;
 import edu.fiuba.algo3.modelo.parser.EnemiesParser;
@@ -137,8 +139,8 @@ public class AlgoDefenseTest {
       Player player = new Player("Player");
       AlgoDefense algoDefense = new AlgoDefense(player);
       ArrayList<Enemy> enemyArray = new ArrayList<Enemy>();
-      EnemyFactory eFactory = new EnemyFactory();
-      Enemy anAnt = eFactory.createAnt();
+      EnemyFactory antFactory = new AntFactory();
+      Enemy anAnt = antFactory.createEnemy();
       enemyArray.add(anAnt);
       TowerFactory factory = new WhiteTowerFactory();
       Defense whiteTower = factory.createTower(new Point(2, 3));
@@ -158,10 +160,11 @@ public class AlgoDefenseTest {
         Player player = new Player("Player");
         AlgoDefense algoDefense = new AlgoDefense(player);
         ArrayList<Enemy> enemyArray = new ArrayList<Enemy>();
-        EnemyFactory eFactory = new EnemyFactory();
-        Enemy anAnt = eFactory.createAnt();
+        EnemyFactory antFactory = new AntFactory();
+        EnemyFactory spiderFactory = new SpiderFactory();
+        Enemy anAnt = antFactory.createEnemy();
         enemyArray.add(anAnt);
-        Enemy aSpider = eFactory.createSpider();
+        Enemy aSpider = spiderFactory.createEnemy();
         enemyArray.add(aSpider);
         TowerFactory factory = new WhiteTowerFactory();
         Defense whiteTower = factory.createTower(new Point(3, 3));
@@ -180,8 +183,8 @@ public class AlgoDefenseTest {
     @Test
     public void test07VerifyThatEnemiesMovesOnlyInPath(){
         Stone stone = new Stone();
-        EnemyFactory enemyFactory = new EnemyFactory();
-        Enemy ant = enemyFactory.createAnt();
+        EnemyFactory antFactory = new AntFactory();
+        Enemy ant = antFactory.createEnemy();
         stone.addEnemyToPath(ant);
         ArrayList<Enemy> listEnemy = new ArrayList<Enemy>();
         listEnemy.add(ant);
@@ -212,9 +215,10 @@ public class AlgoDefenseTest {
         Player player = new Player("Player");
         AlgoDefense algoDefense = new AlgoDefense(player);
         ArrayList<Enemy> enemyArray = new ArrayList<Enemy>();
-        EnemyFactory eFactory = new EnemyFactory();
-        Enemy anAnt = eFactory.createAnt();
-        Enemy aSpider = eFactory.createSpider();
+        EnemyFactory antFactory = new AntFactory();
+        EnemyFactory spiderFactory = new SpiderFactory();
+        Enemy anAnt = spiderFactory.createEnemy();
+        Enemy aSpider = spiderFactory.createEnemy();
         TowerFactory factory = new SilverTowerFactory();
         Defense silverTower = factory.createTower(new Point(7, 13));
         enemyArray.add(anAnt);

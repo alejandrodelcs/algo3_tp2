@@ -2,8 +2,7 @@ package edu.fiuba.algo3.modelo;
 
 import edu.fiuba.algo3.modelo.defense.Defense;
 import edu.fiuba.algo3.modelo.defense.Tower;
-import edu.fiuba.algo3.modelo.enemy.Enemy;
-import edu.fiuba.algo3.modelo.enemy.EnemyFactory;
+import edu.fiuba.algo3.modelo.enemy.*;
 import edu.fiuba.algo3.modelo.exceptions.InsufficientCredits;
 import edu.fiuba.algo3.modelo.facade.EnemyFacade;
 import edu.fiuba.algo3.modelo.facade.GameboardFacade;
@@ -20,7 +19,11 @@ public class AlgoDefense {
     private GameBoard gameboard;
     private Turn turn;
     private Dictionary enemyStrategy;
-    private EnemyFactory enemyFactory;
+    private EnemyFactory antFactory;
+    private EnemyFactory spiderFactory;
+    private EnemyFactory moleFactory;
+    private EnemyFactory owlFactory;
+
     private ArrayList<Defense> defenses;
 
     public AlgoDefense(Player aPLayer){
@@ -29,7 +32,10 @@ public class AlgoDefense {
         this.defenses = new ArrayList<Defense>();
         this.enemyStrategy = new EnemyFacade().loadEnemiesStrategy();
         this.turn = new Turn(enemyStrategy);
-        this.enemyFactory = new EnemyFactory();
+        this.antFactory = new AntFactory();
+        this.spiderFactory = new SpiderFactory();
+        this.moleFactory = new MoleFactory();
+        this.owlFactory = new OwlFactory();
 
     }
     public void nextTurn() {
