@@ -1,7 +1,6 @@
 package edu.fiuba.algo3.modelo;
 
 import edu.fiuba.algo3.modelo.defense.Defense;
-import edu.fiuba.algo3.modelo.defense.Tower;
 import edu.fiuba.algo3.modelo.enemy.*;
 import edu.fiuba.algo3.modelo.exceptions.InsufficientCredits;
 import edu.fiuba.algo3.modelo.facade.EnemyFacade;
@@ -9,6 +8,7 @@ import edu.fiuba.algo3.modelo.facade.GameboardFacade;
 import edu.fiuba.algo3.modelo.gameboard.GameBoard;
 import edu.fiuba.algo3.modelo.exceptions.NonConstructibleArea;
 import edu.fiuba.algo3.modelo.player.Player;
+import edu.fiuba.algo3.modelo.turn.Turn;
 
 import java.awt.*;
 import java.util.ArrayList;

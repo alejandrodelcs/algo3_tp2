@@ -1,7 +1,7 @@
 package edu.fiuba.algo3.entrega_1;
 
 import edu.fiuba.algo3.modelo.AlgoDefense;
-import edu.fiuba.algo3.modelo.Credit;
+import edu.fiuba.algo3.modelo.credit.Credit;
 import edu.fiuba.algo3.modelo.damage.Damage;
 import edu.fiuba.algo3.modelo.defense.*;
 import edu.fiuba.algo3.modelo.enemy.AntFactory;

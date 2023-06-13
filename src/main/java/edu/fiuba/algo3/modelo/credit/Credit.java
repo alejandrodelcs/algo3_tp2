@@ -1,4 +1,4 @@
-package edu.fiuba.algo3.modelo;
+package edu.fiuba.algo3.modelo.credit;
 
 import edu.fiuba.algo3.modelo.exceptions.InsufficientCredits;
 
