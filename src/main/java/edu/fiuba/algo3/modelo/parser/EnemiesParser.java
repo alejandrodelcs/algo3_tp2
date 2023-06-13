@@ -1,9 +1,6 @@
 package edu.fiuba.algo3.modelo.parser;
 
-import edu.fiuba.algo3.modelo.enemy.AntFactory;
-import edu.fiuba.algo3.modelo.enemy.Enemy;
-import edu.fiuba.algo3.modelo.enemy.EnemyFactory;
-import edu.fiuba.algo3.modelo.enemy.SpiderFactory;
+import edu.fiuba.algo3.modelo.enemy.*;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -41,7 +38,9 @@ public class EnemiesParser {
         EnemiesParser reader = new EnemiesParser(file);
         JSONArray enemyObject = reader.getArray();
 
+
         for (Object o : enemyObject) {
+            ArrayList<Enemy> enemiesStrategy = new ArrayList<Enemy>();
 
             JSONObject rowObject = (JSONObject) o;
 
@@ -54,37 +53,40 @@ public class EnemiesParser {
             Object ant = enemiesByTurn.get("hormiga");
             String antValue = ant.toString();
             int antAmount = Integer.parseInt(antValue);
+            EnemyFactory antFactory = new AntFactory();
+            loadEnemies(antAmount,antFactory,enemiesStrategy);
 
             Object spider = enemiesByTurn.get("arana");
             String spiderValue = spider.toString();
             int spiderAmount = Integer.parseInt(spiderValue);
+            EnemyFactory spiderFactory = new SpiderFactory();
+            loadEnemies(spiderAmount,spiderFactory,enemiesStrategy);
 
-            enemies = loadEnemies(antAmount,spiderAmount);
-            enemyStrategy.put(turnNumber, enemies);
+            /*
+            Object mole = enemiesByTurn.get("topo");
+            String moleValue = mole.toString();
+            int moleAmount = Integer.parseInt(moleValue);
+            EnemyFactory moleFactory = new MoleFactory();
+            loadEnemies(moleAmount,moleFactory,enemiesStrategy);
 
+            Object owl = enemiesByTurn.get("lechuza");
+            String owlValue = owl.toString();
+            int owlAmount = Integer.parseInt(owlValue);
+            EnemyFactory owlFactory = new OwlFactory();
+            loadEnemies(owlAmount,owlFactory,enemiesStrategy);
+            */
+
+            System.out.println(enemiesStrategy);
+            enemyStrategy.put(turnNumber, enemiesStrategy);
         }
-
         return enemyStrategy;
     }
-    private ArrayList<Enemy> loadEnemies(int antAmount, int spiderAmount){
+    private void loadEnemies(int enemyAmount, EnemyFactory enemyFactory, ArrayList<Enemy> enemiesStrategy){
 
-        ArrayList<Enemy> enemiesStrategy = new ArrayList<Enemy>();
-
-        EnemyFactory antFactory = new AntFactory();
-        EnemyFactory spiderFactory = new SpiderFactory();
-
-        while(antAmount>0){
-            Enemy anAnt = antFactory.createEnemy();
-            enemiesStrategy.add(anAnt);
-            antAmount--;
+        while (enemyAmount>0){
+            Enemy anEnemy = enemyFactory.createEnemy();
+            enemiesStrategy.add(anEnemy);
+            enemyAmount --;
         }
-        while (spiderAmount>0){
-            Enemy aSpider = spiderFactory.createEnemy();
-            enemiesStrategy.add(aSpider);
-            spiderAmount --;
-        }
-
-        return enemiesStrategy;
-
     }
 }
