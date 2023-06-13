@@ -32,10 +32,10 @@ public class EnemiesParser {
     }
 
     public Dictionary parserFile(){
-        String file = "src\\main\\java\\edu\\fiuba\\algo3\\modelo\\parser\\enemigos.json";
+
         Dictionary enemyStrategy = new Hashtable();
         ArrayList<Enemy> enemies;
-        EnemiesParser reader = new EnemiesParser(file);
+        EnemiesParser reader = new EnemiesParser(fileRelativeSource);
         JSONArray enemyObject = reader.getArray();
 
 

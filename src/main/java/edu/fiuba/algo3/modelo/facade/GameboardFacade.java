@@ -7,8 +7,14 @@ import edu.fiuba.algo3.modelo.parser.MapParser;
 import java.util.Dictionary;
 
 public class GameboardFacade {
+
+    private String fileSource;
+
+    public GameboardFacade(){
+        this.fileSource =  "src\\main\\java\\edu\\fiuba\\algo3\\modelo\\files\\mapa.json";
+    }
     public GameBoard loadMap() {
-        MapParser mapParser = new MapParser();
+        MapParser mapParser = new MapParser(fileSource);
         return mapParser.initializeMap();
     }
 }

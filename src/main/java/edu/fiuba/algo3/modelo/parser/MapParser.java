@@ -15,9 +15,9 @@ public class MapParser {
 
     private String fileName;
     private String fileRelativeSource;
-    public MapParser(){
+    public MapParser(String file){
         this.fileName = "Mapa";
-        this.fileRelativeSource = "src\\main\\java\\edu\\fiuba\\algo3\\modelo\\parser\\mapa.json";
+        this.fileRelativeSource = file;
     }
 
     public JSONObject getObject() {
@@ -35,7 +35,7 @@ public class MapParser {
     /*ArrayList<plot> RunAway = ArrayList<plot>();*/
     public GameBoard initializeMap(){
 
-        MapParser reader = new MapParser();
+        MapParser reader = new MapParser(fileRelativeSource);
         JSONObject mapaJsonObject =  reader.getObject();
         plots = new Plot[mapaJsonObject.keySet().size()][mapaJsonObject.values().size()];
 
