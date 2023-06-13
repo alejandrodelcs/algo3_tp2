@@ -1,5 +1,18 @@
 package edu.fiuba.algo3.modelo.speed;
 
+import edu.fiuba.algo3.modelo.damage.Damage;
+import edu.fiuba.algo3.modelo.health.Damageable;
+
+import java.awt.*;
+import java.util.ArrayList;
+
+public interface Speed {
+    public Point moveWithSpeed(int listIndex, ArrayList<Point> coordinatesList);
+
+}
+
+/*package edu.fiuba.algo3.modelo.speed;
+
 import edu.fiuba.algo3.modelo.gameboard.Plot;
 
 import java.awt.*;
@@ -26,4 +39,4 @@ public class Speed {
         return new Point((int)newY,(int)newX);
     }
 
-}
+}*/

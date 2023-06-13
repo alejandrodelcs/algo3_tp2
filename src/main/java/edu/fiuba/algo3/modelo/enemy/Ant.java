@@ -46,7 +46,7 @@ public class Ant extends Enemy {
     }
 
     @Override
-    public void move() {
+    public void acelerate() {
         // Move the ant towards the end
     }
 
