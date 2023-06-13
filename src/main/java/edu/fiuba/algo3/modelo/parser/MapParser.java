@@ -14,9 +14,7 @@ public class MapParser {
     public Plot[][] plots;
 
     private String fileName;
-
     private String fileRelativeSource;
-
     public MapParser(){
         this.fileName = "Mapa";
         this.fileRelativeSource = "src\\main\\java\\edu\\fiuba\\algo3\\modelo\\parser\\mapa.json";

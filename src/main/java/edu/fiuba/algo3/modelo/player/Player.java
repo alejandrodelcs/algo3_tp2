@@ -1,9 +1,8 @@
 package edu.fiuba.algo3.modelo.player;
 
-import edu.fiuba.algo3.modelo.Credit;
+import edu.fiuba.algo3.modelo.credit.Credit;
 import edu.fiuba.algo3.modelo.damage.Damage;
 import edu.fiuba.algo3.modelo.defense.Defense;
-import edu.fiuba.algo3.modelo.defense.Tower;
 import edu.fiuba.algo3.modelo.exceptions.InsufficientCredits;
 import edu.fiuba.algo3.modelo.exceptions.InvalidPlayersName;
 import edu.fiuba.algo3.modelo.exceptions.PlayerIsDeadGameOver;

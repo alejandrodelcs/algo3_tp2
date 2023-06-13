@@ -1,10 +1,11 @@
 package edu.fiuba.algo3.entrega_1.model;
 
-import edu.fiuba.algo3.modelo.Credit;
+import edu.fiuba.algo3.modelo.credit.Credit;
 import edu.fiuba.algo3.modelo.exceptions.InsufficientCredits;
-import edu.fiuba.algo3.modelo.health.Damageable;
-import edu.fiuba.algo3.modelo.health.Health;
-import edu.fiuba.algo3.modelo.health.NotDamageable;
+import edu.fiuba.algo3.modelo.parser.EnemiesParser;
+import edu.fiuba.algo3.modelo.parser.MapParser;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -52,4 +53,35 @@ public class CreditTest {
     }
 
 
+    static class MapParserTest {
+        @Test
+        void testPrintMap() {
+            MapParser Reader = new MapParser();
+            JSONObject mapaObject = Reader.getObject();
+            for (int i = 1; i <= mapaObject.size(); i++) {
+                String key = String.valueOf(i);
+                JSONArray rowArray = (JSONArray) mapaObject.get(key);
+                for (Object element : rowArray) {
+                    System.out.print(element.toString() + " ");
+                }
+                System.out.println();
+            }
+        }
+
+        @Test
+        void  testPrintEnemies(){
+            String file = "src\\main\\java\\edu\\fiuba\\algo3\\modelo\\parser\\enemigos.json";
+            EnemiesParser Reader = new EnemiesParser(file);
+            JSONArray enemyObject = Reader.getArray();
+
+            //System.out.println(enemyObject.toString());
+
+            for (Object o : enemyObject) {
+
+                JSONObject rowObject = (JSONObject) o;
+                System.out.println(rowObject.toString());
+            }
+        }
+
+    }
 }
