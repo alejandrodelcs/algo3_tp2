@@ -11,6 +11,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.awt.*;
+import java.util.StringJoiner;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -39,19 +40,40 @@ public class AlgoDefenseTwoTest {
 
     @Test
     public void test15VerifyReadingAndUnitConversionOfEnemies(){
-        EnemiesParser enemiesParser = new EnemiesParser("src\\main\\java\\edu\\fiuba\\algo3\\modelo\\files\\enemyFileWithoutTurnObject.json");
+        //TODO: set up
+        //arrange
+        String fileWithoutTurn = "src\\main\\java\\edu\\fiuba\\algo3\\modelo\\files\\enemyFileWithoutTurnObject.json";
+        String fileWithoutEnemies = "src\\main\\java\\edu\\fiuba\\algo3\\modelo\\files\\enemyFileWithoutEnemies.json";
+        String fileWithoutAnt = "src\\main\\java\\edu\\fiuba\\algo3\\modelo\\files\\enemyFileWithoutAnt.json";
+        String fileWithoutSpider = "src\\main\\java\\edu\\fiuba\\algo3\\modelo\\files\\enemyFileWithoutSpider.json";
+/*        String fileWithoutMole = "src\main\java\edu\fiuba\algo3\modelo\files\enemyFileWithoutTurnObject.json";
+        String fileWithoutOwl = "src\main\java\edu\fiuba\algo3\modelo\files\enemyFileWithoutTurnObject.json";*/
+        String validFile = "src\\main\\java\\edu\\fiuba\\algo3\\modelo\\files\\enemigos.json";
+
+        EnemiesParser enemiesParser = new EnemiesParser(fileWithoutTurn);
         enemiesParser.getArray();
         Assertions.assertThrows(TurnObjectDoesNotExists.class,()-> enemiesParser.parserFile());
+
+        EnemiesParser enemiesParserFileMissingEnemies = new EnemiesParser(fileWithoutEnemies);
+        enemiesParserFileMissingEnemies.getArray();
+        Assertions.assertThrows(EnemyObjectDoesNotExists.class,()-> enemiesParserFileMissingEnemies.parserFile());
+
+        EnemiesParser enemiesParserFileMissingAnt = new EnemiesParser(fileWithoutAnt);
+        enemiesParserFileMissingAnt.getArray();
+        Assertions.assertThrows(EnemyObjectDoesNotExists.class,()-> enemiesParserFileMissingAnt.parserFile());
+
+        EnemiesParser enemiesParserFileMissingSpider = new EnemiesParser(fileWithoutSpider);
+        enemiesParserFileMissingSpider.getArray();
+        Assertions.assertThrows(EnemyObjectDoesNotExists.class,()-> enemiesParserFileMissingSpider.parserFile());
+
         //TODO: add testing list of enemies not empty
     }
-
     @Test
-    public void test16GameIsCreatedBasedUponBothJSONFiles(){
+    public void test16VerifyReadingAndUnitConversionOfMap(){
 
     }
-
     @Test
-    public void test17VerifyReadingAndUnitConversion(){
+    public void test17GameIsCreatedBasedUponBothJSONFiles(){
 
     }
 
