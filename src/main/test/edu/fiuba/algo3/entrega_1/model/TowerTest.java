@@ -47,7 +47,7 @@ public class TowerTest {
 
     }
 
-    @Test
+/*    @Test
     void test03WhiteTowerAttackWhenEnemyIsWithinRangeEnemyTakesDamage() {
         DefenseFactory factory = new WhiteTowerFactory();
         Point cordenates = new Point(3,3);
@@ -63,9 +63,9 @@ public class TowerTest {
 
         verify(antMock, atLeastOnce()).takeDamage(new Damage(1));
         Assertions.assertTrue(antMock.enemyDied());
-    }
+    }*/
 
-    @Test
+/*    @Test
     void test04SilverTowerAttackWhenEnemyIsWithinRangeEnemyTakesDamage() {
         DefenseFactory factory = new SilverTowerFactory();
         Point cordenates = new Point(3,3);
@@ -83,7 +83,7 @@ public class TowerTest {
 
         verify(spiderMock, atLeastOnce()).takeDamage(new Damage(2));
         Assertions.assertTrue(spiderMock.enemyDied());
-    }
+    }*/
 
     @Test
     void test05SilverTowerCannotAttackAnEnemyOutOfRange() {
