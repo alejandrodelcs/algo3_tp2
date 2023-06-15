@@ -6,6 +6,7 @@ import edu.fiuba.algo3.modelo.enemy.Enemy;
 
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class GameBoard {
     private Plot[][] plots;
@@ -89,31 +90,59 @@ public class GameBoard {
         long lastX = Math.round(enemyPath.get(enemyPath.size() - 1).getX());
         long lastY = Math.round(enemyPath.get(enemyPath.size() - 1).getY());
 
-        for (int i = enemyPath.size() - 1; i >= 0; i--) {
-            boolean shouldClear = false;
+        for (int row = ((int)Arrays.stream(plots).count() - 1); row >= 0 ; row--) {
+            for (int column = ((int)Arrays.stream(plots[0]).count() - 1); column >= 0 ; column--) {
+                boolean shouldClear = false;
 
-            long x = Math.round(enemyPath.get(i).getX());
-            long y = Math.round(enemyPath.get(i).getY());
-            for (Enemy enemy : plots[(int) y][(int) x].enemiesInPlot()) {
-                Point enemyCoordinates =  enemy.move(i, enemyPath);
+                long x = row;
+                long y = column;
+                for (Enemy enemy : plots[(int) y][(int) x].enemiesInPlot()) {
+                    Point enemyCoordinates =  enemy.move(x, y, plots, enemyPath);
 
-                if (!enemy.enemyDied()) {
-                    int newx = (int) Math.round(enemyCoordinates.getX());
-                    int newy =(int) Math.round(enemyCoordinates.getY());
-                    if(((newx != ((int) y)) || (newy != ((int) x))) && (lastY != y || lastX != x)) {
-                        plots[newx][newy].addEnemyToPath(enemy);
+                    if (!enemy.enemyDied()) {
+                        int newx = (int) Math.round(enemyCoordinates.getX());
+                        int newy =(int) Math.round(enemyCoordinates.getY());
+                        if(((newx != ((int) y)) || (newy != ((int) x))) && (lastY != y || lastX != x)) {
+                            plots[newx][newy].addEnemyToPath(enemy);
+                        }
                     }
                 }
-            }
 
-            if (!shouldClear && (x != lastX || y != lastY)) {
-                shouldClear = true;
-            }
-            if (shouldClear) {
-                plots[(int) y][(int) x].enemiesInPlot().clear();
+                if (!shouldClear && (x != lastX || y != lastY)) {
+                    shouldClear = true;
+                }
+                if (shouldClear) {
+                    plots[(int) y][(int) x].enemiesInPlot().clear();
 
+                }
             }
         }
+
+//        for (int i = enemyPath.size() - 1; i >= 0; i--) {
+//            boolean shouldClear = false;
+//
+//            long x = Math.round(enemyPath.get(i).getX());
+//            long y = Math.round(enemyPath.get(i).getY());
+//            for (Enemy enemy : plots[(int) y][(int) x].enemiesInPlot()) {
+//                Point enemyCoordinates =  enemy.move(i, enemyPath);
+//
+//                if (!enemy.enemyDied()) {
+//                    int newx = (int) Math.round(enemyCoordinates.getX());
+//                    int newy =(int) Math.round(enemyCoordinates.getY());
+//                    if(((newx != ((int) y)) || (newy != ((int) x))) && (lastY != y || lastX != x)) {
+//                        plots[newx][newy].addEnemyToPath(enemy);
+//                    }
+//                }
+//            }
+//
+//            if (!shouldClear && (x != lastX || y != lastY)) {
+//                shouldClear = true;
+//            }
+//            if (shouldClear) {
+//                plots[(int) y][(int) x].enemiesInPlot().clear();
+//
+//            }
+//        }
 
     }
 

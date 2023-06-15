@@ -40,10 +40,4 @@ public class Mole extends Enemy {
         return "Mole";
     }
 
-    @Override
-    public Point updateCoordinates(int positionInPath, ArrayList<Point> enemyPath) {
-        // Update the coordinates of the mole based on its position in the path
-        enemyCoordinates = move.execute(positionInPath, enemyPath);
-        return enemyCoordinates;
-    }
 }

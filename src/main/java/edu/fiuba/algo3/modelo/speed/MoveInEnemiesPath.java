@@ -11,9 +11,10 @@ public class MoveInEnemiesPath extends Move{
     public MoveInEnemiesPath(int speed) {
         super(speed);
     }
-
-    public Point execute(int positionInPath, ArrayList<Point> enemyPath){
+    @Override
+    public Point execute(long x, long y, Plot[][] plots, ArrayList<Point> enemyPath){
         int sizePath = enemyPath.size() - 1;
+        int positionInPath = enemyPath.indexOf(new Point((int)x, (int)y));
         int index = Math.min(positionInPath + speed, sizePath);
         long newX = (int) enemyPath.get(index).getX();;
         long newY = (int) enemyPath.get(index).getY();
