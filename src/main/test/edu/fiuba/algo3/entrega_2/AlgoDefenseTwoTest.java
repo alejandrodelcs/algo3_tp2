@@ -27,10 +27,10 @@ public class AlgoDefenseTwoTest {
 
         EnemiesParser enemiesParser = new EnemiesParser("src\\main\\java\\edu\\fiuba\\algo3\\modelo\\files\\invalidFormat.json");
         enemiesParser.getArray();
-        Assertions.assertThrows(EnemyObjectDoesNotExists.class,()-> enemiesParser.parserFile());
+        Assertions.assertThrows(EnemyObjectDoesNotExists.class, enemiesParser::parserFile);
 
         EnemiesParser enemiesParserOfJSONMap = new EnemiesParser("src\\main\\java\\edu\\fiuba\\algo3\\modelo\\files\\mapa.json");
-        Assertions.assertThrows(InvalidJSONArray.class,()-> enemiesParserOfJSONMap.getArray());
+        Assertions.assertThrows(InvalidJSONArray.class, enemiesParserOfJSONMap::getArray);
     }
     @Test
     public void test14VerifyThatMapJSONfileIsValid(){
