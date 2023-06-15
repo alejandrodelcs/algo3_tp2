@@ -96,7 +96,6 @@ public class EnemiesParser {
             EnemyFactory owlFactory = new OwlFactory();
             loadEnemies(owlAmount,owlFactory,enemiesStrategy);*/
 
-            System.out.println(enemiesStrategy);
             enemyStrategy.put(turnNumber, enemiesStrategy);
         }
         return enemyStrategy;

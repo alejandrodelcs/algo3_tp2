@@ -3,38 +3,17 @@ package edu.fiuba.algo3.modelo.enemy;
 import edu.fiuba.algo3.modelo.credit.Credit;
 import edu.fiuba.algo3.modelo.damage.Damage;
 import edu.fiuba.algo3.modelo.defense.Tower;
-import edu.fiuba.algo3.modelo.gameboard.Plot;
 import edu.fiuba.algo3.modelo.health.Health;
-import edu.fiuba.algo3.modelo.speed.Speed;
+import edu.fiuba.algo3.modelo.speed.Move;
 
 import java.awt.*;
 import java.util.ArrayList;
 
-/*public class Owl extends Enemy{
-    public Owl(Speed speed, Damage damage, Health healthPoints, int creditsReward) {
-        super(speed, damage, healthPoints, creditsReward);
-    }
-    @Override
-    public Point updateCoordinates(int positionInPath, ArrayList<Point> enemyPath, Plot[][] plots) {
-        return speed.enemyCoordinatesVelocityCalculator(positionInPath, enemyPath, plots);
-    }
-
-    @Override
-    public Credit generateCredits() {
-        return null;
-    }
-
-    @Override
-    public String Show() {
-        return null;
-    }
-}*/
-
 public class Owl extends Enemy {
     private boolean destroyedTower;
 
-    public Owl(Speed speed, Damage damage, Health health, Credit credit) {
-        super(speed, damage, health, credit);
+    public Owl(Damage damage, Health health, Credit credit, Move movement) {
+        super(damage, health, credit, movement);
         destroyedTower = false;
     }
 
@@ -54,9 +33,9 @@ public class Owl extends Enemy {
     }
 
     @Override
-    public Point updateCoordinates(int positionInPath, ArrayList<Point> enemyPath, Plot[][] plots) {
+    public Point updateCoordinates(int positionInPath, ArrayList<Point> enemyPath) {
         // Update the coordinates of the owl based on its position in the path
-        enemyCoordinates = speed.enemyCoordinatesVelocityCalculator(positionInPath, enemyPath, plots);
+        enemyCoordinates = move.execute(positionInPath, enemyPath);
         return enemyCoordinates;
     }
 

@@ -90,8 +90,6 @@ public class GameBoard {
             long x = Math.round(enemyPath.get(i).getX());
             long y = Math.round(enemyPath.get(i).getY());
             for (Enemy enemy : plots[(int) y][(int) x].enemiesInPlot()) {
-
-                //Point enemyCoordinates = enemy.updateCoordinates(i, enemyPath, plots);
                 Point enemyCoordinates =  enemy.move(i, enemyPath);
 
                 if (!enemy.enemyDied()) {
@@ -111,6 +109,7 @@ public class GameBoard {
 
             }
         }
+
     }
 
 

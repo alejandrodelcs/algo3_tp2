@@ -4,17 +4,19 @@ import edu.fiuba.algo3.modelo.credit.Credit;
 import edu.fiuba.algo3.modelo.damage.Damage;
 import edu.fiuba.algo3.modelo.health.Damageable;
 import edu.fiuba.algo3.modelo.health.Health;
-import edu.fiuba.algo3.modelo.speed.Speed;
+import edu.fiuba.algo3.modelo.speed.Move;
+import edu.fiuba.algo3.modelo.speed.MoveInLShape;
 
 public class OwlFactory implements EnemyFactory{
     @Override
     public Enemy createEnemy() {
-        Speed someSpeed = new Speed(5);
+
+        Move someMovement = new MoveInLShape(5);
         Damage someDamage = new Damage(0);
         Health someHealth = new Damageable(5);
         Credit someCredit = new Credit(0); //WE ASSUME THAT OWLS DO NOT GIVE CREDITS WHEN KILLED AS IT IS NOT SPECIFIED
 
-        return new Owl(someSpeed, someDamage, someHealth, someCredit);
+        return new Owl(someDamage, someHealth, someCredit, someMovement);
     }
 
 }
