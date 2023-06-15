@@ -21,6 +21,7 @@ public class EnemiesParser {
         FileHandler fileHandler = new FileHandler(fileSource);
         this.fileRelativeSource = fileSource;
     }
+
     public JSONArray getArray() {
         JSONArray error = new JSONArray();
         JSONParser parser = new JSONParser();
@@ -95,7 +96,6 @@ public class EnemiesParser {
             EnemyFactory owlFactory = new OwlFactory();
             loadEnemies(owlAmount,owlFactory,enemiesStrategy);*/
 
-            System.out.println(enemiesStrategy);
             enemyStrategy.put(turnNumber, enemiesStrategy);
         }
         return enemyStrategy;
