@@ -4,9 +4,9 @@ import edu.fiuba.algo3.modelo.credit.Credit;
 
 import java.awt.*;
 
-public class TrapSandyFactory implements DefenseFactory {
+public class SandyTrapFactory implements DefenseFactory {
     @Override
     public Defense createDefense(Point cordinates) {
-        return new TrapSandy( new Credit(25),cordinates,3);
+        return new SandyTrap( new Credit(25),cordinates,3);
     }
 }
