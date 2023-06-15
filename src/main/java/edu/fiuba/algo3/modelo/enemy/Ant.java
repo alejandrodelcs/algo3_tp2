@@ -59,12 +59,5 @@ public class Ant extends Enemy {
         return "Ant";
     }
 
-    @Override
-    public Point updateCoordinates(int positionInPath, ArrayList<Point> enemyPath) {
-        // Update the coordinates of the ant based on its position in the path
-        enemyCoordinates = move.execute(positionInPath, enemyPath);
-        return enemyCoordinates;
-    }
-
 }
 

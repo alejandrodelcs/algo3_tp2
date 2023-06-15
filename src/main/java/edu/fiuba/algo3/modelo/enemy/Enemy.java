@@ -2,6 +2,7 @@ package edu.fiuba.algo3.modelo.enemy;
 
 import edu.fiuba.algo3.modelo.credit.Credit;
 import edu.fiuba.algo3.modelo.damage.Damage;
+import edu.fiuba.algo3.modelo.gameboard.Plot;
 import edu.fiuba.algo3.modelo.health.*;
 import edu.fiuba.algo3.modelo.speed.Move;
 
@@ -100,10 +101,8 @@ public abstract class Enemy {
 
     public abstract String Show();
 
-    public abstract Point updateCoordinates(int positionInPath, ArrayList<Point> enemyPath);
-
-    public Point move(int positionInPath, ArrayList<Point> enemyPath){
-        enemyCoordinates = move.execute(positionInPath, enemyPath);
+    public Point move(long x, long y, Plot[][] plots, ArrayList<Point> enemyPath){
+        enemyCoordinates = move.execute(x, y, plots, enemyPath);
         return enemyCoordinates;
     }
 

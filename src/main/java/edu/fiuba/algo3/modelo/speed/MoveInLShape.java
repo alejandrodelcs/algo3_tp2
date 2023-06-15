@@ -10,8 +10,22 @@ public class MoveInLShape extends Move {
         super(speed);
     }
 
-    public Point execute(int positionInPath, ArrayList<Point> enemyPath){
-        Point p = null;
-        return p;
+    public Point execute(long x, long y, Plot[][] plots, ArrayList<Point> enemyPath){
+        Point lastEnemyPath = enemyPath.get(enemyPath.size() - 1);
+        int lastPathX = (int)lastEnemyPath.getX();
+        int lastPathY = (int)lastEnemyPath.getY();
+
+        int enemyX = (int)x;
+        int enemyY = (int)y;
+        for (int timesMoved = 0; timesMoved < speed; timesMoved++) {
+            if (enemyY > lastPathY) {
+                enemyX++;
+            } else {
+                enemyY++;
+            }
+        }
+        enemyY = Math.min(enemyY, lastPathY);
+        enemyX = Math.min(enemyX, lastPathX);
+        return new Point(enemyY, enemyX);
     }
 }

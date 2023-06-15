@@ -87,6 +87,8 @@ public class EnemiesParser {
             EnemyFactory moleFactory = new MoleFactory();
             loadEnemies(moleAmount,moleFactory,enemiesStrategy);
 
+ */
+
             if(!enemiesByTurn.containsKey("lechuza")){
                 throw new EnemyObjectDoesNotExists();
             }
@@ -94,7 +96,7 @@ public class EnemiesParser {
             String owlValue = owl.toString();
             int owlAmount = Integer.parseInt(owlValue);
             EnemyFactory owlFactory = new OwlFactory();
-            loadEnemies(owlAmount,owlFactory,enemiesStrategy);*/
+            loadEnemies(owlAmount,owlFactory,enemiesStrategy);
 
             enemyStrategy.put(turnNumber, enemiesStrategy);
         }

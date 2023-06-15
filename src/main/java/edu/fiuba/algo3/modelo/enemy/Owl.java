@@ -32,13 +32,6 @@ public class Owl extends Enemy {
         return "Owl";
     }
 
-    @Override
-    public Point updateCoordinates(int positionInPath, ArrayList<Point> enemyPath) {
-        // Update the coordinates of the owl based on its position in the path
-        enemyCoordinates = move.execute(positionInPath, enemyPath);
-        return enemyCoordinates;
-    }
-
     public void destroyTower(Tower tower) {
 //        if (!destroyedTower) { TODO: Need to implement destroy method in towers and uncomment or refactor this method
 //            tower.destroy();

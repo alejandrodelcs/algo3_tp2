@@ -7,16 +7,26 @@ import edu.fiuba.algo3.modelo.exceptions.ThereCannotBeEnemiesInThisPlot;
 import java.util.ArrayList;
 
 public class Dirt extends Plot{
-    public Dirt(){state = new Available();}
+    public Dirt(){
+        state = new Available();
+        this.enemyArrayList = new ArrayList<>();
+    }
+    public ArrayList<Enemy> enemyArrayList;
+
     @Override
-    public void setEnemy(ArrayList<Enemy> enemyList) {throw new TheEnemyCannotBeOutsideTheRunway();}
+    public void setEnemy(ArrayList<Enemy> enemyList) {this.enemyArrayList = enemyList;}
     @Override
     public String display() {
         if(state.itsOccupied()){return "|&|";}
         else{return "...";}
     }
     @Override
-    public ArrayList<Enemy> enemiesInPlot(){throw new ThereCannotBeEnemiesInThisPlot();}
-    public void addEnemyToPath(Enemy newEnemy){};
+    public ArrayList<Enemy> enemiesInPlot(){
+        if (enemyArrayList != null) {
+            return enemyArrayList;
+        }
+        return new ArrayList<Enemy>();
+    }
+    public void addEnemyToPath(Enemy newEnemy){this.enemyArrayList.add(newEnemy);};
 
 }
