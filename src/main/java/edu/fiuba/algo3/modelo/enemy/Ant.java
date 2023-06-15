@@ -66,5 +66,6 @@ public class Ant extends Enemy {
         enemyCoordinates = speed.enemyCoordinatesVelocityCalculator(positionInPath, enemyPath, plots);
         return enemyCoordinates;
     }
+
 }
 

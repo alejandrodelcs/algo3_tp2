@@ -4,6 +4,7 @@ import edu.fiuba.algo3.modelo.credit.Credit;
 import edu.fiuba.algo3.modelo.damage.Damage;
 import edu.fiuba.algo3.modelo.gameboard.Plot;
 import edu.fiuba.algo3.modelo.health.*;
+import edu.fiuba.algo3.modelo.speed.Move;
 import edu.fiuba.algo3.modelo.speed.Speed;
 
 import java.awt.*;
@@ -67,6 +68,7 @@ public abstract class Enemy {
     protected Health health;
     protected Credit creditsReward;
     protected Point enemyCoordinates;
+    protected Move move;
 
     public Enemy(Speed speed, Damage damage, Health health, Credit credit) {
         this.speed = speed;
@@ -74,10 +76,6 @@ public abstract class Enemy {
         this.health = health;
         this.enemyCoordinates = new Point();
         this.creditsReward = credit;
-    }
-
-    public int getSpeed() {
-        return speed.getSpeed();
     }
 
     public Damage getDamage() {
@@ -106,5 +104,9 @@ public abstract class Enemy {
     public abstract String Show();
 
     public abstract Point updateCoordinates(int positionInPath, ArrayList<Point> enemyPath, Plot[][] plots);
+
+    public Point move(int positionInPath, ArrayList<Point> enemyPath){
+        return move.execute(positionInPath, enemyPath);
+    };
 
 }

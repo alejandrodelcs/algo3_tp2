@@ -10,6 +10,7 @@ public class GameBoard {
     private Plot[][] plots;
     private ArrayList<Point> enemyPath;
 
+
     public GameBoard(Plot[][] expectedPlots) {
         plots = expectedPlots;
         enemyPath = constructPath();
@@ -66,11 +67,6 @@ public class GameBoard {
                 }
             }
         }
-//        for (Point plot:enemyPath
-//             ) {
-//            System.out.print(((int) plot.getX()) + ", ");
-//            System.out.println(((int) plot.getY()));
-//        }
         return enemyPath;
     }
 
@@ -93,10 +89,13 @@ public class GameBoard {
             long x = Math.round(enemyPath.get(i).getX());
             long y = Math.round(enemyPath.get(i).getY());
             for (Enemy enemy : plots[(int) y][(int) x].enemiesInPlot()) {
-                Point enemyCoordinates = enemy.updateCoordinates(i, enemyPath, plots);
+
+                //Point enemyCoordinates = enemy.updateCoordinates(i, enemyPath, plots);
+                Point enemyCoordinates =  enemy.move(i, enemyPath);
+
                 if (!enemy.enemyDied()) {
                     int newx = (int) Math.round(enemyCoordinates.getX());
-                    int newy = (int) Math.round(enemyCoordinates.getY());
+                    int newy =(int) Math.round(enemyCoordinates.getY());
                     if(((newx != ((int) y)) || (newy != ((int) x))) && (lastY != y || lastX != x)) {
                         plots[newx][newy].addEnemyToPath(enemy);
                     }
@@ -110,10 +109,6 @@ public class GameBoard {
                 plots[(int) y][(int) x].enemiesInPlot().clear();
 
             }
-        }
-        for (Point point:
-             enemyPath) {
-            System.out.println(plots[(int)point.getY()][(int)point.getX()].enemiesInPlot());
         }
     }
 
