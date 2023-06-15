@@ -9,8 +9,8 @@ import java.util.ArrayList;
 
 public class TrapSandy extends Trap {
     public void constructionFinished(){}
-    public TrapSandy(Credit credits, Point cordinatesTrap){
-        super(credits,cordinatesTrap);
+    public TrapSandy(Credit credits, Point cordinatesTrap, int operativeTurns){
+        super(credits,cordinatesTrap, operativeTurns);
         this.attack = new SlowDown(new Range(0));
     }
 

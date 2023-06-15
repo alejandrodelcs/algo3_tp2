@@ -9,8 +9,9 @@ import java.util.ArrayList;
 public class TemporallyState implements State{
     private int TurnAlive;
     private Attack attack;
-    public TemporallyState(Attack newAttack){
+    public TemporallyState(Attack newAttack,int operativeTurns){
         this.attack = newAttack;
+        this.TurnAlive = operativeTurns;
     }
     @Override
     public void attack(Defense defense, ArrayList<Enemy> enemies) {
