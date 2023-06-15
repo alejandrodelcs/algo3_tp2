@@ -2,7 +2,7 @@ package edu.fiuba.algo3.modelo.defense;
 
 import java.awt.*;
 
-public interface TowerFactory {
+public interface DefenseFactory {
     Defense createDefense(Point cordinates);
 
 }
