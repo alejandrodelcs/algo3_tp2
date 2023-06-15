@@ -11,11 +11,11 @@ public abstract class Tower extends Defense {
 
 
 
-    public Tower(Credit credits, Range rangeAttack, Damage damage, int constructionTurns,Point cordinatesTower){
+    public Tower(Credit credits, int constructionTurns,Point cordinatesTower){
         this.credits = credits;
         this.state = new ConstructionState(constructionTurns);
         this.coordinates = cordinatesTower;
-        this.attack = new SimpleRangeAttack(rangeAttack,damage);
+        ;
     }
 
     public void constructionFinished (){
