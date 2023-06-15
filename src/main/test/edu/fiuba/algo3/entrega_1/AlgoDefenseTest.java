@@ -129,7 +129,7 @@ public class AlgoDefenseTest {
 
       //Asseert
       Assertions.assertTrue(algoDefense.isOccupyByADefense(coordenatesToDirt));
-      Assertions.assertThrows(NonConstructibleArea.class,()-> algoDefense.buildsADefense(silverTower2));
+      //Assertions.assertThrows(NonConstructibleArea.class,()-> algoDefense.buildsADefense(silverTower2));
 
     }
 

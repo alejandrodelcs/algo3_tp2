@@ -71,12 +71,17 @@ public class GameBoard {
         return enemyPath;
     }
 
-    public void printMap(){
+    public void printMap() {
         for (Object[] row : plots) {
             for (Object plot : row) {
                 System.out.print(((Plot) plot).display());
             }
             System.out.println();
+        }
+        for (Point path : enemyPath) {
+            int x = (int) Math.round(path.getX());
+            int y = (int) Math.round(path.getY());
+            System.out.println(plots[y][x].enemiesInPlot());
         }
     }
 

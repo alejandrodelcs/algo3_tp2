@@ -11,7 +11,7 @@ import java.util.ArrayList;
 
 import static org.mockito.Mockito.*;
 
-public class TowerTest {/*
+public class TowerTest {
 
   @Test
     void test01NewWhiteTowerUnderConstructionCannotAttackEnemy() {
@@ -123,5 +123,5 @@ public class TowerTest {/*
 
         verify(spiderMock, never()).takeDamage(new Damage(2));
         Assertions.assertFalse(spiderMock.enemyDied());
-    }*/
+    }
 }

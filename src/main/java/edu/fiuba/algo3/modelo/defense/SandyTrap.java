@@ -9,7 +9,8 @@ public class SandyTrap extends Trap {
     public void constructionFinished(){}
     public SandyTrap(Credit credits, Point cordinatesTrap, int operativeTurns){
         super(credits,cordinatesTrap, operativeTurns);
-        this.attack = new SlowDown(new Range(0));
+        Range cero = new Range(0);
+        this.attack = new SlowDown(cero);
     }
 
 }

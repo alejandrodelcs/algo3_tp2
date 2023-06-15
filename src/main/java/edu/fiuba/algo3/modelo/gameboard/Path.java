@@ -1,7 +1,11 @@
 package edu.fiuba.algo3.modelo.gameboard;
 
+import edu.fiuba.algo3.modelo.defense.Defense;
+import edu.fiuba.algo3.modelo.defense.Trap;
 import edu.fiuba.algo3.modelo.enemy.Enemy;
 import edu.fiuba.algo3.modelo.enemy.EnemyFactory;
+import edu.fiuba.algo3.modelo.exceptions.NonConstructibleArea;
+import edu.fiuba.algo3.modelo.exceptions.NonTowerContructibleArea;
 
 import java.util.ArrayList;
 
@@ -9,7 +13,7 @@ public class Path extends Plot{
     public ArrayList<Enemy> enemyArrayList;
 
     public Path(){
-        this.state = new NotPlotAvailability();
+        this.state = new Available();
         this.enemyArrayList = new ArrayList<Enemy>();
     }
     @Override
@@ -29,5 +33,13 @@ public class Path extends Plot{
             return enemyArrayList;
         }
         return new ArrayList<Enemy>();
+    }
+
+    @Override
+    public void setDefense(Defense defense) {
+        if(defense.equals(Trap.class)){
+            this.defense = defense;
+            this.state = new Occupied();
+        }
     }
 }

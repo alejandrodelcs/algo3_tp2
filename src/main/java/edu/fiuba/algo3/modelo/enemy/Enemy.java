@@ -107,4 +107,7 @@ public abstract class Enemy {
         return enemyCoordinates;
     }
 
+    public void desacelerate(double percentage) {
+        move.desaccelerate(percentage);
+    }
 }

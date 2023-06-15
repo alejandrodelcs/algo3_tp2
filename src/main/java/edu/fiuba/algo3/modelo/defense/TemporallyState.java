@@ -16,7 +16,7 @@ public class TemporallyState implements State{
     @Override
     public void attack(Defense defense, ArrayList<Enemy> enemies) {
         TurnAlive--;
-        if(TurnAlive != 0) {
+        if(TurnAlive != 0 ) {
             attack.performAttack(defense, enemies);
         }
         else{defense.destructed();};
