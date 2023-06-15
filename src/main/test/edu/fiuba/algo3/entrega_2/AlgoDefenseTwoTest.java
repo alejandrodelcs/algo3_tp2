@@ -2,7 +2,7 @@ package edu.fiuba.algo3.entrega_2;
 
 import edu.fiuba.algo3.modelo.AlgoDefense;
 import edu.fiuba.algo3.modelo.defense.Defense;
-import edu.fiuba.algo3.modelo.defense.TowerFactory;
+import edu.fiuba.algo3.modelo.defense.DefenseFactory;
 import edu.fiuba.algo3.modelo.defense.WhiteTowerFactory;
 import edu.fiuba.algo3.modelo.exceptions.*;
 import edu.fiuba.algo3.modelo.parser.EnemiesParser;
@@ -100,7 +100,7 @@ public class AlgoDefenseTwoTest {
         //Arrange
         Player player = new Player("Player");
         AlgoDefense algoDefense = new AlgoDefense(player);
-        TowerFactory factory = new WhiteTowerFactory();
+        DefenseFactory factory = new WhiteTowerFactory();
 
         Point coordinatesToADirt = new Point(2, 3);
         Point coordinatesToADirt0 = new Point(0, 2);
@@ -113,16 +113,16 @@ public class AlgoDefenseTwoTest {
         Point coordinatesToADirt7 = new Point(4, 0);
         Point coordinatesToADirt8 = new Point(5, 0);
 
-        Defense whiteTower = factory.createTower(coordinatesToADirt);
-        Defense whiteTower0 = factory.createTower(coordinatesToADirt0);
-        Defense whiteTower1 = factory.createTower(coordinatesToADirt1);
-        Defense whiteTower2 = factory.createTower(coordinatesToADirt2);
-        Defense whiteTower3 = factory.createTower(coordinatesToADirt3);
-        Defense whiteTower4 = factory.createTower(coordinatesToADirt4);
-        Defense whiteTower5 = factory.createTower(coordinatesToADirt5);
-        Defense whiteTower6= factory.createTower(coordinatesToADirt6);
-        Defense whiteTower7 = factory.createTower(coordinatesToADirt7);
-        Defense whiteTower8 = factory.createTower(coordinatesToADirt8);
+        Defense whiteTower = factory.createDefense(coordinatesToADirt);
+        Defense whiteTower0 = factory.createDefense(coordinatesToADirt0);
+        Defense whiteTower1 = factory.createDefense(coordinatesToADirt1);
+        Defense whiteTower2 = factory.createDefense(coordinatesToADirt2);
+        Defense whiteTower3 = factory.createDefense(coordinatesToADirt3);
+        Defense whiteTower4 = factory.createDefense(coordinatesToADirt4);
+        Defense whiteTower5 = factory.createDefense(coordinatesToADirt5);
+        Defense whiteTower6= factory.createDefense(coordinatesToADirt6);
+        Defense whiteTower7 = factory.createDefense(coordinatesToADirt7);
+        Defense whiteTower8 = factory.createDefense(coordinatesToADirt8);
 
         //Act
         algoDefense.buildsADefense(whiteTower);
