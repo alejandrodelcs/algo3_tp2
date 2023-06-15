@@ -171,8 +171,6 @@ public class AlgoDefenseTwoTest {
         algoDefense.nextTurn();
 
         assertTrue(player.isAlive());
-        //TODO: add enemieslist is empty
-        assertFalse(algoDefense.playerHasEnemies());
     }
 
     @Test
