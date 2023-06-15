@@ -349,10 +349,8 @@ public class AlgoDefenseTest {
 
     @Test
     public void test13VerifyThatEnemiesJSONfileIsValid(){
-        EnemiesParser enemiesParser = new EnemiesParser("invalidfile");
 
-        //exception.expect(FileNotFoundException.class);
-        //Assertions.assertThrows(FileNotFoundException.class, ()-> enemiesParser.getArray());
+        Assertions.assertThrows(FileDoesNotExist.class, ()-> new EnemiesParser("invalidfile"));
     }
     @Test
     public void test14VerifyThatMapJSONfileIsValid(){
