@@ -82,4 +82,8 @@ public class AlgoDefense {
         //EnemyFacade
 
     }
+
+    public boolean playerHasEnemies() {
+        return !enemyStrategy.isEmpty();
+    }
 }
