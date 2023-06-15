@@ -1,0 +1,16 @@
+[
+  {
+    "turno": 1,
+    "enemigos": {
+      "arana": 0
+    }
+
+  },
+  {
+    "turno": 2,
+    "enemigos": {
+      "hormiga": 1,
+      "arana": 1
+    }
+  }
+]

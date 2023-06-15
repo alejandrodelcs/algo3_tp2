@@ -250,40 +250,8 @@ public class AlgoDefenseTest {
         assertTrue(anAnt.enemyDied());
     }
 
-
-
     @Test
-    public void test12VerifyThatEnemiesKilledPlayer(){
-        //Arrange
-        Player player = new Player("Player");
-        AlgoDefense algoDefense = new AlgoDefense(player);
-
-        //Act
-        algoDefense.nextTurn();
-        algoDefense.nextTurn();
-        algoDefense.nextTurn();
-        algoDefense.nextTurn();
-        algoDefense.nextTurn();
-        algoDefense.nextTurn();
-        algoDefense.nextTurn();
-        algoDefense.nextTurn();
-        algoDefense.nextTurn();
-        algoDefense.nextTurn();
-        algoDefense.nextTurn();
-        algoDefense.nextTurn();
-        algoDefense.nextTurn();
-        algoDefense.nextTurn();
-        algoDefense.nextTurn();
-        algoDefense.nextTurn();
-        //algoDefense.nextTurn(); //en esta linea el jugador se muere
-
-
-
-        //Assert
-        assertTrue(player.isAlive());
-    }
-    @Test
-    public void test18PlayerWinsTheGame(){
+    public void test10PlayerWinsTheGame(){
         //Arrange
         Player player = new Player("Player");
         AlgoDefense algoDefense = new AlgoDefense(player);
@@ -348,15 +316,32 @@ public class AlgoDefenseTest {
     }
 
     @Test
-    public void test13VerifyThatEnemiesJSONfileIsValid(){
-        EnemiesParser enemiesParser = new EnemiesParser("invalidfile");
+    public void test12VerifyThatEnemiesKilledPlayer(){
+        //Arrange
+        Player player = new Player("Player");
+        AlgoDefense algoDefense = new AlgoDefense(player);
 
-        //exception.expect(FileNotFoundException.class);
-        //Assertions.assertThrows(FileNotFoundException.class, ()-> enemiesParser.getArray());
-    }
-    @Test
-    public void test14VerifyThatMapJSONfileIsValid(){
+        //Act
+        algoDefense.nextTurn();
+        algoDefense.nextTurn();
+        algoDefense.nextTurn();
+        algoDefense.nextTurn();
+        algoDefense.nextTurn();
+        algoDefense.nextTurn();
+        algoDefense.nextTurn();
+        algoDefense.nextTurn();
+        algoDefense.nextTurn();
+        algoDefense.nextTurn();
+        algoDefense.nextTurn();
+        algoDefense.nextTurn();
+        algoDefense.nextTurn();
+        algoDefense.nextTurn();
+        algoDefense.nextTurn();
+        algoDefense.nextTurn();
+        //algoDefense.nextTurn(); //en esta linea el jugador se muere
 
+        //Assert
+        assertTrue(player.isAlive());
     }
 
 }

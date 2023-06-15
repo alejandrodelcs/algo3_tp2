@@ -1,4 +1,7 @@
 package edu.fiuba.algo3.modelo.parser;
+import edu.fiuba.algo3.modelo.exceptions.EnemyObjectDoesNotExists;
+import edu.fiuba.algo3.modelo.exceptions.InvalidMapFile;
+import edu.fiuba.algo3.modelo.exceptions.InvalidPlot;
 import edu.fiuba.algo3.modelo.gameboard.*;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -10,14 +13,14 @@ import java.io.IOException;
 
 
 public class MapParser {
-
     public Plot[][] plots;
-
     private String fileName;
     private String fileRelativeSource;
-    public MapParser(){
+
+    public MapParser(String file){
+        FileHandler fileHandler = new FileHandler(file);
         this.fileName = "Mapa";
-        this.fileRelativeSource = "src\\main\\java\\edu\\fiuba\\algo3\\modelo\\parser\\mapa.json";
+        this.fileRelativeSource = file;
     }
 
     public JSONObject getObject() {
@@ -26,16 +29,18 @@ public class MapParser {
         try {
             Object obj = parser.parse(new FileReader(fileRelativeSource));
             JSONObject jsonObject = (JSONObject) obj;
+            if(!jsonObject.containsKey("Mapa")){
+                throw new InvalidMapFile();
+            }
             return (JSONObject) jsonObject.get(fileName);
-
         } catch (ParseException | IOException ignored) {
         }
         return error;
     }
-    /*ArrayList<plot> RunAway = ArrayList<plot>();*/
+
     public GameBoard initializeMap(){
 
-        MapParser reader = new MapParser();
+        MapParser reader = new MapParser(fileRelativeSource);
         JSONObject mapaJsonObject =  reader.getObject();
         plots = new Plot[mapaJsonObject.keySet().size()][mapaJsonObject.values().size()];
 
@@ -55,15 +60,12 @@ public class MapParser {
                     case "Rocoso":
                         plots[i - 1][j] = new Stone();
                         break;
+                    default :
+                        throw new InvalidPlot();
                 }
                 j++;
             }
-
         }
-
-
         return new GameBoard(plots);
-
     }
-
 }
