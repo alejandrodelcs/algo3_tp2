@@ -22,6 +22,9 @@ public abstract class Defense {
     public void attack(ArrayList<Enemy> enemies){
         state.attack(this,enemies);}
     public abstract void constructionFinished();
+    public void destructed(){
+        state = new DestructedState();
+    };
 
 
 }
