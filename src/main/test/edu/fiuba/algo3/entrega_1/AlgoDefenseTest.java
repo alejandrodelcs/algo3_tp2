@@ -33,12 +33,12 @@ public class AlgoDefenseTest {
        Point fourthCoordinatesToADirt = new Point(2, 6);
        Point fifthCoordinatesToADirt = new Point(2, 7);
        Point invalidCoordinatesToADirt = new Point(2, 8);
-       Defense aSilverTower = towerFactory.createTower(coordinatesToADirt);
-       Defense aSecondSilverTower = towerFactory.createTower(secondCoordinatesToADirt);
-       Defense aThirdSilverTower = towerFactory.createTower(thirdCoordinatesToADirt);
-       Defense aFourthSilverTower = towerFactory.createTower(fourthCoordinatesToADirt);
-       Defense aFifthSilverTower = towerFactory.createTower(fifthCoordinatesToADirt);
-       Defense invalidSilverTower = towerFactory.createTower(invalidCoordinatesToADirt);
+       Defense aSilverTower = towerFactory.createDefense(coordinatesToADirt);
+       Defense aSecondSilverTower = towerFactory.createDefense(secondCoordinatesToADirt);
+       Defense aThirdSilverTower = towerFactory.createDefense(thirdCoordinatesToADirt);
+       Defense aFourthSilverTower = towerFactory.createDefense(fourthCoordinatesToADirt);
+       Defense aFifthSilverTower = towerFactory.createDefense(fifthCoordinatesToADirt);
+       Defense invalidSilverTower = towerFactory.createDefense(invalidCoordinatesToADirt);
        Damage tenDamage = new Damage(10);
        Damage nineDamage = new Damage(9);
        Damage theOneThatKills = new Damage(1);
@@ -68,8 +68,8 @@ public class AlgoDefenseTest {
         TowerFactory silverFactory = new SilverTowerFactory();
         Point coordinatesToADirt = new Point(2, 3);
         Point coordinatesToADirt0 = new Point(0, 2);
-        Defense whiteTower = whiteFactory.createTower(coordinatesToADirt);
-        Defense silverTower = silverFactory.createTower(coordinatesToADirt0);
+        Defense whiteTower = whiteFactory.createDefense(coordinatesToADirt);
+        Defense silverTower = silverFactory.createDefense(coordinatesToADirt0);
         algoDefense.buildsADefense(whiteTower);
         algoDefense.buildsADefense(silverTower);
 
@@ -95,12 +95,12 @@ public class AlgoDefenseTest {
         Point fourthCoordinatesToADirt = new Point(2, 6);
         Point fifthCoordinatesToADirt = new Point(2, 7);
         Point invalidCoordinatesToADirt = new Point(2, 8);
-        Defense aSilverTower = towerFactory.createTower(coordinatesToADirt);
-        Defense aSecondSilverTower = towerFactory.createTower(secondCoordinatesToADirt);
-        Defense aThirdSilverTower = towerFactory.createTower(thirdCoordinatesToADirt);
-        Defense aFourthSilverTower = towerFactory.createTower( fourthCoordinatesToADirt);
-        Defense aFifthSilverTower = towerFactory.createTower(fifthCoordinatesToADirt);
-        Defense invalidSilverTower = towerFactory.createTower(invalidCoordinatesToADirt);
+        Defense aSilverTower = towerFactory.createDefense(coordinatesToADirt);
+        Defense aSecondSilverTower = towerFactory.createDefense(secondCoordinatesToADirt);
+        Defense aThirdSilverTower = towerFactory.createDefense(thirdCoordinatesToADirt);
+        Defense aFourthSilverTower = towerFactory.createDefense( fourthCoordinatesToADirt);
+        Defense aFifthSilverTower = towerFactory.createDefense(fifthCoordinatesToADirt);
+        Defense invalidSilverTower = towerFactory.createDefense(invalidCoordinatesToADirt);
         Damage tenDamage = new Damage(10);
         Damage nineDamage = new Damage(9);
 
@@ -122,8 +122,8 @@ public class AlgoDefenseTest {
       TowerFactory factory = new SilverTowerFactory();
       Point coordenatesToStone = new Point(0,0);
       Point coordenatesToDirt = new Point(3,3);
-      Defense silverTower = factory.createTower(coordenatesToDirt);
-      Defense silverTower2 = factory.createTower(coordenatesToStone);
+      Defense silverTower = factory.createDefense(coordenatesToDirt);
+      Defense silverTower2 = factory.createDefense(coordenatesToStone);
       //Act
       algoDefense.buildsADefense(silverTower);
 
@@ -143,7 +143,7 @@ public class AlgoDefenseTest {
       Enemy anAnt = antFactory.createEnemy();
       enemyArray.add(anAnt);
       TowerFactory factory = new WhiteTowerFactory();
-      Defense whiteTower = factory.createTower(new Point(2, 3));
+      Defense whiteTower = factory.createDefense(new Point(2, 3));
 
       //Act
       algoDefense.spawnAnEnemy(enemyArray);
@@ -167,7 +167,7 @@ public class AlgoDefenseTest {
         Enemy aSpider = spiderFactory.createEnemy();
         enemyArray.add(aSpider);
         TowerFactory factory = new WhiteTowerFactory();
-        Defense whiteTower = factory.createTower(new Point(3, 3));
+        Defense whiteTower = factory.createDefense(new Point(3, 3));
 
         //Act
         algoDefense.spawnAnEnemy(enemyArray);
@@ -198,7 +198,7 @@ public class AlgoDefenseTest {
         AlgoDefense algoDefense = new AlgoDefense(player);
         Credit creditsExpected = new Credit(91);
         TowerFactory factory = new WhiteTowerFactory();
-        Defense whiteTower = factory.createTower(new Point(2, 3));
+        Defense whiteTower = factory.createDefense(new Point(2, 3));
 
         //Act
         algoDefense.buildsADefense(whiteTower);
@@ -220,7 +220,7 @@ public class AlgoDefenseTest {
         Enemy anAnt = spiderFactory.createEnemy();
         Enemy aSpider = spiderFactory.createEnemy();
         TowerFactory factory = new SilverTowerFactory();
-        Defense silverTower = factory.createTower(new Point(7, 13));
+        Defense silverTower = factory.createDefense(new Point(7, 13));
         enemyArray.add(anAnt);
         enemyArray.add(aSpider);
 
@@ -268,16 +268,16 @@ public class AlgoDefenseTest {
         Point coordinatesToADirt7 = new Point(4, 0);
         Point coordinatesToADirt8 = new Point(5, 0);
 
-        Defense whiteTower = factory.createTower(coordinatesToADirt);
-        Defense whiteTower0 = factory.createTower(coordinatesToADirt0);
-        Defense whiteTower1 = factory.createTower(coordinatesToADirt1);
-        Defense whiteTower2 = factory.createTower(coordinatesToADirt2);
-        Defense whiteTower3 = factory.createTower(coordinatesToADirt3);
-        Defense whiteTower4 = factory.createTower(coordinatesToADirt4);
-        Defense whiteTower5 = factory.createTower(coordinatesToADirt5);
-        Defense whiteTower6= factory.createTower(coordinatesToADirt6);
-        Defense whiteTower7 = factory.createTower(coordinatesToADirt7);
-        Defense whiteTower8 = factory.createTower(coordinatesToADirt8);
+        Defense whiteTower = factory.createDefense(coordinatesToADirt);
+        Defense whiteTower0 = factory.createDefense(coordinatesToADirt0);
+        Defense whiteTower1 = factory.createDefense(coordinatesToADirt1);
+        Defense whiteTower2 = factory.createDefense(coordinatesToADirt2);
+        Defense whiteTower3 = factory.createDefense(coordinatesToADirt3);
+        Defense whiteTower4 = factory.createDefense(coordinatesToADirt4);
+        Defense whiteTower5 = factory.createDefense(coordinatesToADirt5);
+        Defense whiteTower6= factory.createDefense(coordinatesToADirt6);
+        Defense whiteTower7 = factory.createDefense(coordinatesToADirt7);
+        Defense whiteTower8 = factory.createDefense(coordinatesToADirt8);
 
         //Act
         algoDefense.buildsADefense(whiteTower);

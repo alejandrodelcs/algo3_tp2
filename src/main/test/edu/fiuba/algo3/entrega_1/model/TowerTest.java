@@ -17,7 +17,7 @@ public class TowerTest {
     void test01NewWhiteTowerUnderConstructionCannotAttackEnemy() {
         TowerFactory factory = new WhiteTowerFactory();
         Point cordenates = new Point(3,3);
-        Tower WhiteTower = factory.createTower(cordenates);
+        Defense WhiteTower = factory.createDefense(cordenates);
         Enemy enemyMock = mock(Ant.class);
         when(enemyMock.getPoint()).thenReturn(new Point(4,4));
         ArrayList<Enemy> enemies = new ArrayList<>();
@@ -31,7 +31,7 @@ public class TowerTest {
     void test02NewSilverTowerUnderConstructionCannotAttackEnemy() {
         TowerFactory factory = new SilverTowerFactory();
         Point cordenates = new Point(3,3);
-        Tower SilverTower = factory.createTower(cordenates);
+        Tower SilverTower = factory.createDefense(cordenates);
         Enemy enemy = mock(Spider.class);
         when(enemy.getPoint()).thenReturn(new Point(9,9));
         ArrayList<Enemy> enemies = new ArrayList<>();
@@ -51,7 +51,7 @@ public class TowerTest {
     void test03WhiteTowerAttackWhenEnemyIsWithinRangeEnemyTakesDamage() {
         TowerFactory factory = new WhiteTowerFactory();
         Point cordenates = new Point(3,3);
-        Tower WhiteTower = factory.createTower(cordenates);
+        Defense WhiteTower = factory.createDefense(cordenates);
         Enemy antMock = mock(Ant.class);
         when(antMock.getPoint()).thenReturn(new Point(9,9));
         when(antMock.enemyDied()).thenReturn(true);
@@ -69,7 +69,7 @@ public class TowerTest {
     void test04SilverTowerAttackWhenEnemyIsWithinRangeEnemyTakesDamage() {
         TowerFactory factory = new SilverTowerFactory();
         Point cordenates = new Point(3,3);
-        Tower SilverTower = factory.createTower(cordenates);
+        Defense SilverTower = factory.createDefense(cordenates);
         Enemy spiderMock = mock(Spider.class);
         when(spiderMock.getPoint()).thenReturn(new Point(4,4));
         when(spiderMock.enemyDied()).thenReturn(true);
@@ -89,7 +89,7 @@ public class TowerTest {
     void test05SilverTowerCannotAttackAnEnemyOutOfRange() {
         TowerFactory factory = new SilverTowerFactory();
         Point cordenates = new Point(3,3);
-        Tower SilverTower = factory.createTower(cordenates);
+        Defense SilverTower = factory.createDefense(cordenates);
         Enemy spiderMock = mock(Spider.class);
         when(spiderMock.getPoint()).thenReturn(new Point(4,4));
         when(spiderMock.enemyDied()).thenReturn(false);
@@ -109,7 +109,7 @@ public class TowerTest {
     void test06SilverTowerCannotAttackAnEnemyOutOfRange() {
         TowerFactory factory = new SilverTowerFactory();
         Point cordenates = new Point(3,3);
-        Tower SilverTower = factory.createTower(cordenates);
+        Defense SilverTower = factory.createDefense(cordenates);
         Enemy spiderMock = mock(Spider.class);
         when(spiderMock.getPoint()).thenReturn(new Point(9,9));
         when(spiderMock.enemyDied()).thenReturn(false);

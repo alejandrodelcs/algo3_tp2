@@ -7,7 +7,7 @@ import java.awt.*;
 
 public class WhiteTowerFactory implements TowerFactory{
     @Override
-    public Tower createTower(Point cordinates) {
+    public Defense createDefense(Point cordinates) {
         return new WhiteTower( new Credit(10),new Range(3),new Damage(1),1,cordinates);
     }
 }
