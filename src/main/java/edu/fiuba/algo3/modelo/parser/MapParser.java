@@ -1,4 +1,7 @@
 package edu.fiuba.algo3.modelo.parser;
+import edu.fiuba.algo3.modelo.exceptions.EnemyObjectDoesNotExists;
+import edu.fiuba.algo3.modelo.exceptions.InvalidMapFile;
+import edu.fiuba.algo3.modelo.exceptions.InvalidPlot;
 import edu.fiuba.algo3.modelo.gameboard.*;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -26,6 +29,9 @@ public class MapParser {
         try {
             Object obj = parser.parse(new FileReader(fileRelativeSource));
             JSONObject jsonObject = (JSONObject) obj;
+            if(!jsonObject.containsKey(fileName)){
+                throw new InvalidMapFile();
+            }
             return (JSONObject) jsonObject.get(fileName);
 
         } catch (ParseException | IOException ignored) {
@@ -55,15 +61,12 @@ public class MapParser {
                     case "Rocoso":
                         plots[i - 1][j] = new Stone();
                         break;
+                    default :
+                        throw new InvalidPlot();
                 }
                 j++;
             }
-
         }
-
-
         return new GameBoard(plots);
-
     }
-
 }

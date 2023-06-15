@@ -6,6 +6,7 @@ import edu.fiuba.algo3.modelo.defense.TowerFactory;
 import edu.fiuba.algo3.modelo.defense.WhiteTowerFactory;
 import edu.fiuba.algo3.modelo.exceptions.*;
 import edu.fiuba.algo3.modelo.parser.EnemiesParser;
+import edu.fiuba.algo3.modelo.parser.MapParser;
 import edu.fiuba.algo3.modelo.player.Player;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -35,12 +36,20 @@ public class AlgoDefenseTwoTest {
     }
     @Test
     public void test14VerifyThatMapJSONfileIsValid(){
+/*        Assertions.assertThrows(FileDoesNotExist.class, ()-> new MapParser("invalidfile"));
 
+        Assertions.assertThrows(InvalidExtension.class,()->  new MapParser("src\\main\\java\\edu\\fiuba\\algo3\\modelo\\files\\csvFile.csv"));
+
+        Assertions.assertThrows(FileIsEmpty.class,()->  new MapParser("src\\main\\java\\edu\\fiuba\\algo3\\modelo\\files\\empty.json"));
+
+        MapParser mapParser = new MapParser("src\\main\\java\\edu\\fiuba\\algo3\\modelo\\files\\invalidFormat.json");
+        mapParser.getObject();
+        Assertions.assertThrows(EnemyObjectDoesNotExists.class, mapParser::parserFile);*/
     }
 
     @Test
     public void test15VerifyReadingAndUnitConversionOfEnemies(){
-        //TODO: set up
+        //TODO: set up with files sources
         //arrange
         String fileWithoutTurn = "src\\main\\java\\edu\\fiuba\\algo3\\modelo\\files\\enemyFileWithoutTurnObject.json";
         String fileWithoutEnemies = "src\\main\\java\\edu\\fiuba\\algo3\\modelo\\files\\enemyFileWithoutEnemies.json";
@@ -71,6 +80,14 @@ public class AlgoDefenseTwoTest {
     @Test
     public void test16VerifyReadingAndUnitConversionOfMap(){
 
+        String fileWithInvalidPlot = "src\\main\\java\\edu\\fiuba\\algo3\\modelo\\files\\mapWithInvalidPlot.json";
+        MapParser mapParser = new MapParser(fileWithInvalidPlot);
+        mapParser.getObject();
+        Assertions.assertThrows(InvalidPlot.class,()-> mapParser.initializeMap());
+
+/*        String fileWithInvalidObject = "src\\main\\java\\edu\\fiuba\\algo3\\modelo\\files\\mapWithoutObject.json";
+        MapParser mapParserWithoutObject = new MapParser(fileWithInvalidObject);
+        Assertions.assertThrows(InvalidMapFile.class,()-> mapParserWithoutObject.getObject());*/
     }
     @Test
     public void test17GameIsCreatedBasedUponBothJSONFiles(){
@@ -138,6 +155,4 @@ public class AlgoDefenseTwoTest {
         assertTrue(player.isAlive());
         //TODO: add enemieslist is empty
     }
-
-
 }
