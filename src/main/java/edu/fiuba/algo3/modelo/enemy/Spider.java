@@ -54,11 +54,4 @@ public class Spider extends Enemy {
     public String Show() {
         return "Spider";
     }
-
-    @Override
-    public Point updateCoordinates(int positionInPath, ArrayList<Point> enemyPath) {
-        // Update the coordinates of the spider based on its position in the path
-        enemyCoordinates = move.execute(positionInPath, enemyPath);
-        return enemyCoordinates;
-    }
 }

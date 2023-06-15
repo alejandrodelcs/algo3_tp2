@@ -1,5 +1,7 @@
 package edu.fiuba.algo3.modelo.speed;
 
+import edu.fiuba.algo3.modelo.gameboard.Plot;
+
 import java.awt.*;
 import java.util.ArrayList;
 
@@ -9,7 +11,7 @@ public abstract class Move {
     public Move(int speed) {
         this.speed = speed;
     }
-    public abstract Point execute(int positionInPath, ArrayList<Point> enemyPath);
+    public abstract Point execute(long x, long y, Plot[][] plots, ArrayList<Point> enemyPath);
 
     public void accelerate(int newVelocity) {
         speed = newVelocity;

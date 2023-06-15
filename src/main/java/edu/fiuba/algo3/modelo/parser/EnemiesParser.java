@@ -85,7 +85,9 @@ public class EnemiesParser {
             EnemyFactory moleFactory = new MoleFactory();
             loadEnemies(moleAmount,moleFactory,enemiesStrategy);
 
-            if(!enemiesByTurn.containsKey("lechuza")){
+ */
+
+            /*if(!enemiesByTurn.containsKey("lechuza")){
                 throw new EnemyObjectDoesNotExists();
             }
             Object owl = enemiesByTurn.get("lechuza");

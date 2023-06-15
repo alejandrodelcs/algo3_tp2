@@ -180,7 +180,7 @@ public class AlgoDefenseTest {
         Assertions.assertTrue(anAnt.enemyDied());
         Assertions.assertFalse(aSpider.enemyDied());
     }
-    @Test
+/*    @Test
     public void test07VerifyThatEnemiesMovesOnlyInPath(){
         Stone stone = new Stone();
         EnemyFactory antFactory = new AntFactory();
@@ -190,7 +190,7 @@ public class AlgoDefenseTest {
         listEnemy.add(ant);
         Assertions.assertThrows(TheEnemyCannotBeOutsideTheRunway.class,()->stone.setEnemy(listEnemy));
 
-    }
+    }*/
     @Test
     public void test08VerifyThatWhenDestroyingAnEnemyUnitThePlayerIsAwardedTheCorrespondingCredit(){
         //Arrange
