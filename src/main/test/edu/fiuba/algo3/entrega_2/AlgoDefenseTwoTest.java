@@ -15,7 +15,6 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.awt.*;
-import java.util.StringJoiner;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -42,18 +41,17 @@ public class AlgoDefenseTwoTest {
 
        Assertions.assertThrows(FileDoesNotExist.class, ()-> new MapParser("invalidfile"));
 
-        Assertions.assertThrows(InvalidExtension.class,()->  new MapParser("src\\main\\java\\edu\\fiuba\\algo3\\modelo\\files\\csvFile.csv"));
+       Assertions.assertThrows(InvalidExtension.class,()->  new MapParser("src\\main\\java\\edu\\fiuba\\algo3\\modelo\\files\\csvFile.csv"));
 
-        Assertions.assertThrows(FileIsEmpty.class,()->  new MapParser("src\\main\\java\\edu\\fiuba\\algo3\\modelo\\files\\empty.json"));
+       Assertions.assertThrows(FileIsEmpty.class,()->  new MapParser("src\\main\\java\\edu\\fiuba\\algo3\\modelo\\files\\empty.json"));
 
-       /* MapParser mapParser = new MapParser("src\\main\\java\\edu\\fiuba\\algo3\\modelo\\files\\invalidFormat.json");
-        mapParser.getObject();
-        Assertions.assertThrows(EnemyObjectDoesNotExists.class, mapParser::parserFile);*/
+       MapParser mapParser = new MapParser("src\\main\\java\\edu\\fiuba\\algo3\\modelo\\files\\enemigos.json");
+       Assertions.assertThrows(InvalidJSONObject.class, ()-> mapParser.getObject());
     }
 
     @Test
     public void test15VerifyReadingAndUnitConversionOfEnemies(){
-        //TODO: set up with files sources
+
         //arrange
         String fileWithoutTurn = "src\\main\\java\\edu\\fiuba\\algo3\\modelo\\files\\enemyFileWithoutTurnObject.json";
         String fileWithoutEnemies = "src\\main\\java\\edu\\fiuba\\algo3\\modelo\\files\\enemyFileWithoutEnemies.json";
@@ -79,7 +77,8 @@ public class AlgoDefenseTwoTest {
         enemiesParserFileMissingSpider.getArray();
         Assertions.assertThrows(EnemyObjectDoesNotExists.class,()-> enemiesParserFileMissingSpider.parserFile());
 
-        //TODO: add testing list of enemies not empty
+        EnemiesParser validEnemiesParser = new EnemiesParser(validFile);
+        Assertions.assertFalse(validEnemiesParser.getArray().isEmpty());
     }
     @Test
     public void test16VerifyReadingAndUnitConversionOfMap(){
@@ -89,13 +88,27 @@ public class AlgoDefenseTwoTest {
         mapParser.getObject();
         Assertions.assertThrows(InvalidPlot.class,()-> mapParser.initializeMap());
 
-       String fileWithInvalidObject = "src\\main\\java\\edu\\fiuba\\algo3\\modelo\\files\\mapWithoutMapObject.json";
+        String fileWithInvalidObject = "src\\main\\java\\edu\\fiuba\\algo3\\modelo\\files\\mapWithoutMapObject.json";
         MapParser mapParserWithoutObject = new MapParser(fileWithInvalidObject);
         Assertions.assertThrows(InvalidMapFile.class,()-> mapParserWithoutObject.getObject());
+
+        String validFile = "src\\main\\java\\edu\\fiuba\\algo3\\modelo\\files\\mapa.json";
+        MapParser validMapParser = new MapParser(validFile);
+        Assertions.assertFalse(validMapParser.getObject().isEmpty());
     }
+
     @Test
     public void test17GameIsCreatedBasedUponBothJSONFiles(){
-        //TODO: printear el JSON
+
+        String validEnemyFile = "src\\main\\java\\edu\\fiuba\\algo3\\modelo\\files\\enemigos.json";
+        String validMapFile = "src\\main\\java\\edu\\fiuba\\algo3\\modelo\\files\\mapa.json";
+
+        EnemiesParser validEnemiesParser = new EnemiesParser(validEnemyFile);
+        MapParser validMapParser = new MapParser(validMapFile);
+
+        Assertions.assertFalse(validMapParser.getObject().isEmpty());
+        Assertions.assertFalse(validEnemiesParser.getArray().isEmpty());
+
     }
 
     @Test
@@ -158,6 +171,34 @@ public class AlgoDefenseTwoTest {
 
         assertTrue(player.isAlive());
         //TODO: add enemieslist is empty
+        assertTrue(algoDefense.playerHasEnemies());
+    }
+
+    @Test
+    public void test19VerifyThatPlayerLost(){
+        //Arrange
+        Player player = new Player("Player");
+        AlgoDefense algoDefense = new AlgoDefense(player);
+
+        //Act
+        algoDefense.nextTurn();
+        algoDefense.nextTurn();
+        algoDefense.nextTurn();
+        algoDefense.nextTurn();
+        algoDefense.nextTurn();
+        algoDefense.nextTurn();
+        algoDefense.nextTurn();
+        algoDefense.nextTurn();
+        algoDefense.nextTurn();
+        algoDefense.nextTurn();
+        algoDefense.nextTurn();
+        algoDefense.nextTurn();
+        algoDefense.nextTurn();
+        algoDefense.nextTurn();
+        algoDefense.nextTurn();
+        algoDefense.nextTurn();
+
+        Assertions.assertThrows(PlayerIsDeadGameOver.class,()-> algoDefense.nextTurn());
     }
 
     @Test

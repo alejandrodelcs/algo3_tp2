@@ -7,8 +7,7 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
-import java.io.File;
-import java.io.FileNotFoundException;
+
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.*;
@@ -38,13 +37,12 @@ public class EnemiesParser {
 
     public Dictionary parserFile(){
 
-        Dictionary enemyStrategy = new Hashtable();
-        ArrayList<Enemy> enemies;
+        Dictionary turnsAndEnemies = new Hashtable();
         EnemiesParser reader = new EnemiesParser(fileRelativeSource);
         JSONArray enemyObject = reader.getArray();
 
         for (Object o : enemyObject) {
-            ArrayList<Enemy> enemiesStrategy = new ArrayList<Enemy>();
+            ArrayList<Enemy> enemies = new ArrayList<Enemy>();
 
             JSONObject rowObject = (JSONObject) o;
 
@@ -67,7 +65,7 @@ public class EnemiesParser {
             String antValue = ant.toString();
             int antAmount = Integer.parseInt(antValue);
             EnemyFactory antFactory = new AntFactory();
-            loadEnemies(antAmount,antFactory,enemiesStrategy);
+            loadEnemies(antAmount,antFactory,enemies);
 
             if(!enemiesByTurn.containsKey("arana")){
                 throw new EnemyObjectDoesNotExists();
@@ -76,7 +74,7 @@ public class EnemiesParser {
             String spiderValue = spider.toString();
             int spiderAmount = Integer.parseInt(spiderValue);
             EnemyFactory spiderFactory = new SpiderFactory();
-            loadEnemies(spiderAmount,spiderFactory,enemiesStrategy);
+            loadEnemies(spiderAmount,spiderFactory,enemies);
 
 /*            if(!enemiesByTurn.containsKey("topo")){
                 throw new EnemyObjectDoesNotExists();
@@ -96,15 +94,16 @@ public class EnemiesParser {
             EnemyFactory owlFactory = new OwlFactory();
             loadEnemies(owlAmount,owlFactory,enemiesStrategy);*/
 
-            enemyStrategy.put(turnNumber, enemiesStrategy);
+            System.out.println(enemies);
+            turnsAndEnemies.put(turnNumber, enemies);
         }
-        return enemyStrategy;
+        return turnsAndEnemies;
     }
-    private void loadEnemies(int enemyAmount, EnemyFactory enemyFactory, ArrayList<Enemy> enemiesStrategy){
+    private void loadEnemies(int enemyAmount, EnemyFactory enemyFactory, ArrayList<Enemy> turnsAndEnemies){
 
         while (enemyAmount>0){
             Enemy anEnemy = enemyFactory.createEnemy();
-            enemiesStrategy.add(anEnemy);
+            turnsAndEnemies.add(anEnemy);
             enemyAmount --;
         }
     }
