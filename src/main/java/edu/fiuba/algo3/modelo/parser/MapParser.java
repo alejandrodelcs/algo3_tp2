@@ -13,12 +13,12 @@ import java.io.IOException;
 
 
 public class MapParser {
-
     public Plot[][] plots;
-
     private String fileName;
     private String fileRelativeSource;
+
     public MapParser(String file){
+        FileHandler fileHandler = new FileHandler(file);
         this.fileName = "Mapa";
         this.fileRelativeSource = file;
     }
@@ -29,16 +29,15 @@ public class MapParser {
         try {
             Object obj = parser.parse(new FileReader(fileRelativeSource));
             JSONObject jsonObject = (JSONObject) obj;
-            if(!jsonObject.containsKey(fileName)){
+            if(!jsonObject.containsKey("Mapa")){
                 throw new InvalidMapFile();
             }
             return (JSONObject) jsonObject.get(fileName);
-
         } catch (ParseException | IOException ignored) {
         }
         return error;
     }
-    /*ArrayList<plot> RunAway = ArrayList<plot>();*/
+
     public GameBoard initializeMap(){
 
         MapParser reader = new MapParser(fileRelativeSource);

@@ -36,13 +36,14 @@ public class AlgoDefenseTwoTest {
     }
     @Test
     public void test14VerifyThatMapJSONfileIsValid(){
-/*        Assertions.assertThrows(FileDoesNotExist.class, ()-> new MapParser("invalidfile"));
+
+       Assertions.assertThrows(FileDoesNotExist.class, ()-> new MapParser("invalidfile"));
 
         Assertions.assertThrows(InvalidExtension.class,()->  new MapParser("src\\main\\java\\edu\\fiuba\\algo3\\modelo\\files\\csvFile.csv"));
 
         Assertions.assertThrows(FileIsEmpty.class,()->  new MapParser("src\\main\\java\\edu\\fiuba\\algo3\\modelo\\files\\empty.json"));
 
-        MapParser mapParser = new MapParser("src\\main\\java\\edu\\fiuba\\algo3\\modelo\\files\\invalidFormat.json");
+       /* MapParser mapParser = new MapParser("src\\main\\java\\edu\\fiuba\\algo3\\modelo\\files\\invalidFormat.json");
         mapParser.getObject();
         Assertions.assertThrows(EnemyObjectDoesNotExists.class, mapParser::parserFile);*/
     }
@@ -61,15 +62,15 @@ public class AlgoDefenseTwoTest {
 
         EnemiesParser enemiesParser = new EnemiesParser(fileWithoutTurn);
         enemiesParser.getArray();
-        Assertions.assertThrows(TurnObjectDoesNotExists.class,()-> enemiesParser.parserFile());
+        Assertions.assertThrows(TurnObjectDoesNotExists.class, enemiesParser::parserFile);
 
         EnemiesParser enemiesParserFileMissingEnemies = new EnemiesParser(fileWithoutEnemies);
         enemiesParserFileMissingEnemies.getArray();
-        Assertions.assertThrows(EnemyObjectDoesNotExists.class,()-> enemiesParserFileMissingEnemies.parserFile());
+        Assertions.assertThrows(EnemyObjectDoesNotExists.class, enemiesParserFileMissingEnemies::parserFile);
 
         EnemiesParser enemiesParserFileMissingAnt = new EnemiesParser(fileWithoutAnt);
         enemiesParserFileMissingAnt.getArray();
-        Assertions.assertThrows(EnemyObjectDoesNotExists.class,()-> enemiesParserFileMissingAnt.parserFile());
+        Assertions.assertThrows(EnemyObjectDoesNotExists.class, enemiesParserFileMissingAnt::parserFile);
 
         EnemiesParser enemiesParserFileMissingSpider = new EnemiesParser(fileWithoutSpider);
         enemiesParserFileMissingSpider.getArray();
@@ -85,13 +86,13 @@ public class AlgoDefenseTwoTest {
         mapParser.getObject();
         Assertions.assertThrows(InvalidPlot.class,()-> mapParser.initializeMap());
 
-/*        String fileWithInvalidObject = "src\\main\\java\\edu\\fiuba\\algo3\\modelo\\files\\mapWithoutObject.json";
+       String fileWithInvalidObject = "src\\main\\java\\edu\\fiuba\\algo3\\modelo\\files\\mapWithoutMapObject.json";
         MapParser mapParserWithoutObject = new MapParser(fileWithInvalidObject);
-        Assertions.assertThrows(InvalidMapFile.class,()-> mapParserWithoutObject.getObject());*/
+        Assertions.assertThrows(InvalidMapFile.class,()-> mapParserWithoutObject.getObject());
     }
     @Test
     public void test17GameIsCreatedBasedUponBothJSONFiles(){
-
+        //TODO: printear el JSON
     }
 
     @Test
