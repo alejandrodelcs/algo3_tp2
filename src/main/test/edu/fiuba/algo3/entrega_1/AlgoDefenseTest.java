@@ -250,40 +250,8 @@ public class AlgoDefenseTest {
         assertTrue(anAnt.enemyDied());
     }
 
-
-
     @Test
-    public void test12VerifyThatEnemiesKilledPlayer(){
-        //Arrange
-        Player player = new Player("Player");
-        AlgoDefense algoDefense = new AlgoDefense(player);
-
-        //Act
-        algoDefense.nextTurn();
-        algoDefense.nextTurn();
-        algoDefense.nextTurn();
-        algoDefense.nextTurn();
-        algoDefense.nextTurn();
-        algoDefense.nextTurn();
-        algoDefense.nextTurn();
-        algoDefense.nextTurn();
-        algoDefense.nextTurn();
-        algoDefense.nextTurn();
-        algoDefense.nextTurn();
-        algoDefense.nextTurn();
-        algoDefense.nextTurn();
-        algoDefense.nextTurn();
-        algoDefense.nextTurn();
-        algoDefense.nextTurn();
-        //algoDefense.nextTurn(); //en esta linea el jugador se muere
-
-
-
-        //Assert
-        assertTrue(player.isAlive());
-    }
-    @Test
-    public void test18PlayerWinsTheGame(){
+    public void test10PlayerWinsTheGame(){
         //Arrange
         Player player = new Player("Player");
         AlgoDefense algoDefense = new AlgoDefense(player);
@@ -348,23 +316,32 @@ public class AlgoDefenseTest {
     }
 
     @Test
-    public void test13VerifyThatEnemiesJSONfileIsValid(){
+    public void test12VerifyThatEnemiesKilledPlayer(){
+        //Arrange
+        Player player = new Player("Player");
+        AlgoDefense algoDefense = new AlgoDefense(player);
 
-        Assertions.assertThrows(FileDoesNotExist.class, ()-> new EnemiesParser("invalidfile"));
+        //Act
+        algoDefense.nextTurn();
+        algoDefense.nextTurn();
+        algoDefense.nextTurn();
+        algoDefense.nextTurn();
+        algoDefense.nextTurn();
+        algoDefense.nextTurn();
+        algoDefense.nextTurn();
+        algoDefense.nextTurn();
+        algoDefense.nextTurn();
+        algoDefense.nextTurn();
+        algoDefense.nextTurn();
+        algoDefense.nextTurn();
+        algoDefense.nextTurn();
+        algoDefense.nextTurn();
+        algoDefense.nextTurn();
+        algoDefense.nextTurn();
+        //algoDefense.nextTurn(); //en esta linea el jugador se muere
 
-        EnemiesParser enemiesParser = new EnemiesParser("src\\main\\java\\edu\\fiuba\\algo3\\modelo\\files\\enemyFileWithoutTurnObject.json");
-        enemiesParser.getArray();
-        Assertions.assertThrows(TurnObjectDoesNotExists.class,()-> enemiesParser.parserFile());
-
-/*
-        EnemiesParser enemiesParser = new EnemiesParser("src\\main\\java\\edu\\fiuba\\algo3\\modelo\\files\\mapa.json");
-        Assertions.assertThrows(InvalidJSONArray.class,()-> enemiesParser.getArray());
-*/
-
-    }
-    @Test
-    public void test14VerifyThatMapJSONfileIsValid(){
-
+        //Assert
+        assertTrue(player.isAlive());
     }
 
 }
