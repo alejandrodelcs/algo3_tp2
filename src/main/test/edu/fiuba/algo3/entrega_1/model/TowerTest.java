@@ -31,7 +31,7 @@ public class TowerTest {
     void test02NewSilverTowerUnderConstructionCannotAttackEnemy() {
         TowerFactory factory = new SilverTowerFactory();
         Point cordenates = new Point(3,3);
-        Tower SilverTower = factory.createDefense(cordenates);
+        Defense SilverTower = factory.createDefense(cordenates);
         Enemy enemy = mock(Spider.class);
         when(enemy.getPoint()).thenReturn(new Point(9,9));
         ArrayList<Enemy> enemies = new ArrayList<>();
