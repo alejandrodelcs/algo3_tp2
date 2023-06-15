@@ -19,18 +19,26 @@ public class EnemiesParser {
 
     public EnemiesParser(String fileSource){
         isItValid(fileSource);
-        //isJSONArray(fileSource);
         this.fileRelativeSource = fileSource;
     }
 
     private void isItValid(String fileSource) {
         File file = new File(fileSource);
+        String extension = "";
         if(!file.exists()) {
             throw new FileDoesNotExist();
         }
         if(file.length() == 0){
             throw new FileIsEmpty();
         }
+        int i = fileSource.lastIndexOf('.');
+        if (i > 0) {
+            extension = fileSource.substring(i+1);
+            if(!extension.equals("json")){
+                throw new InvalidExtension();
+            }
+        }
+
     }
 
     public JSONArray getArray() {
@@ -39,6 +47,9 @@ public class EnemiesParser {
         try {
 
             Object obj = parser.parse(new FileReader(fileRelativeSource));
+            if(obj instanceof JSONObject){
+                throw new InvalidJSONArray();
+            }
             return (JSONArray) obj;
 
         } catch (ParseException | IOException ignored) {
@@ -52,7 +63,6 @@ public class EnemiesParser {
         ArrayList<Enemy> enemies;
         EnemiesParser reader = new EnemiesParser(fileRelativeSource);
         JSONArray enemyObject = reader.getArray();
-
 
         for (Object o : enemyObject) {
             ArrayList<Enemy> enemiesStrategy = new ArrayList<Enemy>();

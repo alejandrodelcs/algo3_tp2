@@ -351,6 +351,16 @@ public class AlgoDefenseTest {
     public void test13VerifyThatEnemiesJSONfileIsValid(){
 
         Assertions.assertThrows(FileDoesNotExist.class, ()-> new EnemiesParser("invalidfile"));
+
+        EnemiesParser enemiesParser = new EnemiesParser("src\\main\\java\\edu\\fiuba\\algo3\\modelo\\files\\enemyFileWithoutTurnObject.json");
+        enemiesParser.getArray();
+        Assertions.assertThrows(TurnObjectDoesNotExists.class,()-> enemiesParser.parserFile());
+
+/*
+        EnemiesParser enemiesParser = new EnemiesParser("src\\main\\java\\edu\\fiuba\\algo3\\modelo\\files\\mapa.json");
+        Assertions.assertThrows(InvalidJSONArray.class,()-> enemiesParser.getArray());
+*/
+
     }
     @Test
     public void test14VerifyThatMapJSONfileIsValid(){
