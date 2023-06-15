@@ -16,6 +16,7 @@ import org.junit.jupiter.api.Test;
 
 import java.awt.*;
 
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class AlgoDefenseTwoTest {
@@ -171,7 +172,7 @@ public class AlgoDefenseTwoTest {
 
         assertTrue(player.isAlive());
         //TODO: add enemieslist is empty
-        assertTrue(algoDefense.playerHasEnemies());
+        assertFalse(algoDefense.playerHasEnemies());
     }
 
     @Test
