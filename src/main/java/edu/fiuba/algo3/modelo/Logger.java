@@ -2,7 +2,7 @@ package edu.fiuba.algo3.modelo;
 
 public class Logger {
 
-    private static final Logger singleInstance = new Logger();
+    private static final Logger singleton = new Logger();
 
     private static boolean loggerEnable = true;
 
@@ -10,7 +10,7 @@ public class Logger {
     }
 
     public static Logger get() {
-        return singleInstance;
+        return singleton;
     }
 
     public void toggle(boolean bool){

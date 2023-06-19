@@ -74,6 +74,9 @@ public class AlgoDefense {
         for(Enemy enemy : finalListOfEnemies){
             player.getsDamage(enemy.getDamage());
         }
+        if (!player.isAlive()){
+            Logger.get().log("The player is dead.");
+        }
     }
 
     public void loadEnemies() {
