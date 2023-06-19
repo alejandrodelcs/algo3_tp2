@@ -8,8 +8,10 @@ import edu.fiuba.algo3.modelo.exceptions.InvalidPlayersName;
 import edu.fiuba.algo3.modelo.exceptions.PlayerIsDeadGameOver;
 import edu.fiuba.algo3.modelo.health.Damageable;
 import edu.fiuba.algo3.modelo.health.Health;
+import javafx.fxml.FXML;
 
 import java.awt.*;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class Player {
@@ -79,5 +81,7 @@ public class Player {
     public boolean hasFunds() {
         return playersCredits.arePositive();
     }
+
+
 }
 

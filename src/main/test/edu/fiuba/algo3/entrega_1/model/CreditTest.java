@@ -68,7 +68,7 @@ public class CreditTest {
             }
         }
 
-        @Test
+      /*  @Test
         void  testPrintEnemies(){
             String file = "src\\main\\java\\edu\\fiuba\\algo3\\modelo\\parser\\enemigos.json";
             EnemiesParser Reader = new EnemiesParser(file);
@@ -81,7 +81,7 @@ public class CreditTest {
                 JSONObject rowObject = (JSONObject) o;
                 System.out.println(rowObject.toString());
             }
-        }
+        }*/
 
     }
 }
