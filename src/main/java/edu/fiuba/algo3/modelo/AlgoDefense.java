@@ -26,6 +26,17 @@ public class AlgoDefense {
 
     private ArrayList<Defense> defenses;
 
+    public AlgoDefense(){
+        this.gameboard = new GameboardFacade().loadMap();
+        this.defenses = new ArrayList<Defense>();
+        this.enemyStrategy = new EnemyFacade().loadEnemiesStrategy();
+        this.turn = new Turn(enemyStrategy);
+        this.antFactory = new AntFactory();
+        this.spiderFactory = new SpiderFactory();
+        this.moleFactory = new MoleFactory();
+        this.owlFactory = new OwlFactory();
+    }
+
     public AlgoDefense(Player aPLayer){
         this.player = aPLayer;
         this.gameboard = new GameboardFacade().loadMap();
@@ -77,6 +88,10 @@ public class AlgoDefense {
         if (!player.isAlive()){
             Logger.get().log("The player is dead.");
         }
+    }
+
+    public void setPlayer(Player player){
+        this.player = player;
     }
 
     public void loadEnemies() {

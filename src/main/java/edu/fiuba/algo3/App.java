@@ -1,5 +1,6 @@
 package edu.fiuba.algo3;
 import edu.fiuba.algo3.controllers.Signup;
+import edu.fiuba.algo3.modelo.AlgoDefense;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -24,7 +25,7 @@ public class App extends Application {
         stage.show();
     }*/
 
-
+    public static final AlgoDefense algodefense = new AlgoDefense();
     @Override
     public void start(Stage primaryStage) throws Exception {
         // Cargar el archivo FXML

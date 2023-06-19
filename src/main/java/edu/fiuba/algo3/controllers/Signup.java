@@ -1,4 +1,5 @@
 package edu.fiuba.algo3.controllers;
+import edu.fiuba.algo3.App;
 import edu.fiuba.algo3.modelo.player.Player;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
@@ -18,7 +19,7 @@ public class Signup {
     private void handleSignup() {
         String username = usernameField.getText();
         Player player = new Player(username);
+        App.algodefense.setPlayer(player);
         System.out.println("Registro exitoso");
-
     }
 }

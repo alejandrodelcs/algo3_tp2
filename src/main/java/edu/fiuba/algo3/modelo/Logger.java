@@ -16,7 +16,6 @@ public class Logger {
     public void toggle(boolean bool){
         loggerEnable = bool;
     }
-
     public void log(String loggedMessage) {
         if (loggerEnable)
             System.out.println(loggedMessage);
