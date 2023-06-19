@@ -1,0 +1,22 @@
+#playButton{
+    -fx-background-color: #706767; /* Green */
+    -fx-border: none;
+    -fx-color: white;
+    -fx-padding: 15px 32px;
+    -fx-text-align: center;
+    -fx-text-decoration: none;
+    -fx-display: inline-block;
+    -fx-font-size: 20px;
+}
+
+#playButton:hover {
+    -fx-color: white;
+    -fx-background-color: #ee3434;
+    -fx-box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+    -fx-translate-y: -2;
+    -fx-transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
+}
+#playButton:pressed {
+    -fx-effect: none;
+    -fx-translate-y: 0;
+}

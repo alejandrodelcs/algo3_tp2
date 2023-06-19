@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.*?>
+
+
+<GridPane xmlns="http://javafx.com/javafx/15" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.fiuba.algo3.controllers.Signup" alignment="CENTER" hgap="10" vgap="10">
+    <padding>
+        <Insets top="100" right="100" bottom="100" left="100"/>
+    </padding>
+
+    <Label text="SIGN UP" GridPane.columnIndex="0" GridPane.rowIndex="0" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER"/>
+
+    <Label text="Username" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+    <TextField fx:id="usernameField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+
+    <Button fx:id="playButton" text="¡Play!" onAction="#handleSignup" GridPane.columnIndex="0" GridPane.rowIndex="4" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER" styleClass="button"/>
+
+</GridPane>

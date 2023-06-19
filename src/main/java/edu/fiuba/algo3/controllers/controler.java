@@ -1,4 +1,4 @@
-package edu.fiuba.algo3.controlers;
+package edu.fiuba.algo3.controllers;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
