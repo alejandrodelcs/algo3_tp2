@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.TextField?>
+<GridPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="edu.fiuba.algo3.controllers.Board" prefHeight="900" prefWidth="1000">
+    <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" promptText="Username" />
+    <padding><Insets top="100" right="100" bottom="100" left="100" /></padding>
+</GridPane>
