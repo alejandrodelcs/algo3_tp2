@@ -13,9 +13,6 @@ public class Signup {
     private TextField usernameField;
 
     @FXML
-    private Button signupButton;
-
-    @FXML
     private void handleSignup() {
         String username = usernameField.getText();
         Player player = new Player(username);

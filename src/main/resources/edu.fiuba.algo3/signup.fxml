@@ -5,16 +5,11 @@
 <?import javafx.geometry.*?>
 
 
-<GridPane xmlns="http://javafx.com/javafx/15" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.fiuba.algo3.controllers.Signup" alignment="CENTER" hgap="10" vgap="10">
-    <padding>
-        <Insets top="100" right="100" bottom="100" left="100"/>
-    </padding>
+<VBox xmlns="http://javafx.com/javafx/15" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.fiuba.algo3.controllers.Signup" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500" prefWidth="500" spacing="30" styleClass="background" >
 
-    <Label text="SIGN UP" GridPane.columnIndex="0" GridPane.rowIndex="0" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER"/>
+    <TextField fx:id="usernameField" GridPane.columnIndex="1" GridPane.rowIndex="1" promptText="Username"/>
 
-    <Label text="Username" GridPane.columnIndex="0" GridPane.rowIndex="1" />
-    <TextField fx:id="usernameField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+    <Button text="¡Play!" onAction="#handleSignup" GridPane.columnIndex="0" GridPane.rowIndex="4" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER" styleClass="button"/>
+    <padding><Insets top="100" right="100" bottom="100" left="100"/></padding>
 
-    <Button fx:id="playButton" text="¡Play!" onAction="#handleSignup" GridPane.columnIndex="0" GridPane.rowIndex="4" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER" styleClass="button"/>
-
-</GridPane>
+</VBox>
