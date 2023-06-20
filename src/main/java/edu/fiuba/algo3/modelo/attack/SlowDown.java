@@ -14,7 +14,7 @@ public class SlowDown implements Attack{
     }
     @Override
 
-    public void performAttack(Defense defense, ArrayList<Enemy> enemies) {
+    public void performAttackOnEnemies(Defense defense, ArrayList<Enemy> enemies) {
         for(Enemy enemy : enemies) {
             if (rangeAttack.isInRange(defense, enemy)) {
                 enemy.desacelerate(slowDownPercenatage);
