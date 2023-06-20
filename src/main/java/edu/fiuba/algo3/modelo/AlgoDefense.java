@@ -82,6 +82,8 @@ public class AlgoDefense {
     }
     public void damageThePlayer(){
         ArrayList<Enemy> finalListOfEnemies = gameboard.getEnemiesInThelastPath();
+        Logger.get().log("Enemigos en ultimo path: ");
+        System.out.println(finalListOfEnemies);
         for(Enemy enemy : finalListOfEnemies){
             player.getsDamage(enemy.getDamage());
         }

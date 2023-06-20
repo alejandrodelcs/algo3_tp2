@@ -151,7 +151,9 @@ public class GameBoard {
     public ArrayList<Enemy> getEnemiesInThelastPath(){
         int finalX = (int) Math.round(enemyPath.get(enemyPath.size()-1).getX());
         int finalY = (int) Math.round(enemyPath.get(enemyPath.size()-1).getY());
-        return plots[finalY][finalX].enemiesInPlot();
+        ArrayList<Enemy> enemies = new ArrayList<>(plots[finalY][finalX].enemiesInPlot());
+        plots[finalY][finalX].enemiesInPlot().clear();
+        return enemies;
     }
 
 }
