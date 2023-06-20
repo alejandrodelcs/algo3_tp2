@@ -1,22 +1,45 @@
-#playButton{
-    -fx-background-color: #706767; /* Green */
-    -fx-border: none;
-    -fx-color: white;
-    -fx-padding: 15px 32px;
-    -fx-text-align: center;
-    -fx-text-decoration: none;
-    -fx-display: inline-block;
-    -fx-font-size: 20px;
+.button {
+    -fx-padding: 10px 0;
+    -fx-pref-width: 250px;
+    -fx-letter-spacing: 2px;
+    -fx-background-radius: 20px;
+    -fx-font-family: 'Skranji', cursive;
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 18px;
+    -fx-font-weight: 400;
+    -fx-effect: innershadow(gaussian, rgba(1, 1, 1, 0.82), 3, 0, 0, 0);
+    -fx-border-width: 4px;
+    -fx-border-color: rgba(129, 229, 209, 0.51);
+    -fx-border-radius: 20px;
+    -fx-background-color: radial-gradient(center 20% 30%, radius 50%, rgba(75, 117, 137, 0.78) 0%, rgba(41, 87, 145, 0.72) 100%);
 }
 
-#playButton:hover {
-    -fx-color: white;
-    -fx-background-color: #ee3434;
-    -fx-box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
-    -fx-translate-y: -2;
-    -fx-transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
+
+.button :hover {
+    -fx-background-color: radial-gradient(center 50% 50%, radius 50%, rgba(54, 73, 108, 0.89) 0%, rgb(177, 230, 239) 100%);
+    -fx-effect: dropshadow(gaussian, rgba(24, 35, 210, 0.16), 5, 0, 0, 0);
 }
-#playButton:pressed {
-    -fx-effect: none;
-    -fx-translate-y: 0;
+
+.button :pressed {
+    -fx-background-color: radial-gradient(center 50% 50%, radius 50%, rgb(109, 139, 143) 0%, rgb(108, 195, 222) 100%);
+    -fx-effect: dropshadow(gaussian, rgb(0, 0, 0), 5, 0, 0, 0);
+    -fx-translate-y: 0.93;
+}
+
+
+#usernameField {
+    -fx-background-color: rgba(168, 216, 220, 0.62);
+    -fx-alignment: center;
+    -fx-font-size: 30px;
+    -fx-font-weight: lighter;
+}
+.label .text-input .text {
+    -fx-prompt-text-fill: #000000;
+}
+
+
+.background{
+    -fx-background-image: url('../img/bg_lv2.png');
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: cover;
 }
