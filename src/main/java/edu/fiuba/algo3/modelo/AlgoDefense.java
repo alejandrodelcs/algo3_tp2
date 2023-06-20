@@ -13,6 +13,7 @@ import edu.fiuba.algo3.modelo.turn.Turn;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.Dictionary;
+import java.util.Enumeration;
 
 public class AlgoDefense {
     private Player player;
@@ -56,6 +57,9 @@ public class AlgoDefense {
         turn.updateDefense(defenses,gameboard,player);
         gameboard.printMap();
         damageThePlayer();
+        if(!turn.playerHasEnemies(enemyStrategy,gameboard) && player.isAlive()){
+            Logger.get().log("You have won the game");
+        }
     }
     public void buildsADefense(Defense defense) {
 
@@ -101,9 +105,5 @@ public class AlgoDefense {
         //this.gameboard = new GameboardFacade().loadMap();
         //EnemyFacade
 
-    }
-
-    public boolean playerHasEnemies() {
-        return !enemyStrategy.isEmpty();
     }
 }
