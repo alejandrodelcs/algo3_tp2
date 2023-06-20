@@ -87,8 +87,7 @@ public abstract class Enemy {
     }
 
     public void takeDamage(Damage damageReceive) {
-        int amount = damageReceive.getQuantity();
-        health.takeDamage(amount);
+        damageReceive.applyDamage(health);
     }
 
     public boolean enemyDied() {
