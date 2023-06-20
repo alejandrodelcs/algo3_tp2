@@ -12,7 +12,7 @@ public class MoleFactory implements EnemyFactory{
     public Enemy createEnemy() {
 
         Move someMovement = new MoveInEnemiesPath(1);
-        Damage someDamage = new Damage(2);
+        Damage someDamage = new Damage(5);
         Health someHealth = new NotDamageable(0);
         Credit someCredit = new Credit(0);
 
