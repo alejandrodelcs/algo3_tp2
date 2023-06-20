@@ -18,11 +18,6 @@ public class Owl extends Enemy {
     }
 
     @Override
-    public void acelerate() {
-        // Move the owl towards the end
-    }
-
-    @Override
     public Credit generateCredits() {
         return creditsReward;
     }

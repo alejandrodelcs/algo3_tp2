@@ -8,5 +8,4 @@ import java.util.ArrayList;
 
 public interface Attack {
     void performAttackOnEnemies(Defense defense, ArrayList<Enemy> enemies);
-
 }
