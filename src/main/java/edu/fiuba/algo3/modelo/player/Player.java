@@ -73,7 +73,6 @@ public class Player {
         return null;
     }
 
-
     public boolean isAlive() {
         return(!playersLifePoints.entityDied());
     }
