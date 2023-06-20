@@ -75,6 +75,7 @@ public abstract class Enemy {
         this.health = health;
         this.enemyCoordinates = new Point();
         this.creditsReward = credit;
+
     }
 
     public Damage getDamage() {
