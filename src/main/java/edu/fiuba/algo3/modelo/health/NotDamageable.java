@@ -15,4 +15,14 @@ public class NotDamageable implements Health{
         return false;
     }
 
+    @Override
+    public boolean isLowerOrEqualThan(Health compareintHealth) {
+        return (compareintHealth.isGreaterThan(healthPoints));
+    }
+
+    @Override
+    public boolean isGreaterThan(int healthPoints) {
+        return this.healthPoints > healthPoints;
+    }
+
 }
