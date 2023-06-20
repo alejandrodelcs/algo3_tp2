@@ -5,7 +5,7 @@
 <?import javafx.geometry.*?>
 
 
-<VBox xmlns="http://javafx.com/javafx/15" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.fiuba.algo3.controllers.Signup" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500" prefWidth="500" spacing="30" styleClass="background" >
+<VBox xmlns="http://javafx.com/javafx/15" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.fiuba.algo3.controllers.Signup" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900" prefWidth="1000" spacing="30" styleClass="background" >
 
     <TextField fx:id="usernameField" GridPane.columnIndex="1" GridPane.rowIndex="1" promptText="Username"/>
 
