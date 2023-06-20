@@ -11,25 +11,9 @@ import java.util.ArrayList;
 /*public class Ant extends Enemy {
     private static final int REWARD_THRESHOLD = 10;
 
-
-    public Ant(Speed speed, Damage damage, Health healthPoints, int creditsReward) {
-        super(speed, damage, healthPoints, creditsReward);
-    }
-
-
     private int getReward() {
         //TODO: missing the logic so that when player kills "REWARD_TRESHHOLD" or more ants, this method returns 2 instead of 1.
         return 1;
-    }
-
-    @Override
-    public Credit generateCredits() {
-        return new Credit(getReward());
-    }
-
-    @Override
-    public String Show() {
-        return "Ant";
     }
 
     @Override
@@ -42,11 +26,6 @@ import java.util.ArrayList;
 public class Ant extends Enemy {
     public Ant(Damage damage, Health health, Credit credit, Move movement) {
         super(damage, health, credit, movement);
-    }
-
-    @Override
-    public void acelerate() {
-        // Move the ant towards the end
     }
 
     @Override

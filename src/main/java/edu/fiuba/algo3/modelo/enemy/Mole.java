@@ -20,8 +20,6 @@ public class Mole extends Enemy {
         this.MOVES_NEEDED_FOR_SPEED_2 = 6;
         this.MOVES_NEEDED_FOR_SPEED_3 = 11;
     }
-
-    @Override
     public void acelerate() {
         updateMole();
         if (moves >= MOVES_NEEDED_FOR_SPEED_2 && moves < MOVES_NEEDED_FOR_SPEED_3) {

@@ -95,8 +95,6 @@ public abstract class Enemy {
         return health.entityDied();
     }
 
-    public abstract void acelerate();
-
     public abstract Credit generateCredits();
 
     public abstract String Show();
