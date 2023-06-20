@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.modelo.attack;
 
+import edu.fiuba.algo3.modelo.Logger;
 import edu.fiuba.algo3.modelo.defense.Defense;
 import edu.fiuba.algo3.modelo.defense.Range;
 import edu.fiuba.algo3.modelo.enemy.Enemy;
@@ -18,6 +19,8 @@ public class SlowDown implements Attack{
         for(Enemy enemy : enemies) {
             if (rangeAttack.isInRange(defense, enemy)) {
                 enemy.desacelerate(slowDownPercenatage);
+                Logger.get().log(defense.getClass().getSimpleName() + " slows down "+ enemy.getClass().getSimpleName()
+                        +" at postion("+(int)enemy.getPoint().getX()+","+(int)enemy.getPoint().getY()+")");
             }
         }
     }

@@ -1,4 +1,5 @@
 package edu.fiuba.algo3.modelo.gameboard;
+import edu.fiuba.algo3.modelo.Logger;
 import edu.fiuba.algo3.modelo.defense.Defense;
 import edu.fiuba.algo3.modelo.defense.Tower;
 import edu.fiuba.algo3.modelo.enemy.Enemy;
@@ -34,6 +35,7 @@ public class GameBoard {
         int y = (int) Math.round(coordinates.getY());
         Plot plotToCheck = plots[x][y];
         plotToCheck.setDefense(defense);
+        Logger.get().log("The player builds a "+defense.getClass().getSimpleName()+" at postion("+x+","+y+")");
     }
     public ArrayList<Enemy> getEnemies(){
         ArrayList<Enemy> enemies = new ArrayList<Enemy>();

@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.modelo.attack;
 
+import edu.fiuba.algo3.modelo.Logger;
 import edu.fiuba.algo3.modelo.damage.Damage;
 import edu.fiuba.algo3.modelo.defense.Defense;
 import edu.fiuba.algo3.modelo.defense.Tower;
@@ -26,6 +27,8 @@ public class SimpleRangeAttack implements Attack{
         if (i >= 0) {
             Enemy enemy = enemies.get(i);
             enemy.takeDamage(damage);
+            Logger.get().log(defense.getClass().getSimpleName() + " attacks "+ enemy.getClass().getSimpleName()
+                    +" at postion("+(int)enemy.getPoint().getX()+","+(int)enemy.getPoint().getY()+")");
         }
     }
 }
