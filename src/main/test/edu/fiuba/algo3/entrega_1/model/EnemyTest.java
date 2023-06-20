@@ -106,4 +106,6 @@ public class EnemyTest {
         anOwl.takeDamage(new Damage(5));
         assertTrue(anOwl.enemyDied());
     }
+
+
 }

@@ -10,6 +10,7 @@ import java.util.ArrayList;
 
 public class Mole extends Enemy {
     private int moves;
+    private Damage damage;
     private final int MOVES_NEEDED_FOR_SPEED_2;
     private final int MOVES_NEEDED_FOR_SPEED_3;
 
@@ -22,7 +23,7 @@ public class Mole extends Enemy {
 
     @Override
     public void acelerate() {
-        moves++;
+        updateMole();
         if (moves >= MOVES_NEEDED_FOR_SPEED_2 && moves < MOVES_NEEDED_FOR_SPEED_3) {
              move.accelerate(2);
         } else if (moves >= MOVES_NEEDED_FOR_SPEED_3){
@@ -30,6 +31,15 @@ public class Mole extends Enemy {
         }
     }
 
+    public void updateMole(){
+        moves ++;
+        if ( moves % 2 == 0 ) {
+            this.damage = new Damage(2);
+        }
+        else{
+            this.damage = new Damage(5);
+        }
+    }
     @Override
     public Credit generateCredits() {
         return creditsReward;
