@@ -169,6 +169,8 @@ public class AlgoDefenseTwoTest {
         algoDefense.nextTurn();
         algoDefense.nextTurn();
         algoDefense.nextTurn();
+        algoDefense.nextTurn();
+        algoDefense.nextTurn();
 
         assertTrue(player.isAlive());
     }
@@ -189,6 +191,14 @@ public class AlgoDefenseTwoTest {
         algoDefense.nextTurn();
         algoDefense.nextTurn();
         algoDefense.nextTurn();
+        algoDefense.nextTurn();
+        algoDefense.nextTurn();
+        algoDefense.nextTurn();
+        algoDefense.nextTurn();
+        algoDefense.nextTurn();
+        algoDefense.nextTurn();
+        algoDefense.nextTurn();
+
         algoDefense.nextTurn();
         algoDefense.nextTurn();
         algoDefense.nextTurn();
