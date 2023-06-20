@@ -20,4 +20,8 @@ public abstract class Move {
     public void desaccelerate(double percentage) {
         speed = (int)Math.floor(speed*percentage);
     }
+
+    public int getSpeed() {
+        return speed;
+    }
 }

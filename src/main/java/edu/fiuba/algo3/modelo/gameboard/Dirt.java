@@ -21,7 +21,12 @@ public class Dirt extends Plot{
     @Override
     public String display() {
         if(state.itsOccupied()){return "|&|";}
-        else{return "...";}
+        else{
+            if(enemyArrayList == null || enemyArrayList.isEmpty()){
+                return "...";
+            }
+            return "ooo";
+        }
     }
     @Override
     public ArrayList<Enemy> enemiesInPlot(){

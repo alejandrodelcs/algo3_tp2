@@ -19,7 +19,11 @@ public class Stone extends Plot{
     public void setEnemy(ArrayList<Enemy> enemyList) { this.enemyArrayList = enemyList; }
     @Override
     public String display() {
-        return "xxx";
+
+        if(enemyArrayList == null || enemyArrayList.isEmpty()){
+            return "xxx";
+        }
+        return "ooo";
     }
     @Override
     public ArrayList<Enemy> enemiesInPlot(){
