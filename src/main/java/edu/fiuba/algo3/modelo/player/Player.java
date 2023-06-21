@@ -6,12 +6,9 @@ import edu.fiuba.algo3.modelo.defense.Defense;
 import edu.fiuba.algo3.modelo.exceptions.InsufficientCredits;
 import edu.fiuba.algo3.modelo.exceptions.InvalidPlayersName;
 import edu.fiuba.algo3.modelo.exceptions.PlayerIsDeadGameOver;
-import edu.fiuba.algo3.modelo.health.Damageable;
 import edu.fiuba.algo3.modelo.health.Health;
-import javafx.fxml.FXML;
 
 import java.awt.*;
-import java.io.IOException;
 import java.util.ArrayList;
 
 public class Player {
@@ -23,7 +20,7 @@ public class Player {
 
         validateName(playersName);
         this.playersName = playersName;
-        this.playersLifePoints = new Damageable(20);
+        this.playersLifePoints = new Health(20);
         this.playersCredits = new Credit(100);
 
     }
