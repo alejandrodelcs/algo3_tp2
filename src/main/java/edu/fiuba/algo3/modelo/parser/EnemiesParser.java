@@ -94,7 +94,7 @@ public class EnemiesParser {
             String owlValue = owl.toString();
             int owlAmount = Integer.parseInt(owlValue);
             EnemyFactory owlFactory = new OwlFactory();
-            loadEnemies(owlAmount,owlFactory,enemiesStrategy);*/
+            loadEnemies(owlAmount,owlFactory,enemies);*/
 
             System.out.println(enemies);
             turnsAndEnemies.put(turnNumber, enemies);

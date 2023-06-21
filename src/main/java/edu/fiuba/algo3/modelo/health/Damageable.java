@@ -12,4 +12,13 @@ public class Damageable implements Health{
     public boolean entityDied() {
         return (healthPoints <= 0);
     }
+    @Override
+    public boolean isLowerOrEqualThan(Health compareintHealth) {
+        return (compareintHealth.isGreaterThan(healthPoints));
+    }
+
+    @Override
+    public boolean isGreaterThan(int healthPoints) {
+        return this.healthPoints > healthPoints;
+    }
 }

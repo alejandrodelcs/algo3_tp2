@@ -5,7 +5,7 @@
 			"hormiga": 1,
 			"arana": 0
 		}
-		
+
 	},
 	{
 		"turno": 2,
@@ -47,46 +47,46 @@
 		}
 
 	},	{
-		"turno": 7,
-		"enemigos": {
-			"hormiga": 0,
-			"arana": 1
-		}
-
-	},	{
-		"turno": 8,
-		"enemigos": {
-			"hormiga": 1,
-			"arana": 0
-		}
-
-	},	{
-		"turno": 9,
-		"enemigos": {
-			"hormiga": 1,
-			"arana": 0
-		}
-
-	},	{
-		"turno": 10,
-		"enemigos": {
-			"hormiga": 2,
-			"arana": 0
-		}
-
-	},	{
-		"turno": 11,
-		"enemigos": {
-			"hormiga": 0,
-			"arana": 1
-		}
-
-	},	{
-		"turno": 12,
-		"enemigos": {
-			"hormiga": 1,
-			"arana": 2
-		}
-
+	"turno": 7,
+	"enemigos": {
+		"hormiga": 0,
+		"arana": 1
 	}
+
+},	{
+	"turno": 8,
+	"enemigos": {
+		"hormiga": 1,
+		"arana": 0
+	}
+
+},	{
+	"turno": 9,
+	"enemigos": {
+		"hormiga": 1,
+		"arana": 0
+	}
+
+},	{
+	"turno": 10,
+	"enemigos": {
+		"hormiga": 2,
+		"arana": 0
+	}
+
+},	{
+	"turno": 11,
+	"enemigos": {
+		"hormiga": 0,
+		"arana": 1
+	}
+
+},	{
+	"turno": 12,
+	"enemigos": {
+		"hormiga": 1,
+		"arana": 2
+	}
+
+}
 ]

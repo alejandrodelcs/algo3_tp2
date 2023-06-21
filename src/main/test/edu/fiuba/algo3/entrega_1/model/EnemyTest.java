@@ -1,7 +1,12 @@
 package edu.fiuba.algo3.entrega_1.model;
+import edu.fiuba.algo3.modelo.AlgoDefense;
 import edu.fiuba.algo3.modelo.enemy.*;
 import edu.fiuba.algo3.modelo.damage.Damage;
+import edu.fiuba.algo3.modelo.player.Player;
 import org.junit.jupiter.api.Test;
+
+import java.util.ArrayList;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class EnemyTest {
@@ -107,5 +112,21 @@ public class EnemyTest {
         assertTrue(anOwl.enemyDied());
     }
 
+    @Test
+    public void testOwlMovement() {
+        Player player = new Player("aNamee");
+        AlgoDefense algoDefense = new AlgoDefense(player);
+        EnemyFactory owlFac = new OwlFactory();
+        Enemy anOwl = owlFac.createEnemy();
+        ArrayList<Enemy> enemies = new ArrayList<>();
+        enemies.add(anOwl);
+        algoDefense.spawnAnEnemy(enemies);
+        algoDefense.nextTurn();
+        anOwl.takeDamage(new Damage(4));
+        algoDefense.nextTurn();
+        algoDefense.nextTurn();
+        algoDefense.nextTurn();
+        algoDefense.nextTurn();
 
+    }
 }
