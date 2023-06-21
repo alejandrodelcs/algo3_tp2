@@ -11,6 +11,10 @@ public class Health {
     public boolean entityDied() {
         return (healthPoints <= 0);
     }
-
-    boolean isGreaterThan(int healthPoints);
+    public boolean isLowerOrEqualThan(Health compareintHealth) {
+        return (compareintHealth.isGreaterThan(healthPoints));
+    }
+    public boolean isGreaterThan(int healthPoints) {
+        return this.healthPoints > healthPoints;
+    }
 }
