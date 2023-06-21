@@ -1,6 +1,8 @@
 package edu.fiuba.algo3.modelo;
+
 import edu.fiuba.algo3.modelo.defense.Defense;
 import edu.fiuba.algo3.modelo.enemy.*;
+import edu.fiuba.algo3.modelo.exceptions.InsufficientCredits;
 import edu.fiuba.algo3.modelo.facade.EnemyFacade;
 import edu.fiuba.algo3.modelo.facade.GameboardFacade;
 import edu.fiuba.algo3.modelo.gameboard.GameBoard;
@@ -11,6 +13,7 @@ import edu.fiuba.algo3.modelo.turn.Turn;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.Dictionary;
+import java.util.Enumeration;
 
 public class AlgoDefense {
     private Player player;
@@ -21,6 +24,7 @@ public class AlgoDefense {
     private EnemyFactory spiderFactory;
     private EnemyFactory moleFactory;
     private EnemyFactory owlFactory;
+
     private ArrayList<Defense> defenses;
 
     public AlgoDefense(){
@@ -101,4 +105,13 @@ public class AlgoDefense {
         this.player = player;
     }
 
+    public void loadEnemies() {
+        //TODO: can pick a random JSON file REF
+        //this.gameboard = new GameboardFacade().loadMap();
+        //EnemyFacade
+
+    }
+    public GameBoard getGameboard(){
+        return gameboard;
+    }
 }

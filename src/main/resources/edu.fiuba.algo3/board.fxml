@@ -1,19 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
 
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.control.Button?>
-<GridPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="edu.fiuba.algo3.controllers.Board" prefHeight="900" prefWidth="1000">
+<GridPane prefHeight="900" prefWidth="1000" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.fiuba.algo3.controllers.Board">
 
-    <Label text="Filas:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
-    <TextField fx:id="rowsTextField" GridPane.columnIndex="1" GridPane.rowIndex="0" />
-
-    <Label text="Columnas:" GridPane.columnIndex="0" GridPane.rowIndex="1" />
-    <TextField fx:id="columnsTextField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-
-    <Button text="Crear matriz" GridPane.columnIndex="0" GridPane.rowIndex="2" GridPane.columnSpan="2" onAction="#createMap" />
-
-    <GridPane fx:id="gridPane" GridPane.columnIndex="0" GridPane.rowIndex="3" GridPane.columnSpan="2" />
+    <GridPane fx:id="gridPane" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.rowIndex="3" />
+   <columnConstraints>
+      <ColumnConstraints />
+      <ColumnConstraints />
+      <ColumnConstraints />
+   </columnConstraints>
+   <rowConstraints>
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+   </rowConstraints>
 </GridPane>
