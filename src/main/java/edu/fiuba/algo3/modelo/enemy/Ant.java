@@ -27,12 +27,10 @@ public class Ant extends Enemy {
     public Ant(Damage damage, Health health, Credit credit, Move movement) {
         super(damage, health, credit, movement);
     }
-
     @Override
     public Credit generateCredits() {
         return creditsReward;
     }
-
     @Override
     public String Show() {
         return "Ant";
