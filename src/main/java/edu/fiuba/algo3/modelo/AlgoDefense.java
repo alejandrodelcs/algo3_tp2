@@ -67,9 +67,6 @@ public class AlgoDefense {
             throw new NonConstructibleArea();
         }
 
-        if(!canPlayerBuyTower(defense)){
-            throw new InsufficientCredits();
-        }
         player.subtractCredits(defense.getCredits());
         gameboard.buildDefense(defense);
         defenses.add(defense);
@@ -78,9 +75,7 @@ public class AlgoDefense {
         gameboard.spawnEnemy(enemyArrayList);
 
     }
-    public boolean canPlayerBuyTower( Defense defense ){//TODO: here a player can buy "anything" not only towers
-        return player.canBuy(defense.getCredits().getQuantity());
-    }
+
     public boolean isOccupyByADefense(Point coordenatesToDirt) {
         return (!gameboard.availableForBuilding(coordenatesToDirt));
     }
