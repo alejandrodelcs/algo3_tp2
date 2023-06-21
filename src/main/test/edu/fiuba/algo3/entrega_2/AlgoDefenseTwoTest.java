@@ -2,9 +2,12 @@ package edu.fiuba.algo3.entrega_2;
 
 import edu.fiuba.algo3.modelo.AlgoDefense;
 import edu.fiuba.algo3.modelo.Log;
+import edu.fiuba.algo3.modelo.damage.Damage;
 import edu.fiuba.algo3.modelo.defense.Defense;
 import edu.fiuba.algo3.modelo.defense.DefenseFactory;
 import edu.fiuba.algo3.modelo.defense.WhiteTowerFactory;
+import edu.fiuba.algo3.modelo.enemy.EnemyFactory;
+import edu.fiuba.algo3.modelo.enemy.SpiderFactory;
 import edu.fiuba.algo3.modelo.exceptions.*;
 import edu.fiuba.algo3.modelo.facade.GameboardFacade;
 import edu.fiuba.algo3.modelo.gameboard.GameBoard;
@@ -15,6 +18,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.awt.*;
+import java.security.interfaces.DSAKey;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -180,6 +184,7 @@ public class AlgoDefenseTwoTest {
         //Arrange
         Player player = new Player("Player");
         AlgoDefense algoDefense = new AlgoDefense(player);
+        Damage killDamage = new Damage(2);
 
         //Act
         algoDefense.nextTurn();
@@ -206,6 +211,19 @@ public class AlgoDefenseTwoTest {
         algoDefense.nextTurn();
         algoDefense.nextTurn();
         algoDefense.nextTurn();
+        algoDefense.nextTurn();
+        algoDefense.nextTurn();
+        algoDefense.nextTurn();
+        algoDefense.nextTurn();
+        algoDefense.nextTurn();
+        algoDefense.nextTurn();
+        algoDefense.nextTurn();
+        algoDefense.nextTurn();
+        algoDefense.nextTurn();
+        algoDefense.nextTurn();
+        algoDefense.nextTurn();
+        player.getsDamage(killDamage);
+
 
         Assertions.assertThrows(PlayerIsDeadGameOver.class,()-> algoDefense.nextTurn());
     }

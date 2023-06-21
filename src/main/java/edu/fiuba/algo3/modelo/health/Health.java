@@ -17,4 +17,8 @@ public class Health {
     public boolean isGreaterThan(int healthPoints) {
         return this.healthPoints > healthPoints;
     }
+
+    public int getHealthPoints(){
+        return healthPoints;
+    }
 }
