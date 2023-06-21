@@ -6,8 +6,7 @@ public class Logger {
 
     private static boolean loggerEnable = true;
 
-    private Logger() {
-    }
+    private Logger() {}
 
     public static Logger get() {
         return singleton;

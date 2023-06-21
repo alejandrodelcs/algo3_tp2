@@ -1,12 +1,16 @@
 package edu.fiuba.algo3;
 import edu.fiuba.algo3.controllers.Signup;
 import edu.fiuba.algo3.modelo.AlgoDefense;
+import edu.fiuba.algo3.modelo.Logger;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 
+import java.awt.*;
+import java.awt.image.ImageObserver;
+import java.awt.image.ImageProducer;
 import java.io.IOException;
 
 
@@ -20,6 +24,7 @@ public class App extends Application {
 
    @Override
     public void start(Stage primaryStage) throws Exception {
+       Logger.get();
         scene = new Scene(loadFXML("signup"));
         scene.getStylesheets().add(getClass().getResource("/edu.fiuba.algo3/styles.css").toExternalForm());
         primaryStage.setTitle("Sign-up");
