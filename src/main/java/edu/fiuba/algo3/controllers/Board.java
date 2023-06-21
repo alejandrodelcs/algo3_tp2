@@ -2,6 +2,7 @@ package edu.fiuba.algo3.controllers;
 import edu.fiuba.algo3.modelo.facade.GameboardFacade;
 import edu.fiuba.algo3.modelo.gameboard.GameBoard;
 import edu.fiuba.algo3.App;
+import edu.fiuba.algo3.modelo.gameboard.Plot;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
@@ -39,7 +40,17 @@ public class Board extends controler {
         GameboardFacade gameboardFacade = new GameboardFacade();
         gameBoard = gameboardFacade.loadMap();
         gameBoard.constructPath();
+        for (int i = 0; i < 15; i++) {
+            for (int j = 0; j < 15; j++) {
+                TextField textField = new TextField();
+                gridPane.add(textField, j, i);
 
+                Label label = new Label(gameBoard.getPlot(i,j).display());
+                label.setAlignment(Pos.CENTER);
+                gridPane.add(label, j, i);
+            }
+
+            }
 
 
         /*
