@@ -1,15 +1,22 @@
 package edu.fiuba.algo3.controllers;
-import edu.fiuba.algo3.modelo.facade.GameboardFacade;
+import edu.fiuba.algo3.modelo.AlgoDefense;
+import edu.fiuba.algo3.modelo.defense.Defense;
+import edu.fiuba.algo3.modelo.defense.DefenseFactory;
+import edu.fiuba.algo3.modelo.defense.SilverTower;
+import edu.fiuba.algo3.modelo.defense.WhiteTowerFactory;
 import edu.fiuba.algo3.modelo.gameboard.GameBoard;
 import edu.fiuba.algo3.App;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
+import java.awt.*;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -21,27 +28,43 @@ public class Board extends controler {
     }
 
     @FXML
-    private TextField rowsTextField;
-
-    @FXML
-    private TextField columnsTextField;
-
-    @FXML
-    private VBox matrixContainer;
-
-    @FXML
     private GridPane gridPane;
     private GameBoard gameBoard;
+    private AlgoDefense algoDefense = App.algodefense;
+
+    private Image[][] cellImages;
+
 
     @FXML
-    private void createMap() {
-        gridPane.getChildren().clear();
-        GameboardFacade gameboardFacade = new GameboardFacade();
-        gameBoard = gameboardFacade.loadMap();
-        gameBoard.constructPath();
+    private void printMap() {
+        cellImages = new Image[15][15];
+        for (int i = 0; i < 15; i++) {
+            for (int j = 0; j < 15; j++) {
+                ImageView imageView = new ImageView();
+                imageView.setFitWidth(50);
+                imageView.setFitHeight(50);
+                Image image = loadCellImage(i, j);
+                imageView.setImage(image);
 
+                cellImages[i][j] = image;
 
+                gridPane.add(imageView, j, i);
 
+            }
+        }
+    }
+    private Image loadCellImage(int row, int column) {
+        if ((row + column) % 2 == 0) {
+            return new Image(getClass().getResource("/img/grass.png").toString(),true);
+        } else {
+            return new Image(getClass().getResource("/img/grass.png").toString(),true);
+        }
+    }
+
+    @FXML
+    private void updateImages(){
+
+    }
         /*
         int rows = Integer.parseInt(rowsTextField.getText());
         int columns = Integer.parseInt(columnsTextField.getText());
@@ -58,11 +81,13 @@ public class Board extends controler {
         }
 
          */
-    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
-        createMap();
+        DefenseFactory factory = new WhiteTowerFactory();
+        Point coordinatesToADirt = new Point(2, 3);
+        Defense whiteTower = factory.createDefense(coordinatesToADirt);
+        algoDefense.buildsADefense(whiteTower);
+        printMap();
     }
 }
