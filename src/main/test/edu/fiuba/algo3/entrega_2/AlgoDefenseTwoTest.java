@@ -57,7 +57,7 @@ public class AlgoDefenseTwoTest {
         String fileWithoutEnemies = "src\\main\\java\\edu\\fiuba\\algo3\\modelo\\files\\enemyFileWithoutEnemies.json";
         String fileWithoutAnt = "src\\main\\java\\edu\\fiuba\\algo3\\modelo\\files\\enemyFileWithoutAnt.json";
         String fileWithoutSpider = "src\\main\\java\\edu\\fiuba\\algo3\\modelo\\files\\enemyFileWithoutSpider.json";
-/*        String fileWithoutMole = "src\main\java\edu\fiuba\algo3\modelo\files\enemyFileWithoutTurnObject.json";
+/*      String fileWithoutMole = "src\main\java\edu\fiuba\algo3\modelo\files\enemyFileWithoutTurnObject.json";
         String fileWithoutOwl = "src\main\java\edu\fiuba\algo3\modelo\files\enemyFileWithoutTurnObject.json";*/
         String validFile = "src\\main\\java\\edu\\fiuba\\algo3\\modelo\\files\\enemigos.json";
 
