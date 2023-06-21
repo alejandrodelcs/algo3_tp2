@@ -152,6 +152,9 @@ public class GameBoard {
 //        }
 
     }
+    public Plot getPlot(int x, int y){
+        return plots[x][y];
+    }
 
 
 
