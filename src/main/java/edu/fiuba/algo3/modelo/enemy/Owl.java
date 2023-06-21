@@ -19,12 +19,6 @@ public class Owl extends Enemy {
         destroyedTower = false;
         this.healthToChangeMovement = healthToChangeMovement;
     }
-
-    @Override
-    public void acelerate() {
-        // Move the owl towards the end
-    }
-
     @Override
     public Credit generateCredits() {
         return creditsReward;
