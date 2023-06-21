@@ -1,31 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-<?import javafx.scene.control.Accordion?>
-<?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.RowConstraints?>
+
+<?import javafx.scene.control.Button?>
 
 <GridPane prefHeight="900" prefWidth="1000" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.fiuba.algo3.controllers.Board">
-
-    <GridPane fx:id="gridPane" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.rowIndex="3" />
-   <Accordion />
-   <columnConstraints>
-      <ColumnConstraints />
-      <ColumnConstraints />
-      <ColumnConstraints />
-      <ColumnConstraints />
-      <ColumnConstraints />
-      <ColumnConstraints />
-   </columnConstraints>
-   <rowConstraints>
-      <RowConstraints />
-      <RowConstraints />
-      <RowConstraints />
-      <RowConstraints />
-      <RowConstraints />
-      <RowConstraints />
-      <RowConstraints />
-      <RowConstraints />
-      <RowConstraints />
-   </rowConstraints>
+   <GridPane fx:id="gridPane" alignment="CENTER" />
+   <Button text="Sgte Turno" onAction="#updateImages" GridPane.rowIndex="2" GridPane.columnIndex="0" />
 </GridPane>
