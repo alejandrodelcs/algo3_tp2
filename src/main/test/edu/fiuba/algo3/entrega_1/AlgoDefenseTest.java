@@ -77,6 +77,9 @@ public class AlgoDefenseTest {
         algoDefense.nextTurn();
         algoDefense.nextTurn();
         algoDefense.nextTurn();
+        algoDefense.nextTurn();
+        algoDefense.nextTurn();
+
 
 
         //Assert
@@ -247,6 +250,7 @@ public class AlgoDefenseTest {
         algoDefense.nextTurn();
         algoDefense.nextTurn();
         algoDefense.nextTurn();
+
         assertTrue(anAnt.enemyDied());
     }
 

@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.modelo;
 
 import edu.fiuba.algo3.modelo.defense.Defense;
+import edu.fiuba.algo3.modelo.defense.Tower;
 import edu.fiuba.algo3.modelo.enemy.*;
 import edu.fiuba.algo3.modelo.exceptions.InsufficientCredits;
 import edu.fiuba.algo3.modelo.facade.EnemyFacade;
@@ -24,7 +25,6 @@ public class AlgoDefense {
     private EnemyFactory spiderFactory;
     private EnemyFactory moleFactory;
     private EnemyFactory owlFactory;
-
     private ArrayList<Defense> defenses;
 
     public AlgoDefense(){
@@ -70,10 +70,19 @@ public class AlgoDefense {
         player.subtractCredits(defense.getCredits());
         gameboard.buildDefense(defense);
         defenses.add(defense);
+        System.out.println(defenses);
     }
     public void spawnAnEnemy(ArrayList<Enemy> enemyArrayList){
         gameboard.spawnEnemy(enemyArrayList);
-
+        System.out.println(defenses);
+        for(Enemy enemy : enemyArrayList){
+            if(enemy.getClass() == Owl.class){
+                if(defenses.size()>0){
+                    System.out.println(defenses);
+                    defenses.remove(0);
+                }
+            }
+        }
     }
 
     public boolean isOccupyByADefense(Point coordenatesToDirt) {
@@ -81,7 +90,7 @@ public class AlgoDefense {
     }
     public void damageThePlayer(){
         ArrayList<Enemy> finalListOfEnemies = gameboard.getEnemiesInThelastPath();
-        System.out.println(finalListOfEnemies);
+        //System.out.println(finalListOfEnemies);
         for(Enemy enemy : finalListOfEnemies){
             player.getsDamage(enemy.getDamage());
             Logger.get().log("The "+ enemy.getClass().getSimpleName() + " reaches the goal, causing "+ enemy.getDamage().getQuantity()+" damage to the player");
@@ -95,10 +104,4 @@ public class AlgoDefense {
         this.player = player;
     }
 
-    public void loadEnemies() {
-        //TODO: can pick a random JSON file REF
-        //this.gameboard = new GameboardFacade().loadMap();
-        //EnemyFacade
-
-    }
 }
