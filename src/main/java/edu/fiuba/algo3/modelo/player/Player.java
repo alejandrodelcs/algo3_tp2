@@ -63,23 +63,13 @@ public class Player {
 
     }
 
-    public boolean canBuy(int value) { return (this.getPlayerCredits().getQuantity() - value)>=0;}
-
-    public Point selectPlaceDefense(ArrayList<Point> listOfPlacesWhereADefenseCanBeBuild) {
-        //TODO//implement
-        return null;
-    }
-
     public boolean isAlive() {
-        System.out.println(playersLifePoints.getHealthPoints());
         return(!playersLifePoints.entityDied());
     }
 
     public boolean hasFunds() {
         return playersCredits.arePositive();
     }
-
-
 
 }
 
