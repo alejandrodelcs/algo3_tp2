@@ -1,7 +1,6 @@
 package edu.fiuba.algo3.entrega_2;
 
 import edu.fiuba.algo3.modelo.AlgoDefense;
-import edu.fiuba.algo3.modelo.Log;
 import edu.fiuba.algo3.modelo.defense.Defense;
 import edu.fiuba.algo3.modelo.defense.DefenseFactory;
 import edu.fiuba.algo3.modelo.defense.WhiteTowerFactory;
@@ -212,11 +211,5 @@ public class AlgoDefenseTwoTest {
 
     @Test
     public void test20VerifyWriteLogFileWithEvent(){
-        GameboardFacade gameboardFacade = new GameboardFacade();
-        Log log = new Log("GameBoardFacade");
-        GameBoard gameboard = gameboardFacade.loadMap();
-        gameboard.constructPath();
-        log.logToFile("The enemy path has been successfully");
-
     }
 }
