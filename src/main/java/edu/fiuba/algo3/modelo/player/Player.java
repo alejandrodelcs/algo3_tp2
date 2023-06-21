@@ -63,13 +63,6 @@ public class Player {
 
     }
 
-    public boolean canBuy(int value) { return (this.getPlayerCredits().getQuantity() - value)>=0;}
-
-    public Point selectPlaceDefense(ArrayList<Point> listOfPlacesWhereADefenseCanBeBuild) {
-        //TODO//implement
-        return null;
-    }
-
     public boolean isAlive() {
         return(!playersLifePoints.entityDied());
     }
@@ -77,7 +70,6 @@ public class Player {
     public boolean hasFunds() {
         return playersCredits.arePositive();
     }
-
 
 }
 

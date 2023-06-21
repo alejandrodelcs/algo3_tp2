@@ -13,9 +13,9 @@ public class Credit {
     }
 
     public void chargeCredits(Credit creditLoad) {
-        quantity += creditLoad.getQuantity();//TODO: See if the getter can be removed
+        quantity += creditLoad.getQuantity();
     }
-    public int getQuantity() {
+    private int getQuantity() {
         return quantity;
     }
 
