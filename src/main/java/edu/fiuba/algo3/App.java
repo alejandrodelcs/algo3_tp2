@@ -4,6 +4,7 @@ import edu.fiuba.algo3.modelo.AlgoDefense;
 import edu.fiuba.algo3.modelo.Logger;
 import javafx.application.Application;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -12,6 +13,7 @@ import java.awt.*;
 import java.awt.image.ImageObserver;
 import java.awt.image.ImageProducer;
 import java.io.IOException;
+import java.util.Objects;
 
 
 /**
@@ -29,6 +31,7 @@ public class App extends Application {
         scene.getStylesheets().add(getClass().getResource("/edu.fiuba.algo3/styles.css").toExternalForm());
         primaryStage.setTitle("Sign-up");
         primaryStage.setScene(scene);
+        primaryStage.getIcons().add(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/img/logo.png"))));
         primaryStage.show();
     }
 
