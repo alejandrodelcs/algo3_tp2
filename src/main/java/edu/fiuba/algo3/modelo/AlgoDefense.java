@@ -106,4 +106,7 @@ public class AlgoDefense {
         //EnemyFacade
 
     }
+    public GameBoard getGameboard(){
+        return gameboard;
+    }
 }
