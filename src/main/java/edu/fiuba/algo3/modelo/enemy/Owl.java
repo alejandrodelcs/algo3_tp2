@@ -4,12 +4,8 @@ import edu.fiuba.algo3.modelo.credit.Credit;
 import edu.fiuba.algo3.modelo.damage.Damage;
 import edu.fiuba.algo3.modelo.defense.Tower;
 import edu.fiuba.algo3.modelo.health.Health;
-import edu.fiuba.algo3.modelo.health.NotDamageable;
 import edu.fiuba.algo3.modelo.speed.HypotenuseMove;
 import edu.fiuba.algo3.modelo.speed.Move;
-
-import java.awt.*;
-import java.util.ArrayList;
 
 public class Owl extends Enemy {
     private boolean destroyedTower;
