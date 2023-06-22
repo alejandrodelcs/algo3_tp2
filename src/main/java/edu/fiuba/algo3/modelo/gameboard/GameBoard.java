@@ -95,6 +95,7 @@ public class GameBoard {
         for (int row = ((int)Arrays.stream(plots).count() - 1); row >= 0 ; row--) {
             for (int column = ((int)Arrays.stream(plots[0]).count() - 1); column >= 0 ; column--) {
                 boolean shouldClear = false;
+                ArrayList<Enemy> enemiesThatStayed = new ArrayList<>();
 
                 long x = row;
                 long y = column;
@@ -106,6 +107,8 @@ public class GameBoard {
                         int newy =(int) Math.round(enemyCoordinates.getY());
                         if(((newx != ((int) y)) || (newy != ((int) x))) && (lastY != y || lastX != x)) {
                             plots[newx][newy].addEnemyToPath(enemy);
+                        } else {
+                            enemiesThatStayed.add(enemy);
                         }
                     }
                 }
@@ -115,7 +118,7 @@ public class GameBoard {
                 }
                 if (shouldClear) {
                     plots[(int) y][(int) x].enemiesInPlot().clear();
-
+                    plots[(int) y][(int) x].enemiesInPlot().addAll(enemiesThatStayed);
                 }
             }
         }

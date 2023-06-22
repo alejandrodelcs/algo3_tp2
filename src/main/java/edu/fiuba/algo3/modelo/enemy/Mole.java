@@ -2,6 +2,7 @@ package edu.fiuba.algo3.modelo.enemy;
 
 import edu.fiuba.algo3.modelo.credit.Credit;
 import edu.fiuba.algo3.modelo.damage.Damage;
+import edu.fiuba.algo3.modelo.gameboard.Plot;
 import edu.fiuba.algo3.modelo.health.Health;
 import edu.fiuba.algo3.modelo.speed.Move;
 
@@ -19,6 +20,17 @@ public class Mole extends Enemy {
         this.moves = 0;
         this.MOVES_NEEDED_FOR_SPEED_2 = 6;
         this.MOVES_NEEDED_FOR_SPEED_3 = 11;
+    }
+    @Override
+    public Point move(long x, long y, Plot[][] plots, ArrayList<Point> enemyPath) {
+        enemyCoordinates = move.execute(x, y, plots, enemyPath);
+        updateMole();
+        if (moves >= MOVES_NEEDED_FOR_SPEED_2 && moves < MOVES_NEEDED_FOR_SPEED_3) {
+            move.accelerate(2);
+        } else if (moves >= MOVES_NEEDED_FOR_SPEED_3){
+            move.accelerate(3);
+        }
+        return enemyCoordinates;
     }
     public void acelerate() {
         updateMole();

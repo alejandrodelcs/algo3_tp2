@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.modelo.gameboard;
 
 import edu.fiuba.algo3.modelo.defense.Defense;
+import edu.fiuba.algo3.modelo.defense.SandyTrap;
 import edu.fiuba.algo3.modelo.defense.Trap;
 import edu.fiuba.algo3.modelo.enemy.Enemy;
 import edu.fiuba.algo3.modelo.enemy.EnemyFactory;
@@ -21,8 +22,9 @@ public class Path extends Plot{
     public void addEnemyToPath(Enemy newEnemy){ this.enemyArrayList.add(newEnemy); }
     @Override
     public String display() {
-
-        if(enemyArrayList == null || enemyArrayList.isEmpty()){
+        if (defense != null) {
+            return "~~~";
+        } else if(enemyArrayList == null || enemyArrayList.isEmpty()){
             return "zzz";
         }
         return "ooo";
@@ -37,7 +39,7 @@ public class Path extends Plot{
 
     @Override
     public void setDefense(Defense defense) {
-        if(defense.equals(Trap.class)){
+        if (defense.getClass() == SandyTrap.class) {
             this.defense = defense;
             this.state = new Occupied();
         }
