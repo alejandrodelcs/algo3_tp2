@@ -12,6 +12,4 @@ public class WhiteTower extends Tower{
         super(credit,constructionTurns, cordinatesTower);
         this.attack = new SimpleRangeAttack(rangeAttack,damage);
     }
-
-
 }

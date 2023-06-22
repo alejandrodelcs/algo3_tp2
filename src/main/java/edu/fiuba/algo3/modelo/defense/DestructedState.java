@@ -5,5 +5,7 @@ import java.util.ArrayList;
 
 
 public class DestructedState implements State{
-    public void attack(Defense defense, ArrayList< Enemy > enemies){}
+    public void attack(Defense defense, ArrayList< Enemy > enemies){
+
+    }
 }

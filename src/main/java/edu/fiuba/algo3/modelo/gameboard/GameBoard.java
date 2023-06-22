@@ -161,4 +161,12 @@ public class GameBoard {
         return enemies;
     }
 
+    public void destroyDefense(Defense defense) {
+        Point coordinates = defense.getPoint();
+        int x = (int) Math.round(coordinates.getX());
+        int y = (int) Math.round(coordinates.getY());
+        Plot plotToCheck = plots[x][y];
+        plotToCheck.removeDefense(defense);
+        Logger.get().log("The Owl destroyed a "+defense.getClass().getSimpleName()+" at postion("+x+","+y+")");
+    }
 }

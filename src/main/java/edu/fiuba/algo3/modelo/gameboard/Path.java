@@ -44,4 +44,11 @@ public class Path extends Plot{
             this.state = new Occupied();
         }
     }
+
+    @Override
+    public void removeDefense(Defense defense) {
+        if(defense.equals(Trap.class)){
+            this.state = new Available();
+        }
+    }
 }

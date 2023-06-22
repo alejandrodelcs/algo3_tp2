@@ -40,5 +40,9 @@ public class Dirt extends Plot{
         this.defense = defense;
         this.state = new Occupied();
     }
+    @Override
+    public void removeDefense(Defense defense){
+        this.state = new Available();
+    }
 
 }

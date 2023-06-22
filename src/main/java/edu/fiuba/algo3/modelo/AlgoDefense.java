@@ -51,8 +51,6 @@ public class AlgoDefense {
         gameboard.moveEnemies();
         spawnAnEnemy(newEnemies);
         turn.updateDefense(defenses,gameboard,player);
-        System.out.println(defenses);
-        System.out.println(defenses.size());
         gameboard.printMap();
         damageThePlayer();
         if(!turn.playerHasEnemies(enemyStrategy,gameboard) && player.isAlive()){
@@ -64,7 +62,6 @@ public class AlgoDefense {
         if(!gameboard.availableForBuilding(defense.getPoint())){
             throw new NonConstructibleArea();
         }
-
         player.subtractCredits(defense.getCredits());
         gameboard.buildDefense(defense);
         defenses.add(defense);
@@ -72,15 +69,19 @@ public class AlgoDefense {
     }
     public void spawnAnEnemy(ArrayList<Enemy> enemyArrayList){
         gameboard.spawnEnemy(enemyArrayList);
+        enemyDestroysDefense(enemyArrayList);
+    }
+    public void  enemyDestroysDefense(ArrayList<Enemy> enemyArrayList){
         if((!defenses.isEmpty()) && (enemyArrayList != null) && (!enemyArrayList.isEmpty())){
             for(Enemy enemy : enemyArrayList){
                 if(enemy.getClass() == Owl.class){
+                    Defense defense = defenses.get(0);
+                    gameboard.destroyDefense(defense);
                     defenses.remove(0);
                 }
             }
         }
     }
-
     public boolean isOccupyByADefense(Point coordenatesToDirt) {
         return (!gameboard.availableForBuilding(coordenatesToDirt));
     }
