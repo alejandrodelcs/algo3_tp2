@@ -4,6 +4,7 @@ import edu.fiuba.algo3.modelo.defense.Defense;
 import edu.fiuba.algo3.modelo.defense.Tower;
 import edu.fiuba.algo3.modelo.enemy.Enemy;
 import javafx.scene.image.Image;
+import javafx.scene.layout.StackPane;
 
 import java.util.ArrayList;
 
@@ -23,4 +24,6 @@ public abstract class Plot {
     }
 
     public abstract Image printImage();
+
+    public abstract StackPane getStackPane();
 }
