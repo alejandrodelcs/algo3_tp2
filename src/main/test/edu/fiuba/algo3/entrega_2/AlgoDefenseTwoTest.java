@@ -211,17 +211,6 @@ public class AlgoDefenseTwoTest {
         algoDefense.nextTurn();
         algoDefense.nextTurn();
         algoDefense.nextTurn();
-        algoDefense.nextTurn();
-        algoDefense.nextTurn();
-        algoDefense.nextTurn();
-        algoDefense.nextTurn();
-        algoDefense.nextTurn();
-        algoDefense.nextTurn();
-        algoDefense.nextTurn();
-        algoDefense.nextTurn();
-        algoDefense.nextTurn();
-        algoDefense.nextTurn();
-        algoDefense.nextTurn();
         player.getsDamage(killDamage);
 
 
