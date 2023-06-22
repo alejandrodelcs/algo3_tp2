@@ -5,6 +5,7 @@ import edu.fiuba.algo3.modelo.enemy.Enemy;
 import edu.fiuba.algo3.modelo.exceptions.NonConstructibleArea;
 import edu.fiuba.algo3.modelo.exceptions.TheEnemyCannotBeOutsideTheRunway;
 import edu.fiuba.algo3.modelo.exceptions.ThereCannotBeEnemiesInThisPlot;
+import javafx.scene.image.Image;
 
 import java.util.ArrayList;
 
@@ -36,6 +37,10 @@ public class Stone extends Plot{
     @Override
     public void setDefense(Defense defense) {
         throw new NonConstructibleArea();
+    }
+    @Override
+    public Image printImage() {
+        return new Image(getClass().getResource("/img/rock2.png").toString(),true);
     }
     @Override
     public void removeDefense(Defense defense) {

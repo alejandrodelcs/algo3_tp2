@@ -21,8 +21,8 @@ public class Board extends controler {
 
     @FXML
     private GridPane gridPane;
-    private GameBoard gameBoard;
     private AlgoDefense algoDefense = App.algodefense;
+    private GameBoard gameBoard = algoDefense.getGameboard();
 
     private Image[][] cellImages;
     @FXML
@@ -46,11 +46,12 @@ public class Board extends controler {
         }
     }
     private Image loadCellImage(int row, int column) {
-        if ((row + column) % 2 == 0) {
+        return gameBoard.getPlot(row, column).printImage();
+/*        if ((row + column) % 2 == 0) {
             return new Image(getClass().getResource("/img/dirt.png").toString(),true);
         } else {
             return new Image(getClass().getResource("/img/dirt.png").toString(),true);
-        }
+        }*/
     }
 
     @FXML
