@@ -12,8 +12,6 @@ import java.util.Arrays;
 public class GameBoard {
     private Plot[][] plots;
     private ArrayList<Point> enemyPath;
-
-
     public GameBoard(Plot[][] expectedPlots) {
         plots = expectedPlots;
         enemyPath = constructPath();

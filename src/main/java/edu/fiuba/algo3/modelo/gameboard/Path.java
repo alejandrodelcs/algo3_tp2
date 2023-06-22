@@ -6,6 +6,7 @@ import edu.fiuba.algo3.modelo.enemy.Enemy;
 import edu.fiuba.algo3.modelo.enemy.EnemyFactory;
 import edu.fiuba.algo3.modelo.exceptions.NonConstructibleArea;
 import edu.fiuba.algo3.modelo.exceptions.NonTowerContructibleArea;
+import javafx.scene.image.Image;
 
 import java.util.ArrayList;
 
@@ -41,5 +42,10 @@ public class Path extends Plot{
             this.defense = defense;
             this.state = new Occupied();
         }
+    }
+
+    @Override
+    public Image printImage() {
+        return new Image(getClass().getResource("/img/path.png").toString(),true);
     }
 }

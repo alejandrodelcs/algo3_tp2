@@ -6,6 +6,7 @@ import edu.fiuba.algo3.modelo.enemy.Enemy;
 import edu.fiuba.algo3.modelo.exceptions.NonTrapConstructibleArea;
 import edu.fiuba.algo3.modelo.exceptions.TheEnemyCannotBeOutsideTheRunway;
 import edu.fiuba.algo3.modelo.exceptions.ThereCannotBeEnemiesInThisPlot;
+import javafx.scene.image.Image;
 
 import java.util.ArrayList;
 
@@ -39,6 +40,11 @@ public class Dirt extends Plot{
     public void setDefense(Defense defense){
         this.defense = defense;
         this.state = new Occupied();
+    }
+
+    @Override
+    public Image printImage() {
+        return new Image(getClass().getResource("/img/dirt.png").toString(),true);
     }
 
 }
