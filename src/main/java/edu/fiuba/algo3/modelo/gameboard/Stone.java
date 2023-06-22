@@ -37,4 +37,9 @@ public class Stone extends Plot{
     public void setDefense(Defense defense) {
         throw new NonConstructibleArea();
     }
+    @Override
+    public void removeDefense(Defense defense) {
+        throw new NonConstructibleArea();
+    }
+
 }

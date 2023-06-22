@@ -37,7 +37,6 @@ public class Turn {
              ) {
             if(enemy.enemyDied()){
                 player.chargeCredits(switchCredits(enemy));
-
             }
         }
     }

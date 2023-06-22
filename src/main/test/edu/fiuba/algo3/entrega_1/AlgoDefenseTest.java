@@ -77,6 +77,9 @@ public class AlgoDefenseTest {
         algoDefense.nextTurn();
         algoDefense.nextTurn();
         algoDefense.nextTurn();
+        algoDefense.nextTurn();
+        algoDefense.nextTurn();
+
 
 
         //Assert
@@ -217,10 +220,12 @@ public class AlgoDefenseTest {
         ArrayList<Enemy> enemyArray = new ArrayList<Enemy>();
         EnemyFactory antFactory = new AntFactory();
         EnemyFactory spiderFactory = new SpiderFactory();
-        Enemy anAnt = spiderFactory.createEnemy();
+        Enemy anAnt = antFactory.createEnemy();
         Enemy aSpider = spiderFactory.createEnemy();
         DefenseFactory factory = new SilverTowerFactory();
         Defense silverTower = factory.createDefense(new Point(7, 13));
+        Defense anotherSilverTower = factory.createDefense(new Point(10, 12));
+        algoDefense.buildsADefense(anotherSilverTower);
         enemyArray.add(anAnt);
         enemyArray.add(aSpider);
 
@@ -247,7 +252,8 @@ public class AlgoDefenseTest {
         algoDefense.nextTurn();
         algoDefense.nextTurn();
         algoDefense.nextTurn();
-        assertTrue(anAnt.enemyDied());
+
+        assertTrue(aSpider.enemyDied());
     }
 
     @Test

@@ -101,8 +101,6 @@ public class TowerTest {
         ArrayList<Enemy> enemies = new ArrayList<>();
         enemies.add(spiderMock);
 
-
-
         SilverTower.constructionFinished();
         SilverTower.attack(enemies);
 
@@ -112,6 +110,7 @@ public class TowerTest {
 
     @Test
     void test06SilverTowerCannotAttackAnEnemyOutOfRange() {
+
         DefenseFactory factory = new SilverTowerFactory();
         Point cordenates = new Point(3,3);
         Defense SilverTower = factory.createDefense(cordenates);
@@ -120,8 +119,6 @@ public class TowerTest {
         when(spiderMock.enemyDied()).thenReturn(false);
         ArrayList<Enemy> enemies = new ArrayList<>();
         enemies.add(spiderMock);
-
-
 
         SilverTower.constructionFinished();
         SilverTower.attack(enemies);

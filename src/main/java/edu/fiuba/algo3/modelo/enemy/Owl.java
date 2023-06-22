@@ -2,10 +2,13 @@ package edu.fiuba.algo3.modelo.enemy;
 
 import edu.fiuba.algo3.modelo.credit.Credit;
 import edu.fiuba.algo3.modelo.damage.Damage;
+import edu.fiuba.algo3.modelo.defense.Defense;
 import edu.fiuba.algo3.modelo.defense.Tower;
 import edu.fiuba.algo3.modelo.health.Health;
 import edu.fiuba.algo3.modelo.speed.HypotenuseMove;
 import edu.fiuba.algo3.modelo.speed.Move;
+
+import java.util.ArrayList;
 
 public class Owl extends Enemy {
     private boolean destroyedTower;
@@ -34,14 +37,7 @@ public class Owl extends Enemy {
         }
     }
 
-    @Override
-    public void decelerate(double percentage) {
-        //do nothing
-    }
-    public void destroyTower(Tower tower) {
-//        if (!destroyedTower) { TODO: Need to implement destroy method in towers and uncomment or refactor this method
-//            tower.destroy();
-//            destroyedTower = true;
-//        }
+    public void destroyTower(ArrayList<Defense> defenses) {
+        defenses.remove(0);
     }
 }
