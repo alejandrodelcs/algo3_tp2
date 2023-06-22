@@ -61,7 +61,7 @@ public class Board extends controler {
     @FXML
     private void addTower(MouseEvent event){
         Node source = (Node) event.getTarget();
-        if (source instanceof ImageView) {
+        if (source instanceof ImageView) { //esto tendría que ver como cambiar
             ImageView imageView = (ImageView) source;
             if (gridPane.getChildren().contains(imageView)) {
                 Integer columnIndex = GridPane.getColumnIndex(imageView);
@@ -71,8 +71,12 @@ public class Board extends controler {
                     int row = rowIndex;
 
                     Image newImage = new Image(getClass().getResource("/img/tower2.png").toString(), true);
-                    imageView.setImage(newImage);
-                    cellImages[row][column] = newImage;
+                    newImage.progressProperty().addListener((observable, oldValue, newValue) -> {
+                        if (newValue.doubleValue() == 1.0) {
+                            imageView.setImage(newImage);
+                            cellImages[row][column] = newImage;
+                        }
+                    });
                 }
             }
         }
