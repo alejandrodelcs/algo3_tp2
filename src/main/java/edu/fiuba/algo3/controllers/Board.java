@@ -72,6 +72,7 @@ public class Board extends controler {
 
                     Image newImage = new Image(getClass().getResource("/img/tower2.png").toString(), true);
                     newImage.progressProperty().addListener((observable, oldValue, newValue) -> {
+                        System.out.println("Current progress: "+newValue);
                         if (newValue.doubleValue() == 1.0) {
                             imageView.setImage(newImage);
                             cellImages[row][column] = newImage;
