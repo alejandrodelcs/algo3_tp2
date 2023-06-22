@@ -22,6 +22,7 @@ public class Mole extends Enemy {
         this.moves = 0;
         this.MOVES_NEEDED_FOR_SPEED_2 = 6;
         this.MOVES_NEEDED_FOR_SPEED_3 = 11;
+        this.visible = false;
     }
     @Override
     public Point move(long x, long y, Plot[][] plots, ArrayList<Point> enemyPath) {

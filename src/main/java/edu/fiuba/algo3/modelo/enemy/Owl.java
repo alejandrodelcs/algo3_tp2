@@ -19,6 +19,7 @@ public class Owl extends Enemy {
         super(damage, health, credit, movement);
         destroyedTower = false;
         this.healthToChangeMovement = healthToChangeMovement;
+        this.visible = true;
     }
     @Override
     public Credit generateCredits() {

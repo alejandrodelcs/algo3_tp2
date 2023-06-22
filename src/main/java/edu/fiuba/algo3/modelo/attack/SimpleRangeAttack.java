@@ -20,7 +20,7 @@ public class SimpleRangeAttack implements Attack{
     @Override
     public void performAttackOnEnemies(Defense defense, ArrayList<Enemy> enemies){
         int i = enemies.size() - 1;
-        while (i >= 0 && !rangeAttack.isInRange(defense, enemies.get(i))) {
+        while (i >= 0 && !rangeAttack.isInRange(defense, enemies.get(i)) && enemies.get(i).isVisible()) {
             i--;
         }
         if (i >= 0) {

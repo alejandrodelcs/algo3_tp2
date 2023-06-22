@@ -28,6 +28,7 @@ import java.util.ArrayList;
 public class Ant extends Enemy {
     public Ant(Damage damage, Health health, Credit credit, Move movement) {
         super(damage, health, credit, movement);
+        this.visible = true;
     }
     @Override
     public Credit generateCredits() {
