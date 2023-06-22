@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.entrega_2;
 
 import edu.fiuba.algo3.modelo.AlgoDefense;
+import edu.fiuba.algo3.modelo.damage.Damage;
 import edu.fiuba.algo3.modelo.defense.Defense;
 import edu.fiuba.algo3.modelo.defense.DefenseFactory;
 import edu.fiuba.algo3.modelo.defense.WhiteTowerFactory;
@@ -63,7 +64,6 @@ public class AlgoDefenseTwoTest {
         String fileWithoutSpider = "src\\main\\java\\edu\\fiuba\\algo3\\modelo\\files\\enemyFileWithoutSpider.json";
         String fileWithoutMole = "src\\main\\java\\edu\\fiuba\\algo3\\modelo\\files\\enemyFileWithoutTurnObject.json";
         String fileWithoutOwl = "src\\main\\java\\edu\\fiuba\\algo3\\modelo\\files\\enemyFileWithoutTurnObject.json";
-
         String validFile = "src\\main\\java\\edu\\fiuba\\algo3\\modelo\\files\\enemigos.json";
 
         EnemiesParser enemiesParser = new EnemiesParser(fileWithoutTurn);
@@ -230,5 +230,7 @@ public class AlgoDefenseTwoTest {
 
     @Test
     public void test20VerifyWriteLogFileWithEvent(){
+
+
     }
 }

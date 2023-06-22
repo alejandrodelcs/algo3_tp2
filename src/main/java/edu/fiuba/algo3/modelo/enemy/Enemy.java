@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.modelo.enemy;
 
+import edu.fiuba.algo3.modelo.Logger;
 import edu.fiuba.algo3.modelo.credit.Credit;
 import edu.fiuba.algo3.modelo.damage.Damage;
 import edu.fiuba.algo3.modelo.gameboard.Plot;
@@ -110,9 +111,9 @@ public abstract class Enemy {
         move.decelerate(percentage);
     }
 
+    public abstract ImageView getImage();
+
     public boolean alreadySlowedDown() {
         return move.isSlowedDown();
     }
-
-    public abstract ImageView getImage();
 }

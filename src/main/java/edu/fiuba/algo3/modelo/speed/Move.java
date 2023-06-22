@@ -32,4 +32,8 @@ public abstract class Move {
     public boolean isSlowedDown() {
         return (speed < initialSpeed);
     }
+
+    public int getSpeed() {
+        return speed;
+    }
 }

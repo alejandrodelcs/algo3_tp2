@@ -48,6 +48,7 @@ public class AlgoDefense {
         this.spiderFactory = new SpiderFactory();
         this.moleFactory = new MoleFactory();
         this.owlFactory = new OwlFactory();
+
     }
 
     public void nextTurn() {
@@ -66,10 +67,10 @@ public class AlgoDefense {
         if(!gameboard.availableForBuilding(defense.getPoint())){
             throw new NonConstructibleArea();
         }
+
         player.subtractCredits(defense.getCredits());
         gameboard.buildDefense(defense);
         defenses.add(defense);
-        System.out.println(defenses);
     }
     public void spawnAnEnemy(ArrayList<Enemy> enemyArrayList){
         gameboard.spawnEnemy(enemyArrayList);
@@ -86,11 +87,13 @@ public class AlgoDefense {
             }
         }
     }
+
     public boolean isOccupyByADefense(Point coordenatesToDirt) {
         return (!gameboard.availableForBuilding(coordenatesToDirt));
     }
     public void damageThePlayer(){
         ArrayList<Enemy> finalListOfEnemies = gameboard.getEnemiesInThelastPath();
+        System.out.println(finalListOfEnemies);
         //System.out.println(finalListOfEnemies);
         for(Enemy enemy : finalListOfEnemies){
             player.getsDamage(enemy.getDamage());
