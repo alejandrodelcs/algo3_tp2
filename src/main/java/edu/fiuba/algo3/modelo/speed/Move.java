@@ -33,7 +33,4 @@ public abstract class Move {
         return (speed < initialSpeed);
     }
 
-    public int getSpeed() {
-        return speed;
-    }
 }
