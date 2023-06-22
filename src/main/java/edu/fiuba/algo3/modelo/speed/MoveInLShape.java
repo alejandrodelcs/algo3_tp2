@@ -24,6 +24,14 @@ public class MoveInLShape extends Move {
                 enemyY++;
             }
         }
+
+        if (turnsLeftToRestoreSpeed > 0) {
+            turnsLeftToRestoreSpeed--;
+            if (turnsLeftToRestoreSpeed == 0) {
+                speed =  initialSpeed;
+            }
+        }
+
         enemyY = Math.min(enemyY, lastPathY);
         enemyX = Math.min(enemyX, lastPathX);
         return new Point(enemyY, enemyX);

@@ -38,6 +38,10 @@ public class Owl extends Enemy {
         }
     }
 
+    @Override
+    public void decelerate(double percentage) {
+        //do nothing
+    }
     public void destroyTower(Tower tower) {
 //        if (!destroyedTower) { TODO: Need to implement destroy method in towers and uncomment or refactor this method
 //            tower.destroy();
