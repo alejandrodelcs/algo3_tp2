@@ -1,9 +1,6 @@
 package edu.fiuba.algo3.modelo;
-
 import edu.fiuba.algo3.modelo.defense.Defense;
-import edu.fiuba.algo3.modelo.defense.Tower;
 import edu.fiuba.algo3.modelo.enemy.*;
-import edu.fiuba.algo3.modelo.exceptions.InsufficientCredits;
 import edu.fiuba.algo3.modelo.facade.EnemyFacade;
 import edu.fiuba.algo3.modelo.facade.GameboardFacade;
 import edu.fiuba.algo3.modelo.gameboard.GameBoard;
@@ -14,7 +11,6 @@ import edu.fiuba.algo3.modelo.turn.Turn;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.Dictionary;
-import java.util.Enumeration;
 
 public class AlgoDefense {
     private Player player;
@@ -48,13 +44,15 @@ public class AlgoDefense {
         this.spiderFactory = new SpiderFactory();
         this.moleFactory = new MoleFactory();
         this.owlFactory = new OwlFactory();
-
     }
+
     public void nextTurn() {
         ArrayList<Enemy> newEnemies = turn.passTurn();
         gameboard.moveEnemies();
         spawnAnEnemy(newEnemies);
         turn.updateDefense(defenses,gameboard,player);
+        System.out.println(defenses);
+        System.out.println(defenses.size());
         gameboard.printMap();
         damageThePlayer();
         if(!turn.playerHasEnemies(enemyStrategy,gameboard) && player.isAlive()){
@@ -74,11 +72,9 @@ public class AlgoDefense {
     }
     public void spawnAnEnemy(ArrayList<Enemy> enemyArrayList){
         gameboard.spawnEnemy(enemyArrayList);
-        System.out.println(defenses);
-        for(Enemy enemy : enemyArrayList){
-            if(enemy.getClass() == Owl.class){
-                if(defenses.size()>0){
-                    System.out.println(defenses);
+        if((!defenses.isEmpty()) && (enemyArrayList != null) && (!enemyArrayList.isEmpty())){
+            for(Enemy enemy : enemyArrayList){
+                if(enemy.getClass() == Owl.class){
                     defenses.remove(0);
                 }
             }
