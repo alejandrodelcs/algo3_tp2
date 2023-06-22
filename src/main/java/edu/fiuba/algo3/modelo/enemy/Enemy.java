@@ -6,6 +6,8 @@ import edu.fiuba.algo3.modelo.damage.Damage;
 import edu.fiuba.algo3.modelo.gameboard.Plot;
 import edu.fiuba.algo3.modelo.health.*;
 import edu.fiuba.algo3.modelo.speed.Move;
+import javafx.scene.Node;
+import javafx.scene.image.ImageView;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -108,4 +110,6 @@ public abstract class Enemy {
     public void desacelerate(double percentage) {
         move.desaccelerate(percentage);
     }
+
+    public abstract ImageView getImage();
 }

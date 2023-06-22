@@ -6,6 +6,8 @@ import edu.fiuba.algo3.modelo.defense.Tower;
 import edu.fiuba.algo3.modelo.health.Health;
 import edu.fiuba.algo3.modelo.speed.HypotenuseMove;
 import edu.fiuba.algo3.modelo.speed.Move;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
 public class Owl extends Enemy {
     private boolean destroyedTower;
@@ -39,5 +41,9 @@ public class Owl extends Enemy {
 //            tower.destroy();
 //            destroyedTower = true;
 //        }
+    }
+    @Override
+    public ImageView getImage() {
+        return (new ImageView(new Image(getClass().getResource("/img/spider.png").toString(),true)));
     }
 }

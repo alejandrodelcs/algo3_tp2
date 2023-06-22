@@ -6,6 +6,8 @@ import edu.fiuba.algo3.modelo.exceptions.NonConstructibleArea;
 import edu.fiuba.algo3.modelo.exceptions.TheEnemyCannotBeOutsideTheRunway;
 import edu.fiuba.algo3.modelo.exceptions.ThereCannotBeEnemiesInThisPlot;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.StackPane;
 
 import java.util.ArrayList;
 
@@ -41,5 +43,25 @@ public class Stone extends Plot{
     @Override
     public Image printImage() {
         return new Image(getClass().getResource("/img/rock2.png").toString(),true);
+    }
+    @Override
+    public StackPane getStackPane() {
+
+        StackPane aStackPane = new StackPane();
+        ImageView mainImageView = new ImageView(new Image(getClass().getResource("/img/rock2.png").toString(),true));
+        mainImageView.setFitHeight(50);
+        mainImageView.setFitWidth(50);
+        mainImageView.setPreserveRatio(true);
+        aStackPane.getChildren().add(mainImageView);
+        for (Enemy enemy : enemyArrayList) {
+            ImageView enemyImage = enemy.getImage();
+            enemyImage.setFitWidth(50);
+            enemyImage.setFitHeight(50);
+            enemyImage.setPreserveRatio(true);
+            aStackPane.getChildren().add(enemyImage);
+        }
+        aStackPane.maxHeight(50);
+        aStackPane.maxWidth(50);
+        return aStackPane;
     }
 }

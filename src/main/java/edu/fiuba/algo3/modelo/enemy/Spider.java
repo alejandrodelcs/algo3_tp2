@@ -4,6 +4,8 @@ import edu.fiuba.algo3.modelo.credit.Credit;
 import edu.fiuba.algo3.modelo.damage.Damage;
 import edu.fiuba.algo3.modelo.health.Health;
 import edu.fiuba.algo3.modelo.speed.Move;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -33,5 +35,9 @@ public class Spider extends Enemy {
     @Override
     public String Show() {
         return "Spider";
+    }
+    @Override
+    public ImageView getImage() {
+        return (new ImageView(new Image(getClass().getResource("/img/spider.png").toString(),true)));
     }
 }

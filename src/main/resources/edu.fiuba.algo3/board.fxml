@@ -7,7 +7,7 @@
 
 <GridPane prefHeight="900" prefWidth="800" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.fiuba.algo3.controllers.Board">
 
-   <GridPane fx:id="gridPane" alignment="CENTER" onMouseClicked="#addTower" />
+   <GridPane fx:id="gridPane" alignment="CENTER" />
    <Button onAction="#updateImages" text="Next Turn" GridPane.rowIndex="3" />
    <columnConstraints>
       <ColumnConstraints />

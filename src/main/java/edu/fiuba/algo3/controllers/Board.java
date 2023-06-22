@@ -7,11 +7,15 @@ import edu.fiuba.algo3.modelo.gameboard.GameBoard;
 import edu.fiuba.algo3.App;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import java.awt.*;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Region;
+import javafx.scene.layout.StackPane;
+
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -34,56 +38,31 @@ public class Board extends controler {
         this.cellImages = new Image[15][15];
         for (int i = 0; i < 15; i++) {
             for (int j = 0; j < 15; j++) {
-                ImageView imageView = new ImageView();
-                imageView.setFitWidth(50);
-                imageView.setFitHeight(50);
-                Image image = loadCellImage(i, j);
-                imageView.setImage(image);
-                cellImages[i][j] = image;
-                gridPane.add(imageView, j, i);
-
+                StackPane stackPane = loadCellImage(i, j);
+                stackPane.maxHeight(50);
+                stackPane.maxWidth(50);
+                gridPane.add(stackPane, j, i);
+                stackPane.setOnMouseClicked(someEvent -> {
+                    Image image = new Image(getClass().getResource("/img/tower2.png").toString(), true);
+                    ImageView imageView = new ImageView(image);
+                    imageView.setFitHeight(50);
+                    imageView.setFitWidth(50);
+                    imageView.setPreserveRatio(true);
+                    stackPane.getChildren().add(imageView);
+                });
             }
         }
     }
-    private Image loadCellImage(int row, int column) {
-        return gameBoard.getPlot(row, column).printImage();
-/*        if ((row + column) % 2 == 0) {
-            return new Image(getClass().getResource("/img/dirt.png").toString(),true);
-        } else {
-            return new Image(getClass().getResource("/img/dirt.png").toString(),true);
-        }*/
+    private StackPane loadCellImage(int row, int column) {
+        return gameBoard.getPlot(row, column).getStackPane();
     }
 
     @FXML
     private void updateImages(){
-
+        gridPane.getChildren().clear();
+        algoDefense.nextTurn();
+        printMap();
     }
-
-    @FXML
-    private void addTower(MouseEvent event){
-        Node source = (Node) event.getTarget();
-        if (source instanceof ImageView) { //esto tendría que ver como cambiar
-            ImageView imageView = (ImageView) source;
-            if (gridPane.getChildren().contains(imageView)) {
-                Integer columnIndex = GridPane.getColumnIndex(imageView);
-                Integer rowIndex = GridPane.getRowIndex(imageView);
-                if (columnIndex != null && rowIndex != null) {
-                    int column = columnIndex;
-                    int row = rowIndex;
-
-                    Image newImage = new Image(getClass().getResource("/img/tower2.png").toString(), true);
-                    newImage.progressProperty().addListener((observable, oldValue, newValue) -> {
-                        System.out.println("Current progress: "+newValue);
-                        if (newValue.doubleValue() == 1.0) {
-                            imageView.setImage(newImage);
-                            cellImages[row][column] = newImage;
-                        }
-                    });
-                }
-            }
-        }
-    }
-
     @FXML
     private void createGameboard() throws IOException {
         App.setRoot("board"); //luego lo usare para cambiar de escena a una de resultadoss
