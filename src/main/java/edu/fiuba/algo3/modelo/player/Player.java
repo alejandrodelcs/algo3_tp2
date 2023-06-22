@@ -64,7 +64,7 @@ public class Player {
     }
 
     public boolean isAlive() {
-        System.out.println(playersLifePoints.getHealthPoints());
+        System.out.println("Player current life:" + playersLifePoints.getHealthPoints());
         return(!playersLifePoints.entityDied());
     }
 
