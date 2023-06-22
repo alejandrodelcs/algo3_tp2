@@ -56,7 +56,6 @@ public class AlgoDefense {
         gameboard.moveEnemies();
         spawnAnEnemy(newEnemies);
         turn.updateDefense(defenses,gameboard,player);
-        gameboard.printMap();
         damageThePlayer();
         if(!turn.playerHasEnemies(enemyStrategy,gameboard) && player.isAlive()){
             Logger.get().log("You have won the game");
@@ -92,8 +91,6 @@ public class AlgoDefense {
     }
     public void damageThePlayer(){
         ArrayList<Enemy> finalListOfEnemies = gameboard.getEnemiesInThelastPath();
-        System.out.println(finalListOfEnemies);
-        //System.out.println(finalListOfEnemies);
         for(Enemy enemy : finalListOfEnemies){
             player.getsDamage(enemy.getDamage());
             Logger.get().log("The "+ enemy.getClass().getSimpleName() + " reaches the goal, causing "+ enemy.getDamage().getQuantity()+" damage to the player");
