@@ -74,7 +74,6 @@ public class AlgoDefense {
     }
     public void spawnAnEnemy(ArrayList<Enemy> enemyArrayList){
         gameboard.spawnEnemy(enemyArrayList);
-        enemyDestroysDefense(enemyArrayList);
     }
     public void  enemyDestroysDefense(ArrayList<Enemy> enemyArrayList){
         if((!defenses.isEmpty()) && (enemyArrayList != null) && (!enemyArrayList.isEmpty())){
@@ -102,6 +101,7 @@ public class AlgoDefense {
         if (!player.isAlive()){
             Logger.get().log("The player is dead.");
         }
+        enemyDestroysDefense(finalListOfEnemies);
     }
 
     public void setPlayer(Player player){
