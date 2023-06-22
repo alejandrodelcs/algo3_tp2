@@ -20,7 +20,7 @@ public abstract class Defense {
         return coordinates;
     }
     public void attack(ArrayList<Enemy> enemies){
-        state.attack(this,enemies);}
+        state.attack(this, enemies);}
     public abstract void constructionFinished();
     public void destructed(){
         state = new DestructedState();
