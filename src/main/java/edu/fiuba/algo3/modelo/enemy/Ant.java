@@ -39,7 +39,7 @@ public class Ant extends Enemy {
     }
     @Override
     public ImageView getImage() {
-        return (new ImageView(new Image(getClass().getResource("/img/spider.png").toString(),true)));
+        return (new ImageView(new Image(getClass().getResource("/img/ant2.png").toString(),true)));
     }
 
 }
