@@ -15,7 +15,7 @@ public class Credit {
     public void chargeCredits(Credit creditLoad) {
         quantity += creditLoad.getQuantity();
     }
-    private int getQuantity() {
+    public int getQuantity() {
         return quantity;
     }
 
@@ -37,4 +37,5 @@ public class Credit {
     public boolean arePositive() {
         return  quantity > 0;
     }
+
 }
