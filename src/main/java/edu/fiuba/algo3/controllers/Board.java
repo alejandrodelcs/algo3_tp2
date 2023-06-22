@@ -2,6 +2,7 @@ package edu.fiuba.algo3.controllers;
 import edu.fiuba.algo3.modelo.AlgoDefense;
 import edu.fiuba.algo3.modelo.defense.Defense;
 import edu.fiuba.algo3.modelo.defense.DefenseFactory;
+import edu.fiuba.algo3.modelo.defense.SilverTowerFactory;
 import edu.fiuba.algo3.modelo.defense.WhiteTowerFactory;
 import edu.fiuba.algo3.modelo.gameboard.GameBoard;
 import edu.fiuba.algo3.App;
@@ -70,7 +71,7 @@ public class Board extends controler {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        DefenseFactory factory = new WhiteTowerFactory();
+        DefenseFactory factory = new SilverTowerFactory();
         Point coordinatesToADirt = new Point(2, 3);
         Defense whiteTower = factory.createDefense(coordinatesToADirt);
         algoDefense.buildsADefense(whiteTower);

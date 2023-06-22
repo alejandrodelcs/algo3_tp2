@@ -67,12 +67,14 @@ public class Path extends Plot{
         mainImageView.setFitWidth(50);
         mainImageView.setPreserveRatio(true);
         aStackPane.getChildren().add(mainImageView);
-        for (Enemy enemy : enemyArrayList) {
-            ImageView enemyImage = enemy.getImage();
-            enemyImage.setFitWidth(50);
-            enemyImage.setFitHeight(50);
-            enemyImage.setPreserveRatio(true);
-            aStackPane.getChildren().add(enemyImage);
+        if (enemyArrayList != null) {
+            for (Enemy enemy : enemyArrayList) {
+                ImageView enemyImage = enemy.getImage();
+                enemyImage.setFitWidth(50);
+                enemyImage.setFitHeight(50);
+                enemyImage.setPreserveRatio(true);
+                aStackPane.getChildren().add(enemyImage);
+            }
         }
         aStackPane.maxHeight(50);
         aStackPane.maxWidth(50);

@@ -44,6 +44,6 @@ public class Owl extends Enemy {
     }
     @Override
     public ImageView getImage() {
-        return (new ImageView(new Image(getClass().getResource("/img/spider.png").toString(),true)));
+        return (new ImageView(new Image(getClass().getResource("/img/Owl.png").toString(),true)));
     }
 }

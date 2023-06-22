@@ -63,12 +63,21 @@ public class Dirt extends Plot{
         mainImageView.setPreserveRatio(true);
         aStackPane.getChildren().add(mainImageView);
 
-        for (Enemy enemy : enemyArrayList) {
-            ImageView enemyImage = enemy.getImage();
-            enemyImage.setFitWidth(50);
-            enemyImage.setFitHeight(50);
-            enemyImage.setPreserveRatio(true);
-            aStackPane.getChildren().add(enemyImage);
+        if (defense != null && this.state.itsOccupied()) {
+            ImageView defenseImageView = defense.getImage();
+            defenseImageView.setFitHeight(50);
+            defenseImageView.setFitWidth(50);
+            defenseImageView.setPreserveRatio(true);
+            aStackPane.getChildren().add(defenseImageView);
+        }
+        if (enemyArrayList != null) {
+            for (Enemy enemy : enemyArrayList) {
+                ImageView enemyImage = enemy.getImage();
+                enemyImage.setFitWidth(50);
+                enemyImage.setFitHeight(50);
+                enemyImage.setPreserveRatio(true);
+                aStackPane.getChildren().add(enemyImage);
+            }
         }
         aStackPane.maxHeight(50);
         aStackPane.maxWidth(50);
