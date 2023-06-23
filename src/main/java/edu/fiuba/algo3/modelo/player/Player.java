@@ -70,7 +70,7 @@ public class Player {
     }
 
     public String playerInfo(){
-        return playersName + "\ncurrent life: " + playersLifePoints.getHealthPoints();
+        return playersName + "\ncurrent life: " + playersLifePoints.getHealthPoints() + "\n player credits: "+ playersCredits.getQuantity();
     }
     public boolean hasFunds() {
         return playersCredits.arePositive();
