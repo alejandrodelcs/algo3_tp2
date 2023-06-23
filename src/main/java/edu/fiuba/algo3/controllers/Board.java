@@ -54,13 +54,13 @@ public class Board extends controler {
                 final int clickedColumn = j;
                 stackPane.setOnMouseClicked(someEvent -> {
 
-                    Image image = new Image(getClass().getResource("/img/tower2.png").toString(), true);
+                    Image image = new Image(getClass().getResource("/img/magic2.png").toString(), true);
                     ImageView imageView = new ImageView(image);
                     imageView.setFitHeight(50);
                     imageView.setFitWidth(50);
                     imageView.setPreserveRatio(true);
                     stackPane.getChildren().add(imageView);
-                    Point coordinatesToADirt = new Point(clickedColumn,clickedRow);
+                    Point coordinatesToADirt = new Point(clickedRow,clickedColumn);
                     Defense whiteTower = factory.createDefense(coordinatesToADirt);
                     algoDefense.buildsADefense(whiteTower);
                 });
@@ -89,10 +89,6 @@ public class Board extends controler {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         String updatedStats = algoDefense.getPlayerInfo();
         infoLabel.setText(updatedStats);
-        DefenseFactory factory = new SilverTowerFactory();
-        Point coordinatesToADirt = new Point(2, 3);
-        Defense whiteTower = factory.createDefense(coordinatesToADirt);
-        algoDefense.buildsADefense(whiteTower);
         printMap();
     }
 
