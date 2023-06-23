@@ -3,6 +3,9 @@ import edu.fiuba.algo3.modelo.Logger;
 import edu.fiuba.algo3.modelo.defense.Defense;
 import edu.fiuba.algo3.modelo.defense.Tower;
 import edu.fiuba.algo3.modelo.enemy.Enemy;
+import javafx.scene.image.ImageView;
+import javafx.scene.image.Image;
+import javafx.scene.layout.StackPane;
 
 
 import java.awt.*;
@@ -12,6 +15,7 @@ import java.util.Arrays;
 public class GameBoard {
     private Plot[][] plots;
     private ArrayList<Point> enemyPath;
+
     public GameBoard(Plot[][] expectedPlots) {
         plots = expectedPlots;
         enemyPath = constructPath();

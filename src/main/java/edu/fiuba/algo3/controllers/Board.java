@@ -12,12 +12,11 @@ import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.GridPane;
+import javafx.scene.layout.*;
+import javafx.scene.control.Label;
+
 import java.awt.*;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.Region;
-import javafx.scene.layout.StackPane;
 
 import java.io.IOException;
 import java.net.URL;
@@ -34,6 +33,8 @@ public class Board extends controler {
     private Image[][] cellImages;
     @FXML
     private ImageView imageView;
+    @FXML
+    private Label infoLabel;
 
     @FXML
     private void printMap() {
@@ -66,7 +67,8 @@ public class Board extends controler {
     private void updateImages(){
         gridPane.getChildren().clear();
         algoDefense.nextTurn();
-        algoDefense.getPlayerHealth();
+        String updatedStats = algoDefense.getPlayerInfo();
+        infoLabel.setText(updatedStats);
         printMap();
     }
     @FXML
@@ -76,6 +78,8 @@ public class Board extends controler {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        String updatedStats = algoDefense.getPlayerInfo();
+        infoLabel.setText(updatedStats);
         DefenseFactory factory = new SilverTowerFactory();
         Point coordinatesToADirt = new Point(2, 3);
         Defense whiteTower = factory.createDefense(coordinatesToADirt);

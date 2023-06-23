@@ -51,3 +51,7 @@
 ImageView{
     -fx-background-color: rgb(0,0,0);
 }
+
+#infoLabel {
+    -fx-font-size: 20;
+}
