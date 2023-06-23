@@ -29,11 +29,10 @@ public class App extends Application {
    @Override
     public void start(Stage primaryStage) throws Exception {
        Logger.get();
-        scene = new Scene(loadFXML("signup"));
-        scene.getStylesheets().add(getClass().getResource("/edu.fiuba.algo3/styles.css").toExternalForm());
         Screen screen = Screen.getPrimary();
         Rectangle2D bounds = screen.getVisualBounds();
-        primaryStage.setHeight(bounds.getHeight());
+        scene = new Scene(loadFXML("signup"),bounds.getMaxX(), bounds.getMaxY());
+        scene.getStylesheets().add(getClass().getResource("/edu.fiuba.algo3/styles.css").toExternalForm());
         primaryStage.setTitle("Sign-up");
         primaryStage.setScene(scene);
         primaryStage.getIcons().add(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/img/logo.png"))));

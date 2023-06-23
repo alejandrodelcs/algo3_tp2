@@ -43,14 +43,12 @@
 
 
 .background{
-    -fx-background-image: url('../img/bg_lv2.png');
+    -fx-background-image: url('../img/background.jpg');
     -fx-background-repeat: no-repeat;
     -fx-background-size: cover;
 }
 
-ImageView{
-    -fx-background-color: rgb(0,0,0);
-}
+
 
 #infoLabel {
     -fx-font-size: 20;
