@@ -60,7 +60,7 @@ public class Board extends controler {
     }
 
     private StackPane loadCellImage(int row, int column) {
-        return gameBoard.getPlot(row, column).getStackPane();
+        return gameBoard.getStackPane(row, column);
     }
 
     @FXML

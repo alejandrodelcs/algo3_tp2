@@ -15,6 +15,7 @@ import java.util.Arrays;
 public class GameBoard {
     private Plot[][] plots;
     private ArrayList<Point> enemyPath;
+    private ArrayList<Image> terrainImages = new ArrayList<>();
 
     public GameBoard(Plot[][] expectedPlots) {
         plots = expectedPlots;
@@ -22,6 +23,9 @@ public class GameBoard {
         int x = (int) Math.round(enemyPath.get(enemyPath.size()-1).getX());
         int y = (int) Math.round(enemyPath.get(enemyPath.size()-1).getY());
         plots[y][x].setEnemy(new ArrayList<Enemy>());
+        terrainImages.add(new Image(getClass().getResource("/img/path.png").toString(),true));
+        terrainImages.add(new Image(getClass().getResource("/img/dirt.png").toString(),true));
+        terrainImages.add(new Image(getClass().getResource("/img/rock2.png").toString(),true));
     }
     public boolean availableForBuilding(Point coordinates) {
 
@@ -180,5 +184,9 @@ public class GameBoard {
 
     public long width() {
         return Arrays.stream(plots[0]).count();
+    }
+
+    public StackPane getStackPane(int row, int column) {
+        return plots[row][column].getStackPane(terrainImages);
     }
 }

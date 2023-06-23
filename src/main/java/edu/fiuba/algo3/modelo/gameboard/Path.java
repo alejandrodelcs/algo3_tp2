@@ -60,9 +60,9 @@ public class Path extends Plot{
         }
     }
     @Override
-    public StackPane getStackPane() {
+    public StackPane getStackPane(ArrayList<Image> terrainImages) {
         StackPane aStackPane = new StackPane();
-        ImageView mainImageView = new ImageView(new Image(getClass().getResource("/img/path.png").toString(),true));
+        ImageView mainImageView = new ImageView(terrainImages.get(0));
         mainImageView.setFitHeight(50);
         mainImageView.setFitWidth(50);
         mainImageView.setPreserveRatio(true);
