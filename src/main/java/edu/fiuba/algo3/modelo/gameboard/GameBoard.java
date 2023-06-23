@@ -15,7 +15,6 @@ public class GameBoard {
     public GameBoard(Plot[][] expectedPlots) {
         plots = expectedPlots;
         enemyPath = constructPath();
-
         int x = (int) Math.round(enemyPath.get(enemyPath.size()-1).getX());
         int y = (int) Math.round(enemyPath.get(enemyPath.size()-1).getY());
         plots[y][x].setEnemy(new ArrayList<Enemy>());
@@ -85,11 +84,6 @@ public class GameBoard {
             System.out.println(plots[y][x].enemiesInPlot());
         }
     }
-
-
-
-
-
 
     public void moveEnemies() {
         long lastX = Math.round(enemyPath.get(enemyPath.size() - 1).getX());
@@ -174,5 +168,13 @@ public class GameBoard {
         Plot plotToCheck = plots[x][y];
         plotToCheck.removeDefense(defense);
         Logger.get().log("The Owl destroyed a "+defense.getClass().getSimpleName()+" at postion("+x+","+y+")");
+    }
+
+    public long height() {
+        return Arrays.stream(plots).count();
+    }
+
+    public long width() {
+        return Arrays.stream(plots[0]).count();
     }
 }

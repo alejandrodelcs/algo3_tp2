@@ -6,6 +6,7 @@ import edu.fiuba.algo3.modelo.defense.SilverTowerFactory;
 import edu.fiuba.algo3.modelo.defense.WhiteTowerFactory;
 import edu.fiuba.algo3.modelo.gameboard.GameBoard;
 import edu.fiuba.algo3.App;
+import edu.fiuba.algo3.modelo.gameboard.Plot;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.Scene;
@@ -19,26 +20,26 @@ import javafx.scene.layout.StackPane;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class Board extends controler {
-
 
     @FXML
     private GridPane gridPane;
     private AlgoDefense algoDefense = App.algodefense;
     private GameBoard gameBoard = algoDefense.getGameboard();
-
     private Image[][] cellImages;
     @FXML
     private ImageView imageView;
 
-
     @FXML
     private void printMap() {
-        this.cellImages = new Image[15][15];
-        for (int i = 0; i < 15; i++) {
-            for (int j = 0; j < 15; j++) {
+        int height = (int) gameBoard.height();
+        int width = (int) gameBoard.width();
+        this.cellImages = new Image[height][width];
+        for (int i = 0; i < height; i++) {
+            for (int j = 0; j < width; j++) {
                 StackPane stackPane = loadCellImage(i, j);
                 stackPane.maxHeight(50);
                 stackPane.maxWidth(50);
@@ -54,6 +55,7 @@ public class Board extends controler {
             }
         }
     }
+
     private StackPane loadCellImage(int row, int column) {
         return gameBoard.getPlot(row, column).getStackPane();
     }

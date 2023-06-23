@@ -28,10 +28,14 @@
 
 
 #usernameField {
-    -fx-background-color: rgba(168, 216, 220, 0.62);
+    -fx-background-color: rgba(0, 0, 0, 0.7);
     -fx-alignment: center;
     -fx-font-size: 30px;
     -fx-font-weight: lighter;
+    -fx-focus-traversable: false;
+    -fx-max-width: 600;
+    -fx-text-fill: white;
+
 }
 .label .text-input .text {
     -fx-prompt-text-fill: #000000;
@@ -42,4 +46,8 @@
     -fx-background-image: url('../img/bg_lv2.png');
     -fx-background-repeat: no-repeat;
     -fx-background-size: cover;
+}
+
+ImageView{
+    -fx-background-color: rgb(0,0,0);
 }
