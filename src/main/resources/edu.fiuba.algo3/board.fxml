@@ -5,17 +5,27 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<GridPane prefHeight="900" alignment="CENTER" prefWidth="800" xmlns="http://javafx.com/javafx/15" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.fiuba.algo3.controllers.Board">
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.geometry.Insets?>
+<BorderPane xmlns="http://javafx.com/javafx/15" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.fiuba.algo3.controllers.Board">
+   <left>
+      <GridPane fx:id="gridPane" prefHeight="900" alignment="CENTER" prefWidth="800" BorderPane.alignment="CENTER_LEFT" BorderPane.margin="$Insets">
+         <columnConstraints>
+            <ColumnConstraints />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+         </rowConstraints>
+      </GridPane>
+   </left>
+   <right>
+      <Button onAction="#updateImages" text="Next Turn" GridPane.rowIndex="3" BorderPane.alignment="CENTER_RIGHT" BorderPane.margin="$Insets" />
+   </right>
+   <padding>
+      <Insets fx:id="Insets" left="0" top="0" right="0" bottom="0"/>
+   </padding>
+</BorderPane>
 
-   <GridPane fx:id="gridPane" alignment="CENTER" style="mar" />
-   <Button onAction="#updateImages" text="Next Turn" GridPane.rowIndex="3" />
-   <columnConstraints>
-      <ColumnConstraints />
-   </columnConstraints>
-   <rowConstraints>
-      <RowConstraints />
-      <RowConstraints />
-      <RowConstraints />
-      <RowConstraints />
-   </rowConstraints>
-</GridPane>
