@@ -20,6 +20,7 @@ import javafx.scene.input.MouseEvent;
 
 import java.io.IOException;
 import java.net.URL;
+import java.security.cert.PolicyNode;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
@@ -40,20 +41,28 @@ public class Board extends controler {
     private void printMap() {
         int height = (int) gameBoard.height();
         int width = (int) gameBoard.width();
+        DefenseFactory factory = new SilverTowerFactory();
         this.cellImages = new Image[height][width];
+
         for (int i = 0; i < height; i++) {
             for (int j = 0; j < width; j++) {
                 StackPane stackPane = loadCellImage(i, j);
                 stackPane.maxHeight(50);
                 stackPane.maxWidth(50);
                 gridPane.add(stackPane, j, i);
+                final int clickedRow = i;
+                final int clickedColumn = j;
                 stackPane.setOnMouseClicked(someEvent -> {
+
                     Image image = new Image(getClass().getResource("/img/tower2.png").toString(), true);
                     ImageView imageView = new ImageView(image);
                     imageView.setFitHeight(50);
                     imageView.setFitWidth(50);
                     imageView.setPreserveRatio(true);
                     stackPane.getChildren().add(imageView);
+                    Point coordinatesToADirt = new Point(clickedColumn,clickedRow);
+                    Defense whiteTower = factory.createDefense(coordinatesToADirt);
+                    algoDefense.buildsADefense(whiteTower);
                 });
             }
         }
