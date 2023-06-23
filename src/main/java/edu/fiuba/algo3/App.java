@@ -8,6 +8,8 @@ import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.stage.Screen;
+import javafx.geometry.Rectangle2D;
 
 import java.awt.*;
 import java.awt.image.ImageObserver;
@@ -29,6 +31,9 @@ public class App extends Application {
        Logger.get();
         scene = new Scene(loadFXML("signup"));
         scene.getStylesheets().add(getClass().getResource("/edu.fiuba.algo3/styles.css").toExternalForm());
+        Screen screen = Screen.getPrimary();
+        Rectangle2D bounds = screen.getVisualBounds();
+        primaryStage.setHeight(bounds.getHeight());
         primaryStage.setTitle("Sign-up");
         primaryStage.setScene(scene);
         primaryStage.getIcons().add(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/img/logo.png"))));
