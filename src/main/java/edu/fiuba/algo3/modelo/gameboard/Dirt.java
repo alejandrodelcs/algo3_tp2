@@ -54,10 +54,10 @@ public class Dirt extends Plot{
     }
 
     @Override
-    public StackPane getStackPane(ArrayList<Image> terrainImages) {
+    public StackPane getStackPane() {
 
         StackPane aStackPane = new StackPane();
-        ImageView mainImageView = new ImageView(terrainImages.get(1));
+        ImageView mainImageView = new ImageView(new Image(getClass().getResource("/img/dirt.png").toString(),true));
         mainImageView.setFitHeight(50);
         mainImageView.setFitWidth(50);
         mainImageView.setPreserveRatio(true);
