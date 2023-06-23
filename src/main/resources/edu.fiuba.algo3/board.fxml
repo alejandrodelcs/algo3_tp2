@@ -7,10 +7,12 @@
 
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.VBox?>
 <BorderPane xmlns="http://javafx.com/javafx/15" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.fiuba.algo3.controllers.Board">
    <left>
       <GridPane fx:id="gridPane" prefHeight="900" alignment="CENTER" prefWidth="800" BorderPane.alignment="CENTER_LEFT" BorderPane.margin="$Insets">
-         <columnConstraints>
+<!--         <columnConstraints>
             <ColumnConstraints />
          </columnConstraints>
          <rowConstraints>
@@ -18,11 +20,15 @@
             <RowConstraints />
             <RowConstraints />
             <RowConstraints />
-         </rowConstraints>
+         </rowConstraints>-->
       </GridPane>
    </left>
    <right>
-      <Button onAction="#updateImages" text="Next Turn" GridPane.rowIndex="3" BorderPane.alignment="CENTER_RIGHT" BorderPane.margin="$Insets" />
+      <VBox>
+         <Label fx:id="infoLabel" text="player player"/>
+         <Label text="player player"/>
+         <Button onAction="#updateImages" text="Next Turn" GridPane.rowIndex="3" BorderPane.alignment="CENTER_RIGHT" BorderPane.margin="$Insets" />
+      </VBox>
    </right>
    <padding>
       <Insets fx:id="Insets" left="0" top="0" right="0" bottom="0"/>

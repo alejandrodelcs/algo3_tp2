@@ -69,6 +69,9 @@ public class Player {
         return(!playersLifePoints.entityDied());
     }
 
+    public String playerInfo(){
+        return playersName + "\n current life: " + playersLifePoints.getHealthPoints();
+    }
     public boolean hasFunds() {
         return playersCredits.arePositive();
     }

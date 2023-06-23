@@ -114,4 +114,8 @@ public class AlgoDefense {
     public GameBoard getGameboard(){
         return gameboard;
     }
+
+    public String getPlayerInfo() {
+        return player.playerInfo();
+    }
 }

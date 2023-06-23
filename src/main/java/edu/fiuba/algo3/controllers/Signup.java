@@ -19,8 +19,6 @@ public class Signup {
     @FXML
     private TextField usernameField;
 
-
-
     @FXML
     private void handleSignup() throws IOException {
         String username = usernameField.getText();

@@ -12,6 +12,7 @@ import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import java.awt.*;
 import javafx.scene.input.MouseEvent;
@@ -27,6 +28,7 @@ public class Board extends controler {
 
     @FXML
     private GridPane gridPane;
+    @FXML
     private AlgoDefense algoDefense = App.algodefense;
     private GameBoard gameBoard = algoDefense.getGameboard();
     private Image[][] cellImages;
@@ -64,6 +66,7 @@ public class Board extends controler {
     private void updateImages(){
         gridPane.getChildren().clear();
         algoDefense.nextTurn();
+        algoDefense.getPlayerHealth();
         printMap();
     }
     @FXML
