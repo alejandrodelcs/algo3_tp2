@@ -151,24 +151,24 @@ public class AlgoDefenseTwoTest {
         algoDefense.buildsADefense(whiteTower7);
         algoDefense.buildsADefense(whiteTower8);
 
-        algoDefense.executeTurn();
-        algoDefense.executeTurn();
-        algoDefense.executeTurn();
-        algoDefense.executeTurn();
-        algoDefense.executeTurn();
-        algoDefense.executeTurn();
-        algoDefense.executeTurn();
-        algoDefense.executeTurn();
-        algoDefense.executeTurn();
-        algoDefense.executeTurn();
-        algoDefense.executeTurn();
-        algoDefense.executeTurn();
-        algoDefense.executeTurn();
-        algoDefense.executeTurn();
-        algoDefense.executeTurn();
-        algoDefense.executeTurn();
-        algoDefense.executeTurn();
-        algoDefense.executeTurn();
+        algoDefense.nextTurn();
+        algoDefense.nextTurn();
+        algoDefense.nextTurn();
+        algoDefense.nextTurn();
+        algoDefense.nextTurn();
+        algoDefense.nextTurn();
+        algoDefense.nextTurn();
+        algoDefense.nextTurn();
+        algoDefense.nextTurn();
+        algoDefense.nextTurn();
+        algoDefense.nextTurn();
+        algoDefense.nextTurn();
+        algoDefense.nextTurn();
+        algoDefense.nextTurn();
+        algoDefense.nextTurn();
+        algoDefense.nextTurn();
+        algoDefense.nextTurn();
+        algoDefense.nextTurn();
 
         assertTrue(player.isAlive());
     }
@@ -181,34 +181,34 @@ public class AlgoDefenseTwoTest {
         Damage killDamage = new Damage(2);
 
         //Act
-        algoDefense.executeTurn();
-        algoDefense.executeTurn();
-        algoDefense.executeTurn();
-        algoDefense.executeTurn();
-        algoDefense.executeTurn();
-        algoDefense.executeTurn();
-        algoDefense.executeTurn();
-        algoDefense.executeTurn();
-        algoDefense.executeTurn();
-        algoDefense.executeTurn();
-        algoDefense.executeTurn();
-        algoDefense.executeTurn();
-        algoDefense.executeTurn();
-        algoDefense.executeTurn();
-        algoDefense.executeTurn();
-        algoDefense.executeTurn();
+        algoDefense.nextTurn();
+        algoDefense.nextTurn();
+        algoDefense.nextTurn();
+        algoDefense.nextTurn();
+        algoDefense.nextTurn();
+        algoDefense.nextTurn();
+        algoDefense.nextTurn();
+        algoDefense.nextTurn();
+        algoDefense.nextTurn();
+        algoDefense.nextTurn();
+        algoDefense.nextTurn();
+        algoDefense.nextTurn();
+        algoDefense.nextTurn();
+        algoDefense.nextTurn();
+        algoDefense.nextTurn();
+        algoDefense.nextTurn();
 
-        algoDefense.executeTurn();
-        algoDefense.executeTurn();
-        algoDefense.executeTurn();
-        algoDefense.executeTurn();
-        algoDefense.executeTurn();
-        algoDefense.executeTurn();
-        algoDefense.executeTurn();
+        algoDefense.nextTurn();
+        algoDefense.nextTurn();
+        algoDefense.nextTurn();
+        algoDefense.nextTurn();
+        algoDefense.nextTurn();
+        algoDefense.nextTurn();
+        algoDefense.nextTurn();
         player.getsDamage(killDamage);
 
 
-        Assertions.assertThrows(PlayerIsDeadGameOver.class,()-> algoDefense.executeTurn());
+        Assertions.assertThrows(PlayerIsDeadGameOver.class,()-> algoDefense.nextTurn());
     }
 
     @Test

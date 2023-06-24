@@ -26,14 +26,14 @@ class SandyTrapTest {
         algoDefense.buildsADefense(SandTrap1);
         algoDefense.buildsADefense(SandTrap2);
         algoDefense.buildsADefense(SandTrap3);
-        algoDefense.executeTurn();
-        algoDefense.executeTurn();
-        algoDefense.executeTurn();
-        algoDefense.executeTurn();
-        algoDefense.executeTurn();
-        algoDefense.executeTurn();
-        algoDefense.executeTurn();
-        algoDefense.executeTurn();
+        algoDefense.nextTurn();
+        algoDefense.nextTurn();
+        algoDefense.nextTurn();
+        algoDefense.nextTurn();
+        algoDefense.nextTurn();
+        algoDefense.nextTurn();
+        algoDefense.nextTurn();
+        algoDefense.nextTurn();
 
     }
 

@@ -228,7 +228,7 @@ public class AlgoDefenseTest {
 
         algoDefense.buildsADefense(silverTower);
         algoDefense.spawnAnEnemy(enemyArray);
-        algoDefense.executeTurn();
+        algoDefense.nextTurn();
         assertFalse(anAnt.enemyDied());
         assertFalse(aSpider.enemyDied());
         algoDefense.nextTurn();
