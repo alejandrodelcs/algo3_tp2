@@ -50,17 +50,17 @@ public class Board extends controler {
                 final int clickedColumn = j;
                 Point point = new Point(i,j);
                 Point backwards = new Point(j,i); //TODO: REVERT X Y so this variable won't be used anymore
-
                 pickADefenseEvent(stackPane, point, backwards, clickedRow, clickedColumn);
             }
         }
     }
 
     private void pickADefenseEvent(StackPane stackPane,Point point, Point backwards, int clickedRow, int clickedColumn) {
-
         DefenseFactory silverFactory = new SilverTowerFactory();
         DefenseFactory whiteFactory = new WhiteTowerFactory();
         DefenseFactory sandyFactory = new SandyTrapFactory();
+        ArrayList<> =;
+
         stackPane.setOnMouseClicked(someEvent -> {
             if(gameBoard.availableForBuilding(point) == (!gameBoard.isEnemyPath(backwards))){
 
@@ -69,15 +69,12 @@ public class Board extends controler {
                     pickAdefenseDialog(dialog);
                     ButtonType silverTowerOption = new ButtonType("Silver Tower");
                     ButtonType whiteTowerOption = new ButtonType("White Tower");
-
                     dialog.getButtonTypes().setAll(whiteTowerOption, silverTowerOption);
 
                     Optional<ButtonType> result = dialog.showAndWait();
                     if (result.get() == whiteTowerOption) {
-                        Image image = new Image(getClass().getResource("/img/magic2.png").toString(), true);
 
-                        ImageView imageView = buildImageViewOfDefense(image);
-
+                        ImageView imageView = buildImageViewOfDefense(new Image(getClass().getResource("/img/magic2.png").toString(), true));
                         Point coordinatesToADirt = new Point(clickedRow,clickedColumn);
                         Defense whiteTower = whiteFactory.createDefense(coordinatesToADirt);
                         algoDefense.buildsADefense(whiteTower);
@@ -85,16 +82,13 @@ public class Board extends controler {
                         stackPane.getChildren().add(imageView);
 
                     } else if (result.get() == silverTowerOption) {
-                        Image image = new Image(getClass().getResource("/img/tower2.png").toString(), true);
 
-                        ImageView imageView = buildImageViewOfDefense(image);
-
+                        ImageView imageView = buildImageViewOfDefense(new Image(getClass().getResource("/img/tower2.png").toString(), true));
                         Point coordinatesToADirt = new Point(clickedRow,clickedColumn);
                         Defense silverTower = silverFactory.createDefense(coordinatesToADirt);
                         algoDefense.buildsADefense(silverTower);
 
                         stackPane.getChildren().add(imageView);
-
                     }
 
                 }catch  (InsufficientCredits insufficientCredits){
@@ -111,10 +105,7 @@ public class Board extends controler {
 
                     Optional<ButtonType> result = dialog.showAndWait();
                     if(result.get() == sandyTrapOption){
-                        Image image = new Image(getClass().getResource("/img/sandyTrap.jpg").toString(), true);
-
-                        ImageView imageView = buildImageViewOfDefense(image);
-
+                        ImageView imageView = buildImageViewOfDefense(new Image(getClass().getResource("/img/sandyTrap.jpg").toString(), true));
                         Point coordinatesToEnemyPath = new Point(clickedRow,clickedColumn);
                         Defense sandyTrap = sandyFactory.createDefense(coordinatesToEnemyPath);
                         algoDefense.buildsADefense(sandyTrap);
@@ -184,5 +175,3 @@ public class Board extends controler {
     }
 
 }
-
-
