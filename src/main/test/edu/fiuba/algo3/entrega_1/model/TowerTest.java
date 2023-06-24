@@ -82,7 +82,6 @@ public class TowerTest {
         enemies.add(spiderMock);
 
 
-
         SilverTower.constructionFinished();
         SilverTower.attack(enemies);
 

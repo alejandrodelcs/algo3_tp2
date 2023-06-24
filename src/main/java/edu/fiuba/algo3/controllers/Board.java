@@ -3,9 +3,16 @@ import edu.fiuba.algo3.modelo.AlgoDefense;
 import edu.fiuba.algo3.modelo.defense.Defense;
 import edu.fiuba.algo3.modelo.defense.DefenseFactory;
 import edu.fiuba.algo3.modelo.defense.SilverTowerFactory;
+import edu.fiuba.algo3.modelo.defense.WhiteTowerFactory;
+import edu.fiuba.algo3.modelo.exceptions.InsufficientCredits;
+import edu.fiuba.algo3.modelo.exceptions.InvalidPlayersName;
+import edu.fiuba.algo3.modelo.gameboard.Dirt;
 import edu.fiuba.algo3.modelo.gameboard.GameBoard;
 import edu.fiuba.algo3.App;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
+import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
@@ -51,15 +58,27 @@ public class Board extends controler {
                 Point backwards = new Point(j,i);
                 stackPane.setOnMouseClicked(someEvent -> {
                     if(gameBoard.availableForBuilding(point) == (!gameBoard.isEnemyPath(backwards))){
-                        Image image = new Image(getClass().getResource("/img/magic2.png").toString(), true);
-                        ImageView imageView = new ImageView(image);
-                        imageView.setFitHeight(50);
-                        imageView.setFitWidth(50);
-                        imageView.setPreserveRatio(true);
-                        stackPane.getChildren().add(imageView);
-                        Point coordinatesToADirt = new Point(clickedRow,clickedColumn);
-                        Defense whiteTower = factory.createDefense(coordinatesToADirt);
-                        algoDefense.buildsADefense(whiteTower);
+
+                        try{
+                            Image image = new Image(getClass().getResource("/img/magic2.png").toString(), true);
+                            ImageView imageView = new ImageView(image);
+                            imageView.setFitHeight(50);
+                            imageView.setFitWidth(50);
+                            imageView.setPreserveRatio(true);
+                            Point coordinatesToADirt = new Point(clickedRow,clickedColumn);
+                            Defense whiteTower = factory.createDefense(coordinatesToADirt);
+                            algoDefense.buildsADefense(whiteTower);
+                            stackPane.getChildren().add(imageView);
+
+                        }catch  (InsufficientCredits insufficientCredits){
+                            Alert alertWithoutFunds = new Alert(Alert.AlertType.ERROR);
+                            alertWithoutFunds.setContentText("Insufficient credits, your current balance is: " + algoDefense.getPlayer().playersBalance());
+                            alertWithoutFunds.showAndWait();
+                        }
+
+                    }
+                    if(!algoDefense.getPlayer().hasFunds()){
+
                     }
                 });
             }

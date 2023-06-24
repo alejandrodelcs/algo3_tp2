@@ -16,7 +16,6 @@ public class SimpleRangeAttack implements Attack{
         this.rangeAttack = range;
         this.damage = damage;
     }
-
     @Override
     public void performAttackOnEnemies(Defense defense, ArrayList<Enemy> enemies){
         int i = enemies.size() - 1;
