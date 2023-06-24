@@ -17,7 +17,7 @@ public class SlowDown implements Attack{
 
     public void performAttackOnEnemies(Defense defense, ArrayList<Enemy> enemies) {
         for(Enemy enemy : enemies) {
-            if (rangeAttack.isInRange(defense, enemy) && !enemy.alreadySlowedDown()) {
+            if (rangeAttack.isInRange(defense, enemy)) {
                 enemy.decelerate(slowDownPercenatage);
                 Logger.get().log(defense.getClass().getSimpleName() + " slows down "+ enemy.getClass().getSimpleName()
                         +" at postion("+(int)enemy.getPoint().getX()+","+(int)enemy.getPoint().getY()+")");

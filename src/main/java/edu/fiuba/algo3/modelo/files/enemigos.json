@@ -53,7 +53,7 @@
 		"turno": 6,
 		"enemigos": {
 			"hormiga": 1,
-			"arana": 0,
+			"arana": 3,
 			"topo": 0,
 			"lechuza": 0
 		}

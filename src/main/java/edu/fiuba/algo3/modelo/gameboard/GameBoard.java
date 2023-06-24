@@ -3,6 +3,9 @@ import edu.fiuba.algo3.modelo.Logger;
 import edu.fiuba.algo3.modelo.defense.Defense;
 import edu.fiuba.algo3.modelo.defense.Tower;
 import edu.fiuba.algo3.modelo.enemy.Enemy;
+import javafx.scene.image.ImageView;
+import javafx.scene.image.Image;
+import javafx.scene.layout.StackPane;
 
 
 import java.awt.*;
@@ -13,11 +16,9 @@ public class GameBoard {
     private Plot[][] plots;
     private ArrayList<Point> enemyPath;
 
-
     public GameBoard(Plot[][] expectedPlots) {
         plots = expectedPlots;
         enemyPath = constructPath();
-
         int x = (int) Math.round(enemyPath.get(enemyPath.size()-1).getX());
         int y = (int) Math.round(enemyPath.get(enemyPath.size()-1).getY());
         plots[y][x].setEnemy(new ArrayList<Enemy>());
@@ -150,6 +151,9 @@ public class GameBoard {
 //        }
 
     }
+    public Plot getPlot(int x, int y){
+        return plots[x][y];
+    }
 
 
 
@@ -168,5 +172,13 @@ public class GameBoard {
         Plot plotToCheck = plots[x][y];
         plotToCheck.removeDefense(defense);
         Logger.get().log("The Owl destroyed a "+defense.getClass().getSimpleName()+" at postion("+x+","+y+")");
+    }
+
+    public long height() {
+        return Arrays.stream(plots).count();
+    }
+
+    public long width() {
+        return Arrays.stream(plots[0]).count();
     }
 }

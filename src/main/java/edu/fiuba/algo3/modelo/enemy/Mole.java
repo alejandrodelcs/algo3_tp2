@@ -5,6 +5,8 @@ import edu.fiuba.algo3.modelo.damage.Damage;
 import edu.fiuba.algo3.modelo.gameboard.Plot;
 import edu.fiuba.algo3.modelo.health.Health;
 import edu.fiuba.algo3.modelo.speed.Move;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -20,6 +22,7 @@ public class Mole extends Enemy {
         this.moves = 0;
         this.MOVES_NEEDED_FOR_SPEED_2 = 6;
         this.MOVES_NEEDED_FOR_SPEED_3 = 11;
+        this.visible = false;
     }
     @Override
     public Point move(long x, long y, Plot[][] plots, ArrayList<Point> enemyPath) {
@@ -58,6 +61,10 @@ public class Mole extends Enemy {
     @Override
     public String Show() {
         return "Mole";
+    }
+    @Override
+    public ImageView getImage() {
+        return (new ImageView(new Image(getClass().getResource("/img/mole.png").toString(),true)));
     }
 
 }

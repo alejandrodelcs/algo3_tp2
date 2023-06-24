@@ -4,6 +4,8 @@ import edu.fiuba.algo3.modelo.credit.Credit;
 import edu.fiuba.algo3.modelo.damage.Damage;
 import edu.fiuba.algo3.modelo.health.Health;
 import edu.fiuba.algo3.modelo.speed.Move;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -26,6 +28,7 @@ import java.util.ArrayList;
 public class Ant extends Enemy {
     public Ant(Damage damage, Health health, Credit credit, Move movement) {
         super(damage, health, credit, movement);
+        this.visible = true;
     }
     @Override
     public Credit generateCredits() {
@@ -34,6 +37,10 @@ public class Ant extends Enemy {
     @Override
     public String Show() {
         return "Ant";
+    }
+    @Override
+    public ImageView getImage() {
+        return (new ImageView(new Image(getClass().getResource("/img/ant2.png").toString(),true)));
     }
 
 }

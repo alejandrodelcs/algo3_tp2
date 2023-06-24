@@ -25,9 +25,11 @@ public class SimpleRangeAttack implements Attack{
         }
         if (i >= 0) {
             Enemy enemy = enemies.get(i);
-            enemy.takeDamage(damage);
-            Logger.get().log(defense.getClass().getSimpleName() + " attacks "+ enemy.getClass().getSimpleName()
-                    +" at postion("+(int)enemy.getPoint().getX()+","+(int)enemy.getPoint().getY()+")");
+            if (enemy.isVisible()) {
+                enemy.takeDamage(damage);
+                Logger.get().log(defense.getClass().getSimpleName() + " attacks " + enemy.getClass().getSimpleName()
+                        + " at postion(" + (int) enemy.getPoint().getX() + "," + (int) enemy.getPoint().getY() + ")");
+            }
         }
     }
 }

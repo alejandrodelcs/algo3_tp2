@@ -7,6 +7,9 @@ import edu.fiuba.algo3.modelo.enemy.Enemy;
 import edu.fiuba.algo3.modelo.enemy.EnemyFactory;
 import edu.fiuba.algo3.modelo.exceptions.NonConstructibleArea;
 import edu.fiuba.algo3.modelo.exceptions.NonTowerContructibleArea;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.StackPane;
 
 import java.util.ArrayList;
 
@@ -46,9 +49,35 @@ public class Path extends Plot{
     }
 
     @Override
+    public Image printImage() {
+        return new Image(getClass().getResource("/img/path.png").toString(),true);
+    }
+
+    @Override
     public void removeDefense(Defense defense) {
         if(defense.equals(Trap.class)){
             this.state = new Available();
         }
+    }
+    @Override
+    public StackPane getStackPane() {
+        StackPane aStackPane = new StackPane();
+        ImageView mainImageView = new ImageView(new Image(getClass().getResource("/img/path.png").toString(),true));
+        mainImageView.setFitHeight(50);
+        mainImageView.setFitWidth(50);
+        mainImageView.setPreserveRatio(true);
+        aStackPane.getChildren().add(mainImageView);
+        if (enemyArrayList != null) {
+            for (Enemy enemy : enemyArrayList) {
+                ImageView enemyImage = enemy.getImage();
+                enemyImage.setFitWidth(50);
+                enemyImage.setFitHeight(50);
+                enemyImage.setPreserveRatio(true);
+                aStackPane.getChildren().add(enemyImage);
+            }
+        }
+        aStackPane.maxHeight(50);
+        aStackPane.maxWidth(50);
+        return aStackPane;
     }
 }

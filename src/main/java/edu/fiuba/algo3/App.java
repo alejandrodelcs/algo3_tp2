@@ -1,12 +1,21 @@
 package edu.fiuba.algo3;
 import edu.fiuba.algo3.controllers.Signup;
 import edu.fiuba.algo3.modelo.AlgoDefense;
+import edu.fiuba.algo3.modelo.Logger;
 import javafx.application.Application;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.stage.Screen;
+import javafx.geometry.Rectangle2D;
 
+import java.awt.*;
+import java.awt.image.ImageObserver;
+import java.awt.image.ImageProducer;
+import java.io.IOException;
+import java.util.Objects;
 
 
 /**
@@ -14,35 +23,29 @@ import javafx.scene.Parent;
  */
 public class App extends Application {
 
-    /*@Override
-    public void start(Stage stage) {
-        var javaVersion = SystemInfo.javaVersion();
-        var javafxVersion = SystemInfo.javafxVersion();
-
-        var label = new Label("Hello, JavaFX " + javafxVersion + ", running on Java " + javaVersion + ".");
-        var scene = new Scene(new StackPane(label), 640, 480);
-        stage.setScene(scene);
-        stage.show();
-    }*/
-
     public static final AlgoDefense algodefense = new AlgoDefense();
-    @Override
+    private static Scene scene;
+
+   @Override
     public void start(Stage primaryStage) throws Exception {
-        // Cargar el archivo FXML
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/edu.fiuba.algo3/signup.fxml"));
-        Parent root = loader.load();
-
-        // Obtener el controlador
-        Signup signupController = loader.getController();
-
-        // Configurar la escena
-        Scene scene = new Scene(root);
+       Logger.get();
+        Screen screen = Screen.getPrimary();
+        Rectangle2D bounds = screen.getVisualBounds();
+        scene = new Scene(loadFXML("signup"),bounds.getMaxX(), bounds.getMaxY());
         scene.getStylesheets().add(getClass().getResource("/edu.fiuba.algo3/styles.css").toExternalForm());
-
-        // Configurar el escenario
-        primaryStage.setTitle("Signup");
+        primaryStage.setTitle("Sign-up");
         primaryStage.setScene(scene);
+        primaryStage.getIcons().add(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/img/logo.png"))));
         primaryStage.show();
+    }
+
+    public static void setRoot(String fxml) throws IOException {
+        scene.setRoot(loadFXML(fxml));
+    }
+
+    private static Parent loadFXML(String fxml) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("/edu.fiuba.algo3/" + fxml + ".fxml"));
+        return fxmlLoader.load();
     }
     public static void main(String[] args) {
         launch();
