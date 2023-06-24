@@ -4,6 +4,7 @@ import edu.fiuba.algo3.modelo.defense.Defense;
 import edu.fiuba.algo3.modelo.defense.DefenseFactory;
 import edu.fiuba.algo3.modelo.defense.SilverTowerFactory;
 import edu.fiuba.algo3.modelo.defense.WhiteTowerFactory;
+import edu.fiuba.algo3.modelo.gameboard.Dirt;
 import edu.fiuba.algo3.modelo.gameboard.GameBoard;
 import edu.fiuba.algo3.App;
 import edu.fiuba.algo3.modelo.gameboard.Plot;
@@ -52,17 +53,20 @@ public class Board extends controler {
                 gridPane.add(stackPane, j, i);
                 final int clickedRow = i;
                 final int clickedColumn = j;
+                Point point = new Point(i,j);
+                Point backwards = new Point(j,i);
                 stackPane.setOnMouseClicked(someEvent -> {
-
-                    Image image = new Image(getClass().getResource("/img/magic2.png").toString(), true);
-                    ImageView imageView = new ImageView(image);
-                    imageView.setFitHeight(50);
-                    imageView.setFitWidth(50);
-                    imageView.setPreserveRatio(true);
-                    stackPane.getChildren().add(imageView);
-                    Point coordinatesToADirt = new Point(clickedRow,clickedColumn);
-                    Defense whiteTower = factory.createDefense(coordinatesToADirt);
-                    algoDefense.buildsADefense(whiteTower);
+                    if(gameBoard.availableForBuilding(point) == (!gameBoard.isEnemyPath(backwards))){
+                        Image image = new Image(getClass().getResource("/img/magic2.png").toString(), true);
+                        ImageView imageView = new ImageView(image);
+                        imageView.setFitHeight(50);
+                        imageView.setFitWidth(50);
+                        imageView.setPreserveRatio(true);
+                        stackPane.getChildren().add(imageView);
+                        Point coordinatesToADirt = new Point(clickedRow,clickedColumn);
+                        Defense whiteTower = factory.createDefense(coordinatesToADirt);
+                        algoDefense.buildsADefense(whiteTower);
+                    }
                 });
             }
         }
