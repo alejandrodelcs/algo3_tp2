@@ -166,6 +166,14 @@ public class GameBoard {
     public boolean isEnemyPath(Point expectedEnemyPathCoordinates){
         return enemyPath.contains(expectedEnemyPathCoordinates);
     }
+    public boolean isStart(Point point){
+        return (point.getY() == enemyPath.get(0).getY()) && (point.getX() == enemyPath.get(0).getX());
+    }
+    public boolean isFinish(Point point){
+        int lastPath = enemyPath.size() - 1;
+        return (point.getY() == enemyPath.get(lastPath).getY()) && (point.getX() == enemyPath.get(lastPath).getX());
+    }
+
     public ArrayList<Enemy> getEnemiesInThelastPath(){
         int finalX = (int) Math.round(enemyPath.get(enemyPath.size()-1).getX());
         int finalY = (int) Math.round(enemyPath.get(enemyPath.size()-1).getY());
@@ -193,5 +201,9 @@ public class GameBoard {
 
     public StackPane getStackPane(int row, int column, ArrayList<Image> terrainImages) {
         return plots[row][column].getStackPane(terrainImages);
+    }
+
+    public ArrayList<Point> getEnemyPath() {
+        return enemyPath;
     }
 }

@@ -59,16 +59,17 @@ public class Board extends controler {
         DefenseFactory silverFactory = new SilverTowerFactory();
         DefenseFactory whiteFactory = new WhiteTowerFactory();
         DefenseFactory sandyFactory = new SandyTrapFactory();
-        ArrayList<> =;
 
         stackPane.setOnMouseClicked(someEvent -> {
-            if(gameBoard.availableForBuilding(point) == (!gameBoard.isEnemyPath(backwards))){
+            if(gameBoard.availableForBuilding(point) && (!gameBoard.isEnemyPath(backwards))){
 
                 try{
                     Alert dialog = new Alert(Alert.AlertType.INFORMATION);
                     pickAdefenseDialog(dialog);
                     ButtonType silverTowerOption = new ButtonType("Silver Tower");
                     ButtonType whiteTowerOption = new ButtonType("White Tower");
+
+                    dialog.getButtonTypes().setAll();
                     dialog.getButtonTypes().setAll(whiteTowerOption, silverTowerOption);
 
                     Optional<ButtonType> result = dialog.showAndWait();
@@ -95,29 +96,40 @@ public class Board extends controler {
                     alertInssuficientCredits();
                 }
 
-            }
-            else if(gameBoard.availableForBuilding(point) == (gameBoard.isEnemyPath(backwards))){
-                try{
-                    Alert dialog = new Alert(Alert.AlertType.INFORMATION);
-                    pickAdefenseDialog(dialog);
-                    ButtonType sandyTrapOption = new ButtonType("Sandy Trap");
-                    dialog.getButtonTypes().setAll(sandyTrapOption);
+            }else if( (gameBoard.isEnemyPath(backwards)) ){
+                if (gameBoard.isStart(backwards)  || (gameBoard.isFinish(backwards))) {
+                    alertStartFinish();
+                }
+                else{
+                    try{
+                        Alert dialog = new Alert(Alert.AlertType.INFORMATION);
+                        pickAdefenseDialog(dialog);
+                        ButtonType sandyTrapOption = new ButtonType("Sandy Trap");
+                        dialog.getButtonTypes().setAll(sandyTrapOption);
 
-                    Optional<ButtonType> result = dialog.showAndWait();
-                    if(result.get() == sandyTrapOption){
-                        ImageView imageView = buildImageViewOfDefense(new Image(getClass().getResource("/img/sandyTrap.jpg").toString(), true));
-                        Point coordinatesToEnemyPath = new Point(clickedRow,clickedColumn);
-                        Defense sandyTrap = sandyFactory.createDefense(coordinatesToEnemyPath);
-                        algoDefense.buildsADefense(sandyTrap);
+                        Optional<ButtonType> result = dialog.showAndWait();
+                        if(result.get() == sandyTrapOption){
+                            ImageView imageView = buildImageViewOfDefense(new Image(getClass().getResource("/img/sandyTrap.jpg").toString(), true));
+                            Point coordinatesToEnemyPath = new Point(clickedRow,clickedColumn);
+                            Defense sandyTrap = sandyFactory.createDefense(coordinatesToEnemyPath);
+                            algoDefense.buildsADefense(sandyTrap);
 
-                        stackPane.getChildren().add(imageView);
+                            stackPane.getChildren().add(imageView);
+                        }
+
+                    }catch  (InsufficientCredits insufficientCredits){
+                        alertInssuficientCredits();
                     }
-
-                }catch  (InsufficientCredits insufficientCredits){
-                    alertInssuficientCredits();
                 }
             }
         });
+    }
+
+    private void alertStartFinish() {
+        Alert startFinishAlertWithoutFunds = new Alert(Alert.AlertType.ERROR);
+        startFinishAlertWithoutFunds.setTitle("Invalid Plot To build");
+        startFinishAlertWithoutFunds.setContentText("You cannot build on start or finish line");
+        startFinishAlertWithoutFunds.showAndWait();
     }
 
     private ImageView buildImageViewOfDefense(Image image) {
@@ -155,10 +167,6 @@ public class Board extends controler {
         String updatedStats = algoDefense.getPlayerInfo();
         infoLabel.setText(updatedStats);
         printMap();
-    }
-    @FXML
-    private void createGameboard() throws IOException {
-        App.setRoot("board"); //luego lo usare para cambiar de escena a una de resultadoss
     }
 
     @Override
