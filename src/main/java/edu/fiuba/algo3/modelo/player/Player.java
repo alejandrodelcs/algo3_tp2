@@ -72,5 +72,9 @@ public class Player {
         return playersCredits.arePositive();
     }
 
+    public int playersBalance(){
+        return playersCredits.getQuantity();
+    }
+
 }
 

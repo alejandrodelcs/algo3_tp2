@@ -132,4 +132,8 @@ public class AlgoDefense {
     public boolean gameOver(){
         return state.isGameOver();
     }
+
+    public Player getPlayer(){
+        return player;
+    }
 }
