@@ -118,4 +118,8 @@ public class AlgoDefense {
     public String getPlayerInfo() {
         return player.playerInfo();
     }
+
+    public Player getPlayer(){
+        return player;
+    }
 }
