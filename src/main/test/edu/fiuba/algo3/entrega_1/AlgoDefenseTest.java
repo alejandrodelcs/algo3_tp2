@@ -4,10 +4,7 @@ import edu.fiuba.algo3.modelo.AlgoDefense;
 import edu.fiuba.algo3.modelo.credit.Credit;
 import edu.fiuba.algo3.modelo.damage.Damage;
 import edu.fiuba.algo3.modelo.defense.*;
-import edu.fiuba.algo3.modelo.enemy.AntFactory;
-import edu.fiuba.algo3.modelo.enemy.Enemy;
-import edu.fiuba.algo3.modelo.enemy.EnemyFactory;
-import edu.fiuba.algo3.modelo.enemy.SpiderFactory;
+import edu.fiuba.algo3.modelo.enemy.*;
 import edu.fiuba.algo3.modelo.exceptions.*;
 import edu.fiuba.algo3.modelo.player.Player;
 import org.junit.jupiter.api.Assertions;
@@ -329,6 +326,17 @@ public class AlgoDefenseTest {
         //Arrange
         Player player = new Player("Player");
         AlgoDefense algoDefense = new AlgoDefense(player);
+        EnemyFactory factory = new MoleFactory();
+        Enemy mole1 = factory.createEnemy();
+        Enemy mole2 = factory.createEnemy();
+        Enemy mole3 = factory.createEnemy();
+        Enemy mole4 = factory.createEnemy();
+        ArrayList<Enemy> enemies = new ArrayList<Enemy>();
+        enemies.add(mole1);
+        enemies.add(mole2);
+        enemies.add(mole3);
+        enemies.add(mole4);
+        algoDefense.spawnAnEnemy(enemies);
 
         //Act
         algoDefense.nextTurn();
@@ -351,7 +359,8 @@ public class AlgoDefenseTest {
         //algoDefense.nextTurn(); //en esta linea el jugador se muere
 
         //Assert
-        assertTrue(player.isAlive());
+        assertFalse(player.isAlive());
+        assertTrue(algoDefense.gameOver());
     }
 
 }
