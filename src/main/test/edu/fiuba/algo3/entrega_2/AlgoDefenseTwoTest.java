@@ -181,34 +181,32 @@ public class AlgoDefenseTwoTest {
         Damage killDamage = new Damage(2);
 
         //Act
-        algoDefense.nextTurn();
-        algoDefense.nextTurn();
-        algoDefense.nextTurn();
-        algoDefense.nextTurn();
-        algoDefense.nextTurn();
-        algoDefense.nextTurn();
-        algoDefense.nextTurn();
-        algoDefense.nextTurn();
-        algoDefense.nextTurn();
-        algoDefense.nextTurn();
-        algoDefense.nextTurn();
-        algoDefense.nextTurn();
-        algoDefense.nextTurn();
-        algoDefense.nextTurn();
-        algoDefense.nextTurn();
-        algoDefense.nextTurn();
-
-        algoDefense.nextTurn();
-        algoDefense.nextTurn();
-        algoDefense.nextTurn();
-        algoDefense.nextTurn();
-        algoDefense.nextTurn();
-        algoDefense.nextTurn();
-        algoDefense.nextTurn();
         player.getsDamage(killDamage);
+        player.getsDamage(killDamage);
+        algoDefense.nextTurn();
+        algoDefense.nextTurn();
+        algoDefense.nextTurn();
+        algoDefense.nextTurn();
+        algoDefense.nextTurn();
+        algoDefense.nextTurn();
+        algoDefense.nextTurn();
+        algoDefense.nextTurn();
+        algoDefense.nextTurn();
+        algoDefense.nextTurn();
+        algoDefense.nextTurn();
+        algoDefense.nextTurn();
+        algoDefense.nextTurn();
+        algoDefense.nextTurn();
+        algoDefense.nextTurn();
+        algoDefense.nextTurn();
+
+        algoDefense.nextTurn();
+        algoDefense.nextTurn();
+        algoDefense.nextTurn();
 
 
-        Assertions.assertThrows(PlayerIsDeadGameOver.class,()-> algoDefense.nextTurn());
+        Assertions.assertTrue(algoDefense.gameOver());
+
     }
 
     @Test

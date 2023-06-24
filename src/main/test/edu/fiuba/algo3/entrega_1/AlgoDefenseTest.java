@@ -50,8 +50,8 @@ public class AlgoDefenseTest {
        assertThrows(InsufficientCredits.class, () -> player.buildsADefense(invalidSilverTower));
 
        Assertions.assertTrue(player.isAlive());
-
-       assertThrows(PlayerIsDeadGameOver.class, () -> player.getsDamage(theOneThatKills));
+       player.getsDamage(theOneThatKills);
+       Assertions.assertFalse(player.isAlive());
     }
 
     @Test
@@ -335,7 +335,7 @@ public class AlgoDefenseTest {
         enemies.add(mole1);
         enemies.add(mole2);
         enemies.add(mole3);
-        enemies.add(mole4);
+        //enemies.add(mole4);
         algoDefense.spawnAnEnemy(enemies);
 
         //Act
@@ -354,9 +354,11 @@ public class AlgoDefenseTest {
         algoDefense.nextTurn();
         algoDefense.nextTurn();
         algoDefense.nextTurn();
+        algoDefense.nextTurn();//en esta linea el jugador se muere
         algoDefense.nextTurn();
         algoDefense.nextTurn();
-        //algoDefense.nextTurn(); //en esta linea el jugador se muere
+
+
 
         //Assert
         assertFalse(player.isAlive());

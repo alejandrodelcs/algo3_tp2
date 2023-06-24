@@ -101,11 +101,13 @@ public class AlgoDefense {
         for(Enemy enemy : finalListOfEnemies){
             player.getsDamage(enemy.getDamage());
             Logger.get().log("The "+ enemy.getClass().getSimpleName() + " reaches the goal, causing "+ enemy.getDamage().getQuantity()+" damage to the player");
+            if (!player.isAlive()){
+                Logger.get().log("The player is dead.");
+                state = new GameOver();
+                break;
+            }
         }
-        if (!player.isAlive()){
-            Logger.get().log("The player is dead.");
-            state = new GameOver();
-        }
+
         enemyDestroysDefense(finalListOfEnemies);
     }
 
