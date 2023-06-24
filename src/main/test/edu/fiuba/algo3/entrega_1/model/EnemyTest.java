@@ -106,12 +106,12 @@ public class EnemyTest {
         ArrayList<Enemy> enemies = new ArrayList<>();
         enemies.add(anOwl);
         algoDefense.spawnAnEnemy(enemies);
-        algoDefense.nextTurn();
+        algoDefense.executeTurn();
         anOwl.takeDamage(new Damage(4));
-        algoDefense.nextTurn();
-        algoDefense.nextTurn();
-        algoDefense.nextTurn();
-        algoDefense.nextTurn();
+        algoDefense.executeTurn();
+        algoDefense.executeTurn();
+        algoDefense.executeTurn();
+        algoDefense.executeTurn();
 
     }
 }

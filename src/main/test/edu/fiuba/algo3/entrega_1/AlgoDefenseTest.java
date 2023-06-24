@@ -9,8 +9,6 @@ import edu.fiuba.algo3.modelo.enemy.Enemy;
 import edu.fiuba.algo3.modelo.enemy.EnemyFactory;
 import edu.fiuba.algo3.modelo.enemy.SpiderFactory;
 import edu.fiuba.algo3.modelo.exceptions.*;
-import edu.fiuba.algo3.modelo.gameboard.*;
-import edu.fiuba.algo3.modelo.parser.EnemiesParser;
 import edu.fiuba.algo3.modelo.player.Player;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -74,11 +72,11 @@ public class AlgoDefenseTest {
         algoDefense.buildsADefense(silverTower);
 
         //Act
-        algoDefense.nextTurn();
-        algoDefense.nextTurn();
-        algoDefense.nextTurn();
-        algoDefense.nextTurn();
-        algoDefense.nextTurn();
+        algoDefense.executeTurn();
+        algoDefense.executeTurn();
+        algoDefense.executeTurn();
+        algoDefense.executeTurn();
+        algoDefense.executeTurn();
 
 
 
@@ -151,8 +149,8 @@ public class AlgoDefenseTest {
       //Act
       algoDefense.spawnAnEnemy(enemyArray);
       algoDefense.buildsADefense(whiteTower);
-      algoDefense.nextTurn();
-      algoDefense.nextTurn();
+      algoDefense.executeTurn();
+      algoDefense.executeTurn();
 
       //Assert
       assertTrue(anAnt.enemyDied());
@@ -175,9 +173,9 @@ public class AlgoDefenseTest {
         //Act
         algoDefense.spawnAnEnemy(enemyArray);
         algoDefense.buildsADefense(whiteTower);
-        algoDefense.nextTurn();
-        algoDefense.nextTurn();
-        algoDefense.nextTurn();
+        algoDefense.executeTurn();
+        algoDefense.executeTurn();
+        algoDefense.executeTurn();
 
         //Assert
         Assertions.assertTrue(anAnt.enemyDied());
@@ -205,9 +203,9 @@ public class AlgoDefenseTest {
 
         //Act
         algoDefense.buildsADefense(whiteTower);
-        algoDefense.nextTurn();
-        algoDefense.nextTurn();
-        algoDefense.nextTurn();
+        algoDefense.executeTurn();
+        algoDefense.executeTurn();
+        algoDefense.executeTurn();
 
         //Assert
         Assertions.assertTrue(creditsExpected.equalTo(player.getPlayerCredits()));
@@ -231,27 +229,27 @@ public class AlgoDefenseTest {
 
         algoDefense.buildsADefense(silverTower);
         algoDefense.spawnAnEnemy(enemyArray);
-        algoDefense.nextTurn();
+        algoDefense.executeTurn();
         assertFalse(anAnt.enemyDied());
         assertFalse(aSpider.enemyDied());
-        algoDefense.nextTurn();
-        algoDefense.nextTurn();
-        algoDefense.nextTurn();
-        algoDefense.nextTurn();
-        algoDefense.nextTurn();
-        algoDefense.nextTurn();
+        algoDefense.executeTurn();
+        algoDefense.executeTurn();
+        algoDefense.executeTurn();
+        algoDefense.executeTurn();
+        algoDefense.executeTurn();
+        algoDefense.executeTurn();
         assertTrue(aSpider.enemyDied());
-        algoDefense.nextTurn();
-        algoDefense.nextTurn();
-        algoDefense.nextTurn();
-        algoDefense.nextTurn();
-        algoDefense.nextTurn();
-        algoDefense.nextTurn();
-        algoDefense.nextTurn();
-        algoDefense.nextTurn();
-        algoDefense.nextTurn();
-        algoDefense.nextTurn();
-        algoDefense.nextTurn();
+        algoDefense.executeTurn();
+        algoDefense.executeTurn();
+        algoDefense.executeTurn();
+        algoDefense.executeTurn();
+        algoDefense.executeTurn();
+        algoDefense.executeTurn();
+        algoDefense.executeTurn();
+        algoDefense.executeTurn();
+        algoDefense.executeTurn();
+        algoDefense.executeTurn();
+        algoDefense.executeTurn();
 
         assertTrue(aSpider.enemyDied());
     }
@@ -297,22 +295,22 @@ public class AlgoDefenseTest {
         algoDefense.buildsADefense(whiteTower7);
         algoDefense.buildsADefense(whiteTower8);
 
-        algoDefense.nextTurn();
-        algoDefense.nextTurn();
-        algoDefense.nextTurn();
-        algoDefense.nextTurn();
-        algoDefense.nextTurn();
-        algoDefense.nextTurn();
-        algoDefense.nextTurn();
-        algoDefense.nextTurn();
-        algoDefense.nextTurn();
-        algoDefense.nextTurn();
-        algoDefense.nextTurn();
-        algoDefense.nextTurn();
-        algoDefense.nextTurn();
-        algoDefense.nextTurn();
-        algoDefense.nextTurn();
-        algoDefense.nextTurn();
+        algoDefense.executeTurn();
+        algoDefense.executeTurn();
+        algoDefense.executeTurn();
+        algoDefense.executeTurn();
+        algoDefense.executeTurn();
+        algoDefense.executeTurn();
+        algoDefense.executeTurn();
+        algoDefense.executeTurn();
+        algoDefense.executeTurn();
+        algoDefense.executeTurn();
+        algoDefense.executeTurn();
+        algoDefense.executeTurn();
+        algoDefense.executeTurn();
+        algoDefense.executeTurn();
+        algoDefense.executeTurn();
+        algoDefense.executeTurn();
         //algoDefense.nextTurn();
         //algoDefense.nextTurn(); //In this turn the player dies
 
@@ -328,22 +326,22 @@ public class AlgoDefenseTest {
         AlgoDefense algoDefense = new AlgoDefense(player);
 
         //Act
-        algoDefense.nextTurn();
-        algoDefense.nextTurn();
-        algoDefense.nextTurn();
-        algoDefense.nextTurn();
-        algoDefense.nextTurn();
-        algoDefense.nextTurn();
-        algoDefense.nextTurn();
-        algoDefense.nextTurn();
-        algoDefense.nextTurn();
-        algoDefense.nextTurn();
-        algoDefense.nextTurn();
-        algoDefense.nextTurn();
-        algoDefense.nextTurn();
-        algoDefense.nextTurn();
-        algoDefense.nextTurn();
-        algoDefense.nextTurn();
+        algoDefense.executeTurn();
+        algoDefense.executeTurn();
+        algoDefense.executeTurn();
+        algoDefense.executeTurn();
+        algoDefense.executeTurn();
+        algoDefense.executeTurn();
+        algoDefense.executeTurn();
+        algoDefense.executeTurn();
+        algoDefense.executeTurn();
+        algoDefense.executeTurn();
+        algoDefense.executeTurn();
+        algoDefense.executeTurn();
+        algoDefense.executeTurn();
+        algoDefense.executeTurn();
+        algoDefense.executeTurn();
+        algoDefense.executeTurn();
         //algoDefense.nextTurn(); //en esta linea el jugador se muere
 
         //Assert

@@ -8,8 +8,6 @@ import org.junit.jupiter.api.Test;
 
 import java.awt.*;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 class SandyTrapTest {
     @Test
     public void test01createASandyTrap(){
@@ -28,14 +26,14 @@ class SandyTrapTest {
         algoDefense.buildsADefense(SandTrap1);
         algoDefense.buildsADefense(SandTrap2);
         algoDefense.buildsADefense(SandTrap3);
-        algoDefense.nextTurn();
-        algoDefense.nextTurn();
-        algoDefense.nextTurn();
-        algoDefense.nextTurn();
-        algoDefense.nextTurn();
-        algoDefense.nextTurn();
-        algoDefense.nextTurn();
-        algoDefense.nextTurn();
+        algoDefense.executeTurn();
+        algoDefense.executeTurn();
+        algoDefense.executeTurn();
+        algoDefense.executeTurn();
+        algoDefense.executeTurn();
+        algoDefense.executeTurn();
+        algoDefense.executeTurn();
+        algoDefense.executeTurn();
 
     }
 
