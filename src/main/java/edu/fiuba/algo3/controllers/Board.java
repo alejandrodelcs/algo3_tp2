@@ -3,25 +3,18 @@ import edu.fiuba.algo3.modelo.AlgoDefense;
 import edu.fiuba.algo3.modelo.defense.Defense;
 import edu.fiuba.algo3.modelo.defense.DefenseFactory;
 import edu.fiuba.algo3.modelo.defense.SilverTowerFactory;
-import edu.fiuba.algo3.modelo.defense.WhiteTowerFactory;
-import edu.fiuba.algo3.modelo.gameboard.Dirt;
 import edu.fiuba.algo3.modelo.gameboard.GameBoard;
 import edu.fiuba.algo3.App;
-import edu.fiuba.algo3.modelo.gameboard.Plot;
 import javafx.fxml.FXML;
-import javafx.scene.Node;
-import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.control.Label;
 
 import java.awt.*;
-import javafx.scene.input.MouseEvent;
 
 import java.io.IOException;
 import java.net.URL;
-import java.security.cert.PolicyNode;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
