@@ -1,31 +1,22 @@
 package edu.fiuba.algo3.controllers;
 import edu.fiuba.algo3.modelo.AlgoDefense;
-import edu.fiuba.algo3.modelo.defense.Defense;
-import edu.fiuba.algo3.modelo.defense.DefenseFactory;
-import edu.fiuba.algo3.modelo.defense.SilverTowerFactory;
-import edu.fiuba.algo3.modelo.defense.WhiteTowerFactory;
+import edu.fiuba.algo3.modelo.defense.*;
 import edu.fiuba.algo3.modelo.exceptions.InsufficientCredits;
-import edu.fiuba.algo3.modelo.exceptions.InvalidPlayersName;
-import edu.fiuba.algo3.modelo.gameboard.Dirt;
 import edu.fiuba.algo3.modelo.gameboard.GameBoard;
 import edu.fiuba.algo3.App;
-import edu.fiuba.algo3.modelo.gameboard.Plot;
 import javafx.fxml.FXML;
-import javafx.scene.Node;
-import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.control.Label;
 
 import java.awt.*;
-import javafx.scene.input.MouseEvent;
 
 import java.io.IOException;
 import java.net.URL;
-import java.security.cert.PolicyNode;
-import java.util.ArrayList;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class Board extends controler {
@@ -45,7 +36,6 @@ public class Board extends controler {
     private void printMap() {
         int height = (int) gameBoard.height();
         int width = (int) gameBoard.width();
-        DefenseFactory factory = new SilverTowerFactory();
         this.cellImages = new Image[height][width];
 
         for (int i = 0; i < height; i++) {
@@ -57,34 +47,108 @@ public class Board extends controler {
                 final int clickedRow = i;
                 final int clickedColumn = j;
                 Point point = new Point(i,j);
-                Point backwards = new Point(j,i);
-                stackPane.setOnMouseClicked(someEvent -> {
-                    if(gameBoard.availableForBuilding(point) == (!gameBoard.isEnemyPath(backwards))){
+                Point backwards = new Point(j,i); //TODO: REVERT X Y so this variable won't be used anymore
 
-                        try{
-                            Image image = new Image(getClass().getResource("/img/magic2.png").toString(), true);
-                            ImageView imageView = new ImageView(image);
-                            imageView.setFitHeight(50);
-                            imageView.setFitWidth(50);
-                            imageView.setPreserveRatio(true);
-                            Point coordinatesToADirt = new Point(clickedRow,clickedColumn);
-                            Defense whiteTower = factory.createDefense(coordinatesToADirt);
-                            algoDefense.buildsADefense(whiteTower);
-                            stackPane.getChildren().add(imageView);
-
-                        }catch  (InsufficientCredits insufficientCredits){
-                            Alert alertWithoutFunds = new Alert(Alert.AlertType.ERROR);
-                            alertWithoutFunds.setContentText("Insufficient credits, your current balance is: " + algoDefense.getPlayer().playersBalance());
-                            alertWithoutFunds.showAndWait();
-                        }
-
-                    }
-                    if(!algoDefense.getPlayer().hasFunds()){
-
-                    }
-                });
+                pickADefenseEvent(stackPane, point, backwards, clickedRow, clickedColumn);
             }
         }
+    }
+
+    private void pickADefenseEvent(StackPane stackPane,Point point, Point backwards, int clickedRow, int clickedColumn) {
+
+        DefenseFactory silverFactory = new SilverTowerFactory();
+        DefenseFactory whiteFactory = new WhiteTowerFactory();
+        DefenseFactory sandyFactory = new SandyTrapFactory();
+        stackPane.setOnMouseClicked(someEvent -> {
+            if(gameBoard.availableForBuilding(point) == (!gameBoard.isEnemyPath(backwards))){
+
+                try{
+                    Alert dialog = new Alert(Alert.AlertType.INFORMATION);
+                    pickAdefenseDialog(dialog);
+                    ButtonType silverTowerOption = new ButtonType("Silver Tower");
+                    ButtonType whiteTowerOption = new ButtonType("White Tower");
+
+                    dialog.getButtonTypes().setAll(whiteTowerOption, silverTowerOption);
+
+                    Optional<ButtonType> result = dialog.showAndWait();
+                    if (result.get() == whiteTowerOption) {
+                        Image image = new Image(getClass().getResource("/img/magic2.png").toString(), true);
+
+                        ImageView imageView = buildImageViewOfDefense(image);
+
+                        Point coordinatesToADirt = new Point(clickedRow,clickedColumn);
+                        Defense whiteTower = whiteFactory.createDefense(coordinatesToADirt);
+                        algoDefense.buildsADefense(whiteTower);
+
+                        stackPane.getChildren().add(imageView);
+
+                    } else if (result.get() == silverTowerOption) {
+                        Image image = new Image(getClass().getResource("/img/tower2.png").toString(), true);
+
+                        ImageView imageView = buildImageViewOfDefense(image);
+
+                        Point coordinatesToADirt = new Point(clickedRow,clickedColumn);
+                        Defense silverTower = silverFactory.createDefense(coordinatesToADirt);
+                        algoDefense.buildsADefense(silverTower);
+
+                        stackPane.getChildren().add(imageView);
+
+                    }
+
+                }catch  (InsufficientCredits insufficientCredits){
+                    alertInssuficientCredits();
+                }
+
+            }
+            else if(gameBoard.availableForBuilding(point) == (gameBoard.isEnemyPath(backwards))){
+                try{
+                    Alert dialog = new Alert(Alert.AlertType.INFORMATION);
+                    pickAdefenseDialog(dialog);
+                    ButtonType sandyTrapOption = new ButtonType("Sandy Trap");
+                    dialog.getButtonTypes().setAll(sandyTrapOption);
+
+                    Optional<ButtonType> result = dialog.showAndWait();
+                    if(result.get() == sandyTrapOption){
+                        Image image = new Image(getClass().getResource("/img/sandyTrap.jpg").toString(), true);
+
+                        ImageView imageView = buildImageViewOfDefense(image);
+
+                        Point coordinatesToEnemyPath = new Point(clickedRow,clickedColumn);
+                        Defense sandyTrap = sandyFactory.createDefense(coordinatesToEnemyPath);
+                        algoDefense.buildsADefense(sandyTrap);
+
+                        stackPane.getChildren().add(imageView);
+                    }
+
+                }catch  (InsufficientCredits insufficientCredits){
+                    alertInssuficientCredits();
+                }
+            }
+        });
+    }
+
+    private ImageView buildImageViewOfDefense(Image image) {
+        ImageView imageView = new ImageView(image);
+        imageView.setFitHeight(50);
+        imageView.setFitWidth(50);
+        imageView.setPreserveRatio(true);
+        return imageView;
+    }
+
+    private void pickAdefenseDialog(Alert dialog) {
+        dialog.setTitle("Pick a Defense");
+        dialog.setHeaderText("Available Defenses for this plot");
+        dialog.setContentText("Available Defenses for this plot ");
+        dialog.setResizable(true);
+        dialog.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);
+        dialog.getDialogPane().setMinWidth(Region.USE_PREF_SIZE);
+    }
+
+    private void alertInssuficientCredits() {
+        Alert alertWithoutFunds = new Alert(Alert.AlertType.ERROR);
+        alertWithoutFunds.setTitle("Insufficient credits");
+        alertWithoutFunds.setContentText("Insufficient credits, your current balance is: " + algoDefense.getPlayer().playersBalance());
+        alertWithoutFunds.showAndWait();
     }
 
     private StackPane loadCellImage(int row, int column) {
