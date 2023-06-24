@@ -50,10 +50,10 @@ public class Stone extends Plot{
     }
 
     @Override
-    public StackPane getStackPane() {
+    public StackPane getStackPane(ArrayList<Image> terrainImages) {
 
         StackPane aStackPane = new StackPane();
-        ImageView mainImageView = new ImageView(new Image(getClass().getResource("/img/rock2.png").toString(),true));
+        ImageView mainImageView = new ImageView(terrainImages.get(2));
         mainImageView.setFitHeight(50);
         mainImageView.setFitWidth(50);
         mainImageView.setPreserveRatio(true);

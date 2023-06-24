@@ -25,5 +25,5 @@ public abstract class Plot {
 
     public abstract Image printImage();
 
-    public abstract StackPane getStackPane();
+    public abstract StackPane getStackPane(ArrayList<Image> terrainImages);
 }

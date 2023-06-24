@@ -37,6 +37,7 @@ public class Board extends controler {
     private ImageView imageView;
     @FXML
     private Label infoLabel;
+    private ArrayList<Image> terrainImages = new ArrayList<>();
 
     @FXML
     private void printMap() {
@@ -73,7 +74,7 @@ public class Board extends controler {
     }
 
     private StackPane loadCellImage(int row, int column) {
-        return gameBoard.getPlot(row, column).getStackPane();
+        return gameBoard.getStackPane(row, column, terrainImages);
     }
 
     @FXML
@@ -91,6 +92,12 @@ public class Board extends controler {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        Image aTerrainImage = new Image(getClass().getResource("/img/path.png").toString(), true);
+        terrainImages.add(aTerrainImage);
+        aTerrainImage = new Image(getClass().getResource("/img/dirt.png").toString(), true);
+        terrainImages.add(aTerrainImage);
+        aTerrainImage = new Image(getClass().getResource("/img/rock2.png").toString(), true);
+        terrainImages.add(aTerrainImage);
         String updatedStats = algoDefense.getPlayerInfo();
         infoLabel.setText(updatedStats);
         printMap();
