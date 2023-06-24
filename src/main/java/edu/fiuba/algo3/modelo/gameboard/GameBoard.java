@@ -155,8 +155,9 @@ public class GameBoard {
         return plots[x][y];
     }
 
-
-
+    public boolean isEnemyPath(Point expectedEnemyPathCoordinates){
+        return enemyPath.contains(expectedEnemyPathCoordinates);
+    }
     public ArrayList<Enemy> getEnemiesInThelastPath(){
         int finalX = (int) Math.round(enemyPath.get(enemyPath.size()-1).getX());
         int finalY = (int) Math.round(enemyPath.get(enemyPath.size()-1).getY());
