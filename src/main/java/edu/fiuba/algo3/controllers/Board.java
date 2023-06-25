@@ -13,6 +13,8 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
+import javafx.scene.paint.Paint;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
@@ -60,10 +62,9 @@ public class Board extends controler {
 
         stackPane.setOnMouseClicked(someEvent -> {
             if(gameBoard.availableForBuilding(point) && (!gameBoard.isEnemyPath(backwards))){
-                    Stage newWindow = createDefensesMenuWindow();
-                    newWindow.getScene().getStylesheets().add(getClass().getResource("/edu.fiuba.algo3/styles.css").toExternalForm());
-                    Button whiteTowerButton = createWhiteTowerButton();
-                    whiteTowerButton.setOnAction(e->{
+                Stage newWindow = createDefensesTowerMenuWindow();
+                Button whiteTowerButton = createWhiteTowerButton();
+                whiteTowerButton.setOnAction(e->{
                         whiteTowerButtonEvent(stackPane, clickedRow, clickedColumn);
                         newWindow.close();
                     });
@@ -82,7 +83,7 @@ public class Board extends controler {
                     alertStartFinish();
                 }
                 else{
-                    Stage newWindow = createDefensesMenuWindow();
+                    Stage newWindow = createDefensesTowerMenuWindow();
                     Button sandyTrapButton = createSandyTrapButton();
                     sandyTrapButton.setOnAction(e->{
                         sandyTrapButtonEvent(stackPane, clickedRow, clickedColumn);
@@ -93,20 +94,6 @@ public class Board extends controler {
                 }
             }
         });
-    }
-
-    private void createDefensesOnEnemyPathMenuStack(Button sandyTrapButton, Stage newWindow) {
-        var bottomStackPane = new StackPane(new HBox(
-                sandyTrapButton
-        ));
-        Text text = new Text();
-        text.setText("Pick a Defense: ");
-        var verticalStackPane = new StackPane(new VBox(
-                text,
-                bottomStackPane
-        ));
-        verticalStackPane.setAlignment(Pos.TOP_CENTER);
-        newWindow.setScene(new Scene(verticalStackPane, 400, 400));
     }
 
     private void sandyTrapButtonEvent(StackPane stackPane, int clickedRow, int clickedColumn) {
@@ -123,35 +110,6 @@ public class Board extends controler {
             alertInssuficientCredits();
         }
     }
-
-    private Button createSandyTrapButton() {
-        Button sandyTrapButton = new Button("Sandy Trap: \n Price: 25\n Building Time: Instant\n Vanishes in 3 turns \n Damage: Des accelerate enemies by 50% ");
-        ImageView imageViewSilverTower = new ImageView(getClass().getResource("/img/sandyTrapCastle.jpeg").toString());
-        imageViewSilverTower.setFitHeight(50);
-        imageViewSilverTower.setPreserveRatio(true);
-        sandyTrapButton.setGraphic(imageViewSilverTower);
-        sandyTrapButton.setContentDisplay(ContentDisplay.TOP);
-        return sandyTrapButton;
-    }
-
-    private void createDefensesMenuStack(Button silverTowerButton, Button whiteTowerButton, Stage newWindow) {
-        var bottomStackPane = new StackPane(new HBox(
-                silverTowerButton,
-                whiteTowerButton
-        ));
-
-        Text text = new Text();
-        text.setText("Pick a Defense: ");
-        var verticalStackPane = new StackPane(new VBox(
-                text,
-                bottomStackPane
-        ));
-
-        verticalStackPane.setAlignment(Pos.TOP_CENTER);
-        newWindow.setScene(new Scene(verticalStackPane, 400, 400));
-    }
-
-
     private void silverTowerButtonEvent(StackPane stackPane, int clickedRow, int clickedColumn) {
         DefenseFactory silverFactory = new SilverTowerFactory();
         try{
@@ -179,37 +137,90 @@ public class Board extends controler {
             alertInssuficientCredits();
         }
     }
-
+    private Button createSandyTrapButton() {
+        Button sandyTrapButton = new Button("Sandy Trap: \n Price: 25\n Availability:\n  Instant\n * Vanishes in\n  3 turns \n * Desaccelerate\n enemies by 50% ");
+        ImageView imageViewSilverTower = new ImageView(getClass().getResource("/img/sandyTrapCastle.jpeg").toString());
+        imageViewSilverTower.setFitHeight(100);
+        imageViewSilverTower.setPreserveRatio(true);
+        sandyTrapButton.setGraphic(imageViewSilverTower);
+        sandyTrapButton.setContentDisplay(ContentDisplay.TOP);
+        sandyTrapButton.setStyle(bringStyles());
+        return sandyTrapButton;
+    }
     private Button createSilverTowerButton() {
-        Button silverTowerButton = new Button("Silver Tower: \n Price: 20 \n Building Time: 2 Turns\n Range: 5\n Damage: 2");
+        Button silverTowerButton = new Button("Silver Tower: \n Price: 20 \n Range: 5\n Damage: 2\n Availability\n  2 turns");
         ImageView imageViewSilverTower = new ImageView(getClass().getResource("/img/silverTower.png").toString());
-        imageViewSilverTower.setFitHeight(50);
+        imageViewSilverTower.setFitHeight(100);
         imageViewSilverTower.setPreserveRatio(true);
         silverTowerButton.setGraphic(imageViewSilverTower);
         silverTowerButton.setContentDisplay(ContentDisplay.TOP);
+        silverTowerButton.setId("button");
+        //silverTowerButton.getStyleClass().clear();
+        //silverTowerButton.getStyleClass().add("button");
+        silverTowerButton.setStyle(bringStyles());
         return silverTowerButton;
     }
 
     private Button createWhiteTowerButton() {
 
-        Button whiteTowerButton = new Button("White Tower: \n Price: 10 \n Building Time: 1 Turn\n Range: 3\n Damage: 1");
+        Button whiteTowerButton = new Button("White Tower: \n Price: 10 \n Range: 3\n Damage: 1 \n Availability:\n  1 turn");
         ImageView imageViewWhiteTower = new ImageView(getClass().getResource("/img/magic2.png").toString());
-        imageViewWhiteTower.setFitHeight(50);
+        imageViewWhiteTower.setFitHeight(100);
         imageViewWhiteTower.setPreserveRatio(true);
         whiteTowerButton.setGraphic(imageViewWhiteTower);
         whiteTowerButton.setContentDisplay(ContentDisplay.TOP);
+        whiteTowerButton.setId("button");
+        whiteTowerButton.setStyle(bringStyles());
         return whiteTowerButton;
     }
 
-    private Stage createDefensesMenuWindow() {
-        Label label = new Label("Pick a defense");
+    private Stage createDefensesTowerMenuWindow() {
+        Label label = new Label("Available Defenses");
         StackPane layout = new StackPane();
         layout.getChildren().add(label);
-        Scene secondScene = new Scene(layout, 400, 400);
+        Scene secondScene = new Scene(layout, 450, 240);
+        //secondScene.getStylesheets().add(getClass().getResource("/edu.fiuba.algo3/styles.css").toString());
+        secondScene.setFill(Color.BLACK);
         Stage newWindow = new Stage();
-        newWindow.setTitle("Pick a defense");
+        newWindow.setTitle("Available Defenses");
+        newWindow.getStyle();
         newWindow.setScene(secondScene);
         return newWindow;
+    }
+    private void createDefensesMenuStack(Button silverTowerButton, Button whiteTowerButton, Stage newWindow) {
+        var bottomStackPane = new StackPane(new HBox(
+                silverTowerButton,
+                whiteTowerButton
+        ));
+
+        Text text = new Text();
+        text.setText("Pick a defense for this plot: ");
+        text.setId("@font-face");
+        text.setStyle(setTextStyle());
+        var verticalStackPane = new StackPane(new VBox(
+                text,
+                bottomStackPane
+        ));
+
+        verticalStackPane.setAlignment(Pos.TOP_CENTER);
+        verticalStackPane.setBackground(Background.fill(Color.DARKGREY));
+        newWindow.setScene(new Scene(verticalStackPane, 450, 240));
+    }
+
+    private void createDefensesOnEnemyPathMenuStack(Button sandyTrapButton, Stage newWindow) {
+        var bottomStackPane = new StackPane(new HBox(
+                sandyTrapButton
+        ));
+        Text text = new Text();
+        text.setText("Pick a defense:");
+        text.setStyle(setTextStyle());
+        var verticalStackPane = new StackPane(new VBox(
+                text,
+                bottomStackPane
+        ));
+        verticalStackPane.setAlignment(Pos.TOP_CENTER);
+        verticalStackPane.setBackground(Background.fill(Color.DARKGREY));
+        newWindow.setScene(new Scene(verticalStackPane, 250, 270));
     }
 
     private void alertStartFinish() {
@@ -225,15 +236,6 @@ public class Board extends controler {
         imageView.setFitWidth(50);
         imageView.setPreserveRatio(true);
         return imageView;
-    }
-
-    private void pickAdefenseDialog(Alert dialog) {
-        dialog.setTitle("Pick a Defense");
-        dialog.setHeaderText("Available Defenses for this plot");
-        dialog.setContentText("Available Defenses for this plot ");
-        dialog.setResizable(true);
-        dialog.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);
-        dialog.getDialogPane().setMinWidth(Region.USE_PREF_SIZE);
     }
 
     private void alertInssuficientCredits() {
@@ -269,4 +271,24 @@ public class Board extends controler {
         printMap();
     }
 
+    private String bringStyles() {
+        return "    -fx-padding: 10px 0;\n" +
+                "    -fx-pref-width: 250px;\n" +
+                "    -fx-letter-spacing: 2px;\n" +
+                "    -fx-background-radius: 20px;\n" +
+                "    -fx-font-family: 'Press Start 2P';\n" +
+                "    -fx-text-fill: #ffffff;\n" +
+                "    -fx-font-size: 14px;\n" +
+                "    -fx-font-weight: 400;\n" +
+                "    -fx-effect: innershadow(gaussian, rgba(1, 1, 1, 0.82), 3, 0, 0, 0);\n" +
+                "    -fx-border-width: 4px;\n" +
+                "    -fx-border-color: rgba(129, 229, 209, 0.51);\n" +
+                "    -fx-border-radius: 20px;\n" +
+                "    -fx-background-color: radial-gradient(center 20% 30%, radius 50%, rgba(75, 117, 137, 0.78) 0%, rgba(41, 87, 145, 0.72) 100%);";
+    }
+    private String setTextStyle() {
+        return "    -fx-font-family: 'Press Start 2P';\n" +
+                "    -fx-font-size: 14px;\n" +
+                "    -fx-text-fill: #ffffff;";
+    }
 }

@@ -51,7 +51,6 @@
     -fx-prompt-text-fill: #000000;
 }
 
-
 .background{
     -fx-background-image: url('../img/background.jpg');
     -fx-background-repeat: no-repeat;
