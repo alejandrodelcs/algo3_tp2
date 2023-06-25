@@ -4,6 +4,7 @@ module edu.fiuba.algo3 {
     requires java.desktop;
     requires json.simple;
     requires javafx.fxml;
+    requires javafx.media;
 
     exports edu.fiuba.algo3 to javafx.fxml, javafx.graphics;
     exports edu.fiuba.algo3.modelo;
