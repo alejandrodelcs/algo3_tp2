@@ -20,7 +20,7 @@ public class Logger {
     public void log(String loggedMessage) {
         if (loggerEnable) {
             System.out.println(loggedMessage);
-            exit = loggedMessage;
+            exit = exit + loggedMessage + '\n';
         }
     }
 }
