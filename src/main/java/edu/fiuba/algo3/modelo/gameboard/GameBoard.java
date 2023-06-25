@@ -9,12 +9,14 @@ import javafx.scene.layout.StackPane;
 
 
 import java.awt.*;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
 
 public class GameBoard {
     private Plot[][] plots;
     private ArrayList<Point> enemyPath;
+//    private ArrayList<Image> terrainImages = new ArrayList<>();
 
     public GameBoard(Plot[][] expectedPlots) {
         plots = expectedPlots;
@@ -22,6 +24,12 @@ public class GameBoard {
         int x = (int) Math.round(enemyPath.get(enemyPath.size()-1).getX());
         int y = (int) Math.round(enemyPath.get(enemyPath.size()-1).getY());
         plots[y][x].setEnemy(new ArrayList<Enemy>());
+/*        Image aTerrainImage = new Image(getClass().getResource("/img/path.png").toString(), true);
+        terrainImages.add(aTerrainImage);
+        aTerrainImage = new Image(getClass().getResource("/img/dirt.png").toString(), true);
+        terrainImages.add(aTerrainImage);
+        aTerrainImage = new Image(getClass().getResource("/img/rock2.png").toString(), true);
+        terrainImages.add(aTerrainImage);*/
     }
     public boolean availableForBuilding(Point coordinates) {
 
@@ -158,6 +166,14 @@ public class GameBoard {
     public boolean isEnemyPath(Point expectedEnemyPathCoordinates){
         return enemyPath.contains(expectedEnemyPathCoordinates);
     }
+    public boolean isStart(Point point){
+        return (point.getY() == enemyPath.get(0).getY()) && (point.getX() == enemyPath.get(0).getX());
+    }
+    public boolean isFinish(Point point){
+        int lastPath = enemyPath.size() - 1;
+        return (point.getY() == enemyPath.get(lastPath).getY()) && (point.getX() == enemyPath.get(lastPath).getX());
+    }
+
     public ArrayList<Enemy> getEnemiesInThelastPath(){
         int finalX = (int) Math.round(enemyPath.get(enemyPath.size()-1).getX());
         int finalY = (int) Math.round(enemyPath.get(enemyPath.size()-1).getY());
@@ -181,5 +197,13 @@ public class GameBoard {
 
     public long width() {
         return Arrays.stream(plots[0]).count();
+    }
+
+    public StackPane getStackPane(int row, int column, ArrayList<Image> terrainImages) {
+        return plots[row][column].getStackPane(terrainImages);
+    }
+
+    public ArrayList<Point> getEnemyPath() {
+        return enemyPath;
     }
 }

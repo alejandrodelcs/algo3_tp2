@@ -56,6 +56,7 @@ public class TowerTest {
         Enemy antMock = mock(Ant.class);
         when(antMock.getPoint()).thenReturn(new Point(4, 4));
         when(antMock.enemyDied()).thenReturn(true);
+        when(antMock.isVisible()).thenReturn(true);
         ArrayList<Enemy> enemies = new ArrayList<>();
         enemies.add(antMock);
 
@@ -76,6 +77,7 @@ public class TowerTest {
         Enemy spiderMock = mock(Spider.class);
         when(spiderMock.getPoint()).thenReturn(new Point(4,4));
         when(spiderMock.enemyDied()).thenReturn(true);
+        when(spiderMock.isVisible()).thenReturn(true);
         ArrayList<Enemy> enemies = new ArrayList<>();
         enemies.add(spiderMock);
 

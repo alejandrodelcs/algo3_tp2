@@ -39,11 +39,7 @@ public class Player {
     }
 
     public void getsDamage(Damage damage) {
-
         damage.applyDamage(playersLifePoints);
-        if (playersLifePoints.entityDied()) {
-            throw new PlayerIsDeadGameOver();
-        }
     }
 
     public void chargeCredits(Credit credits) {

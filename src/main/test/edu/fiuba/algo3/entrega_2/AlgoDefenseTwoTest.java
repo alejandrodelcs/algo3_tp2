@@ -5,12 +5,7 @@ import edu.fiuba.algo3.modelo.damage.Damage;
 import edu.fiuba.algo3.modelo.defense.Defense;
 import edu.fiuba.algo3.modelo.defense.DefenseFactory;
 import edu.fiuba.algo3.modelo.defense.WhiteTowerFactory;
-import edu.fiuba.algo3.modelo.damage.Damage;
-import edu.fiuba.algo3.modelo.enemy.EnemyFactory;
-import edu.fiuba.algo3.modelo.enemy.SpiderFactory;
 import edu.fiuba.algo3.modelo.exceptions.*;
-import edu.fiuba.algo3.modelo.facade.GameboardFacade;
-import edu.fiuba.algo3.modelo.gameboard.GameBoard;
 import edu.fiuba.algo3.modelo.parser.EnemiesParser;
 import edu.fiuba.algo3.modelo.parser.MapParser;
 import edu.fiuba.algo3.modelo.player.Player;
@@ -18,7 +13,6 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.awt.*;
-import java.security.interfaces.DSAKey;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -187,34 +181,32 @@ public class AlgoDefenseTwoTest {
         Damage killDamage = new Damage(2);
 
         //Act
-        algoDefense.nextTurn();
-        algoDefense.nextTurn();
-        algoDefense.nextTurn();
-        algoDefense.nextTurn();
-        algoDefense.nextTurn();
-        algoDefense.nextTurn();
-        algoDefense.nextTurn();
-        algoDefense.nextTurn();
-        algoDefense.nextTurn();
-        algoDefense.nextTurn();
-        algoDefense.nextTurn();
-        algoDefense.nextTurn();
-        algoDefense.nextTurn();
-        algoDefense.nextTurn();
-        algoDefense.nextTurn();
-        algoDefense.nextTurn();
-
-        algoDefense.nextTurn();
-        algoDefense.nextTurn();
-        algoDefense.nextTurn();
-        algoDefense.nextTurn();
-        algoDefense.nextTurn();
-        algoDefense.nextTurn();
-        algoDefense.nextTurn();
         player.getsDamage(killDamage);
+        player.getsDamage(killDamage);
+        algoDefense.nextTurn();
+        algoDefense.nextTurn();
+        algoDefense.nextTurn();
+        algoDefense.nextTurn();
+        algoDefense.nextTurn();
+        algoDefense.nextTurn();
+        algoDefense.nextTurn();
+        algoDefense.nextTurn();
+        algoDefense.nextTurn();
+        algoDefense.nextTurn();
+        algoDefense.nextTurn();
+        algoDefense.nextTurn();
+        algoDefense.nextTurn();
+        algoDefense.nextTurn();
+        algoDefense.nextTurn();
+        algoDefense.nextTurn();
+
+        algoDefense.nextTurn();
+        algoDefense.nextTurn();
+        algoDefense.nextTurn();
 
 
-        Assertions.assertThrows(PlayerIsDeadGameOver.class,()-> algoDefense.nextTurn());
+        Assertions.assertTrue(algoDefense.gameOver());
+
     }
 
     @Test

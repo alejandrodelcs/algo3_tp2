@@ -5,19 +5,21 @@ import edu.fiuba.algo3.modelo.exceptions.InsufficientCredits;
 import edu.fiuba.algo3.modelo.gameboard.GameBoard;
 import edu.fiuba.algo3.App;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
+import javafx.geometry.Pos;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
-import javafx.scene.control.Label;
+import javafx.scene.text.Text;
+import javafx.stage.Stage;
 
 import java.awt.*;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class Board extends controler {
@@ -29,9 +31,8 @@ public class Board extends controler {
     private GameBoard gameBoard = algoDefense.getGameboard();
     private Image[][] cellImages;
     @FXML
-    private ImageView imageView;
-    @FXML
     private Label infoLabel;
+    private ArrayList<Image> terrainImages = new ArrayList<>();
 
     @FXML
     private void printMap() {
@@ -55,68 +56,166 @@ public class Board extends controler {
     }
 
     private void pickADefenseEvent(StackPane stackPane,Point point, Point backwards, int clickedRow, int clickedColumn) {
-        DefenseFactory silverFactory = new SilverTowerFactory();
-        DefenseFactory whiteFactory = new WhiteTowerFactory();
-        DefenseFactory sandyFactory = new SandyTrapFactory();
-        ArrayList<> =;
 
         stackPane.setOnMouseClicked(someEvent -> {
-            if(gameBoard.availableForBuilding(point) == (!gameBoard.isEnemyPath(backwards))){
+            if(gameBoard.availableForBuilding(point) && (!gameBoard.isEnemyPath(backwards))){
+                    Stage newWindow = createDefensesMenuWindow();
+                    newWindow.getScene().getStylesheets().add(getClass().getResource("/edu.fiuba.algo3/styles.css").toExternalForm());
+                    Button whiteTowerButton = createWhiteTowerButton();
+                    whiteTowerButton.setOnAction(e->{
+                        whiteTowerButtonEvent(stackPane, clickedRow, clickedColumn);
+                        newWindow.close();
+                    });
 
-                try{
-                    Alert dialog = new Alert(Alert.AlertType.INFORMATION);
-                    pickAdefenseDialog(dialog);
-                    ButtonType silverTowerOption = new ButtonType("Silver Tower");
-                    ButtonType whiteTowerOption = new ButtonType("White Tower");
-                    dialog.getButtonTypes().setAll(whiteTowerOption, silverTowerOption);
+                    Button silverTowerButton = createSilverTowerButton();
+                    silverTowerButton.setOnAction(e->{
+                        silverTowerButtonEvent(stackPane, clickedRow, clickedColumn);
+                        newWindow.close();
+                    });
 
-                    Optional<ButtonType> result = dialog.showAndWait();
-                    if (result.get() == whiteTowerOption) {
+                    createDefensesMenuStack(silverTowerButton,whiteTowerButton, newWindow);
+                    newWindow.showAndWait();
 
-                        ImageView imageView = buildImageViewOfDefense(new Image(getClass().getResource("/img/magic2.png").toString(), true));
-                        Point coordinatesToADirt = new Point(clickedRow,clickedColumn);
-                        Defense whiteTower = whiteFactory.createDefense(coordinatesToADirt);
-                        algoDefense.buildsADefense(whiteTower);
-
-                        stackPane.getChildren().add(imageView);
-
-                    } else if (result.get() == silverTowerOption) {
-
-                        ImageView imageView = buildImageViewOfDefense(new Image(getClass().getResource("/img/tower2.png").toString(), true));
-                        Point coordinatesToADirt = new Point(clickedRow,clickedColumn);
-                        Defense silverTower = silverFactory.createDefense(coordinatesToADirt);
-                        algoDefense.buildsADefense(silverTower);
-
-                        stackPane.getChildren().add(imageView);
-                    }
-
-                }catch  (InsufficientCredits insufficientCredits){
-                    alertInssuficientCredits();
+            }else if( (gameBoard.isEnemyPath(backwards)) ){
+                if (gameBoard.isStart(backwards)  || (gameBoard.isFinish(backwards))) {
+                    alertStartFinish();
                 }
-
-            }
-            else if(gameBoard.availableForBuilding(point) == (gameBoard.isEnemyPath(backwards))){
-                try{
-                    Alert dialog = new Alert(Alert.AlertType.INFORMATION);
-                    pickAdefenseDialog(dialog);
-                    ButtonType sandyTrapOption = new ButtonType("Sandy Trap");
-                    dialog.getButtonTypes().setAll(sandyTrapOption);
-
-                    Optional<ButtonType> result = dialog.showAndWait();
-                    if(result.get() == sandyTrapOption){
-                        ImageView imageView = buildImageViewOfDefense(new Image(getClass().getResource("/img/sandyTrap.jpg").toString(), true));
-                        Point coordinatesToEnemyPath = new Point(clickedRow,clickedColumn);
-                        Defense sandyTrap = sandyFactory.createDefense(coordinatesToEnemyPath);
-                        algoDefense.buildsADefense(sandyTrap);
-
-                        stackPane.getChildren().add(imageView);
-                    }
-
-                }catch  (InsufficientCredits insufficientCredits){
-                    alertInssuficientCredits();
+                else{
+                    Stage newWindow = createDefensesMenuWindow();
+                    Button sandyTrapButton = createSandyTrapButton();
+                    sandyTrapButton.setOnAction(e->{
+                        sandyTrapButtonEvent(stackPane, clickedRow, clickedColumn);
+                        newWindow.close();
+                    });
+                    createDefensesOnEnemyPathMenuStack(sandyTrapButton, newWindow);
+                    newWindow.showAndWait();
                 }
             }
         });
+    }
+
+    private void createDefensesOnEnemyPathMenuStack(Button sandyTrapButton, Stage newWindow) {
+        var bottomStackPane = new StackPane(new HBox(
+                sandyTrapButton
+        ));
+        Text text = new Text();
+        text.setText("Pick a Defense: ");
+        var verticalStackPane = new StackPane(new VBox(
+                text,
+                bottomStackPane
+        ));
+        verticalStackPane.setAlignment(Pos.TOP_CENTER);
+        newWindow.setScene(new Scene(verticalStackPane, 400, 400));
+    }
+
+    private void sandyTrapButtonEvent(StackPane stackPane, int clickedRow, int clickedColumn) {
+        DefenseFactory sandyFactory = new SandyTrapFactory();
+
+        try{
+            ImageView imageView = buildImageViewOfDefense(new Image(getClass().getResource("/img/sandyTrapCastle.jpeg").toString(), true));
+            Point coordinatesToEnemyPath = new Point(clickedRow,clickedColumn);
+            Defense sandyTrap = sandyFactory.createDefense(coordinatesToEnemyPath);
+            algoDefense.buildsADefense(sandyTrap);
+
+            stackPane.getChildren().add(imageView);
+        }catch  (InsufficientCredits insufficientCredits){
+            alertInssuficientCredits();
+        }
+    }
+
+    private Button createSandyTrapButton() {
+        Button sandyTrapButton = new Button("Sandy Trap: \n Price: \n Building Time: 0 Turns\n Range: \n Damage: ");
+        ImageView imageViewSilverTower = new ImageView(getClass().getResource("/img/sandyTrapCastle.jpeg").toString());
+        imageViewSilverTower.setFitHeight(50);
+        imageViewSilverTower.setPreserveRatio(true);
+        sandyTrapButton.setGraphic(imageViewSilverTower);
+        sandyTrapButton.setContentDisplay(ContentDisplay.TOP);
+        return sandyTrapButton;
+    }
+
+    private void createDefensesMenuStack(Button silverTowerButton, Button whiteTowerButton, Stage newWindow) {
+        var bottomStackPane = new StackPane(new HBox(
+                silverTowerButton,
+                whiteTowerButton
+        ));
+
+        Text text = new Text();
+        text.setText("Pick a Defense: ");
+        var verticalStackPane = new StackPane(new VBox(
+                text,
+                bottomStackPane
+        ));
+
+        verticalStackPane.setAlignment(Pos.TOP_CENTER);
+        newWindow.setScene(new Scene(verticalStackPane, 400, 400));
+    }
+
+
+    private void silverTowerButtonEvent(StackPane stackPane, int clickedRow, int clickedColumn) {
+        DefenseFactory silverFactory = new SilverTowerFactory();
+        try{
+            ImageView imageView = buildImageViewOfDefense(new Image(getClass().getResource("/img/silverTower.png").toString(), true));
+            Point coordinatesToADirt = new Point(clickedRow,clickedColumn);
+            Defense silverTower = silverFactory.createDefense(coordinatesToADirt);
+            algoDefense.buildsADefense(silverTower);
+
+            stackPane.getChildren().add(imageView);
+        }catch  (InsufficientCredits insufficientCredits){
+            alertInssuficientCredits();
+        }
+    }
+
+    private void whiteTowerButtonEvent(StackPane stackPane, int clickedRow, int clickedColumn) {
+        DefenseFactory whiteFactory = new WhiteTowerFactory();
+        try{
+            ImageView whiteTowerImageView = buildImageViewOfDefense(new Image(getClass().getResource("/img/magic2.png").toString(), true));
+            Point coordinatesToADirt = new Point(clickedRow,clickedColumn);
+            Defense whiteTower = whiteFactory.createDefense(coordinatesToADirt);
+            algoDefense.buildsADefense(whiteTower);
+
+            stackPane.getChildren().add(whiteTowerImageView);
+        }catch  (InsufficientCredits insufficientCredits){
+            alertInssuficientCredits();
+        }
+    }
+
+    private Button createSilverTowerButton() {
+        Button silverTowerButton = new Button("Silver Tower: \n Price: 20 \n Building Time: 2 Turns\n Range: 5\n Damage: 2");
+        ImageView imageViewSilverTower = new ImageView(getClass().getResource("/img/silverTower.png").toString());
+        imageViewSilverTower.setFitHeight(50);
+        imageViewSilverTower.setPreserveRatio(true);
+        silverTowerButton.setGraphic(imageViewSilverTower);
+        silverTowerButton.setContentDisplay(ContentDisplay.TOP);
+        return silverTowerButton;
+    }
+
+    private Button createWhiteTowerButton() {
+
+        Button whiteTowerButton = new Button("White Tower: \n Price: 10 \n Building Time: 1 Turn\n Range: 3\n Damage: 1");
+        ImageView imageViewWhiteTower = new ImageView(getClass().getResource("/img/magic2.png").toString());
+        imageViewWhiteTower.setFitHeight(50);
+        imageViewWhiteTower.setPreserveRatio(true);
+        whiteTowerButton.setGraphic(imageViewWhiteTower);
+        whiteTowerButton.setContentDisplay(ContentDisplay.TOP);
+        return whiteTowerButton;
+    }
+
+    private Stage createDefensesMenuWindow() {
+        Label label = new Label("Pick a defense");
+        StackPane layout = new StackPane();
+        layout.getChildren().add(label);
+        Scene secondScene = new Scene(layout, 400, 400);
+        Stage newWindow = new Stage();
+        newWindow.setTitle("Pick a defense");
+        newWindow.setScene(secondScene);
+        return newWindow;
+    }
+
+    private void alertStartFinish() {
+        Alert startFinishAlertWithoutFunds = new Alert(Alert.AlertType.ERROR);
+        startFinishAlertWithoutFunds.setTitle("Invalid Plot To build");
+        startFinishAlertWithoutFunds.setContentText("You cannot build on start or finish line");
+        startFinishAlertWithoutFunds.showAndWait();
     }
 
     private ImageView buildImageViewOfDefense(Image image) {
@@ -144,7 +243,7 @@ public class Board extends controler {
     }
 
     private StackPane loadCellImage(int row, int column) {
-        return gameBoard.getPlot(row, column).getStackPane();
+        return gameBoard.getStackPane(row, column, terrainImages);
     }
 
     @FXML
@@ -155,13 +254,15 @@ public class Board extends controler {
         infoLabel.setText(updatedStats);
         printMap();
     }
-    @FXML
-    private void createGameboard() throws IOException {
-        App.setRoot("board"); //luego lo usare para cambiar de escena a una de resultadoss
-    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        Image aTerrainImage = new Image(getClass().getResource("/img/path.png").toString(), true);
+        terrainImages.add(aTerrainImage);
+        aTerrainImage = new Image(getClass().getResource("/img/dirt.png").toString(), true);
+        terrainImages.add(aTerrainImage);
+        aTerrainImage = new Image(getClass().getResource("/img/rock2.png").toString(), true);
+        terrainImages.add(aTerrainImage);
         String updatedStats = algoDefense.getPlayerInfo();
         infoLabel.setText(updatedStats);
         printMap();
