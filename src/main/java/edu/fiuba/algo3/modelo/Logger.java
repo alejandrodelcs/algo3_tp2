@@ -5,7 +5,7 @@ public class Logger {
     private static final Logger singleton = new Logger();
 
     private static boolean loggerEnable = true;
-    private static String exit;
+    private static String exit = "";
 
     private Logger() {}
 
