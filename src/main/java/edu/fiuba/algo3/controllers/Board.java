@@ -124,7 +124,7 @@ public class Board extends controler {
     }
 
     private Button createSandyTrapButton() {
-        Button sandyTrapButton = new Button("Sandy Trap: \n Price: \n Building Time: 0 Turns\n Range: \n Damage: ");
+        Button sandyTrapButton = new Button("Sandy Trap: \n Price: 25\n Building Time: Instant\n Vanishes in 3 turns \n Damage: Des accelerate enemies by 50% ");
         ImageView imageViewSilverTower = new ImageView(getClass().getResource("/img/sandyTrapCastle.jpeg").toString());
         imageViewSilverTower.setFitHeight(50);
         imageViewSilverTower.setPreserveRatio(true);
