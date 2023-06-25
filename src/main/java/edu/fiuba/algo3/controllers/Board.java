@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.controllers;
 import edu.fiuba.algo3.modelo.AlgoDefense;
+import edu.fiuba.algo3.modelo.Logger;
 import edu.fiuba.algo3.modelo.defense.*;
 import edu.fiuba.algo3.modelo.enemy.Enemy;
 import edu.fiuba.algo3.modelo.exceptions.InsufficientCredits;
@@ -12,6 +13,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
@@ -37,6 +39,8 @@ public class Board extends controler {
     @FXML
     private Label infoLabel;
     private ArrayList<Image> terrainImages = new ArrayList<>();
+    @FXML
+    private TextArea consoleTextArea;
 
     @FXML
     private void printMap() {
@@ -271,6 +275,7 @@ public class Board extends controler {
     private void updateImages(){
         gridPane.getChildren().clear();
         algoDefense.nextTurn();
+        explitDatos();
         String updatedStats = algoDefense.getPlayerInfo();
         infoLabel.setText(updatedStats);
         printMap();
@@ -308,5 +313,9 @@ public class Board extends controler {
         return "    -fx-font-family: 'Press Start 2P';\n" +
                 "    -fx-font-size: 14px;\n" +
                 "    -fx-text-fill: #ffffff;";
+    }
+    @FXML
+    private void explitDatos(){
+        consoleTextArea.setText(Logger.getExit());
     }
 }
