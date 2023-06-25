@@ -59,108 +59,160 @@ public class Board extends controler {
     }
 
     private void pickADefenseEvent(StackPane stackPane,Point point, Point backwards, int clickedRow, int clickedColumn) {
-        DefenseFactory silverFactory = new SilverTowerFactory();
-        DefenseFactory whiteFactory = new WhiteTowerFactory();
-        DefenseFactory sandyFactory = new SandyTrapFactory();
 
         stackPane.setOnMouseClicked(someEvent -> {
             if(gameBoard.availableForBuilding(point) && (!gameBoard.isEnemyPath(backwards))){
-
-                    Label label = new Label("Pick a defense");
-                    StackPane layout = new StackPane();
-                    layout.getChildren().add(label);
-                    Scene secondScene = new Scene(layout, 400, 400);
-                    Stage newWindow = new Stage();
-                    newWindow.setTitle("Pick a defense");
-                    Text text = new Text();
-                    text.setText("Pick a Defense: ");
-                    newWindow.setScene(secondScene);
-
-                    Button whiteTowerButton = new Button("White Tower: \n 10 credits");
-                    ImageView imageViewWhiteTower = new ImageView(getClass().getResource("/img/magic2.png").toString());
-                    imageViewWhiteTower.setFitHeight(50);
-                    imageViewWhiteTower.setPreserveRatio(true);
-                    whiteTowerButton.setGraphic(imageViewWhiteTower);
-                    whiteTowerButton.setContentDisplay(ContentDisplay.TOP);
-
+                    Stage newWindow = createDefensesMenuWindow();
+                    Button whiteTowerButton = createWhiteTowerButton();
                     whiteTowerButton.setOnAction(e->{
-                        try{
-                        ImageView imageView = buildImageViewOfDefense(new Image(getClass().getResource("/img/magic2.png").toString(), true));
-                        Point coordinatesToADirt = new Point(clickedRow,clickedColumn);
-                        Defense whiteTower = whiteFactory.createDefense(coordinatesToADirt);
-                        algoDefense.buildsADefense(whiteTower);
-
-                        stackPane.getChildren().add(imageView);
-                        newWindow.close();
-                        }catch  (InsufficientCredits insufficientCredits){
-                        alertInssuficientCredits();
-                        }
+                        whiteTowerButtonEvent(stackPane, clickedRow, clickedColumn);
                         newWindow.close();
                     });
 
-                    Button silverTowerButton = new Button("Silver Tower: \n 20 credits");
-                    ImageView imageViewSilverTower = new ImageView(getClass().getResource("/img/tower2.png").toString());
-                    imageViewSilverTower.setFitHeight(50);
-                    imageViewSilverTower.setPreserveRatio(true);
-                    silverTowerButton.setGraphic(imageViewSilverTower);
-                    silverTowerButton.setContentDisplay(ContentDisplay.TOP);
+                    Button silverTowerButton = createSilverTowerButton();
                     silverTowerButton.setOnAction(e->{
-                        try{
-                            ImageView imageView = buildImageViewOfDefense(new Image(getClass().getResource("/img/tower2.png").toString(), true));
-                            Point coordinatesToADirt = new Point(clickedRow,clickedColumn);
-                            Defense silverTower = silverFactory.createDefense(coordinatesToADirt);
-                            algoDefense.buildsADefense(silverTower);
-
-                            stackPane.getChildren().add(imageView);
-                            newWindow.close();
-                        }catch  (InsufficientCredits insufficientCredits){
-                            alertInssuficientCredits();
-                        }
+                        silverTowerButtonEvent(stackPane, clickedRow, clickedColumn);
                         newWindow.close();
                     });
-                    var bottomStackPane = new StackPane(new HBox(
-                            silverTowerButton,
-                            whiteTowerButton
-                    ));
-                    var verticalStackPane = new StackPane(new VBox(
-                            text,
-                            bottomStackPane
-                    ));
 
-                    verticalStackPane.setAlignment(Pos.TOP_CENTER);
-                    newWindow.setScene(new Scene(verticalStackPane, 400, 400));
-
+                    createDefensesMenuStack(silverTowerButton,whiteTowerButton, newWindow);
                     newWindow.showAndWait();
-
 
             }else if( (gameBoard.isEnemyPath(backwards)) ){
                 if (gameBoard.isStart(backwards)  || (gameBoard.isFinish(backwards))) {
                     alertStartFinish();
                 }
                 else{
-                    try{
-                        Alert dialog = new Alert(Alert.AlertType.INFORMATION);
-                        pickAdefenseDialog(dialog);
-                        ButtonType sandyTrapOption = new ButtonType("Sandy Trap");
-                        dialog.getButtonTypes().setAll(sandyTrapOption);
-
-                        Optional<ButtonType> result = dialog.showAndWait();
-                        if(result.get() == sandyTrapOption){
-                            ImageView imageView = buildImageViewOfDefense(new Image(getClass().getResource("/img/sandyTrap.jpg").toString(), true));
-                            Point coordinatesToEnemyPath = new Point(clickedRow,clickedColumn);
-                            Defense sandyTrap = sandyFactory.createDefense(coordinatesToEnemyPath);
-                            algoDefense.buildsADefense(sandyTrap);
-
-                            stackPane.getChildren().add(imageView);
-                        }
-
-                    }catch  (InsufficientCredits insufficientCredits){
-                        alertInssuficientCredits();
-                    }
-
+                    Stage newWindow = createDefensesMenuWindow();
+                    Button sandyTrapButton = createSandyTrapButton();
+                    sandyTrapButton.setOnAction(e->{
+                        sandyTrapButtonEvent(stackPane, clickedRow, clickedColumn);
+                        newWindow.close();
+                    });
+                    createDefensesOnEnemyPatchMenuStack(sandyTrapButton, newWindow);
+                    newWindow.showAndWait();
                 }
             }
         });
+    }
+
+    private void createDefensesOnEnemyPatchMenuStack(Button sandyTrapButton, Stage newWindow) {
+        var bottomStackPane = new StackPane(new HBox(
+                sandyTrapButton
+        ));
+
+        Text text = new Text();
+        text.setText("Pick a Defense: ");
+        var verticalStackPane = new StackPane(new VBox(
+                text,
+                bottomStackPane
+        ));
+
+        verticalStackPane.setAlignment(Pos.TOP_CENTER);
+        newWindow.setScene(new Scene(verticalStackPane, 400, 400));
+    }
+
+    private void sandyTrapButtonEvent(StackPane stackPane, int clickedRow, int clickedColumn) {
+        DefenseFactory sandyFactory = new SandyTrapFactory();
+
+        try{
+            ImageView imageView = buildImageViewOfDefense(new Image(getClass().getResource("/img/sandyTrapCastle.jpeg").toString(), true));
+            Point coordinatesToEnemyPath = new Point(clickedRow,clickedColumn);
+            Defense sandyTrap = sandyFactory.createDefense(coordinatesToEnemyPath);
+            algoDefense.buildsADefense(sandyTrap);
+
+            stackPane.getChildren().add(imageView);
+        }catch  (InsufficientCredits insufficientCredits){
+            alertInssuficientCredits();
+        }
+    }
+
+    private Button createSandyTrapButton() {
+        Button sandyTrapButton = new Button("Sandy Trap: \n Price: \n Building Time: 0 Turns\n Range: \n Damage: ");
+        ImageView imageViewSilverTower = new ImageView(getClass().getResource("/img/sandyTrapCastle.jpeg").toString());
+        imageViewSilverTower.setFitHeight(50);
+        imageViewSilverTower.setPreserveRatio(true);
+        sandyTrapButton.setGraphic(imageViewSilverTower);
+        sandyTrapButton.setContentDisplay(ContentDisplay.TOP);
+        return sandyTrapButton;
+    }
+
+    private void createDefensesMenuStack(Button silverTowerButton, Button whiteTowerButton, Stage newWindow) {
+        var bottomStackPane = new StackPane(new HBox(
+                silverTowerButton,
+                whiteTowerButton
+        ));
+
+        Text text = new Text();
+        text.setText("Pick a Defense: ");
+        var verticalStackPane = new StackPane(new VBox(
+                text,
+                bottomStackPane
+        ));
+
+        verticalStackPane.setAlignment(Pos.TOP_CENTER);
+        newWindow.setScene(new Scene(verticalStackPane, 400, 400));
+    }
+
+
+    private void silverTowerButtonEvent(StackPane stackPane, int clickedRow, int clickedColumn) {
+        DefenseFactory silverFactory = new SilverTowerFactory();
+        try{
+            ImageView imageView = buildImageViewOfDefense(new Image(getClass().getResource("/img/silverTower.png").toString(), true));
+            Point coordinatesToADirt = new Point(clickedRow,clickedColumn);
+            Defense silverTower = silverFactory.createDefense(coordinatesToADirt);
+            algoDefense.buildsADefense(silverTower);
+
+            stackPane.getChildren().add(imageView);
+        }catch  (InsufficientCredits insufficientCredits){
+            alertInssuficientCredits();
+        }
+    }
+
+    private void whiteTowerButtonEvent(StackPane stackPane, int clickedRow, int clickedColumn) {
+        DefenseFactory whiteFactory = new WhiteTowerFactory();
+        try{
+            ImageView whiteTowerImageView = buildImageViewOfDefense(new Image(getClass().getResource("/img/magic2.png").toString(), true));
+            Point coordinatesToADirt = new Point(clickedRow,clickedColumn);
+            Defense whiteTower = whiteFactory.createDefense(coordinatesToADirt);
+            algoDefense.buildsADefense(whiteTower);
+
+            stackPane.getChildren().add(whiteTowerImageView);
+        }catch  (InsufficientCredits insufficientCredits){
+            alertInssuficientCredits();
+        }
+    }
+
+    private Button createSilverTowerButton() {
+        Button silverTowerButton = new Button("Silver Tower: \n Price: 20 \n Building Time: 2 Turns\n Range: 5\n Damage: 2");
+        ImageView imageViewSilverTower = new ImageView(getClass().getResource("/img/silverTower.png").toString());
+        imageViewSilverTower.setFitHeight(50);
+        imageViewSilverTower.setPreserveRatio(true);
+        silverTowerButton.setGraphic(imageViewSilverTower);
+        silverTowerButton.setContentDisplay(ContentDisplay.TOP);
+        return silverTowerButton;
+    }
+
+    private Button createWhiteTowerButton() {
+
+        Button whiteTowerButton = new Button("White Tower: \n Price: 10 \n Building Time: 1 Turn\n Range: 3\n Damage: 1");
+        ImageView imageViewWhiteTower = new ImageView(getClass().getResource("/img/magic2.png").toString());
+        imageViewWhiteTower.setFitHeight(50);
+        imageViewWhiteTower.setPreserveRatio(true);
+        whiteTowerButton.setGraphic(imageViewWhiteTower);
+        whiteTowerButton.setContentDisplay(ContentDisplay.TOP);
+        return whiteTowerButton;
+    }
+
+    private Stage createDefensesMenuWindow() {
+        Label label = new Label("Pick a defense");
+        StackPane layout = new StackPane();
+        layout.getChildren().add(label);
+        Scene secondScene = new Scene(layout, 400, 400);
+        Stage newWindow = new Stage();
+        newWindow.setTitle("Pick a defense");
+        newWindow.setScene(secondScene);
+        return newWindow;
     }
 
     private void alertStartFinish() {
