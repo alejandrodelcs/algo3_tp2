@@ -10,9 +10,13 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.stage.Screen;
 import javafx.geometry.Rectangle2D;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 
 import java.awt.*;
 import javafx.scene.text.Font;
+
+import java.io.File;
 import java.io.IOException;
 import java.util.Objects;
 
@@ -31,6 +35,8 @@ public class App extends Application {
         Screen screen = Screen.getPrimary();
         Rectangle2D bounds = screen.getVisualBounds();
         scene = new Scene(loadFXML("signup"),bounds.getMaxX(), bounds.getMaxY());
+
+
         scene.getStylesheets().add(getClass().getResource("/edu.fiuba.algo3/styles.css").toExternalForm());
         primaryStage.setTitle("Sign-up");
         primaryStage.setScene(scene);
