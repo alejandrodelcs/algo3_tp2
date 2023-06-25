@@ -5,6 +5,8 @@ import edu.fiuba.algo3.modelo.Logger;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -27,11 +29,16 @@ public class App extends Application {
 
    @Override
     public void start(Stage primaryStage) throws Exception {
-       Logger.get();
+        Logger.get();
         Screen screen = Screen.getPrimary();
         Rectangle2D bounds = screen.getVisualBounds();
         scene = new Scene(loadFXML("signup"),bounds.getMaxX(), bounds.getMaxY());
         scene.getStylesheets().add(getClass().getResource("/edu.fiuba.algo3/styles.css").toExternalForm());
+        Media media = new Media(getClass().getResource("/sound/backMusic.mp3").toString());
+        MediaPlayer mediaPlayer = new MediaPlayer(media);
+        mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
+        mediaPlayer.setVolume(0.3);
+        mediaPlayer.play();
         primaryStage.setTitle("Sign-up");
         primaryStage.setScene(scene);
         primaryStage.getIcons().add(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/img/logo.png"))));

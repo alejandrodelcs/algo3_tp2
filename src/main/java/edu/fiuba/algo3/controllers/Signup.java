@@ -6,6 +6,8 @@ import edu.fiuba.algo3.modelo.player.Player;
 import javafx.scene.control.TextField;
 import javafx.fxml.FXML;
 import javafx.scene.image.ImageView;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.ParseException;
