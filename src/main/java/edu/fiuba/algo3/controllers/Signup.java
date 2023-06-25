@@ -11,6 +11,8 @@ import javafx.scene.media.MediaPlayer;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.ParseException;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 
 import java.io.FileReader;
 import java.io.IOError;
@@ -23,7 +25,13 @@ public class Signup {
 
     @FXML
     private void handleSignup() throws IOException {
+
         String username = usernameField.getText();
+        Media media = new Media(getClass().getResource("/music/back.mp3").toString());
+        MediaPlayer mediaPlayer = new MediaPlayer(media);
+        mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
+        mediaPlayer.setVolume(0.3);
+        mediaPlayer.play();
 
         if (username.isEmpty()) {
             usernameField.setStyle("-fx-border-color: red");
