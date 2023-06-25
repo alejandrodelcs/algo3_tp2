@@ -60,9 +60,8 @@ public class Board extends controler {
 
         stackPane.setOnMouseClicked(someEvent -> {
             if(gameBoard.availableForBuilding(point) && (!gameBoard.isEnemyPath(backwards))){
-                    Stage newWindow = createDefensesMenuWindow();
-                    newWindow.getScene().getStylesheets().add(getClass().getResource("/edu.fiuba.algo3/styles.css").toExternalForm());
-                    Button whiteTowerButton = createWhiteTowerButton();
+                Button whiteTowerButton = createWhiteTowerButton();
+                Stage newWindow = createDefensesTowerMenuWindow();
                     whiteTowerButton.setOnAction(e->{
                         whiteTowerButtonEvent(stackPane, clickedRow, clickedColumn);
                         newWindow.close();
@@ -82,7 +81,7 @@ public class Board extends controler {
                     alertStartFinish();
                 }
                 else{
-                    Stage newWindow = createDefensesMenuWindow();
+                    Stage newWindow = createDefensesTowerMenuWindow();
                     Button sandyTrapButton = createSandyTrapButton();
                     sandyTrapButton.setOnAction(e->{
                         sandyTrapButtonEvent(stackPane, clickedRow, clickedColumn);
@@ -100,13 +99,13 @@ public class Board extends controler {
                 sandyTrapButton
         ));
         Text text = new Text();
-        text.setText("Pick a Defense: ");
+        text.setText("Available Defenses for this plot:");
         var verticalStackPane = new StackPane(new VBox(
                 text,
                 bottomStackPane
         ));
         verticalStackPane.setAlignment(Pos.TOP_CENTER);
-        newWindow.setScene(new Scene(verticalStackPane, 400, 400));
+        newWindow.setScene(new Scene(verticalStackPane, 400, 300));
     }
 
     private void sandyTrapButtonEvent(StackPane stackPane, int clickedRow, int clickedColumn) {
@@ -187,8 +186,14 @@ public class Board extends controler {
         imageViewSilverTower.setPreserveRatio(true);
         silverTowerButton.setGraphic(imageViewSilverTower);
         silverTowerButton.setContentDisplay(ContentDisplay.TOP);
+        silverTowerButton.setId("button");
+        //silverTowerButton.getStyleClass().clear();
+        //silverTowerButton.getStyleClass().add("button");
+        silverTowerButton.setStyle(bringStyles());
         return silverTowerButton;
     }
+
+
 
     private Button createWhiteTowerButton() {
 
@@ -198,14 +203,17 @@ public class Board extends controler {
         imageViewWhiteTower.setPreserveRatio(true);
         whiteTowerButton.setGraphic(imageViewWhiteTower);
         whiteTowerButton.setContentDisplay(ContentDisplay.TOP);
+        whiteTowerButton.setId("button");
+        whiteTowerButton.setStyle(bringStyles());
         return whiteTowerButton;
     }
 
-    private Stage createDefensesMenuWindow() {
+    private Stage createDefensesTowerMenuWindow() {
         Label label = new Label("Pick a defense");
         StackPane layout = new StackPane();
         layout.getChildren().add(label);
-        Scene secondScene = new Scene(layout, 400, 400);
+        Scene secondScene = new Scene(layout, 400, 300);
+        secondScene.getStylesheets().add(getClass().getResource("/edu.fiuba.algo3/styles.css").toString());
         Stage newWindow = new Stage();
         newWindow.setTitle("Pick a defense");
         newWindow.setScene(secondScene);
@@ -225,15 +233,6 @@ public class Board extends controler {
         imageView.setFitWidth(50);
         imageView.setPreserveRatio(true);
         return imageView;
-    }
-
-    private void pickAdefenseDialog(Alert dialog) {
-        dialog.setTitle("Pick a Defense");
-        dialog.setHeaderText("Available Defenses for this plot");
-        dialog.setContentText("Available Defenses for this plot ");
-        dialog.setResizable(true);
-        dialog.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);
-        dialog.getDialogPane().setMinWidth(Region.USE_PREF_SIZE);
     }
 
     private void alertInssuficientCredits() {
@@ -267,6 +266,22 @@ public class Board extends controler {
         String updatedStats = algoDefense.getPlayerInfo();
         infoLabel.setText(updatedStats);
         printMap();
+    }
+
+    private String bringStyles() {
+        return "  -fx-padding: 10px 0;\n" +
+                "    -fx-pref-width: 250px;\n" +
+                "    -fx-letter-spacing: 2px;\n" +
+                "    -fx-background-radius: 20px;\n" +
+                "    -fx-font-family: 'Skranji', cursive;\n" +
+                "    -fx-text-fill: #ffffff;\n" +
+                "    -fx-font-size: 18px;\n" +
+                "    -fx-font-weight: 400;\n" +
+                "    -fx-effect: innershadow(gaussian, rgba(1, 1, 1, 0.82), 3, 0, 0, 0);\n" +
+                "    -fx-border-width: 4px;\n" +
+                "    -fx-border-color: rgba(129, 229, 209, 0.51);\n" +
+                "    -fx-border-radius: 20px;\n" +
+                "    -fx-background-color: radial-gradient(center 20% 30%, radius 50%, rgba(75, 117, 137, 0.78) 0%, rgba(41, 87, 145, 0.72) 100%);";
     }
 
 }
