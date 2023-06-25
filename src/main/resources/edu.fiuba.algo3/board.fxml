@@ -11,7 +11,7 @@
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.layout.AnchorPane?>
 <HBox xmlns="http://javafx.com/javafx/15" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.fiuba.algo3.controllers.Board" styleClass="playing-background">
-   <GridPane fx:id="gridPane" maxWidth="-Infinity" maxHeight="-Infinity" alignment="CENTER" BorderPane.alignment="CENTER_LEFT" BorderPane.margin="$Insets">
+   <GridPane fx:id="gridPane" maxWidth="-Infinity" alignment="CENTER" style="-fx-padding: 0 0 0 10;">
    </GridPane>
    <VBox HBox.hgrow="ALWAYS" VBox.vgrow="ALWAYS" fx:id="rightContainer" style="-fx-pref-width: 100%;">
       <padding>
