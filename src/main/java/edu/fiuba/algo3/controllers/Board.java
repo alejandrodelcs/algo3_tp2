@@ -5,12 +5,17 @@ import edu.fiuba.algo3.modelo.exceptions.InsufficientCredits;
 import edu.fiuba.algo3.modelo.gameboard.GameBoard;
 import edu.fiuba.algo3.App;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
+import javafx.geometry.Pos;
+import javafx.scene.Group;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
-import javafx.scene.control.Label;
+import javafx.scene.text.Text;
+import javafx.stage.Stage;
 
 import java.awt.*;
 
@@ -28,8 +33,6 @@ public class Board extends controler {
     private AlgoDefense algoDefense = App.algodefense;
     private GameBoard gameBoard = algoDefense.getGameboard();
     private Image[][] cellImages;
-    @FXML
-    private ImageView imageView;
     @FXML
     private Label infoLabel;
     private ArrayList<Image> terrainImages = new ArrayList<>();
@@ -63,38 +66,72 @@ public class Board extends controler {
         stackPane.setOnMouseClicked(someEvent -> {
             if(gameBoard.availableForBuilding(point) && (!gameBoard.isEnemyPath(backwards))){
 
-                try{
-                    Alert dialog = new Alert(Alert.AlertType.INFORMATION);
-                    pickAdefenseDialog(dialog);
-                    ButtonType silverTowerOption = new ButtonType("Silver Tower");
-                    ButtonType whiteTowerOption = new ButtonType("White Tower");
+                    Label label = new Label("Pick a defense");
+                    StackPane layout = new StackPane();
+                    layout.getChildren().add(label);
+                    Scene secondScene = new Scene(layout, 400, 400);
+                    Stage newWindow = new Stage();
+                    newWindow.setTitle("Pick a defense");
+                    Text text = new Text();
+                    text.setText("Pick a Defense: ");
+                    newWindow.setScene(secondScene);
 
-                    dialog.getButtonTypes().setAll();
-                    dialog.getButtonTypes().setAll(whiteTowerOption, silverTowerOption);
+                    Button whiteTowerButton = new Button("White Tower: \n 10 credits");
+                    ImageView imageViewWhiteTower = new ImageView(getClass().getResource("/img/magic2.png").toString());
+                    imageViewWhiteTower.setFitHeight(50);
+                    imageViewWhiteTower.setPreserveRatio(true);
+                    whiteTowerButton.setGraphic(imageViewWhiteTower);
+                    whiteTowerButton.setContentDisplay(ContentDisplay.TOP);
 
-                    Optional<ButtonType> result = dialog.showAndWait();
-                    if (result.get() == whiteTowerOption) {
-
+                    whiteTowerButton.setOnAction(e->{
+                        try{
                         ImageView imageView = buildImageViewOfDefense(new Image(getClass().getResource("/img/magic2.png").toString(), true));
                         Point coordinatesToADirt = new Point(clickedRow,clickedColumn);
                         Defense whiteTower = whiteFactory.createDefense(coordinatesToADirt);
                         algoDefense.buildsADefense(whiteTower);
 
                         stackPane.getChildren().add(imageView);
+                        newWindow.close();
+                        }catch  (InsufficientCredits insufficientCredits){
+                        alertInssuficientCredits();
+                        }
+                        newWindow.close();
+                    });
 
-                    } else if (result.get() == silverTowerOption) {
+                    Button silverTowerButton = new Button("Silver Tower: \n 20 credits");
+                    ImageView imageViewSilverTower = new ImageView(getClass().getResource("/img/tower2.png").toString());
+                    imageViewSilverTower.setFitHeight(50);
+                    imageViewSilverTower.setPreserveRatio(true);
+                    silverTowerButton.setGraphic(imageViewSilverTower);
+                    silverTowerButton.setContentDisplay(ContentDisplay.TOP);
+                    silverTowerButton.setOnAction(e->{
+                        try{
+                            ImageView imageView = buildImageViewOfDefense(new Image(getClass().getResource("/img/tower2.png").toString(), true));
+                            Point coordinatesToADirt = new Point(clickedRow,clickedColumn);
+                            Defense silverTower = silverFactory.createDefense(coordinatesToADirt);
+                            algoDefense.buildsADefense(silverTower);
 
-                        ImageView imageView = buildImageViewOfDefense(new Image(getClass().getResource("/img/tower2.png").toString(), true));
-                        Point coordinatesToADirt = new Point(clickedRow,clickedColumn);
-                        Defense silverTower = silverFactory.createDefense(coordinatesToADirt);
-                        algoDefense.buildsADefense(silverTower);
+                            stackPane.getChildren().add(imageView);
+                            newWindow.close();
+                        }catch  (InsufficientCredits insufficientCredits){
+                            alertInssuficientCredits();
+                        }
+                        newWindow.close();
+                    });
+                    var bottomStackPane = new StackPane(new HBox(
+                            silverTowerButton,
+                            whiteTowerButton
+                    ));
+                    var verticalStackPane = new StackPane(new VBox(
+                            text,
+                            bottomStackPane
+                    ));
 
-                        stackPane.getChildren().add(imageView);
-                    }
+                    verticalStackPane.setAlignment(Pos.TOP_CENTER);
+                    newWindow.setScene(new Scene(verticalStackPane, 400, 400));
 
-                }catch  (InsufficientCredits insufficientCredits){
-                    alertInssuficientCredits();
-                }
+                    newWindow.showAndWait();
+
 
             }else if( (gameBoard.isEnemyPath(backwards)) ){
                 if (gameBoard.isStart(backwards)  || (gameBoard.isFinish(backwards))) {
@@ -120,6 +157,7 @@ public class Board extends controler {
                     }catch  (InsufficientCredits insufficientCredits){
                         alertInssuficientCredits();
                     }
+
                 }
             }
         });
