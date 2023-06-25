@@ -23,6 +23,7 @@ public class Mole extends Enemy {
         this.MOVES_NEEDED_FOR_SPEED_2 = 6;
         this.MOVES_NEEDED_FOR_SPEED_3 = 11;
         this.visible = false;
+        this.damage = damage;
     }
     @Override
     public Point move(long x, long y, Plot[][] plots, ArrayList<Point> enemyPath) {
@@ -59,8 +60,9 @@ public class Mole extends Enemy {
     }
 
     @Override
-    public String Show() {
-        return "Mole";
+    public String show() {
+        return ("Mole:\n\tSpeed: " + move.getSpeed() + "\n\tDamage: " + damage.getQuantity() + "\n\tHealth: " + health.getHealthPoints());
+
     }
     @Override
     public ImageView getImage() {

@@ -1,15 +1,12 @@
 package edu.fiuba.algo3.modelo.gameboard;
 import edu.fiuba.algo3.modelo.Logger;
 import edu.fiuba.algo3.modelo.defense.Defense;
-import edu.fiuba.algo3.modelo.defense.Tower;
 import edu.fiuba.algo3.modelo.enemy.Enemy;
-import javafx.scene.image.ImageView;
 import javafx.scene.image.Image;
 import javafx.scene.layout.StackPane;
 
 
 import java.awt.*;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -86,7 +83,7 @@ public class GameBoard {
     public void printMap() {
         for (Object[] row : plots) {
             for (Object plot : row) {
-                System.out.print(((Plot) plot).display());
+                System.out.print(((Plot) plot).show());
             }
             System.out.println();
         }

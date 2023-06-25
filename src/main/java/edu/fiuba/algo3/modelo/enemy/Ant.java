@@ -35,8 +35,8 @@ public class Ant extends Enemy {
         return creditsReward;
     }
     @Override
-    public String Show() {
-        return "Ant";
+    public String show() {
+        return ("Ant:\n\tSpeed: " + move.getSpeed() + "\n\tDamage: " + damage.getQuantity() + "\n\tHealth: " + health.getHealthPoints());
     }
     @Override
     public ImageView getImage() {

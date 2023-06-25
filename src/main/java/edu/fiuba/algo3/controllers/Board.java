@@ -1,9 +1,11 @@
 package edu.fiuba.algo3.controllers;
 import edu.fiuba.algo3.modelo.AlgoDefense;
 import edu.fiuba.algo3.modelo.defense.*;
+import edu.fiuba.algo3.modelo.enemy.Enemy;
 import edu.fiuba.algo3.modelo.exceptions.InsufficientCredits;
 import edu.fiuba.algo3.modelo.gameboard.GameBoard;
 import edu.fiuba.algo3.App;
+import edu.fiuba.algo3.modelo.gameboard.Plot;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -14,9 +16,9 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
-import javafx.scene.paint.Paint;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 import java.awt.*;
 
@@ -246,7 +248,23 @@ public class Board extends controler {
     }
 
     private StackPane loadCellImage(int row, int column) {
-        return gameBoard.getStackPane(row, column, terrainImages);
+        StackPane stackPane = gameBoard.getStackPane(row, column, terrainImages);
+        Plot info = gameBoard.getPlot(row, column);
+        StringBuilder plotInfoBuilder = new StringBuilder();
+        plotInfoBuilder.append(info.show()).append(" (").append(row).append(", ").append(column).append(")");
+
+        for (Enemy enemy : info.enemiesInPlot()) {
+            plotInfoBuilder.append("\n\n").append(enemy.show());
+        }
+
+        String plotInfo = plotInfoBuilder.toString();
+        Tooltip tooltip = new Tooltip(plotInfo);
+        tooltip.getStyleClass().add("tooltipStyle");
+        tooltip.setShowDelay(Duration.millis(100));
+        //tooltip.setHideDelay(Duration.INDEFINITE);
+        Tooltip.install(stackPane, tooltip);
+
+        return stackPane;
     }
 
     @FXML
