@@ -43,6 +43,7 @@ public class Board extends controler {
         for (int i = 0; i < height; i++) {
             for (int j = 0; j < width; j++) {
                 StackPane stackPane = loadCellImage(i, j);
+                stackPane.getStyleClass().add("board-plot");
                 stackPane.maxHeight(50);
                 stackPane.maxWidth(50);
                 gridPane.add(stackPane, j, i);
