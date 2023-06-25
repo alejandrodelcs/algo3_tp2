@@ -12,8 +12,7 @@ import javafx.stage.Screen;
 import javafx.geometry.Rectangle2D;
 
 import java.awt.*;
-import java.awt.image.ImageObserver;
-import java.awt.image.ImageProducer;
+import javafx.scene.text.Font;
 import java.io.IOException;
 import java.util.Objects;
 
@@ -36,6 +35,7 @@ public class App extends Application {
         primaryStage.setTitle("Sign-up");
         primaryStage.setScene(scene);
         primaryStage.getIcons().add(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/img/logo.png"))));
+        primaryStage.setMaximized(true);
         primaryStage.show();
     }
 

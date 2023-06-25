@@ -1,36 +1,87 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.RowConstraints?>
-
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.VBox?>
-<BorderPane xmlns="http://javafx.com/javafx/15" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.fiuba.algo3.controllers.Board">
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.HBox?>
+
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.AnchorPane?>
+<HBox xmlns="http://javafx.com/javafx/15" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.fiuba.algo3.controllers.Board" styleClass="playing-background">
+   <GridPane fx:id="gridPane" maxWidth="-Infinity" maxHeight="-Infinity" alignment="CENTER" BorderPane.alignment="CENTER_LEFT" BorderPane.margin="$Insets">
+   </GridPane>
+   <VBox HBox.hgrow="ALWAYS" VBox.vgrow="ALWAYS" fx:id="rightContainer" style="-fx-pref-width: 100%;">
+      <padding>
+         <Insets left="10" top="5" right="10" bottom="5"/>
+      </padding>
+      <HBox VBox.vgrow="ALWAYS" style="-fx-pref-height: 70%;">
+         <VBox>
+            <Label fx:id="infoLabel" text="" style="-fx-text-fill: white;">
+               <VBox.margin>
+                  <Insets top="10" right="10"/>
+               </VBox.margin>
+            </Label>
+            <Region VBox.vgrow="ALWAYS" />
+            <Button onAction="#updateImages" text="Next Turn">
+               <VBox.margin>
+                  <Insets bottom="10" right="10"/>
+               </VBox.margin>
+            </Button>
+            <Button text="Restart game">
+               <VBox.margin>
+                  <Insets bottom="10" right="10"/>
+               </VBox.margin>
+            </Button>
+         </VBox>
+      </HBox>
+      <VBox VBox.vgrow="ALWAYS" style="-fx-pref-height: 70%;">
+         <AnchorPane VBox.vgrow="ALWAYS">
+            <TextArea fx:id="consoleTextArea" editable="false" wrapText="true" AnchorPane.topAnchor="0.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" style="-fx-control-inner-background: black; -fx-text-fill: white;" text="Acá va a ir apareciendo toda la info de la partida"/>
+         </AnchorPane>
+      </VBox>
+   </VBox>
+   <padding>
+      <Insets fx:id="Insets" left="0" top="0" right="0" bottom="0"/>
+   </padding>
+</HBox>
+
+
+<!--
+<BorderPane xmlns="http://javafx.com/javafx/15" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.fiuba.algo3.controllers.Board" styleClass="playing-background">
    <left>
-      <GridPane fx:id="gridPane" prefHeight="900" alignment="CENTER" prefWidth="800" BorderPane.alignment="CENTER_LEFT" BorderPane.margin="$Insets">
-<!--         <columnConstraints>
-            <ColumnConstraints />
-         </columnConstraints>
-         <rowConstraints>
-            <RowConstraints />
-            <RowConstraints />
-            <RowConstraints />
-            <RowConstraints />
-         </rowConstraints>-->
+      <GridPane fx:id="gridPane" maxWidth="-Infinity" maxHeight="-Infinity" alignment="CENTER" BorderPane.alignment="CENTER_LEFT" BorderPane.margin="$Insets">
       </GridPane>
    </left>
    <right>
-      <VBox>
-         <Label fx:id="infoLabel" text=""/>
-         <Button onAction="#updateImages" text="Next Turn" GridPane.rowIndex="3" BorderPane.alignment="CENTER_RIGHT" BorderPane.margin="$Insets" />
+      <VBox HBox.hgrow="ALWAYS" fx:id="rightContainer">
+         <VBox VBox.vgrow="ALWAYS" style="-fx-pref-height: 70%;">
+            <Label fx:id="infoLabel" text="" VBox.vgrow="NEVER" style="-fx-text-fill: white;">
+               <VBox.margin>
+                  <Insets top="10" right="10"/>
+               </VBox.margin>
+            </Label>
+            <Region VBox.vgrow="ALWAYS" />
+            <Button onAction="#updateImages" text="Next Turn">
+               <VBox.margin>
+                  <Insets bottom="10" right="10"/>
+               </VBox.margin>
+            </Button>
+            <Button text="Restart game">
+               <VBox.margin>
+                  <Insets bottom="10" right="10"/>
+               </VBox.margin>
+            </Button>
+         </VBox>
+         <HBox fx:id="notificationsContainer" VBox.vgrow="ALWAYS" style="-fx-pref-height: 30%;">
+            <Label fx:id="notificationsLabel">Lorem ipsum dolor sit amet .</Label>
+         </HBox>
       </VBox>
    </right>
    <padding>
       <Insets fx:id="Insets" left="0" top="0" right="0" bottom="0"/>
    </padding>
 </BorderPane>
-
+-->

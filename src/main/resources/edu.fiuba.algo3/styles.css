@@ -1,3 +1,13 @@
+@font-face {
+    font-family: 'Press Start 2P';
+    src: url('PressStart2P-Regular.ttf');
+}
+
+* {
+    -fx-font-family: 'Press Start 2P';
+    -fx-text-fill: white;
+}
+
 .button {
     -fx-padding: 10px 0;
     -fx-pref-width: 250px;
@@ -18,6 +28,7 @@
 .button :hover {
     -fx-background-color: radial-gradient(center 50% 50%, radius 50%, rgba(54, 73, 108, 0.89) 0%, rgb(177, 230, 239) 100%);
     -fx-effect: dropshadow(gaussian, rgba(24, 35, 210, 0.16), 5, 0, 0, 0);
+    -fx-cursor: hand;
 }
 
 .button :pressed {
@@ -33,7 +44,6 @@
     -fx-font-size: 30px;
     -fx-font-weight: lighter;
     -fx-focus-traversable: false;
-    -fx-max-width: 600;
     -fx-text-fill: white;
 
 }
@@ -48,8 +58,28 @@
     -fx-background-size: cover;
 }
 
-
+.playing-background {
+    -fx-background-color: #303030;
+}
 
 #infoLabel {
     -fx-font-size: 20;
+}
+
+.board-plot {
+    -fx-margin: 0;
+}
+
+.board-plot:hover {
+    -fx-effect: innershadow(gaussian, white, 2, 1.0, 0, 0);
+    -fx-cursor: hand;
+}
+
+#rightContainer {
+    -fx-margin: 100px;
+}
+
+#notificationsTextArea {
+    -fx-background-color: #000000;
+    -fx-border-color: white;
 }
