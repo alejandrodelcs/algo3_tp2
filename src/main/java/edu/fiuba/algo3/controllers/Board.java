@@ -6,7 +6,6 @@ import edu.fiuba.algo3.modelo.gameboard.GameBoard;
 import edu.fiuba.algo3.App;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
-import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
@@ -19,10 +18,8 @@ import javafx.stage.Stage;
 
 import java.awt.*;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class Board extends controler {
@@ -63,6 +60,7 @@ public class Board extends controler {
         stackPane.setOnMouseClicked(someEvent -> {
             if(gameBoard.availableForBuilding(point) && (!gameBoard.isEnemyPath(backwards))){
                     Stage newWindow = createDefensesMenuWindow();
+                    newWindow.getScene().getStylesheets().add(getClass().getResource("/edu.fiuba.algo3/styles.css").toExternalForm());
                     Button whiteTowerButton = createWhiteTowerButton();
                     whiteTowerButton.setOnAction(e->{
                         whiteTowerButtonEvent(stackPane, clickedRow, clickedColumn);
@@ -89,25 +87,23 @@ public class Board extends controler {
                         sandyTrapButtonEvent(stackPane, clickedRow, clickedColumn);
                         newWindow.close();
                     });
-                    createDefensesOnEnemyPatchMenuStack(sandyTrapButton, newWindow);
+                    createDefensesOnEnemyPathMenuStack(sandyTrapButton, newWindow);
                     newWindow.showAndWait();
                 }
             }
         });
     }
 
-    private void createDefensesOnEnemyPatchMenuStack(Button sandyTrapButton, Stage newWindow) {
+    private void createDefensesOnEnemyPathMenuStack(Button sandyTrapButton, Stage newWindow) {
         var bottomStackPane = new StackPane(new HBox(
                 sandyTrapButton
         ));
-
         Text text = new Text();
         text.setText("Pick a Defense: ");
         var verticalStackPane = new StackPane(new VBox(
                 text,
                 bottomStackPane
         ));
-
         verticalStackPane.setAlignment(Pos.TOP_CENTER);
         newWindow.setScene(new Scene(verticalStackPane, 400, 400));
     }

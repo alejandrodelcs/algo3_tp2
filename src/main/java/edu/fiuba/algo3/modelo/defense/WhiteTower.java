@@ -17,6 +17,6 @@ public class WhiteTower extends Tower{
 
     @Override
     public ImageView getImage() {
-        return new ImageView(new Image(getClass().getResource("/img/tower2.png").toString(),true));
+        return new ImageView(new Image(getClass().getResource("/img/magic2.png").toString(),true));
     }
 }

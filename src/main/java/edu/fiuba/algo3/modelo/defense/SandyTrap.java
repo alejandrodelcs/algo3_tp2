@@ -17,7 +17,7 @@ public class SandyTrap extends Trap {
 
     @Override
     public ImageView getImage() {
-        return new ImageView(new Image(getClass().getResource("/img/magic2.png").toString(),true));
+        return new ImageView(new Image(getClass().getResource("/img/sandyTrapCastle.png").toString(),true));
     }
 
 }
