@@ -39,7 +39,7 @@
       </HBox>
       <VBox VBox.vgrow="ALWAYS" style="-fx-pref-height: 70%;">
          <AnchorPane VBox.vgrow="ALWAYS">
-            <TextArea fx:id="consoleTextArea" editable="false" wrapText="true" AnchorPane.topAnchor="0.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" style="-fx-control-inner-background: black; -fx-text-fill: white;" text="Events"/>
+            <TextArea fx:id="consoleTextArea" editable="false" wrapText="true" AnchorPane.topAnchor="0.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" style="-fx-control-inner-background: black; -fx-text-fill: white;" text=""/>
          </AnchorPane>
       </VBox>
    </VBox>
