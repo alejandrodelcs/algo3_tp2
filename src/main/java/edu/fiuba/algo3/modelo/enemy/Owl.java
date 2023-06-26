@@ -27,8 +27,9 @@ public class Owl extends Enemy {
     }
 
     @Override
-    public String Show() {
-        return "Owl";
+    public String show() {
+        return ("Owl:\n\tSpeed: " + move.getSpeed() + "\n\tDamage: " + damage.getQuantity() + "\n\tHealth: " + health.getHealthPoints());
+
     }
 
     @Override

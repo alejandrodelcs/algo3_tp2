@@ -22,14 +22,8 @@ public class Dirt extends Plot{
     @Override
     public void setEnemy(ArrayList<Enemy> enemyList) {this.enemyArrayList = enemyList;}
     @Override
-    public String display() {
-        if(state.itsOccupied()){return "|&|";}
-        else{
-            if(enemyArrayList == null || enemyArrayList.isEmpty()){
-                return "...";
-            }
-            return "ooo";
-        }
+    public String show() {
+        return "Dirt";
     }
     @Override
     public ArrayList<Enemy> enemiesInPlot(){

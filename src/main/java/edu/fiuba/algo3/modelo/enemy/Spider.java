@@ -34,8 +34,8 @@ public class Spider extends Enemy {
         this.visible = true;
     }
     @Override
-    public String Show() {
-        return "Spider";
+    public String show() {
+        return ("Spider:\n\tSpeed: " + move.getSpeed() + "\n\tDamage: " + damage.getQuantity() + "\n\tHealth: " + health.getHealthPoints());
     }
     @Override
     public ImageView getImage() {

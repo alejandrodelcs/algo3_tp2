@@ -24,13 +24,8 @@ public class Path extends Plot{
     public void setEnemy(ArrayList<Enemy> enemyList) {this.enemyArrayList = enemyList;}
     public void addEnemyToPath(Enemy newEnemy){ this.enemyArrayList.add(newEnemy); }
     @Override
-    public String display() {
-        if (defense != null) {
-            return "~~~";
-        } else if(enemyArrayList == null || enemyArrayList.isEmpty()){
-            return "zzz";
-        }
-        return "ooo";
+    public String show() {
+        return "Path";
     }
     @Override
     public ArrayList<Enemy> enemiesInPlot(){

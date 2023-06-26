@@ -29,5 +29,7 @@ public abstract class Defense {
 
     public abstract ImageView getImage();
 
+    public abstract String show();
+
 
 }

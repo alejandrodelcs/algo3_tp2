@@ -2,9 +2,11 @@ package edu.fiuba.algo3.controllers;
 import edu.fiuba.algo3.modelo.AlgoDefense;
 import edu.fiuba.algo3.modelo.Logger;
 import edu.fiuba.algo3.modelo.defense.*;
+import edu.fiuba.algo3.modelo.enemy.Enemy;
 import edu.fiuba.algo3.modelo.exceptions.InsufficientCredits;
 import edu.fiuba.algo3.modelo.gameboard.GameBoard;
 import edu.fiuba.algo3.App;
+import edu.fiuba.algo3.modelo.gameboard.Plot;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
 import javafx.geometry.Rectangle2D;
@@ -17,10 +19,10 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
-import javafx.scene.paint.Paint;
 import javafx.scene.text.Text;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 import java.awt.*;
 
@@ -121,7 +123,7 @@ public class Board extends controler {
     private void silverTowerButtonEvent(StackPane stackPane, int clickedRow, int clickedColumn) {
         DefenseFactory silverFactory = new SilverTowerFactory();
         try{
-            ImageView imageView = buildImageViewOfDefense(new Image(getClass().getResource("/img/silverTower.png").toString(), true));
+            ImageView imageView = buildImageViewOfDefense(new Image(getClass().getResource("/img/under-contruction.png").toString(), true));
             Point coordinatesToADirt = new Point(clickedRow,clickedColumn);
             Defense silverTower = silverFactory.createDefense(coordinatesToADirt);
             algoDefense.buildsADefense(silverTower);
@@ -135,7 +137,7 @@ public class Board extends controler {
     private void whiteTowerButtonEvent(StackPane stackPane, int clickedRow, int clickedColumn) {
         DefenseFactory whiteFactory = new WhiteTowerFactory();
         try{
-            ImageView whiteTowerImageView = buildImageViewOfDefense(new Image(getClass().getResource("/img/magic2.png").toString(), true));
+            ImageView whiteTowerImageView = buildImageViewOfDefense(new Image(getClass().getResource("/img/under-contruction.png").toString(), true));
             Point coordinatesToADirt = new Point(clickedRow,clickedColumn);
             Defense whiteTower = whiteFactory.createDefense(coordinatesToADirt);
             algoDefense.buildsADefense(whiteTower);
@@ -254,7 +256,26 @@ public class Board extends controler {
     }
 
     private StackPane loadCellImage(int row, int column) {
-        return gameBoard.getStackPane(row, column, terrainImages);
+        StackPane stackPane = gameBoard.getStackPane(row, column, terrainImages);
+        Plot info = gameBoard.getPlot(row, column);
+        StringBuilder plotInfoBuilder = new StringBuilder();
+        plotInfoBuilder.append(info.show()).append(" (").append(row).append(", ").append(column).append(")");
+
+        for (Enemy enemy : info.enemiesInPlot()) {
+            plotInfoBuilder.append("\n\n").append(enemy.show());
+        }
+
+        if (info.getDefense() != null) {
+            plotInfoBuilder.append("\n\n").append(info.getDefense().show());
+        }
+
+        String plotInfo = plotInfoBuilder.toString();
+        Tooltip tooltip = new Tooltip(plotInfo);
+        tooltip.getStyleClass().add("tooltipStyle");
+        tooltip.setShowDelay(Duration.millis(100));
+        Tooltip.install(stackPane, tooltip);
+
+        return stackPane;
     }
 
     @FXML
