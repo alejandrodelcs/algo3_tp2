@@ -66,7 +66,7 @@ public class Player {
     }
 
     public String playerInfo(){
-        return playersName + "\nCurrent life: " + playersLifePoints.getHealthPoints() + "\nCredits: "+ playersCredits.getQuantity();
+        return "Player Name:" + playersName + "\nCurrent life: " + playersLifePoints.getHealthPoints() + "\nCredits: "+ playersCredits.getQuantity();
     }
     public boolean hasFunds() {
         return playersCredits.arePositive();
