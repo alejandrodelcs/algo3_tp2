@@ -26,10 +26,12 @@ public abstract class Defense {
     public void destructed(){
         state = new DestructedState();
     };
-
     public abstract ImageView getImage();
 
     public abstract String show();
 
 
+    public boolean isAvailable() {
+        return state.getClass() == OperationalState.class;
+    }
 }

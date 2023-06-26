@@ -9,7 +9,6 @@ import edu.fiuba.algo3.App;
 import edu.fiuba.algo3.modelo.gameboard.Plot;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
-import javafx.geometry.Rectangle2D;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
@@ -20,7 +19,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
-import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
@@ -88,7 +86,7 @@ public class Board extends controler {
                     createDefensesMenuStack(silverTowerButton,whiteTowerButton, newWindow);
                     newWindow.showAndWait();
 
-            }else if( (gameBoard.isEnemyPath(backwards)) ){
+            }else if( (gameBoard.isEnemyPath(backwards)) && gameBoard.availableForBuilding(point)){
                 if (gameBoard.isStart(backwards)  || (gameBoard.isFinish(backwards))) {
                     alertStartFinish();
                 }
@@ -110,7 +108,7 @@ public class Board extends controler {
         DefenseFactory sandyFactory = new SandyTrapFactory();
 
         try{
-            ImageView imageView = buildImageViewOfDefense(new Image(getClass().getResource("/img/sandyTrapCastle.jpeg").toString(), true));
+            ImageView imageView = buildImageViewOfDefense(new Image(getClass().getResource("/img/sandyTrap.png").toString(), true));
             Point coordinatesToEnemyPath = new Point(clickedRow,clickedColumn);
             Defense sandyTrap = sandyFactory.createDefense(coordinatesToEnemyPath);
             algoDefense.buildsADefense(sandyTrap);
@@ -149,7 +147,7 @@ public class Board extends controler {
     }
     private Button createSandyTrapButton() {
         Button sandyTrapButton = new Button("Sandy Trap: \n Price: 25\n Availability:\n  Instant\n * Vanishes in\n  3 turns \n * Desaccelerate\n enemies by 50% ");
-        ImageView imageViewSilverTower = new ImageView(getClass().getResource("/img/sandyTrapCastle.jpeg").toString());
+        ImageView imageViewSilverTower = new ImageView(getClass().getResource("/img/sandyTrap.png").toString());
         imageViewSilverTower.setFitHeight(100);
         imageViewSilverTower.setPreserveRatio(true);
         sandyTrapButton.setGraphic(imageViewSilverTower);
