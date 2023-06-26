@@ -23,7 +23,7 @@ public class FinishLine extends Path{
     public void addEnemyToPath(Enemy newEnemy){ this.enemyArrayList.add(newEnemy); }
     @Override
     public String show() {
-        return "Finish Line";
+        return "Finish";
     }
     @Override
     public ArrayList<Enemy> enemiesInPlot(){

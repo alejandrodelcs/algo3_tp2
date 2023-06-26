@@ -70,11 +70,12 @@ public class GameBoard {
    public ArrayList<Point> constructPath(){
         enemyPath = new ArrayList<Point>();
         Plot aPath = new Path();
+        Plot finishLine = new FinishLine();
         Plot aFinish = new FinishLine();
         for (int i = 0; i < plots.length; i++) {
             for (int j = 0; j < plots[i].length; j++) {
                 //TODO Check this below
-                if(plots[i][j].getClass() == aPath.getClass()){
+                if((plots[i][j].getClass() == aPath.getClass()) || (plots[i][j].getClass() == finishLine.getClass())){
                     Point aPoint = new Point(j, i);
                     enemyPath.add(aPoint);
                 }

@@ -17,6 +17,4 @@ class GameBoardTest {
         gameboard.printMap();
 
     }
-
-
 }
