@@ -288,8 +288,12 @@ public class Board extends controler {
             plotInfoBuilder.append("\n\n").append(enemy.show());
         }
 
-        if (info.getDefense() != null) {
-            plotInfoBuilder.append("\n\n").append(info.getDefense().show());
+        try {
+            if (!(gameBoard.availableForBuilding(new Point(row, column)))) {
+                plotInfoBuilder.append("\n\n").append(info.getDefense().show());
+            }
+        } catch (NonConstructibleArea e) {
+            plotInfoBuilder.append("");
         }
 
         String plotInfo = plotInfoBuilder.toString();
