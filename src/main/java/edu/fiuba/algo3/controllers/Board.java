@@ -275,7 +275,7 @@ public class Board extends controler {
     }
 
     @FXML
-    private void updateImages() throws IOException {
+    private void updateImages(){
         gridPane.getChildren().clear();
         algoDefense.nextTurn();
         explitDatos();
