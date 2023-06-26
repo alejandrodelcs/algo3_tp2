@@ -70,4 +70,9 @@ public class Turn {
         }
         return enemy.generateCredits();
     }
+
+    public String getCurrentTurn() {
+        String turn = "" + currentTurn;
+        return turn;
+    }
 }
