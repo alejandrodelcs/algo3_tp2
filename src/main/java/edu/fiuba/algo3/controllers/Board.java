@@ -9,6 +9,7 @@ import edu.fiuba.algo3.App;
 import edu.fiuba.algo3.modelo.gameboard.Plot;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
@@ -19,14 +20,17 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
 import java.awt.*;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+
 
 public class Board extends controler {
 
@@ -272,12 +276,21 @@ public class Board extends controler {
     }
 
     @FXML
-    private void updateImages(){
+    private void updateImages() throws IOException {
         gridPane.getChildren().clear();
         algoDefense.nextTurn();
         explitDatos();
         String updatedStats = algoDefense.getPlayerInfo();
         infoLabel.setText(updatedStats);
+        if(algoDefense.gameOver()){
+            if(algoDefense.getPlayer().isAlive()){
+                App.setRoot("WIN");
+            }
+            else{
+                App.setRoot("LOSS");
+            }
+
+        }
         printMap();
     }
 
@@ -316,6 +329,6 @@ public class Board extends controler {
     }
     @FXML
     private void explitDatos(){
-        consoleTextArea.setText(Logger.getExit());
+        consoleTextArea.setText(Logger.getExit() + "\n ////////////////////////////////");
     }
 }

@@ -12,7 +12,7 @@ public class Logger {
     public static Logger get() {
         return singleton;
     }
-    public static String getExit(){return exit;}
+    public static String getExit(){return exit ;}
 
     public void toggle(boolean bool){
         loggerEnable = bool;
@@ -20,7 +20,7 @@ public class Logger {
     public void log(String loggedMessage) {
         if (loggerEnable) {
             System.out.println(loggedMessage);
-            exit = exit + loggedMessage + '\n';
+            exit = exit + loggedMessage + "\n";
         }
     }
 }
