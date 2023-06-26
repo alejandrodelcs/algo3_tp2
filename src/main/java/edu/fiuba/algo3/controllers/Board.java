@@ -113,6 +113,7 @@ public class Board extends controler {
             Defense sandyTrap = sandyFactory.createDefense(coordinatesToEnemyPath);
             algoDefense.buildsADefense(sandyTrap);
             String updatedStats = algoDefense.getPlayerInfo();
+            updatedStats += "\nTurn: " + algoDefense.getCurrentTurn();
             infoLabel.setText(updatedStats);
 
             stackPane.getChildren().add(imageView);
@@ -128,6 +129,7 @@ public class Board extends controler {
             Defense silverTower = silverFactory.createDefense(coordinatesToADirt);
             algoDefense.buildsADefense(silverTower);
             String updatedStats = algoDefense.getPlayerInfo();
+            updatedStats += "\nTurn: " + algoDefense.getCurrentTurn();
             infoLabel.setText(updatedStats);
 
             stackPane.getChildren().add(imageView);
@@ -288,6 +290,7 @@ public class Board extends controler {
         algoDefense.nextTurn();
         explitDatos();
         String updatedStats = algoDefense.getPlayerInfo();
+        updatedStats += "\nTurn: " + algoDefense.getCurrentTurn();
         infoLabel.setText(updatedStats);
         if(algoDefense.gameOver()){
             if(algoDefense.getPlayer().isAlive()){
@@ -305,6 +308,7 @@ public class Board extends controler {
         algoDefense.reset(algoDefense.getPlayer());
         gameBoard = App.algodefense.getGameboard();
         String updatedStats = algoDefense.getPlayerInfo();
+        updatedStats += "\nTurn: " + algoDefense.getCurrentTurn();
         infoLabel.setText(updatedStats);
         printMap();
     }
@@ -318,6 +322,7 @@ public class Board extends controler {
         aTerrainImage = new Image(getClass().getResource("/img/rock2.png").toString(), true);
         terrainImages.add(aTerrainImage);
         String updatedStats = algoDefense.getPlayerInfo();
+        updatedStats += "\nTurn: " + algoDefense.getCurrentTurn();
         infoLabel.setText(updatedStats);
         consoleTextArea.setText("Welcome to AlgoDefense! Your goal is to avoid enemies reach the end of the path by building" +
                 " defenses over the plots across the map. Just click on any plot to know which defenses you can build there.\n" +

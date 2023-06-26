@@ -145,4 +145,8 @@ public class AlgoDefense {
     public Player getPlayer(){
         return player;
     }
+
+    public String getCurrentTurn() {
+        return turn.getCurrentTurn();
+    }
 }
