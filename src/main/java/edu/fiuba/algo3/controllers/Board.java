@@ -297,6 +297,9 @@ public class Board extends controler {
     @FXML
     public void resetGame() {
         algoDefense.reset(algoDefense.getPlayer());
+        gameBoard = App.algodefense.getGameboard();
+        String updatedStats = algoDefense.getPlayerInfo();
+        infoLabel.setText(updatedStats);
         printMap();
     }
 
