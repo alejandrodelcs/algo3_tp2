@@ -7,9 +7,9 @@
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" nodeOrientation="RIGHT_TO_LEFT" prefHeight="400.0" prefWidth="600.0" styleClass="background" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" nodeOrientation="RIGHT_TO_LEFT" prefHeight="509.0" prefWidth="853.0" styleClass="background" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
     <children>
-        <Label alignment="CENTER" contentDisplay="RIGHT" layoutX="-1.0" layoutY="106.0" prefHeight="136.0" prefWidth="600.0" stylesheets="@styles.css" text="YOU LOST" textAlignment="CENTER" textOverrun="WORD_ELLIPSIS">
+        <Label alignment="CENTER" contentDisplay="RIGHT" layoutX="34.0" layoutY="106.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="136.0" prefWidth="565.0" stylesheets="@styles.css" text="YOU LOSE" textOverrun="CENTER_WORD_ELLIPSIS">
             <font>
                 <Font name="Onyx" size="55.0" />
             </font>
