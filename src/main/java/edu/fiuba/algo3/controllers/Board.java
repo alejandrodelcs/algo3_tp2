@@ -112,6 +112,8 @@ public class Board extends controler {
             Point coordinatesToEnemyPath = new Point(clickedRow,clickedColumn);
             Defense sandyTrap = sandyFactory.createDefense(coordinatesToEnemyPath);
             algoDefense.buildsADefense(sandyTrap);
+            String updatedStats = algoDefense.getPlayerInfo();
+            infoLabel.setText(updatedStats);
 
             stackPane.getChildren().add(imageView);
         }catch  (InsufficientCredits insufficientCredits){
@@ -125,6 +127,8 @@ public class Board extends controler {
             Point coordinatesToADirt = new Point(clickedRow,clickedColumn);
             Defense silverTower = silverFactory.createDefense(coordinatesToADirt);
             algoDefense.buildsADefense(silverTower);
+            String updatedStats = algoDefense.getPlayerInfo();
+            infoLabel.setText(updatedStats);
 
             stackPane.getChildren().add(imageView);
         }catch  (InsufficientCredits insufficientCredits){
@@ -139,6 +143,8 @@ public class Board extends controler {
             Point coordinatesToADirt = new Point(clickedRow,clickedColumn);
             Defense whiteTower = whiteFactory.createDefense(coordinatesToADirt);
             algoDefense.buildsADefense(whiteTower);
+            String updatedStats = algoDefense.getPlayerInfo();
+            infoLabel.setText(updatedStats);
 
             stackPane.getChildren().add(whiteTowerImageView);
         }catch  (InsufficientCredits insufficientCredits){
