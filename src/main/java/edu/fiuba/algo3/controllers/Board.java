@@ -123,7 +123,7 @@ public class Board extends controler {
     private void silverTowerButtonEvent(StackPane stackPane, int clickedRow, int clickedColumn) {
         DefenseFactory silverFactory = new SilverTowerFactory();
         try{
-            ImageView imageView = buildImageViewOfDefense(new Image(getClass().getResource("/img/underconstruction.png").toString(), true));
+            ImageView imageView = buildImageViewOfDefense(new Image(getClass().getResource("/img/under-contruction.png").toString(), true));
             Point coordinatesToADirt = new Point(clickedRow,clickedColumn);
             Defense silverTower = silverFactory.createDefense(coordinatesToADirt);
             algoDefense.buildsADefense(silverTower);
@@ -137,7 +137,7 @@ public class Board extends controler {
     private void whiteTowerButtonEvent(StackPane stackPane, int clickedRow, int clickedColumn) {
         DefenseFactory whiteFactory = new WhiteTowerFactory();
         try{
-            ImageView whiteTowerImageView = buildImageViewOfDefense(new Image(getClass().getResource("/img/underconstruction.png").toString(), true));
+            ImageView whiteTowerImageView = buildImageViewOfDefense(new Image(getClass().getResource("/img/under-contruction.png").toString(), true));
             Point coordinatesToADirt = new Point(clickedRow,clickedColumn);
             Defense whiteTower = whiteFactory.createDefense(coordinatesToADirt);
             algoDefense.buildsADefense(whiteTower);
