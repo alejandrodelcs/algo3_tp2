@@ -76,5 +76,8 @@ public class Player {
         return playersCredits.getQuantity();
     }
 
+    public Player resetStats() {
+        return new Player(playersName);
+    }
 }
 
