@@ -275,6 +275,11 @@ public class Board extends controler {
         }
         printMap();
     }
+    @FXML
+    public void resetGame() {
+        algoDefense.reset(algoDefense.getPlayer());
+        printMap();
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

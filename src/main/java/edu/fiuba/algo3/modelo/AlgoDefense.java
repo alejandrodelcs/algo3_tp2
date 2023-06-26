@@ -54,6 +54,14 @@ public class AlgoDefense {
         this.owlFactory = new OwlFactory();
 
     }
+    public void reset(Player aPLayer){
+        this.state = new Active();
+        this.player = aPLayer;
+        this.gameboard = new GameboardFacade().loadMap();
+        this.defenses = new ArrayList<Defense>();
+        this.enemyStrategy = new EnemyFacade().loadEnemiesStrategy();
+        this.turn = new Turn(enemyStrategy);
+    }
     public void nextTurn(){
         state.passTurn(this);
     }
