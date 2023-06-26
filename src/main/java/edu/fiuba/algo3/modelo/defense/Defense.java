@@ -32,6 +32,6 @@ public abstract class Defense {
 
 
     public boolean isAvailable() {
-        return state.getClass() == OperationalState.class;
+        return state.getClass() != DestructedState.class;
     }
 }
