@@ -11,6 +11,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
 
+import java.awt.*;
 import java.util.ArrayList;
 
 public class Path extends Plot{
@@ -54,6 +55,7 @@ public class Path extends Plot{
     }
     @Override
     public StackPane getStackPane(ArrayList<Image> terrainImages) {
+
         StackPane aStackPane = new StackPane();
         ImageView mainImageView = new ImageView(terrainImages.get(0));
         mainImageView.setFitHeight(50);
@@ -76,6 +78,7 @@ public class Path extends Plot{
                 aStackPane.getChildren().add(enemyImage);
             }
         }
+
         aStackPane.maxHeight(50);
         aStackPane.maxWidth(50);
         return aStackPane;
