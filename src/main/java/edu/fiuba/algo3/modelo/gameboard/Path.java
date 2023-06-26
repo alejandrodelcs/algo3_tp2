@@ -50,9 +50,7 @@ public class Path extends Plot{
 
     @Override
     public void removeDefense(Defense defense) {
-        if(defense.equals(Trap.class)){
             this.state = new Available();
-        }
     }
     @Override
     public StackPane getStackPane(ArrayList<Image> terrainImages) {
@@ -62,6 +60,13 @@ public class Path extends Plot{
         mainImageView.setFitWidth(50);
         mainImageView.setPreserveRatio(true);
         aStackPane.getChildren().add(mainImageView);
+        if (defense != null && this.state.itsOccupied() && defense.isAvailable()) {
+            ImageView defenseImageView = defense.getImage();
+            defenseImageView.setFitHeight(50);
+            defenseImageView.setFitWidth(50);
+            defenseImageView.setPreserveRatio(true);
+            aStackPane.getChildren().add(defenseImageView);
+        }
         if (enemyArrayList != null) {
             for (Enemy enemy : enemyArrayList) {
                 ImageView enemyImage = enemy.getImage();
