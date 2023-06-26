@@ -14,6 +14,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
@@ -278,7 +279,7 @@ public class Board extends controler {
     }
 
     @FXML
-    private void updateImages(){
+    private void updateImages() throws IOException {
         gridPane.getChildren().clear();
         algoDefense.nextTurn();
         explitDatos();
