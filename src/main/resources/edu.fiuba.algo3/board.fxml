@@ -30,7 +30,7 @@
                   <Insets bottom="10" right="10"/>
                </VBox.margin>
             </Button>
-            <Button text="Restart game">
+            <Button onAction="#resetGame" text="Restart game">
                <VBox.margin>
                   <Insets bottom="10" right="10"/>
                </VBox.margin>
