@@ -57,7 +57,6 @@ public class AlgoDefense {
     public void reset(Player aPLayer){
         this.state = new Active();
         this.player = aPLayer.resetStats();
-        this.player = aPLayer;
         this.gameboard = new GameboardFacade().loadMap();
         this.defenses = new ArrayList<Defense>();
         this.enemyStrategy = new EnemyFacade().loadEnemiesStrategy();
