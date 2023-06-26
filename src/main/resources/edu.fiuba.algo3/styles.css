@@ -37,6 +37,11 @@
     -fx-translate-y: 0.93;
 }
 
+#musicButton {
+    -fx-padding: 5px;
+    -fx-pref-width: 38px;
+    -fx-pref-height: 38px;
+}
 
 #usernameField {
     -fx-background-color: rgba(0, 0, 0, 0.7);

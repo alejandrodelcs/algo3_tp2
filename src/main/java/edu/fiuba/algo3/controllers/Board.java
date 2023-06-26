@@ -20,6 +20,8 @@ import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -46,6 +48,9 @@ public class Board extends controler {
     private ArrayList<Image> terrainImages = new ArrayList<>();
     @FXML
     private TextArea consoleTextArea;
+    @FXML
+    private Button musicButton;
+    MediaPlayer mediaPlayer;
 
     @FXML
     private void printMap() {
@@ -328,6 +333,11 @@ public class Board extends controler {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        Media media = new Media(getClass().getResource("/sound/backMusic.mp3").toString());
+        this.mediaPlayer = new MediaPlayer(media);
+        mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
+        mediaPlayer.setVolume(0.3);
+        mediaPlayer.play();
         Image aTerrainImage = new Image(getClass().getResource("/img/path.png").toString(), true);
         terrainImages.add(aTerrainImage);
         aTerrainImage = new Image(getClass().getResource("/img/dirt.png").toString(), true);
@@ -375,5 +385,18 @@ public class Board extends controler {
     @FXML
     private void explitDatos(){
         consoleTextArea.setText(Logger.getExit() + "\n ////////////////////////////////");
+    }
+
+    @FXML
+    private void muteMusic() {
+        ImageView innerButtonImg = (ImageView) musicButton.getGraphic();
+        if (mediaPlayer.isMute()) {
+            mediaPlayer.setMute(false);
+            innerButtonImg.setImage(new Image(getClass().getResource("/img/sound-on.png").toString()));
+
+        } else {
+            mediaPlayer.setMute(true);
+            innerButtonImg.setImage(new Image(getClass().getResource("/img/sound-off.png").toString()));
+        }
     }
 }
