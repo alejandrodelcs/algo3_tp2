@@ -122,7 +122,7 @@ public class Board extends controler {
     private void silverTowerButtonEvent(StackPane stackPane, int clickedRow, int clickedColumn) {
         DefenseFactory silverFactory = new SilverTowerFactory();
         try{
-            ImageView imageView = buildImageViewOfDefense(new Image(getClass().getResource("/img/silverTower.png").toString(), true));
+            ImageView imageView = buildImageViewOfDefense(new Image(getClass().getResource("/img/underconstruction.png").toString(), true));
             Point coordinatesToADirt = new Point(clickedRow,clickedColumn);
             Defense silverTower = silverFactory.createDefense(coordinatesToADirt);
             algoDefense.buildsADefense(silverTower);
@@ -136,7 +136,7 @@ public class Board extends controler {
     private void whiteTowerButtonEvent(StackPane stackPane, int clickedRow, int clickedColumn) {
         DefenseFactory whiteFactory = new WhiteTowerFactory();
         try{
-            ImageView whiteTowerImageView = buildImageViewOfDefense(new Image(getClass().getResource("/img/magic2.png").toString(), true));
+            ImageView whiteTowerImageView = buildImageViewOfDefense(new Image(getClass().getResource("/img/underconstruction.png").toString(), true));
             Point coordinatesToADirt = new Point(clickedRow,clickedColumn);
             Defense whiteTower = whiteFactory.createDefense(coordinatesToADirt);
             algoDefense.buildsADefense(whiteTower);
@@ -264,11 +264,14 @@ public class Board extends controler {
             plotInfoBuilder.append("\n\n").append(enemy.show());
         }
 
+        if (info.getDefense() != null) {
+            plotInfoBuilder.append("\n\n").append(info.getDefense().show());
+        }
+
         String plotInfo = plotInfoBuilder.toString();
         Tooltip tooltip = new Tooltip(plotInfo);
         tooltip.getStyleClass().add("tooltipStyle");
         tooltip.setShowDelay(Duration.millis(100));
-        //tooltip.setHideDelay(Duration.INDEFINITE);
         Tooltip.install(stackPane, tooltip);
 
         return stackPane;

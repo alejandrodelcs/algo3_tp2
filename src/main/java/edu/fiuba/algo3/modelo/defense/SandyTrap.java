@@ -20,4 +20,8 @@ public class SandyTrap extends Trap {
         return new ImageView(new Image(getClass().getResource("/img/sandyTrapCastle.png").toString(),true));
     }
 
+    public String show(){
+        return "Sandy Trap:\n\tPrice: " + getCredits().getQuantity() + "\n\tDescription: 50% slows down all enemies";
+    }
+
 }
