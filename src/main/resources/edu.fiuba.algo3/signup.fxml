@@ -15,9 +15,9 @@
             <Image url="@../img/logo.png"/>
         </ImageView>
     </StackPane>
-    <TextField fx:id="usernameField" promptText="Please enter your name here!"  GridPane.columnIndex="1" GridPane.rowIndex="1" />
+    <TextField fx:id="usernameField" promptText="Please enter your name here!"  GridPane.columnIndex="1" GridPane.rowIndex="1"  onKeyPressed="#handleEnterPress" />
 
-    <Button onAction="#handleSignup" styleClass="button" text="¡Play!" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER" />
+    <Button fx:id="playButton" onAction="#handleSignup" styleClass="button" text="¡Play!" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER" />
     <padding><Insets bottom="100" left="100" right="100" top="100" /></padding>
 
 </VBox>
