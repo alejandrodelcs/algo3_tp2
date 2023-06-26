@@ -1,4 +1,5 @@
 package edu.fiuba.algo3.controllers;
+
 import edu.fiuba.algo3.modelo.AlgoDefense;
 import edu.fiuba.algo3.modelo.Logger;
 import edu.fiuba.algo3.modelo.defense.*;
@@ -7,7 +8,6 @@ import edu.fiuba.algo3.modelo.gameboard.GameBoard;
 import edu.fiuba.algo3.App;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
-import javafx.geometry.Rectangle2D;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
@@ -19,18 +19,15 @@ import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import javafx.scene.text.Text;
-import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 
 import java.awt.*;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
-
 
 public class Board extends controler {
 
@@ -61,41 +58,40 @@ public class Board extends controler {
                 gridPane.add(stackPane, j, i);
                 final int clickedRow = i;
                 final int clickedColumn = j;
-                Point point = new Point(i,j);
-                Point backwards = new Point(j,i); //TODO: REVERT X Y so this variable won't be used anymore
+                Point point = new Point(i, j);
+                Point backwards = new Point(j, i); //TODO: REVERT X Y so this variable won't be used anymore
                 pickADefenseEvent(stackPane, point, backwards, clickedRow, clickedColumn);
             }
         }
     }
 
-    private void pickADefenseEvent(StackPane stackPane,Point point, Point backwards, int clickedRow, int clickedColumn) {
+    private void pickADefenseEvent(StackPane stackPane, Point point, Point backwards, int clickedRow, int clickedColumn) {
 
         stackPane.setOnMouseClicked(someEvent -> {
-            if(gameBoard.availableForBuilding(point) && (!gameBoard.isEnemyPath(backwards))){
+            if (gameBoard.availableForBuilding(point) && (!gameBoard.isEnemyPath(backwards))) {
                 Stage newWindow = createDefensesTowerMenuWindow();
                 Button whiteTowerButton = createWhiteTowerButton();
-                whiteTowerButton.setOnAction(e->{
-                        whiteTowerButtonEvent(stackPane, clickedRow, clickedColumn);
-                        newWindow.close();
-                    });
+                whiteTowerButton.setOnAction(e -> {
+                    whiteTowerButtonEvent(stackPane, clickedRow, clickedColumn);
+                    newWindow.close();
+                });
 
-                    Button silverTowerButton = createSilverTowerButton();
-                    silverTowerButton.setOnAction(e->{
-                        silverTowerButtonEvent(stackPane, clickedRow, clickedColumn);
-                        newWindow.close();
-                    });
+                Button silverTowerButton = createSilverTowerButton();
+                silverTowerButton.setOnAction(e -> {
+                    silverTowerButtonEvent(stackPane, clickedRow, clickedColumn);
+                    newWindow.close();
+                });
 
-                    createDefensesMenuStack(silverTowerButton,whiteTowerButton, newWindow);
-                    newWindow.showAndWait();
+                createDefensesMenuStack(silverTowerButton, whiteTowerButton, newWindow);
+                newWindow.showAndWait();
 
-            }else if( (gameBoard.isEnemyPath(backwards)) ){
-                if (gameBoard.isStart(backwards)  || (gameBoard.isFinish(backwards))) {
+            } else if ((gameBoard.isEnemyPath(backwards))) {
+                if (gameBoard.isStart(backwards) || (gameBoard.isFinish(backwards))) {
                     alertStartFinish();
-                }
-                else{
+                } else {
                     Stage newWindow = createDefensesTowerMenuWindow();
                     Button sandyTrapButton = createSandyTrapButton();
-                    sandyTrapButton.setOnAction(e->{
+                    sandyTrapButton.setOnAction(e -> {
                         sandyTrapButtonEvent(stackPane, clickedRow, clickedColumn);
                         newWindow.close();
                     });
@@ -109,44 +105,46 @@ public class Board extends controler {
     private void sandyTrapButtonEvent(StackPane stackPane, int clickedRow, int clickedColumn) {
         DefenseFactory sandyFactory = new SandyTrapFactory();
 
-        try{
+        try {
             ImageView imageView = buildImageViewOfDefense(new Image(getClass().getResource("/img/sandyTrapCastle.jpeg").toString(), true));
-            Point coordinatesToEnemyPath = new Point(clickedRow,clickedColumn);
+            Point coordinatesToEnemyPath = new Point(clickedRow, clickedColumn);
             Defense sandyTrap = sandyFactory.createDefense(coordinatesToEnemyPath);
             algoDefense.buildsADefense(sandyTrap);
 
             stackPane.getChildren().add(imageView);
-        }catch  (InsufficientCredits insufficientCredits){
+        } catch (InsufficientCredits insufficientCredits) {
             alertInssuficientCredits();
         }
     }
+
     private void silverTowerButtonEvent(StackPane stackPane, int clickedRow, int clickedColumn) {
         DefenseFactory silverFactory = new SilverTowerFactory();
-        try{
+        try {
             ImageView imageView = buildImageViewOfDefense(new Image(getClass().getResource("/img/silverTower.png").toString(), true));
-            Point coordinatesToADirt = new Point(clickedRow,clickedColumn);
+            Point coordinatesToADirt = new Point(clickedRow, clickedColumn);
             Defense silverTower = silverFactory.createDefense(coordinatesToADirt);
             algoDefense.buildsADefense(silverTower);
 
             stackPane.getChildren().add(imageView);
-        }catch  (InsufficientCredits insufficientCredits){
+        } catch (InsufficientCredits insufficientCredits) {
             alertInssuficientCredits();
         }
     }
 
     private void whiteTowerButtonEvent(StackPane stackPane, int clickedRow, int clickedColumn) {
         DefenseFactory whiteFactory = new WhiteTowerFactory();
-        try{
+        try {
             ImageView whiteTowerImageView = buildImageViewOfDefense(new Image(getClass().getResource("/img/magic2.png").toString(), true));
-            Point coordinatesToADirt = new Point(clickedRow,clickedColumn);
+            Point coordinatesToADirt = new Point(clickedRow, clickedColumn);
             Defense whiteTower = whiteFactory.createDefense(coordinatesToADirt);
             algoDefense.buildsADefense(whiteTower);
 
             stackPane.getChildren().add(whiteTowerImageView);
-        }catch  (InsufficientCredits insufficientCredits){
+        } catch (InsufficientCredits insufficientCredits) {
             alertInssuficientCredits();
         }
     }
+
     private Button createSandyTrapButton() {
         Button sandyTrapButton = new Button("Sandy Trap: \n Price: 25\n Availability:\n  Instant\n * Vanishes in\n  3 turns \n * Desaccelerate\n enemies by 50% ");
         ImageView imageViewSilverTower = new ImageView(getClass().getResource("/img/sandyTrapCastle.jpeg").toString());
@@ -157,6 +155,7 @@ public class Board extends controler {
         sandyTrapButton.setStyle(bringStyles());
         return sandyTrapButton;
     }
+
     private Button createSilverTowerButton() {
         Button silverTowerButton = new Button("Silver Tower: \n Price: 20 \n Range: 5\n Damage: 2\n Availability\n  2 turns");
         ImageView imageViewSilverTower = new ImageView(getClass().getResource("/img/silverTower.png").toString());
@@ -197,6 +196,7 @@ public class Board extends controler {
         newWindow.setScene(secondScene);
         return newWindow;
     }
+
     private void createDefensesMenuStack(Button silverTowerButton, Button whiteTowerButton, Stage newWindow) {
         var bottomStackPane = new StackPane(new HBox(
                 silverTowerButton,
@@ -260,21 +260,12 @@ public class Board extends controler {
     }
 
     @FXML
-    private void updateImages() throws IOException {
+    private void updateImages() {
         gridPane.getChildren().clear();
         algoDefense.nextTurn();
         explitDatos();
         String updatedStats = algoDefense.getPlayerInfo();
         infoLabel.setText(updatedStats);
-        if(algoDefense.gameOver()){
-            if(algoDefense.getPlayer().isAlive()){
-                App.setRoot("WIN");
-            }
-            else{
-                App.setRoot("LOSS");
-            }
-
-        }
         printMap();
     }
     @FXML
@@ -292,6 +283,18 @@ public class Board extends controler {
         aTerrainImage = new Image(getClass().getResource("/img/rock2.png").toString(), true);
         terrainImages.add(aTerrainImage);
         String updatedStats = algoDefense.getPlayerInfo();
+        consoleTextArea.setText("Welcome to AlgoDefense! Your goal is to avoid enemies reach the end of the path by building" +
+                " defenses over the plots across the map. Just click on any plot to know which defenses you can build there.\n" +
+                "Each defense has different prices and characteristics, so choose them carefully. Once you have finished building" +
+                " your defenses, click \"Next turn\" button to let enemies advance.\nWe initially provided you with " +
+                algoDefense.getPlayer().getPlayerCredits().getQuantity() + " credits to buy your first defenses.\nHow you gain" +
+                " more credits? As your defenses destroy enemies, they will provide you with some.\n Like your defenses, different" +
+                " enemies vary in skills. You can check their speed, life points and damage hovering your mouse over them.\n" +
+                "Ants and spiders don't do much. They just go through the path.\nMoles are a bit more annoying. As they go" +
+                " underground, towers can't harm them. You can just slow them down with sandy traps. Not only that, but also" +
+                " do they speed up as the game advances.\nLastly, the owls. They will do two straight lines (first vertically" +
+                " and then horizontally) to the end path. but if your towers damage them half their life points, they will go" +
+                " through the shortest way to the end.\nGood luck and thanks for playing!");
         infoLabel.setText(updatedStats);
         printMap();
     }
@@ -311,13 +314,15 @@ public class Board extends controler {
                 "    -fx-border-radius: 20px;\n" +
                 "    -fx-background-color: radial-gradient(center 20% 30%, radius 50%, rgba(75, 117, 137, 0.78) 0%, rgba(41, 87, 145, 0.72) 100%);";
     }
+
     private String setTextStyle() {
         return "    -fx-font-family: 'Press Start 2P';\n" +
                 "    -fx-font-size: 14px;\n" +
                 "    -fx-text-fill: #ffffff;";
     }
+
     @FXML
-    private void explitDatos(){
-        consoleTextArea.setText(Logger.getExit() + "\n ////////////////////////////////");
+    private void explitDatos() {
+        consoleTextArea.setText(Logger.getExit());
     }
 }
