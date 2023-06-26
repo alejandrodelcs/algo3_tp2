@@ -25,6 +25,7 @@ import javafx.scene.media.MediaPlayer;
 
 import java.awt.*;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -260,12 +261,20 @@ public class Board extends controler {
     }
 
     @FXML
-    private void updateImages() {
+    private void updateImages() throws IOException {
         gridPane.getChildren().clear();
         algoDefense.nextTurn();
         explitDatos();
         String updatedStats = algoDefense.getPlayerInfo();
         infoLabel.setText(updatedStats);
+        if(algoDefense.gameOver()){
+            if(algoDefense.getPlayer().isAlive()){
+                App.setRoot("WIN");
+            }
+            else{
+                App.setRoot("LOSS");
+            }
+        }
         printMap();
     }
     @FXML
@@ -274,6 +283,7 @@ public class Board extends controler {
         gameBoard = App.algodefense.getGameboard();
         String updatedStats = algoDefense.getPlayerInfo();
         infoLabel.setText(updatedStats);
+        consoleTextArea.setText("Game restarted.");
         printMap();
     }
 
@@ -325,7 +335,7 @@ public class Board extends controler {
     }
 
     @FXML
-    private void explitDatos() {
-        consoleTextArea.setText(Logger.getExit());
+    private void explitDatos(){
+        consoleTextArea.setText(Logger.getExit() + "\n ////////////////////////////////");
     }
 }
