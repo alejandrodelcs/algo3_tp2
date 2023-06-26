@@ -82,3 +82,11 @@
     -fx-background-color: #000000;
     -fx-border-color: white;
 }
+
+.cannotBuild {
+    -fx-effect: innershadow(gaussian, red, 2, 1.0, 0, 0);
+}
+
+.cannotBuild: hover {
+    -fx-effect: innershadow(gaussian, red, 2, 1.0, 0, 0);
+}

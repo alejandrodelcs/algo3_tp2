@@ -4,9 +4,12 @@ import edu.fiuba.algo3.modelo.Logger;
 import edu.fiuba.algo3.modelo.defense.*;
 import edu.fiuba.algo3.modelo.enemy.Enemy;
 import edu.fiuba.algo3.modelo.exceptions.InsufficientCredits;
+import edu.fiuba.algo3.modelo.exceptions.NonConstructibleArea;
 import edu.fiuba.algo3.modelo.gameboard.GameBoard;
 import edu.fiuba.algo3.App;
 import edu.fiuba.algo3.modelo.gameboard.Plot;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -69,37 +72,46 @@ public class Board extends controler {
     private void pickADefenseEvent(StackPane stackPane,Point point, Point backwards, int clickedRow, int clickedColumn) {
 
         stackPane.setOnMouseClicked(someEvent -> {
-            if(gameBoard.availableForBuilding(point) && (!gameBoard.isEnemyPath(backwards))){
-                Stage newWindow = createDefensesTowerMenuWindow();
-                Button whiteTowerButton = createWhiteTowerButton();
-                whiteTowerButton.setOnAction(e->{
+            try {
+                if (gameBoard.availableForBuilding(point) && (!gameBoard.isEnemyPath(backwards))) {
+                    Stage newWindow = createDefensesTowerMenuWindow();
+                    Button whiteTowerButton = createWhiteTowerButton();
+                    whiteTowerButton.setOnAction(e -> {
                         whiteTowerButtonEvent(stackPane, clickedRow, clickedColumn);
                         newWindow.close();
                     });
 
                     Button silverTowerButton = createSilverTowerButton();
-                    silverTowerButton.setOnAction(e->{
+                    silverTowerButton.setOnAction(e -> {
                         silverTowerButtonEvent(stackPane, clickedRow, clickedColumn);
                         newWindow.close();
                     });
 
-                    createDefensesMenuStack(silverTowerButton,whiteTowerButton, newWindow);
+                    createDefensesMenuStack(silverTowerButton, whiteTowerButton, newWindow);
                     newWindow.showAndWait();
 
-            }else if( (gameBoard.isEnemyPath(backwards)) && gameBoard.availableForBuilding(point)){
-                if (gameBoard.isStart(backwards)  || (gameBoard.isFinish(backwards))) {
-                    alertStartFinish();
+                } else if ((gameBoard.isEnemyPath(backwards)) && gameBoard.availableForBuilding(point)) {
+                    if (gameBoard.isStart(backwards) || (gameBoard.isFinish(backwards))) {
+                        alertStartFinish();
+                    } else {
+                        Stage newWindow = createDefensesTowerMenuWindow();
+                        Button sandyTrapButton = createSandyTrapButton();
+                        sandyTrapButton.setOnAction(e -> {
+                            sandyTrapButtonEvent(stackPane, clickedRow, clickedColumn);
+                            newWindow.close();
+                        });
+                        createDefensesOnEnemyPathMenuStack(sandyTrapButton, newWindow);
+                        newWindow.showAndWait();
+                    }
                 }
-                else{
-                    Stage newWindow = createDefensesTowerMenuWindow();
-                    Button sandyTrapButton = createSandyTrapButton();
-                    sandyTrapButton.setOnAction(e->{
-                        sandyTrapButtonEvent(stackPane, clickedRow, clickedColumn);
-                        newWindow.close();
-                    });
-                    createDefensesOnEnemyPathMenuStack(sandyTrapButton, newWindow);
-                    newWindow.showAndWait();
-                }
+            } catch (NonConstructibleArea exception) {
+                StackPane clickedPlot = (StackPane) gridPane.getChildren().get(clickedRow * (int)gameBoard.width() + clickedColumn);
+                clickedPlot.getStyleClass().add("cannotBuild");
+
+                Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(1), e -> {
+                    clickedPlot.getStyleClass().remove("cannotBuild");
+                }));
+                timeline.play();
             }
         });
     }
@@ -310,6 +322,7 @@ public class Board extends controler {
         String updatedStats = algoDefense.getPlayerInfo();
         updatedStats += "\nTurn: " + algoDefense.getCurrentTurn();
         infoLabel.setText(updatedStats);
+        consoleTextArea.setText("Game restarted!");
         printMap();
     }
 
