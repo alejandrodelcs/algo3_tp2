@@ -33,6 +33,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+import java.util.Stack;
 
 
 public class Board extends controler {
@@ -51,6 +52,9 @@ public class Board extends controler {
     @FXML
     private Button musicButton;
     MediaPlayer mediaPlayer;
+
+    StringBuilder infoImg;
+
 
     @FXML
     private void printMap() {
@@ -129,6 +133,7 @@ public class Board extends controler {
             Point coordinatesToEnemyPath = new Point(clickedRow,clickedColumn);
             Defense sandyTrap = sandyFactory.createDefense(coordinatesToEnemyPath);
             algoDefense.buildsADefense(sandyTrap);
+            this.updateTooltip(gameBoard.getPlot(clickedRow,clickedColumn),sandyTrap.show(),stackPane,clickedRow,clickedColumn);
             String updatedStats = algoDefense.getPlayerInfo();
             updatedStats += "\nTurn: " + algoDefense.getCurrentTurn();
             infoLabel.setText(updatedStats);
@@ -145,6 +150,7 @@ public class Board extends controler {
             Point coordinatesToADirt = new Point(clickedRow,clickedColumn);
             Defense silverTower = silverFactory.createDefense(coordinatesToADirt);
             algoDefense.buildsADefense(silverTower);
+            this.updateTooltip(gameBoard.getPlot(clickedRow,clickedColumn),"Silver Tower under-construction",stackPane,clickedRow,clickedColumn);
             String updatedStats = algoDefense.getPlayerInfo();
             updatedStats += "\nTurn: " + algoDefense.getCurrentTurn();
             infoLabel.setText(updatedStats);
@@ -162,6 +168,8 @@ public class Board extends controler {
             Point coordinatesToADirt = new Point(clickedRow,clickedColumn);
             Defense whiteTower = whiteFactory.createDefense(coordinatesToADirt);
             algoDefense.buildsADefense(whiteTower);
+            this.updateTooltip(gameBoard.getPlot(clickedRow,clickedColumn),"White Tower under-construction",stackPane, clickedRow,clickedColumn);
+            infoImg.append(whiteTower.show());
             String updatedStats = algoDefense.getPlayerInfo();
             infoLabel.setText(updatedStats);
 
@@ -281,24 +289,29 @@ public class Board extends controler {
     private StackPane loadCellImage(int row, int column) {
         StackPane stackPane = gameBoard.getStackPane(row, column, terrainImages);
         Plot info = gameBoard.getPlot(row, column);
-        StringBuilder plotInfoBuilder = new StringBuilder();
-        plotInfoBuilder.append(info.show()).append(" (").append(row).append(", ").append(column).append(")");
-
+        String plotInfo = info.show() + " (" + row + ", " + column + ")";
         for (Enemy enemy : info.enemiesInPlot()) {
-            plotInfoBuilder.append("\n\n").append(enemy.show());
+            plotInfo += "\n\n" + enemy.show();
         }
-
-        if (info.getDefense() != null) {
-            plotInfoBuilder.append("\n\n").append(info.getDefense().show());
+        try {
+            if (!(gameBoard.availableForBuilding(new Point(row, column))) && info.getDefense().isAvailable()) {
+                plotInfo += "\n\n" + info.getDefense().show();
+            }
+        } catch (NonConstructibleArea e) {
+            plotInfo += "";
         }
-
-        String plotInfo = plotInfoBuilder.toString();
-        Tooltip tooltip = new Tooltip(plotInfo);
-        tooltip.getStyleClass().add("tooltipStyle");
-        tooltip.setShowDelay(Duration.millis(100));
-        Tooltip.install(stackPane, tooltip);
-
+        this.updateTooltip(info, plotInfo, stackPane, row, column);
         return stackPane;
+    }
+
+    private void updateTooltip(Plot info, String plotInfo, StackPane stackPane,int row, int column){
+        String fullInfo = plotInfo;
+        if (!fullInfo.contains(info.show())) {
+            fullInfo += "\n\n" + info.show() + " (" + row + ", " + column + ")";
+        }
+        Tooltip tooltip = new Tooltip(fullInfo);
+        tooltip.getStyleClass().add("tooltipStyle");
+        Tooltip.install(stackPane, tooltip);
     }
 
     @FXML
