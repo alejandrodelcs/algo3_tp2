@@ -53,8 +53,6 @@ public class Board extends controler {
     @FXML
     private Button musicButton;
     MediaPlayer mediaPlayer;
-
-    StringBuilder infoImg;
     StackPane lastClicked;
 
     @FXML
@@ -194,8 +192,8 @@ public class Board extends controler {
             Defense whiteTower = whiteFactory.createDefense(coordinatesToADirt);
             algoDefense.buildsADefense(whiteTower);
             this.updateTooltip(gameBoard.getPlot(clickedRow,clickedColumn),"White Tower under-construction",stackPane, clickedRow,clickedColumn);
-            infoImg.append(whiteTower.show());
             String updatedStats = algoDefense.getPlayerInfo();
+            updatedStats += "\nTurn: " + algoDefense.getCurrentTurn();
             infoLabel.setText(updatedStats);
 
             stackPane.getChildren().add(whiteTowerImageView);
