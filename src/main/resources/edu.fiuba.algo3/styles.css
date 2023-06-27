@@ -92,6 +92,13 @@
     -fx-effect: innershadow(gaussian, red, 2, 1.0, 0, 0);
 }
 
-.cannotBuild: hover {
+.cannotBuild:hover {
     -fx-effect: innershadow(gaussian, red, 2, 1.0, 0, 0);
+}
+
+.tooltipStyle {
+    -fx-background-color: rgba(240, 240, 240, 0.81);
+    -fx-text-fill: rgba(0, 0, 0, 0.78);
+    -fx-font-size: 12px;
+    -fx-background-radius: 7 7 7 7;
 }
