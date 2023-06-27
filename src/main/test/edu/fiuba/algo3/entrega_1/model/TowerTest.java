@@ -55,7 +55,7 @@ public class TowerTest {
         Defense whiteTower = factory.createDefense(coordinates);
         Enemy antMock = mock(Ant.class);
         when(antMock.getPoint()).thenReturn(new Point(4, 4));
-        when(antMock.enemyDied()).thenReturn(true);
+        when(antMock.enemyDied()).thenReturn(false);
         when(antMock.isVisible()).thenReturn(true);
         ArrayList<Enemy> enemies = new ArrayList<>();
         enemies.add(antMock);
@@ -65,8 +65,6 @@ public class TowerTest {
 
         ArgumentCaptor<Damage> damageCaptor = ArgumentCaptor.forClass(Damage.class);
         verify(antMock, atLeastOnce()).takeDamage(damageCaptor.capture());
-
-        Assertions.assertTrue(antMock.enemyDied());
     }
 
      @Test
@@ -76,7 +74,7 @@ public class TowerTest {
         Defense SilverTower = factory.createDefense(cordenates);
         Enemy spiderMock = mock(Spider.class);
         when(spiderMock.getPoint()).thenReturn(new Point(4,4));
-        when(spiderMock.enemyDied()).thenReturn(true);
+        when(spiderMock.enemyDied()).thenReturn(false);
         when(spiderMock.isVisible()).thenReturn(true);
         ArrayList<Enemy> enemies = new ArrayList<>();
         enemies.add(spiderMock);
@@ -88,7 +86,6 @@ public class TowerTest {
          ArgumentCaptor<Damage> damageCaptor = ArgumentCaptor.forClass(Damage.class);
          verify(spiderMock, atLeastOnce()).takeDamage(damageCaptor.capture());
 
-         Assertions.assertTrue(spiderMock.enemyDied());
     }
 
     @Test

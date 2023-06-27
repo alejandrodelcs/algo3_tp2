@@ -19,17 +19,15 @@ public class SimpleRangeAttack implements Attack{
     }
     @Override
     public void performAttackOnEnemies(Defense defense, ArrayList<Enemy> enemies){
-        int i = enemies.size() - 1;
         boolean attack_performed=false;
-        while (i >= 0 && !rangeAttack.isInRange(defense, enemies.get(i)) && !attack_performed) {
-            if (enemies.get(i).isVisible() && !enemies.get(i).enemyDied()){
+        for (int i=enemies.size() - 1;i>=0 && !attack_performed;i--){
+            if (enemies.get(i).isVisible() && !enemies.get(i).enemyDied() && rangeAttack.isInRange(defense, enemies.get(i))){
                 Enemy enemy = enemies.get(i);
                 enemy.takeDamage(damage);
                 Logger.get().log(defense.getClass().getSimpleName() + " attacks " + enemy.getClass().getSimpleName()
                         + " at postion(" + (int) enemy.getPoint().getX() + "," + (int) enemy.getPoint().getY() + ")");
                 attack_performed=true;
             }
-            i--;
         }
     }
 

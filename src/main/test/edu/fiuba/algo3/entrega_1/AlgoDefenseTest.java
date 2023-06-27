@@ -309,9 +309,16 @@ public class AlgoDefenseTest {
         algoDefense.nextTurn();
         algoDefense.nextTurn();
         algoDefense.nextTurn();
-
+        algoDefense.nextTurn();
+        algoDefense.nextTurn();
+        algoDefense.nextTurn();
+        algoDefense.nextTurn();
+        algoDefense.nextTurn();
+        algoDefense.nextTurn();
+        algoDefense.nextTurn();
         //Assert
         assertTrue(algoDefense.gameOver());
+        assertTrue(player.isAlive());
     }
 
     @Test
