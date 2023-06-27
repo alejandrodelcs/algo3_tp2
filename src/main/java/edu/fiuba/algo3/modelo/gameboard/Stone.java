@@ -9,6 +9,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
 
+import java.awt.*;
 import java.util.ArrayList;
 
 public class Stone extends Plot{

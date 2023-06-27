@@ -14,6 +14,8 @@ public class GameBoard {
     private Plot[][] plots;
     private ArrayList<Point> enemyPath;
 //    private ArrayList<Image> terrainImages = new ArrayList<>();
+    public Point start;
+    public Point finishLine;
 
     public GameBoard(Plot[][] expectedPlots) {
         plots = expectedPlots;
@@ -68,16 +70,34 @@ public class GameBoard {
    public ArrayList<Point> constructPath(){
         enemyPath = new ArrayList<Point>();
         Plot aPath = new Path();
+        Plot finishLine = new FinishLine();
+        Plot aFinish = new FinishLine();
         for (int i = 0; i < plots.length; i++) {
             for (int j = 0; j < plots[i].length; j++) {
                 //TODO Check this below
-                if(plots[i][j].getClass() == aPath.getClass()){
+                if((plots[i][j].getClass() == aPath.getClass()) || (plots[i][j].getClass() == finishLine.getClass())){
                     Point aPoint = new Point(j, i);
                     enemyPath.add(aPoint);
                 }
             }
         }
+        setStart(enemyPath.get(0));
+        setFinishLine(enemyPath.get(enemyPath.size()-1));
         return enemyPath;
+    }
+
+    private void setFinishLine(Point point) {
+        this.finishLine = point;
+    }
+
+    public Point getFinishLine(){
+        return finishLine;
+    }
+    public Point getStart(){
+        return start;
+    }
+    private void setStart(Point point) {
+        this.start = point;
     }
 
     public void printMap() {

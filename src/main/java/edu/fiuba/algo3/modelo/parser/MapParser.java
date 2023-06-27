@@ -56,7 +56,12 @@ public class MapParser {
                         plots[i - 1][j] = new Dirt();
                         break;
                     case "Pasarela":
-                        plots[i - 1][j] = new Path();
+                        if(j == (mapaJsonObject.size()-1)){
+                            plots[i - 1][j] = new FinishLine();
+                        }
+                        else{
+                            plots[i - 1][j] = new Path();
+                        }
                         break;
                     case "Rocoso":
                         plots[i - 1][j] = new Stone();

@@ -27,10 +27,7 @@ public abstract class Defense {
         state = new DestructedState();
     };
     public abstract ImageView getImage();
-
     public abstract String show();
-
-
     public boolean isAvailable() {
         return state.getClass() != DestructedState.class;
     }
