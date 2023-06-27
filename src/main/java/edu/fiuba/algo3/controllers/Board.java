@@ -376,11 +376,14 @@ public class Board extends controler {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        Media media = new Media(getClass().getResource("/sound/backMusic.mp3").toString());
+        /*Media media = new Media(getClass().getResource("/sound/backMusic.mp3").toString());
         this.mediaPlayer = new MediaPlayer(media);
         mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
         mediaPlayer.setVolume(0.3);
-        mediaPlayer.play();
+        mediaPlayer.play();*/
+        inicializarSonido();
+        Sound.get().reproducirMusica("temaPrincipal");
+        Sound.get().modificarVolumenMusica(50);
         Image aTerrainImage = new Image(getClass().getResource("/img/path.png").toString(), true);
         terrainImages.add(aTerrainImage);
         aTerrainImage = new Image(getClass().getResource("/img/dirt.png").toString(), true);
@@ -440,12 +443,40 @@ public class Board extends controler {
     private void muteMusic() {
         ImageView innerButtonImg = (ImageView) musicButton.getGraphic();
         if (mediaPlayer.isMute()) {
-            mediaPlayer.setMute(false);
+            Sound.get().muteMusic(false);
             innerButtonImg.setImage(new Image(getClass().getResource("/img/sound-on.png").toString()));
 
         } else {
-            mediaPlayer.setMute(true);
+            Sound.get().muteMusic(true);
             innerButtonImg.setImage(new Image(getClass().getResource("/img/sound-off.png").toString()));
         }
+    }
+
+    public void inicializarSonido() {
+        Sound sound = Sound.get();
+        sound.cargarMusica("backMusic.mp3", "temaPrincipal");
+/*
+        sonido.cargarSonido("atacar.wav", "atacar");
+        sonido.cargarSonido("clickBoton.mp3", "boton");
+        sonido.cargarSonido("colocarEdificio.mp3", "click");
+        sonido.cargarSonido("cancelar.wav", "cancelar");
+
+        sonido.cargarSonido("protoss/Dragon.wav", "dragon");
+        sonido.cargarSonido("protoss/scout.wav", "scout");
+        sonido.cargarSonido("protoss/zealot.wav", "zealot");
+
+        sonido.cargarSonido("zerg/amoSupremo.wav", "amoSupremo");
+        sonido.cargarSonido("zerg/devorador.wav", "devorador");
+        sonido.cargarSonido("zerg/guardian.wav", "guardian");
+        sonido.cargarSonido("zerg/hidralisco.wav", "hidralisco");
+        sonido.cargarSonido("zerg/mutalisco.wav", "mutalisco");
+        sonido.cargarSonido("zerg/zangano.wav", "zangano");
+        sonido.cargarSonido("zerg/zerling.wav", "zerling");
+
+        sonido.modificarVolumenEfectos(50);
+
+
+        sonido.reproducirMusica("temaPrincipal");
+        sonido.modificarVolumenMusica(50);*/
     }
 }
