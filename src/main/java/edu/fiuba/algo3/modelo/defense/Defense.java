@@ -34,4 +34,7 @@ public abstract class Defense {
     public boolean isAvailable() {
         return state.getClass() != DestructedState.class;
     }
+    public ArrayList<Point> getPlotsInRange() {
+        return attack.getPlotsInRange(coordinates);
+    }
 }

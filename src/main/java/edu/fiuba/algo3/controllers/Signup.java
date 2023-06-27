@@ -1,24 +1,13 @@
 package edu.fiuba.algo3.controllers;
 import edu.fiuba.algo3.App;
-import edu.fiuba.algo3.modelo.exceptions.InvalidJSONArray;
 import edu.fiuba.algo3.modelo.exceptions.InvalidPlayersName;
 import edu.fiuba.algo3.modelo.player.Player;
-import javafx.geometry.Rectangle2D;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.fxml.FXML;
-import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
-import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
-import javafx.stage.Screen;
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
-import org.json.simple.parser.ParseException;
 
 import javafx.scene.input.KeyEvent;
-import java.io.FileReader;
-import java.io.IOError;
 import java.io.IOException;
 
 

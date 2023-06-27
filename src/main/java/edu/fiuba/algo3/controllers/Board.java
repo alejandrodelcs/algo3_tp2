@@ -12,6 +12,7 @@ import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
@@ -54,7 +55,7 @@ public class Board extends controler {
     MediaPlayer mediaPlayer;
 
     StringBuilder infoImg;
-
+    StackPane lastClicked;
 
     @FXML
     private void printMap() {
@@ -74,9 +75,33 @@ public class Board extends controler {
                 Point point = new Point(i,j);
                 Point backwards = new Point(j,i); //TODO: REVERT X Y so this variable won't be used anymore
                 pickADefenseEvent(stackPane, point, backwards, clickedRow, clickedColumn);
+                showRangeEvent(i, j, stackPane);
             }
         }
     }
+
+    public void showRangeEvent(int row, int column, StackPane aStackPane) {
+        Plot somePlot = gameBoard.getPlot(row, column);
+        if (somePlot.getDefense() != null) {
+            ArrayList<Point> plotsInRange = somePlot.getDefense().getPlotsInRange();
+            aStackPane.setOnMouseClicked(someOtherEvent -> {
+                for (Node stackPane: gridPane.getChildren()) {
+                    stackPane.getStyleClass().remove("inRangePlot");
+                }
+                if (lastClicked != aStackPane) {
+                    for (Point plot : plotsInRange) {
+                        int plotRow = (int) plot.getX();
+                        int plotColumn = (int) plot.getY();
+                        StackPane inRangePlot = (StackPane) gridPane.getChildren().get(plotRow * (int) gameBoard.width() + plotColumn);
+                        inRangePlot.getStyleClass().add("inRangePlot");
+                    }
+                    lastClicked = aStackPane;
+                } else {
+                    lastClicked = null;
+                }
+            });
+        }
+    };
 
     private void pickADefenseEvent(StackPane stackPane,Point point, Point backwards, int clickedRow, int clickedColumn) {
 
