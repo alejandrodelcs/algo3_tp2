@@ -96,6 +96,10 @@
     -fx-effect: innershadow(gaussian, red, 2, 1.0, 0, 0);
 }
 
+.inRangePlot {
+    -fx-effect: innershadow(gaussian, green, 2, 1.0, 0, 0);
+}
+
 .tooltipStyle {
     -fx-background-color: rgba(240, 240, 240, 0.81);
     -fx-text-fill: rgba(0, 0, 0, 0.78);

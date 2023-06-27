@@ -6,6 +6,7 @@ import edu.fiuba.algo3.modelo.defense.Defense;
 import edu.fiuba.algo3.modelo.defense.Range;
 import edu.fiuba.algo3.modelo.enemy.Enemy;
 
+import java.awt.*;
 import java.util.ArrayList;
 
 public class SimpleRangeAttack implements Attack{
@@ -30,5 +31,10 @@ public class SimpleRangeAttack implements Attack{
             }
             i--;
         }
+    }
+
+    @Override
+    public ArrayList<Point> getPlotsInRange(Point point) {
+        return rangeAttack.plotsInRange(point);
     }
 }
