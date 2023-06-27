@@ -40,7 +40,7 @@ public class FinishLine extends Path{
 
     @Override
     public Image printImage() {
-        return new Image(getClass().getResource("/img/finish.png").toString(),true);
+        return new Image(getClass().getResource("/img/path.png").toString(),true);
     }
 
     @Override
@@ -51,11 +51,14 @@ public class FinishLine extends Path{
     public StackPane getStackPane(ArrayList<Image> terrainImages) {
 
         StackPane aStackPane = new StackPane();
-        ImageView mainImageView = new ImageView(terrainImages.get(4));
+        ImageView mainImageView = new ImageView(terrainImages.get(0));
+        ImageView finishLine = new ImageView(terrainImages.get(4));
         mainImageView.setFitHeight(50);
         mainImageView.setFitWidth(50);
+        finishLine.setFitHeight(50);
         mainImageView.setPreserveRatio(true);
         aStackPane.getChildren().add(mainImageView);
+        aStackPane.getChildren().add(finishLine);
         if (enemyArrayList != null) {
             for (Enemy enemy : enemyArrayList) {
                 ImageView enemyImage = enemy.getImage();
