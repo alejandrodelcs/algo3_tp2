@@ -391,6 +391,8 @@ public class Board extends controler {
         terrainImages.add(aTerrainImage);
         aTerrainImage = new Image(getClass().getResource("/img/finish.png").toString(), true);
         terrainImages.add(aTerrainImage);
+        aTerrainImage = new Image(getClass().getResource("/img/under-contruction.png").toString(), true);
+        terrainImages.add(aTerrainImage);
         String updatedStats = algoDefense.getPlayerInfo();
         updatedStats += "\nTurn: " + algoDefense.getCurrentTurn();
         infoLabel.setText(updatedStats);

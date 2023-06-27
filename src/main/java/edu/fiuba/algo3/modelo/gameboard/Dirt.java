@@ -58,8 +58,15 @@ public class Dirt extends Plot{
         mainImageView.setPreserveRatio(true);
         aStackPane.getChildren().add(mainImageView);
 
-        if (defense != null && this.state.itsOccupied()) {
+        if ((defense != null && this.state.itsOccupied()) && (defense.isAvailable())) {
             ImageView defenseImageView = defense.getImage();
+            defenseImageView.setFitHeight(50);
+            defenseImageView.setFitWidth(50);
+            defenseImageView.setPreserveRatio(true);
+            aStackPane.getChildren().add(defenseImageView);
+        }
+        if ((defense != null && this.state.itsOccupied()) && (!defense.isAvailable())) {
+            ImageView defenseImageView = new ImageView(terrainImages.get(5));
             defenseImageView.setFitHeight(50);
             defenseImageView.setFitWidth(50);
             defenseImageView.setPreserveRatio(true);
