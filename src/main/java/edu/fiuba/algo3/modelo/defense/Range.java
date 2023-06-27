@@ -22,7 +22,10 @@ public class Range {
             if (row >= 0) {
                 for (int column = (originPointColumn - distance); column <= originPointColumn + distance; column++) {
                     if (column >= 0) {
-                        plotsInRange.add(new Point(row, column));
+                        Point pointToEvaluate = new Point(row, column);
+                        if (originPoint.distance(pointToEvaluate) <= distance) {
+                            plotsInRange.add(pointToEvaluate);
+                        }
                     }
                 }
             }

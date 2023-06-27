@@ -83,18 +83,25 @@ public class Board extends controler {
         if (somePlot.getDefense() != null) {
             ArrayList<Point> plotsInRange = somePlot.getDefense().getPlotsInRange();
             aStackPane.setOnMouseClicked(someOtherEvent -> {
-                for (Node stackPane: gridPane.getChildren()) {
-                    stackPane.getStyleClass().remove("inRangePlot");
-                }
                 if (lastClicked != aStackPane) {
+                    for (Node stackPane: gridPane.getChildren()) {
+                        stackPane.getStyleClass().remove("outOfRangePlot");
+                        stackPane.getStyleClass().add("outOfRangePlot");
+                    }
                     for (Point plot : plotsInRange) {
                         int plotRow = (int) plot.getX();
                         int plotColumn = (int) plot.getY();
-                        StackPane inRangePlot = (StackPane) gridPane.getChildren().get(plotRow * (int) gameBoard.width() + plotColumn);
-                        inRangePlot.getStyleClass().add("inRangePlot");
-                    }
-                    lastClicked = aStackPane;
+                        if (plotRow >= 0 && plotRow < gridPane.getRowCount() && plotColumn >= 0 && plotColumn < gridPane.getColumnCount()) {
+                            StackPane inRangePlot = (StackPane) gridPane.getChildren().get(plotRow * gridPane.getColumnCount() + plotColumn);
+                            inRangePlot.getStyleClass().remove("outOfRangePlot");
+                        }
+                    }                    lastClicked = aStackPane;
                 } else {
+                    for (Node stackPane: gridPane.getChildren()) {
+                        if (stackPane.getStyleClass().contains("outOfRangePlot")) {
+                            stackPane.getStyleClass().remove("outOfRangePlot");
+                        }
+                    }
                     lastClicked = null;
                 }
             });
