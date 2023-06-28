@@ -18,12 +18,12 @@
                     <Image url="@img/magic2.png" />
                 </image>
             </ImageView>
-            <Text>White tower: </Text>
-            <Text>Price: 10</Text>
-            <Text>Range: 3</Text>
-            <Text>Damage: 1</Text>
-            <Text>Availability:</Text>
-            <Text> 1 turn</Text>
+            <Text fill="cornsilk">White tower: </Text>
+            <Text fill="cornsilk">Price: 10</Text>
+            <Text fill="cornsilk">Range: 3</Text>
+            <Text fill="cornsilk">Damage: 1</Text>
+            <Text fill="cornsilk">Availability:</Text>
+            <Text fill="cornsilk"> 1 turn</Text>
         </VBox>
     </StackPane>
     <StackPane styleClass="card">
@@ -33,12 +33,12 @@
                     <Image url="@img/silverTower.png" />
                 </image>
             </ImageView>
-            <Text>Silver Tower: </Text>
-            <Text>Price: 20</Text>
-            <Text>Range: 5</Text>
-            <Text>Damage: 2</Text>
-            <Text>Availability:</Text>
-            <Text> 2 turn</Text>
+            <Text fill="cornsilk">Silver Tower: </Text>
+            <Text fill="cornsilk">Price: 20</Text>
+            <Text fill="cornsilk">Range: 5</Text>
+            <Text fill="cornsilk">Damage: 2</Text>
+            <Text fill="cornsilk">Availability:</Text>
+            <Text fill="cornsilk"> 2 turns</Text>
         </VBox>
     </StackPane>
 

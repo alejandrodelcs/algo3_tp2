@@ -19,12 +19,14 @@
                     <Image url="@img/sandyTrap.png" />
                 </image>
             </ImageView>
-            <Text >Sandy Trap: </Text>
-            <Text>Price: 25</Text>
-            <Text>Range: 3</Text>
-            <Text>Damage: 1</Text>
-            <Text>Availability: 1 turn</Text>
-            <Text> 1 turn</Text>
+            <Text fill="cornsilk">Sandy Trap: </Text>
+            <Text fill="cornsilk">Price: 25</Text>
+            <Text fill="cornsilk">Availability:</Text>
+            <Text fill="cornsilk"> Instant</Text>
+            <Text fill="cornsilk">* Vanishes in</Text>
+            <Text fill="cornsilk"> 3 turns</Text>
+            <Text fill="cornsilk">* Desaccelarate</Text>
+            <Text fill="cornsilk"> enemies by 50%</Text>
         </VBox>
     </StackPane>
 </HBox>
