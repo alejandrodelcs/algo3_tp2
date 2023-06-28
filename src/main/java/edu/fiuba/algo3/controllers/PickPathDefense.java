@@ -79,6 +79,7 @@ public class PickPathDefense extends controler {
         Scene newScene = new Scene(rootPath);
         stage.setScene(newScene);
         stage.showAndWait();
+        stage.close();
     }
 
     @FXML

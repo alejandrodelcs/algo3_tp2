@@ -14,7 +14,7 @@
         <Insets left="10" top="5" right="10" bottom="5"/>
     </padding>
 
-    <StackPane onMouseClicked="#closeMe">
+    <StackPane onMouseClicked="#closeMe" >
         <VBox alignment="CENTER" spacing="10" >
             <ImageView fitWidth="50" fitHeight="50" >
                 <image>
