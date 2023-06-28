@@ -13,7 +13,6 @@ import java.util.Arrays;
 public class GameBoard {
     private Plot[][] plots;
     private ArrayList<Point> enemyPath;
-//    private ArrayList<Image> terrainImages = new ArrayList<>();
     public Point start;
     public Point finishLine;
 
@@ -52,6 +51,14 @@ public class GameBoard {
             enemies.addAll(plotToCheck.enemiesInPlot());
         }
         return enemies;
+    }
+
+    public Point getNextPath(Point plotCoords) {
+        int indexOfOriginalPoint = enemyPath.indexOf(plotCoords);
+        if (indexOfOriginalPoint + 1 < enemyPath.size()) {
+            return enemyPath.get(indexOfOriginalPoint + 1);
+        }
+        return enemyPath.get(indexOfOriginalPoint);
     }
 
     public void spawnEnemy(ArrayList<Enemy> enemyArrayList){

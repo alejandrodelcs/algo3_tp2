@@ -55,7 +55,7 @@ public class Board extends controler {
     StackPane lastClicked;
     @FXML
     private MenuItem fullScreenMenuBarOption;
-    private PlotDrawer aPlotDrawer = new PlotDrawer();
+    private PlotDrawer aPlotDrawer = new PlotDrawer(gameBoard);
 
     @FXML
     private void printMap() {
@@ -184,7 +184,7 @@ public class Board extends controler {
     }
 
     private StackPane loadCellImage(int row, int column) {
-        StackPane stackPane = aPlotDrawer.drawAPlot(gameBoard.getPlot(row, column));
+        StackPane stackPane = aPlotDrawer.drawAPlot(gameBoard.getPlot(row, column), row, column);
         Plot info = gameBoard.getPlot(row, column);
         String plotInfo = info.show() + " (" + row + ", " + column + ")";
         for (Enemy enemy : info.enemiesInPlot()) {
