@@ -52,7 +52,6 @@ public class Board extends controler {
     private TextArea consoleTextArea;
     @FXML
     private Button musicButton;
-    MediaPlayer mediaPlayer;
     StackPane lastClicked;
 
     @FXML
@@ -169,6 +168,7 @@ public class Board extends controler {
             infoLabel.setText(updatedStats);
 
             stackPane.getChildren().add(imageView);
+            Sound.get().reproducirFX("buildDefense");
         }catch  (InsufficientCredits insufficientCredits){
             alertInssuficientCredits();
         }
@@ -186,6 +186,7 @@ public class Board extends controler {
             infoLabel.setText(updatedStats);
 
             stackPane.getChildren().add(imageView);
+            Sound.get().reproducirFX("buildDefense");
         }catch  (InsufficientCredits insufficientCredits){
             alertInssuficientCredits();
         }
@@ -204,6 +205,7 @@ public class Board extends controler {
             infoLabel.setText(updatedStats);
 
             stackPane.getChildren().add(whiteTowerImageView);
+            Sound.get().reproducirFX("buildDefense");
         }catch  (InsufficientCredits insufficientCredits){
             alertInssuficientCredits();
         }
@@ -310,6 +312,7 @@ public class Board extends controler {
     }
 
     private void alertInssuficientCredits() {
+        Sound.get().reproducirFX("insufficientCredits");
         Alert alertWithoutFunds = new Alert(Alert.AlertType.ERROR);
         alertWithoutFunds.setTitle("Insufficient credits");
         alertWithoutFunds.setContentText("Insufficient credits, your current balance is: " + algoDefense.getPlayer().playersBalance());
@@ -353,11 +356,14 @@ public class Board extends controler {
         updatedStats += "\nTurn: " + algoDefense.getCurrentTurn();
         infoLabel.setText(updatedStats);
         if(algoDefense.gameOver()){
+            Sound.get().detenerMusica();
             if(algoDefense.getPlayer().isAlive()){
                 App.setRoot("WIN");
+                Sound.get().reproducirFX("levelWin");
             }
             else{
                 App.setRoot("LOSS");
+                Sound.get().reproducirFX("levelLose");
             }
 
         }
@@ -442,10 +448,9 @@ public class Board extends controler {
     @FXML
     private void muteMusic() {
         ImageView innerButtonImg = (ImageView) musicButton.getGraphic();
-        if (mediaPlayer.isMute()) {
+        if (Sound.get().musicIsMute()) {
             Sound.get().muteMusic(false);
             innerButtonImg.setImage(new Image(getClass().getResource("/img/sound-on.png").toString()));
-
         } else {
             Sound.get().muteMusic(true);
             innerButtonImg.setImage(new Image(getClass().getResource("/img/sound-off.png").toString()));
@@ -455,28 +460,13 @@ public class Board extends controler {
     public void inicializarSonido() {
         Sound sound = Sound.get();
         sound.cargarMusica("backMusic.mp3", "temaPrincipal");
-/*
-        sonido.cargarSonido("atacar.wav", "atacar");
-        sonido.cargarSonido("clickBoton.mp3", "boton");
-        sonido.cargarSonido("colocarEdificio.mp3", "click");
-        sonido.cargarSonido("cancelar.wav", "cancelar");
-
-        sonido.cargarSonido("protoss/Dragon.wav", "dragon");
-        sonido.cargarSonido("protoss/scout.wav", "scout");
-        sonido.cargarSonido("protoss/zealot.wav", "zealot");
-
-        sonido.cargarSonido("zerg/amoSupremo.wav", "amoSupremo");
-        sonido.cargarSonido("zerg/devorador.wav", "devorador");
-        sonido.cargarSonido("zerg/guardian.wav", "guardian");
-        sonido.cargarSonido("zerg/hidralisco.wav", "hidralisco");
-        sonido.cargarSonido("zerg/mutalisco.wav", "mutalisco");
-        sonido.cargarSonido("zerg/zangano.wav", "zangano");
-        sonido.cargarSonido("zerg/zerling.wav", "zerling");
-
-        sonido.modificarVolumenEfectos(50);
-
-
-        sonido.reproducirMusica("temaPrincipal");
-        sonido.modificarVolumenMusica(50);*/
+        sound.cargarSonido("build-defense.mp3","buildDefense");
+        sound.cargarSonido("insufficient-credits.wav","insufficientCredits");
+        sound.cargarSonido("level-lose.wav","levelLose");
+        sound.cargarSonido("level-win.wav","levelWin");
+        sound.cargarSonido("spider_attack.mp3","spiderAttack");
+        sound.cargarSonido("tower-attack.mp3","towerAttack");
+        sound.modificarVolumenEfectos(50);
+        sound.modificarVolumenMusica(40);
     }
 }

@@ -101,4 +101,8 @@ public class Sound {
     public SimpleDoubleProperty obtenerVolumenFx(){
         return volumenFx;
     }
+
+    public boolean musicIsMute() {
+        return reproduccionActual.isMute();
+    }
 }
