@@ -215,11 +215,6 @@ public class GameBoard {
     public long width() {
         return Arrays.stream(plots[0]).count();
     }
-
-    public StackPane getStackPane(int row, int column, ArrayList<Image> terrainImages) {
-        return plots[row][column].getStackPane(terrainImages);
-    }
-
     public ArrayList<Point> getEnemyPath() {
         return enemyPath;
     }

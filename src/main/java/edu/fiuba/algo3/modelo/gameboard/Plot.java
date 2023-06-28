@@ -22,8 +22,4 @@ public abstract class Plot {
     public Defense getDefense(){return defense;}
     public void removeDefense(Defense defense) {
     }
-
-    public abstract Image printImage();
-
-    public abstract StackPane getStackPane(ArrayList<Image> terrainImages);
 }

@@ -13,7 +13,6 @@ public abstract class Defense {
     protected Point coordinates;
     protected State state;
     protected Attack attack;
-
     public Credit getCredits() {
         return credits;
     }
@@ -26,7 +25,6 @@ public abstract class Defense {
     public void destructed(){
         state = new DestructedState();
     };
-    public abstract ImageView getImage();
     public abstract String show();
     public boolean isAvailable() {
         return (state.getClass() != DestructedState.class) && (state.getClass() == OperationalState.class) || (state.getClass() != DestructedState.class) && (state.getClass() == TemporallyState.class);

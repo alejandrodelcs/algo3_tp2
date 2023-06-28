@@ -12,54 +12,86 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.image.Image?>
-<HBox xmlns="http://javafx.com/javafx/15" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.fiuba.algo3.controllers.Board" styleClass="playing-background">
-   <GridPane fx:id="gridPane" maxWidth="-Infinity" alignment="CENTER" style="-fx-padding: 0 0 0 10;">
-   </GridPane>
-   <VBox HBox.hgrow="ALWAYS" VBox.vgrow="ALWAYS" fx:id="rightContainer" style="-fx-pref-width: 100%;">
-      <padding>
-         <Insets left="10" top="5" right="10" bottom="5"/>
-      </padding>
-      <HBox VBox.vgrow="ALWAYS" style="-fx-pref-height: 70%;">
-         <VBox>
-            <Label fx:id="infoLabel" text="" style="-fx-text-fill: white;">
-               <VBox.margin>
-                  <Insets top="10" right="10"/>
-               </VBox.margin>
-            </Label>
-            <Region VBox.vgrow="ALWAYS" />
-            <Button onAction="#updateImages" text="Next Turn">
-               <VBox.margin>
-                  <Insets bottom="10" right="10"/>
-               </VBox.margin>
-            </Button>
-            <Button onAction="#resetGame" text="Restart game">
-               <VBox.margin>
-                  <Insets bottom="10" right="10"/>
-               </VBox.margin>
-            </Button>
-            <Button onAction="#muteMusic" fx:id="musicButton">
-               <VBox.margin>
-                  <Insets bottom="10" right="10"/>
-               </VBox.margin>
-               <graphic>
-                  <ImageView fitWidth="28.00" fitHeight="28.00">
-                     <Image url="@../img/sound-on.png"/>
-                  </ImageView>
-               </graphic>
-            </Button>
-         </VBox>
-      </HBox>
-      <VBox VBox.vgrow="ALWAYS" style="-fx-pref-height: 70%;">
-         <AnchorPane VBox.vgrow="ALWAYS">
-            <TextArea fx:id="consoleTextArea" editable="false" wrapText="true" AnchorPane.topAnchor="0.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" style="-fx-control-inner-background: black; -fx-text-fill: white;" text=""/>
-         </AnchorPane>
-      </VBox>
-   </VBox>
-   <padding>
-      <Insets fx:id="Insets" left="0" top="0" right="0" bottom="0"/>
-   </padding>
-</HBox>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuItem?>
 
+<?import javafx.scene.control.SeparatorMenuItem?>
+<BorderPane xmlns="http://javafx.com/javafx/15" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.fiuba.algo3.controllers.Board" styleClass="playing-background">
+   <top>
+      <MenuBar styleClass="menuBar">
+         <Menu text="File" styleClass="menu">
+            <MenuItem text="Exit" styleClass="menuItem" onAction="#exit"/>
+         </Menu>
+         <Menu text="View" styleClass="menu">
+            <MenuItem fx:id="fullScreenMenuBarOption"  text="Full screen" styleClass="menuItem" onAction="#fullScreenMode"/>
+         </Menu>
+         <Menu text="Help" styleClass="menu">
+            <MenuItem text="How to play" styleClass="menuItem" onAction="#showHowToPlay"/>
+         </Menu>
+      </MenuBar>
+   </top>
+   <center>
+      <VBox style="-fx-pref-width: 100%">
+         <children>
+            <HBox style="-fx-pref-width: 100%">
+               <children>
+                  <GridPane fx:id="gridPane" maxWidth="-Infinity" alignment="CENTER" style="-fx-padding: 0 0 0 10;">
+                     <!-- Agrega aquí las celdas y elementos del GridPane -->
+                  </GridPane>
+                  <VBox HBox.hgrow="ALWAYS" VBox.vgrow="ALWAYS" fx:id="rightContainer" style="-fx-pref-width: 100%;">
+                     <padding>
+                        <Insets left="10" top="5" right="10" bottom="5"/>
+                     </padding>
+                     <HBox VBox.vgrow="ALWAYS" style="-fx-pref-height: 70%;">
+                        <children>
+                           <VBox>
+                              <Label fx:id="infoLabel" text="" style="-fx-text-fill: white;">
+                                 <VBox.margin>
+                                    <Insets top="10" right="10"/>
+                                 </VBox.margin>
+                              </Label>
+                              <Region VBox.vgrow="ALWAYS" />
+                              <Button onAction="#updateImages" text="Next Turn">
+                                 <VBox.margin>
+                                    <Insets bottom="10" right="10"/>
+                                 </VBox.margin>
+                              </Button>
+                              <Button onAction="#resetGame" text="Restart game">
+                                 <VBox.margin>
+                                    <Insets bottom="10" right="10"/>
+                                 </VBox.margin>
+                              </Button>
+                              <Button onAction="#muteMusic" fx:id="musicButton">
+                                 <VBox.margin>
+                                    <Insets bottom="10" right="10"/>
+                                 </VBox.margin>
+                                 <graphic>
+                                    <ImageView fitWidth="28.00" fitHeight="28.00">
+                                       <Image url="@../img/sound-on.png"/>
+                                    </ImageView>
+                                 </graphic>
+                              </Button>
+                           </VBox>
+                        </children>
+                     </HBox>
+                     <VBox VBox.vgrow="ALWAYS" style="-fx-pref-height: 70%;">
+                        <children>
+                           <AnchorPane VBox.vgrow="ALWAYS">
+                              <TextArea fx:id="consoleTextArea" editable="false" wrapText="true" AnchorPane.topAnchor="0.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" style="-fx-control-inner-background: black; -fx-text-fill: white;" text=""/>
+                           </AnchorPane>
+                        </children>
+                     </VBox>
+                  </VBox>
+               </children>
+            </HBox>
+         </children>
+         <padding>
+            <Insets fx:id="Insets" left="0" top="6" right="0" bottom="0"/>
+         </padding>
+      </VBox>
+   </center>
+</BorderPane>
 
 <!--
 <BorderPane xmlns="http://javafx.com/javafx/15" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.fiuba.algo3.controllers.Board" styleClass="playing-background">

@@ -30,18 +30,15 @@ public class Ant extends Enemy {
         super(damage, health, credit, movement);
         this.visible = true;
     }
+
     @Override
     public Credit generateCredits() {
         return creditsReward;
     }
+
     @Override
     public String show() {
         return ("Ant:\n\tSpeed: " + move.getSpeed() + "\n\tDamage: " + damage.getQuantity() + "\n\tHealth: " + health.getHealthPoints());
     }
-    @Override
-    public ImageView getImage() {
-        return (new ImageView(new Image(getClass().getResource("/img/ant2.png").toString(),true)));
-    }
-
 }
 

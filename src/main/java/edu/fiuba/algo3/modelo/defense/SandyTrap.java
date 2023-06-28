@@ -24,13 +24,6 @@ public class SandyTrap extends Trap {
             this.destructed();
         }
     }
-    @Override
-    public ImageView getImage() {
-        updateSandyTrap();
-        return new ImageView(new Image(getClass().getResource("/img/sandyTrap.png").toString(),true));
-
-    }
-
     public String show(){
         return "Sandy Trap:\n\tPrice: " + getCredits().getQuantity() + "\n\tDescription: 50% slows down all enemies";
     }

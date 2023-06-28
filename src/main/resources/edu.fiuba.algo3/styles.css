@@ -106,3 +106,16 @@
     -fx-font-size: 12px;
     -fx-background-radius: 7 7 7 7;
 }
+
+.menuBar {
+    -fx-background-color: #505050;
+}
+
+.menuBar .menu {
+    -fx-background-color: #505050;
+}
+
+.menuBar .menu .menuItem {
+    -fx-background-color: #505050;
+}
+

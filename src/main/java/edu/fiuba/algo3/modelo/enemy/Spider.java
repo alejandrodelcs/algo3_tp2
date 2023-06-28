@@ -37,8 +37,4 @@ public class Spider extends Enemy {
     public String show() {
         return ("Spider:\n\tSpeed: " + move.getSpeed() + "\n\tDamage: " + damage.getQuantity() + "\n\tHealth: " + health.getHealthPoints());
     }
-    @Override
-    public ImageView getImage() {
-        return (new ImageView(new Image(getClass().getResource("/img/spider.png").toString(),true)));
-    }
 }

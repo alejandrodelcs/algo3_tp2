@@ -64,9 +64,4 @@ public class Mole extends Enemy {
         return ("Mole:\n\tSpeed: " + move.getSpeed() + "\n\tDamage: " + damage.getQuantity() + "\n\tHealth: " + health.getHealthPoints());
 
     }
-    @Override
-    public ImageView getImage() {
-        return (new ImageView(new Image(getClass().getResource("/img/mole.png").toString(),true)));
-    }
-
 }
