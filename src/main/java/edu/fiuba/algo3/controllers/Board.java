@@ -173,10 +173,19 @@ public class Board extends controler {
     }
 
     private void alertStartFinish() {
-        Alert startFinishAlertWithoutFunds = new Alert(Alert.AlertType.ERROR);
-        startFinishAlertWithoutFunds.setTitle("Invalid Plot To build");
-        startFinishAlertWithoutFunds.setContentText("You cannot build on start or finish line");
-        startFinishAlertWithoutFunds.showAndWait();
+        FXMLLoader loadAlert = new FXMLLoader(getClass().getResource("/edu.fiuba.algo3/AlertInvalidPlotToBuild.fxml"));
+        Parent rootAlert = null;
+        try {
+            rootAlert = loadAlert.load();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+            Stage alertStage = new Stage();
+            Scene scene = new Scene(rootAlert);
+            alertStage.setScene(scene);
+            AlertInvalidPlotToBuild alert = loadAlert.getController();
+            alert.setStage(alertStage);
+            alertStage.showAndWait();
     }
 
     private ImageView buildImageViewOfDefense(Image image) {
