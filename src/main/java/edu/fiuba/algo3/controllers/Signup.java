@@ -19,7 +19,6 @@ public class Signup {
     @FXML
     private void handleSignup() throws IOException {
         String username = usernameField.getText();
-
         if (username.isEmpty()) {
             usernameField.setStyle("-fx-border-color: red");
             usernameField.setPromptText("You must fill out your name first");
