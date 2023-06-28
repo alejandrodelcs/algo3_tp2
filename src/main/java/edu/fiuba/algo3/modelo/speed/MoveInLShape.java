@@ -18,7 +18,7 @@ public class MoveInLShape extends Move {
         int enemyX = (int)x;
         int enemyY = (int)y;
         for (int timesMoved = 0; timesMoved < speed; timesMoved++) {
-            if (enemyY > lastPathY) {
+            if (enemyY >= lastPathY) {
                 enemyX++;
             } else {
                 enemyY++;
