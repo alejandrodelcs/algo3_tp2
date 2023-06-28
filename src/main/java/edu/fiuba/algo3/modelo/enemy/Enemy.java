@@ -69,7 +69,6 @@ public abstract class Enemy {
     protected Point enemyCoordinates;
     protected Move move;
     protected Boolean visible;
-
     public Enemy(Damage damage, Health health, Credit credit, Move movement) {
         this.move = movement;
         this.damage = damage;
@@ -110,11 +109,10 @@ public abstract class Enemy {
         move.decelerate(percentage);
     }
 
-    public abstract ImageView getImage();
-
     public boolean alreadySlowedDown() {
         return move.isSlowedDown();
     }
+
     public boolean isVisible() {
         return visible;
     }

@@ -38,32 +38,7 @@ public class Stone extends Plot{
         throw new NonConstructibleArea();
     }
     @Override
-    public Image printImage() {
-        return new Image(getClass().getResource("/img/rock2.png").toString(),true);
-    }
-    @Override
     public void removeDefense(Defense defense) {
         throw new NonConstructibleArea();
-    }
-
-    @Override
-    public StackPane getStackPane(ArrayList<Image> terrainImages) {
-
-        StackPane aStackPane = new StackPane();
-        ImageView mainImageView = new ImageView(terrainImages.get(2));
-        mainImageView.setFitHeight(50);
-        mainImageView.setFitWidth(50);
-        mainImageView.setPreserveRatio(true);
-        aStackPane.getChildren().add(mainImageView);
-        for (Enemy enemy : enemyArrayList) {
-            ImageView enemyImage = enemy.getImage();
-            enemyImage.setFitWidth(50);
-            enemyImage.setFitHeight(50);
-            enemyImage.setPreserveRatio(true);
-            aStackPane.getChildren().add(enemyImage);
-        }
-        aStackPane.maxHeight(50);
-        aStackPane.maxWidth(50);
-        return aStackPane;
     }
 }

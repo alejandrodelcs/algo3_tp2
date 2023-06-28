@@ -14,12 +14,6 @@ public class SilverTower extends Tower{
         super(credit,constructionTurns, cordinatesTower);
         this.attack = new SimpleRangeAttack(rangeAttack,damage);
     }
-
-    @Override
-    public ImageView getImage() {
-        return new ImageView(new Image(getClass().getResource("/img/tower2.png").toString(),true));
-    }
-
     public String show(){
         return "Silver Tower:\n\tPrice: " + getCredits().getQuantity() + "\n\tRange:  5" + "\n\tDamage: 2";
     }

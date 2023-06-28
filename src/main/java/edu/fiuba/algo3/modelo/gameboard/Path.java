@@ -46,55 +46,7 @@ public class Path extends Plot{
     }
 
     @Override
-    public Image printImage() {
-        return new Image(getClass().getResource("/img/path.png").toString(),true);
-    }
-
-    @Override
     public void removeDefense(Defense defense) {
             this.state = new Available();
-    }
-    @Override
-    public StackPane getStackPane(ArrayList<Image> terrainImages) {
-
-        StackPane aStackPane = new StackPane();
-        ImageView mainImageView = new ImageView(terrainImages.get(0));
-        mainImageView.setFitHeight(50);
-        mainImageView.setFitWidth(50);
-        mainImageView.setPreserveRatio(true);
-        aStackPane.getChildren().add(mainImageView);
-
-        if (defense != null && this.state.itsOccupied() && defense.isAvailable()) {
-            ImageView defenseImageView = defense.getImage();
-            defenseImageView.setFitHeight(50);
-            defenseImageView.setFitWidth(50);
-            defenseImageView.setPreserveRatio(true);
-            aStackPane.getChildren().add(defenseImageView);
-        }
-
-        if (enemyArrayList != null) {
-            int enemiesAmount = enemyArrayList.size();
-            if (enemiesAmount > 1) {
-                Circle amountIndicator = new Circle(12);
-                amountIndicator.setFill(Color.rgb(200, 0, 0, 0.6));
-                Text text = new Text("" + enemiesAmount);
-                Insets innerMargin = new Insets(1, 25, 25, 1);
-                aStackPane.setMargin(amountIndicator, innerMargin);
-                aStackPane.setMargin(text, innerMargin);
-                aStackPane.getChildren().addAll(amountIndicator, text);
-            } else {
-                for (Enemy enemy : enemyArrayList) {
-                    ImageView enemyImage = enemy.getImage();
-                    enemyImage.setFitWidth(40);
-                    enemyImage.setFitHeight(40);
-                    enemyImage.setPreserveRatio(true);
-                    aStackPane.getChildren().add(enemyImage);
-                }
-            }
-        }
-
-        aStackPane.maxHeight(50);
-        aStackPane.maxWidth(50);
-        return aStackPane;
     }
 }

@@ -53,6 +53,7 @@ public class Board extends controler {
     StackPane lastClicked;
     @FXML
     private MenuItem fullScreenMenuBarOption;
+    private PlotDrawer aPlotDrawer = new PlotDrawer();
 
     @FXML
     private void printMap() {
@@ -320,7 +321,7 @@ public class Board extends controler {
     }
 
     private StackPane loadCellImage(int row, int column) {
-        StackPane stackPane = gameBoard.getStackPane(row, column, terrainImages);
+        StackPane stackPane = aPlotDrawer.drawAPlot(gameBoard.getPlot(row, column));
         Plot info = gameBoard.getPlot(row, column);
         String plotInfo = info.show() + " (" + row + ", " + column + ")";
         for (Enemy enemy : info.enemiesInPlot()) {
@@ -441,7 +442,7 @@ public class Board extends controler {
         String updatedStats = algoDefense.getPlayerInfo();
         updatedStats += "\nTurn: " + algoDefense.getCurrentTurn();
         infoLabel.setText(updatedStats);
-        consoleTextArea.setText("Events display here.");
+        consoleTextArea.setText("Events will be displayed here.");
         printMap();
     }
 

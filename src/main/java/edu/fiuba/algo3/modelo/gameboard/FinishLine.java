@@ -39,35 +39,7 @@ public class FinishLine extends Path{
     }
 
     @Override
-    public Image printImage() {
-        return new Image(getClass().getResource("/img/path.png").toString(),true);
-    }
-
-    @Override
     public void removeDefense(Defense defense) {
         this.state = new Occupied();
-    }
-    @Override
-    public StackPane getStackPane(ArrayList<Image> terrainImages) {
-
-        StackPane aStackPane = new StackPane();
-        ImageView mainImageView = new ImageView(terrainImages.get(4));
-        mainImageView.setFitHeight(50);
-        mainImageView.setFitWidth(50);
-        mainImageView.setPreserveRatio(true);
-        aStackPane.getChildren().add(mainImageView);
-        if (enemyArrayList != null) {
-            for (Enemy enemy : enemyArrayList) {
-                ImageView enemyImage = enemy.getImage();
-                enemyImage.setFitWidth(50);
-                enemyImage.setFitHeight(50);
-                enemyImage.setPreserveRatio(true);
-                aStackPane.getChildren().add(enemyImage);
-            }
-        }
-
-        aStackPane.maxHeight(50);
-        aStackPane.maxWidth(50);
-        return aStackPane;
     }
 }

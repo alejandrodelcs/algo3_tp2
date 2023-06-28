@@ -44,8 +44,4 @@ public class Owl extends Enemy {
     public void destroyTower(ArrayList<Defense> defenses) {
         defenses.remove(0);
     }
-    @Override
-    public ImageView getImage() {
-        return (new ImageView(new Image(getClass().getResource("/img/Owl.png").toString(),true)));
-    }
 }
