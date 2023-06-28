@@ -4,12 +4,13 @@ import edu.fiuba.algo3.modelo.defense.Defense;
 import edu.fiuba.algo3.modelo.defense.SandyTrap;
 import edu.fiuba.algo3.modelo.defense.Trap;
 import edu.fiuba.algo3.modelo.enemy.Enemy;
-import edu.fiuba.algo3.modelo.enemy.EnemyFactory;
-import edu.fiuba.algo3.modelo.exceptions.NonConstructibleArea;
-import edu.fiuba.algo3.modelo.exceptions.NonTowerContructibleArea;
+import javafx.geometry.Insets;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
+import javafx.scene.shape.Circle;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Text;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -72,12 +73,23 @@ public class Path extends Plot{
         }
 
         if (enemyArrayList != null) {
-            for (Enemy enemy : enemyArrayList) {
-                ImageView enemyImage = enemy.getImage();
-                enemyImage.setFitWidth(50);
-                enemyImage.setFitHeight(50);
-                enemyImage.setPreserveRatio(true);
-                aStackPane.getChildren().add(enemyImage);
+            int enemiesAmount = enemyArrayList.size();
+            if (enemiesAmount > 1) {
+                Circle amountIndicator = new Circle(12);
+                amountIndicator.setFill(Color.rgb(200, 0, 0, 0.6));
+                Text text = new Text("" + enemiesAmount);
+                Insets innerMargin = new Insets(1, 25, 25, 1);
+                aStackPane.setMargin(amountIndicator, innerMargin);
+                aStackPane.setMargin(text, innerMargin);
+                aStackPane.getChildren().addAll(amountIndicator, text);
+            } else {
+                for (Enemy enemy : enemyArrayList) {
+                    ImageView enemyImage = enemy.getImage();
+                    enemyImage.setFitWidth(40);
+                    enemyImage.setFitHeight(40);
+                    enemyImage.setPreserveRatio(true);
+                    aStackPane.getChildren().add(enemyImage);
+                }
             }
         }
 
