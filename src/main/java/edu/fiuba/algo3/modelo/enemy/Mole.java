@@ -2,6 +2,7 @@ package edu.fiuba.algo3.modelo.enemy;
 
 import edu.fiuba.algo3.modelo.credit.Credit;
 import edu.fiuba.algo3.modelo.damage.Damage;
+import edu.fiuba.algo3.modelo.defense.Defense;
 import edu.fiuba.algo3.modelo.gameboard.Plot;
 import edu.fiuba.algo3.modelo.health.Health;
 import edu.fiuba.algo3.modelo.speed.Move;
@@ -36,6 +37,12 @@ public class Mole extends Enemy {
         }
         return enemyCoordinates;
     }
+
+    @Override
+    public Defense destroyTower(ArrayList<Defense> defenses) {
+        return null;
+    }
+
     public void acelerate() {
         updateMole();
         if (moves >= MOVES_NEEDED_FOR_SPEED_2 && moves < MOVES_NEEDED_FOR_SPEED_3) {

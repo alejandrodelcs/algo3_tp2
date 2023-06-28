@@ -2,6 +2,7 @@ package edu.fiuba.algo3.modelo.enemy;
 
 import edu.fiuba.algo3.modelo.credit.Credit;
 import edu.fiuba.algo3.modelo.damage.Damage;
+import edu.fiuba.algo3.modelo.defense.Defense;
 import edu.fiuba.algo3.modelo.health.Health;
 import edu.fiuba.algo3.modelo.speed.Move;
 import javafx.scene.image.Image;
@@ -39,6 +40,11 @@ public class Ant extends Enemy {
     @Override
     public String show() {
         return ("Ant:\n\tSpeed: " + move.getSpeed() + "\n\tDamage: " + damage.getQuantity() + "\n\tHealth: " + health.getHealthPoints());
+    }
+
+    @Override
+    public Defense destroyTower(ArrayList<Defense> defenses) {
+        return null;
     }
 }
 

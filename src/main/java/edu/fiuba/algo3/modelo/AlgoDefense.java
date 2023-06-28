@@ -92,10 +92,8 @@ public class AlgoDefense {
     private void  enemyDestroysDefense(ArrayList<Enemy> enemyArrayList){
         if((!defenses.isEmpty()) && (enemyArrayList != null) && (!enemyArrayList.isEmpty())){
             for(Enemy enemy : enemyArrayList){
-                if(enemy.getClass() == Owl.class){
-                    Defense defense = defenses.get(0);
-                    gameboard.destroyDefense(defense);
-                    defenses.remove(0);
+                if(enemy instanceof Owl){
+                    gameboard.destroyDefense(defenses,enemy);
                 }
             }
         }
