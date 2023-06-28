@@ -11,24 +11,24 @@ import org.junit.jupiter.api.Test;
 public class ParserTest {
     @Test
     public void test01ThrowsExceptionIfFileIsEmpty() {
-        Assertions.assertThrows(FileIsEmpty.class,()->  new EnemiesParser("src\\main\\java\\edu\\fiuba\\algo3\\modelo\\files\\empty.json"));
+        Assertions.assertThrows(FileIsEmpty.class,()->  new EnemiesParser("src\\main\\resources\\files\\empty.json"));
     }
     @Test
     public void test02() {
-        EnemiesParser enemiesParser = new EnemiesParser("src\\main\\java\\edu\\fiuba\\algo3\\modelo\\files\\invalidFormat.json");
+        EnemiesParser enemiesParser = new EnemiesParser("src\\main\\resources\\files\\invalidFormat.json");
         enemiesParser.getArray();
         Assertions.assertThrows(EnemyObjectDoesNotExists.class,()-> enemiesParser.parserFile());
     }
 
     @Test
     public void test03InvalidObject(){
-        EnemiesParser enemiesParser = new EnemiesParser("src\\main\\java\\edu\\fiuba\\algo3\\modelo\\files\\mapa.json");
+        EnemiesParser enemiesParser = new EnemiesParser("src\\main\\resources\\files\\mapa.json");
         Assertions.assertThrows(InvalidJSONArray.class,()-> enemiesParser.getArray());
     }
 
     @Test
     public void test04InvalidExtension(){
-        Assertions.assertThrows(InvalidExtension.class,()->  new EnemiesParser("src\\main\\java\\edu\\fiuba\\algo3\\modelo\\files\\csvFile.csv"));
+        Assertions.assertThrows(InvalidExtension.class,()->  new EnemiesParser("src\\main\\resources\\files\\csvFile.csv"));
     }
 
 }

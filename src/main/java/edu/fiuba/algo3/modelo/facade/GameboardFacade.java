@@ -11,7 +11,7 @@ public class GameboardFacade {
     private String fileSource;
 
     public GameboardFacade(){
-        this.fileSource =  "src\\main\\java\\edu\\fiuba\\algo3\\modelo\\files\\mapa.json";
+        this.fileSource =  "src\\main\\resources\\files\\mapa.json";
     }
     public GameBoard loadMap() {
         MapParser mapParser = new MapParser(fileSource);
