@@ -29,13 +29,9 @@ public abstract class Defense {
     public abstract ImageView getImage();
     public abstract String show();
     public boolean isAvailable() {
-        return (state.getClass() != DestructedState.class) && (state.getClass() == OperationalState.class);
+        return (state.getClass() != DestructedState.class) && (state.getClass() == OperationalState.class) || (state.getClass() != DestructedState.class) && (state.getClass() == TemporallyState.class);
     }
     public ArrayList<Point> getPlotsInRange() {
         return attack.getPlotsInRange(coordinates);
-    }
-
-    public boolean underConstruction() {
-        return state.getClass() != OperationalState.class;
     }
 }
