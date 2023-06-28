@@ -25,8 +25,8 @@ public class PlotDrawer {
         images.put("Spider", new Image(getClass().getResource("/img/spider.png").toString(), true));
         images.put("Mole", new Image(getClass().getResource("/img/mole.png").toString(), true));
         images.put("Owl", new Image(getClass().getResource("/img/owl.png").toString(), true));
-        images.put("WhiteTower", new Image(getClass().getResource("/img/SilverTower.png").toString(), true));
-        images.put("SilverTower", new Image(getClass().getResource("/img/magic2.png").toString(), true));
+        images.put("WhiteTower", new Image(getClass().getResource("/img/magic2.png").toString(), true));
+        images.put("SilverTower", new Image(getClass().getResource("/img/SilverTower.png").toString(), true));
         images.put("UnderConstruction", new Image(getClass().getResource("/img/under-contruction.png").toString(), true));
         images.put("SandyTrap", new Image(getClass().getResource("/img/sandyTrap.png").toString(), true));
     }
