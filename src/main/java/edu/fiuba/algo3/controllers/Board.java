@@ -133,7 +133,9 @@ public class Board extends controler {
                     pickDefense.setStage(dirtDefenseStage);
                     pickDefense.setDefense(stackPane,point, backwards, clickedRow, clickedColumn, algoDefense, infoLabel);
                     dirtDefenseStage.showAndWait();
-                    setConstrutable(stackPane);
+                    if(algoDefense.isOccupyByADefense(point)){
+                        setConstrutable(stackPane);
+                    }
                 }else if ((gameBoard.isEnemyPath(backwards)) && gameBoard.availableForBuilding(point)) {
                     if (gameBoard.isStart(backwards) || (gameBoard.isFinish(backwards))) {
                         alertStartFinish();
@@ -145,7 +147,9 @@ public class Board extends controler {
                         pickDefense.setStage(pathDefenseStage);
                         pickDefense.setDefense(stackPane,point, backwards, clickedRow, clickedColumn, algoDefense, infoLabel);
                         pathDefenseStage.showAndWait();
-                        setConstrutable(stackPane);
+                        if(algoDefense.isOccupyByADefense(point)){
+                            setConstrutable(stackPane);
+                        }
                     }
                 }
             } catch (NonConstructibleArea exception) {
