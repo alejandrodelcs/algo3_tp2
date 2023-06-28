@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.modelo.enemy;
 
+import edu.fiuba.algo3.modelo.Logger;
 import edu.fiuba.algo3.modelo.credit.Credit;
 import edu.fiuba.algo3.modelo.damage.Damage;
 import edu.fiuba.algo3.modelo.defense.Defense;
@@ -13,11 +14,11 @@ import javafx.scene.image.ImageView;
 import java.util.ArrayList;
 
 public class Owl extends Enemy {
-    private boolean destroyedTower;
+    //private boolean destroyedTower;
     private Health healthToChangeMovement;
     public Owl(Damage damage, Health health, Credit credit, Move movement, Health healthToChangeMovement) {
         super(damage, health, credit, movement);
-        destroyedTower = false;
+        //destroyedTower = false;
         this.healthToChangeMovement = healthToChangeMovement;
         this.visible = true;
     }
@@ -40,8 +41,18 @@ public class Owl extends Enemy {
             move = new HypotenuseMove(move.getSpeed());
         }
     }
-
-    public void destroyTower(ArrayList<Defense> defenses) {
-        defenses.remove(0);
+    @Override
+    public Defense destroyTower(ArrayList<Defense> defenses) {
+        boolean towerDestroyed=false;
+        for (int i=0;i<defenses.size() && !towerDestroyed;i++){
+            Defense defense = defenses.get(i);
+            if (defense instanceof Tower){
+                defenses.remove(i);
+                defense.destructed();
+                return defense;
+            }
+        }
+        return null;
     }
+
 }

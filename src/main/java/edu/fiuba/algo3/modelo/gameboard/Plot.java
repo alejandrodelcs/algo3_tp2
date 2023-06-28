@@ -20,6 +20,5 @@ public abstract class Plot {
     public abstract void addEnemyToPath(Enemy newEnemy);
     public abstract ArrayList<Enemy> enemiesInPlot();
     public Defense getDefense(){return defense;}
-    public void removeDefense(Defense defense) {
-    }
+    public abstract void removeDefense(Defense defense) ;
 }

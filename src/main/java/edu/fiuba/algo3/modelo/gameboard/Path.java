@@ -48,5 +48,6 @@ public class Path extends Plot{
     @Override
     public void removeDefense(Defense defense) {
         this.state = new Available();
+        this.defense = null;
     }
 }

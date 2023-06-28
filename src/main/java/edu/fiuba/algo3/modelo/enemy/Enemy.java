@@ -2,6 +2,7 @@ package edu.fiuba.algo3.modelo.enemy;
 
 import edu.fiuba.algo3.modelo.credit.Credit;
 import edu.fiuba.algo3.modelo.damage.Damage;
+import edu.fiuba.algo3.modelo.defense.Defense;
 import edu.fiuba.algo3.modelo.gameboard.Plot;
 import edu.fiuba.algo3.modelo.health.*;
 import edu.fiuba.algo3.modelo.speed.Move;
@@ -116,4 +117,6 @@ public abstract class Enemy {
     public boolean isVisible() {
         return visible;
     }
+
+    public abstract Defense destroyTower(ArrayList<Defense> defenses);
 }
