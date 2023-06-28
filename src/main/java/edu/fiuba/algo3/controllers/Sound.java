@@ -10,14 +10,14 @@ import java.util.HashMap;
 import java.util.Objects;
 
 public class Sound {
-    private final HashMap<String, MediaPlayer> archivosEfectosSonido = new HashMap<>();
-    private MediaPlayer efecto;
-    private final HashMap<String, MediaPlayer> archivosMusica = new HashMap<>();
-    private MediaPlayer reproduccionActual;
-    private final double volumenDefault = 0.6;
+    private final HashMap<String, MediaPlayer> soundEffectsFiles = new HashMap<>();
+    private MediaPlayer effect;
+    private final HashMap<String, MediaPlayer> musicFiles = new HashMap<>();
+    private MediaPlayer currentPlayback;
+    private final double defaultVolume = 0.6;
 
-    private final SimpleDoubleProperty volumenMusicaProperty = new SimpleDoubleProperty(volumenDefault);
-    private final SimpleDoubleProperty volumenFx = new SimpleDoubleProperty(volumenDefault);
+    private final SimpleDoubleProperty musicVolumeProperty = new SimpleDoubleProperty(defaultVolume);
+    private final SimpleDoubleProperty volumeFx = new SimpleDoubleProperty(defaultVolume);
 
     private static final Sound singleton = new Sound();
 
@@ -29,31 +29,31 @@ public class Sound {
     }
 
 
-    public void reproducirFX(String identificador) {
-        if (!archivosEfectosSonido.containsKey(identificador))
+    public void playFX(String identifier) {
+        if (!soundEffectsFiles.containsKey(identifier))
             throw new ErrorIdentifierDoesNotMatchAnyLoadedSong();
 
-        if (efecto != null)
-            efecto.stop();
+        if (effect != null)
+            effect.stop();
 
-        efecto = archivosEfectosSonido.get(identificador);
-        efecto.play();
+        effect = soundEffectsFiles.get(identifier);
+        effect.play();
     }
-    public void reproducirMusica(String identificador) {
-        if (!archivosMusica.containsKey(identificador))
+    public void playMusic(String identifier) {
+        if (!musicFiles.containsKey(identifier))
             throw new ErrorIdentifierDoesNotMatchAnyLoadedSong();
 
-        if (reproduccionActual != null)
-            reproduccionActual.stop();
+        if (currentPlayback != null)
+            currentPlayback.stop();
 
-        reproduccionActual = archivosMusica.get(identificador);
-        reproduccionActual.setOnEndOfMedia(new Runnable() {
+        currentPlayback = musicFiles.get(identifier);
+        currentPlayback.setOnEndOfMedia(new Runnable() {
             @Override
             public void run() {
-                reproduccionActual.seek(Duration.ZERO);
+                currentPlayback.seek(Duration.ZERO);
             }
         });
-        reproduccionActual.play();
+        currentPlayback.play();
     }
 
 
@@ -61,48 +61,48 @@ public class Sound {
      * para asi no bajar el rendimiento, cargar las canciones que se vayan a usar
      * Toma una direccion del archivo en Resources y un identificador, este ultimo para
      * poder acceder al archivo de sonido luego***/
-    public void cargarMusica(String direccion, String identificador) {
-        cargarArchivo(direccion, identificador, archivosMusica, volumenMusicaProperty);
+    public void loadMusic(String direction, String identifier) {
+        loadFile(direction, identifier, musicFiles, musicVolumeProperty);
     }
 
-    public void cargarSonido(String direccion, String identificador) {
-        cargarArchivo(direccion, identificador, archivosEfectosSonido, volumenFx);
+    public void loadSound(String direction, String identifier) {
+        loadFile(direction, identifier, soundEffectsFiles, volumeFx);
     }
 
-    private void cargarArchivo(String direccion, String identificador, HashMap<String, MediaPlayer> contenedor, SimpleDoubleProperty volumen){
-        Media media = new Media(Objects.requireNonNull(getClass().getResource("/sound/" + direccion).toExternalForm()));
+    private void loadFile(String direction, String identifier, HashMap<String, MediaPlayer> container, SimpleDoubleProperty volume){
+        Media media = new Media(Objects.requireNonNull(getClass().getResource("/sound/" + direction).toExternalForm()));
         MediaPlayer mediaPlayer = new MediaPlayer(media);
-        mediaPlayer.volumeProperty().bindBidirectional(volumen);
-        contenedor.put(identificador, mediaPlayer);
+        mediaPlayer.volumeProperty().bindBidirectional(volume);
+        container.put(identifier, mediaPlayer);
     }
 
-    public void modificarVolumenMusica(double valor) {
-        modificarVolumen(valor, volumenMusicaProperty);
+    public void modifyMusicVolume(double value) {
+        modifyVolume(value, musicVolumeProperty);
     }
-    public void modificarVolumenEfectos(double valor) {
-        modificarVolumen(valor, volumenFx);
+    public void modifyEffectVolume(double value) {
+        modifyVolume(value, volumeFx);
     }
 
-    private void modificarVolumen(double valor, SimpleDoubleProperty volumen) {
-        if (valor >= 0 && valor <= 100){
-            volumen.set(valor / 100);
+    private void modifyVolume(double value, SimpleDoubleProperty volume) {
+        if (value >= 0 && value <= 100){
+            volume.set(value / 100);
         }
     }
-    public void detenerMusica() {
-        reproduccionActual.stop();
+    public void stopMusic() {
+        currentPlayback.stop();
     }
     public void muteMusic(boolean mute_music){
-        reproduccionActual.setMute(mute_music);
+        currentPlayback.setMute(mute_music);
     }
-    public SimpleDoubleProperty obtenerVolumenMusica(){
-        return volumenMusicaProperty;
+    public SimpleDoubleProperty getMusicVolume(){
+        return musicVolumeProperty;
     }
 
-    public SimpleDoubleProperty obtenerVolumenFx(){
-        return volumenFx;
+    public SimpleDoubleProperty getFXVolume(){
+        return volumeFx;
     }
 
     public boolean musicIsMute() {
-        return reproduccionActual.isMute();
+        return currentPlayback.isMute();
     }
 }

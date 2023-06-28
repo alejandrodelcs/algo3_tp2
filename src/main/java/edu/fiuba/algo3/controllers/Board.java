@@ -21,8 +21,6 @@ import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
-import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -34,7 +32,6 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
-import java.util.Stack;
 
 
 public class Board extends controler {
@@ -168,7 +165,7 @@ public class Board extends controler {
             infoLabel.setText(updatedStats);
 
             stackPane.getChildren().add(imageView);
-            Sound.get().reproducirFX("buildDefense");
+            Sound.get().playFX("buildDefense");
         }catch  (InsufficientCredits insufficientCredits){
             alertInssuficientCredits();
         }
@@ -186,7 +183,7 @@ public class Board extends controler {
             infoLabel.setText(updatedStats);
 
             stackPane.getChildren().add(imageView);
-            Sound.get().reproducirFX("buildDefense");
+            Sound.get().playFX("buildDefense");
         }catch  (InsufficientCredits insufficientCredits){
             alertInssuficientCredits();
         }
@@ -205,7 +202,7 @@ public class Board extends controler {
             infoLabel.setText(updatedStats);
 
             stackPane.getChildren().add(whiteTowerImageView);
-            Sound.get().reproducirFX("buildDefense");
+            Sound.get().playFX("buildDefense");
         }catch  (InsufficientCredits insufficientCredits){
             alertInssuficientCredits();
         }
@@ -312,7 +309,7 @@ public class Board extends controler {
     }
 
     private void alertInssuficientCredits() {
-        Sound.get().reproducirFX("insufficientCredits");
+        Sound.get().playFX("insufficientCredits");
         Alert alertWithoutFunds = new Alert(Alert.AlertType.ERROR);
         alertWithoutFunds.setTitle("Insufficient credits");
         alertWithoutFunds.setContentText("Insufficient credits, your current balance is: " + algoDefense.getPlayer().playersBalance());
@@ -356,14 +353,14 @@ public class Board extends controler {
         updatedStats += "\nTurn: " + algoDefense.getCurrentTurn();
         infoLabel.setText(updatedStats);
         if(algoDefense.gameOver()){
-            Sound.get().detenerMusica();
+            Sound.get().stopMusic();
             if(algoDefense.getPlayer().isAlive()){
                 App.setRoot("WIN");
-                Sound.get().reproducirFX("levelWin");
+                Sound.get().playFX("levelWin");
             }
             else{
                 App.setRoot("LOSS");
-                Sound.get().reproducirFX("levelLose");
+                Sound.get().playFX("levelLose");
             }
 
         }
@@ -388,8 +385,7 @@ public class Board extends controler {
         mediaPlayer.setVolume(0.3);
         mediaPlayer.play();*/
         inicializarSonido();
-        Sound.get().reproducirMusica("temaPrincipal");
-        Sound.get().modificarVolumenMusica(50);
+        Sound.get().playMusic("temaPrincipal");
         Image aTerrainImage = new Image(getClass().getResource("/img/path.png").toString(), true);
         terrainImages.add(aTerrainImage);
         aTerrainImage = new Image(getClass().getResource("/img/dirt.png").toString(), true);
@@ -459,14 +455,14 @@ public class Board extends controler {
 
     public void inicializarSonido() {
         Sound sound = Sound.get();
-        sound.cargarMusica("backMusic.mp3", "temaPrincipal");
-        sound.cargarSonido("build-defense.mp3","buildDefense");
-        sound.cargarSonido("insufficient-credits.wav","insufficientCredits");
-        sound.cargarSonido("level-lose.wav","levelLose");
-        sound.cargarSonido("level-win.wav","levelWin");
-        sound.cargarSonido("spider_attack.mp3","spiderAttack");
-        sound.cargarSonido("tower-attack.mp3","towerAttack");
-        sound.modificarVolumenEfectos(50);
-        sound.modificarVolumenMusica(40);
+        sound.loadMusic("backMusic.mp3", "temaPrincipal");
+        sound.loadSound("build-defense.mp3","buildDefense");
+        sound.loadSound("insufficient-credits.wav","insufficientCredits");
+        sound.loadSound("level-lose.wav","levelLose");
+        sound.loadSound("level-win.wav","levelWin");
+        sound.loadSound("spider_attack.mp3","spiderAttack");
+        sound.loadSound("tower-attack.mp3","towerAttack");
+        sound.modifyEffectVolume(50);
+        sound.modifyMusicVolume(40);
     }
 }
