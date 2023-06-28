@@ -17,6 +17,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -50,6 +51,8 @@ public class Board extends controler {
     @FXML
     private Button musicButton;
     StackPane lastClicked;
+    @FXML
+    private MenuItem fullScreenMenuBarOption;
 
     @FXML
     private void printMap() {
@@ -377,6 +380,43 @@ public class Board extends controler {
         printMap();
     }
 
+    @FXML
+    public void exit() {
+        System.exit(0);
+    }
+
+    @FXML
+    public void fullScreenMode() {
+        if (!obtenerStageActual((Node) gridPane).isFullScreen()) {
+            obtenerStageActual((Node) gridPane).setFullScreen(true);
+            fullScreenMenuBarOption.setText("Exit full screen");
+        } else {
+            obtenerStageActual((Node) gridPane).setFullScreen(false);
+            fullScreenMenuBarOption.setText("Full Screen");
+        }
+    }
+
+    @FXML
+    public void showHowToPlay() {
+        Alert howToPlay = new Alert(Alert.AlertType.INFORMATION);
+        howToPlay.setTitle("How to play");
+        howToPlay.setHeaderText("Instructions");
+        String instructions = "Welcome to AlgoDefense! Your goal is to avoid enemies reach the end of the path by building" +
+                " defenses over the plots across the map. Just click on any plot to know which defenses you can build there.\n" +
+                "Each defense has different prices and characteristics, so choose them carefully. Once you have finished building" +
+                " your defenses, click \"Next turn\" button to let enemies advance.\nWe initially provided you with " +
+                algoDefense.getPlayer().getPlayerCredits().getQuantity() + " credits to buy your first defenses.\nHow you gain" +
+                " more credits? As your defenses destroy enemies, they will provide you with some.\n Like your defenses, different" +
+                " enemies vary in skills. You can check their speed, life points and damage hovering your mouse over them.\n" +
+                "Ants and spiders don't do much. They just go through the path.\nMoles are a bit more annoying. As they go" +
+                " underground, towers can't harm them. You can just slow them down with sandy traps. Not only that, but also" +
+                " do they speed up as the game advances.\nLastly, the owls. They will do two straight lines (first vertically" +
+                " and then horizontally) to the end path. but if your towers damage them half their life points, they will go" +
+                " through the shortest way to the end.\nGood luck and thanks for playing!";
+        howToPlay.setContentText(instructions);
+        howToPlay.show();
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         /*Media media = new Media(getClass().getResource("/sound/backMusic.mp3").toString());
@@ -401,18 +441,7 @@ public class Board extends controler {
         String updatedStats = algoDefense.getPlayerInfo();
         updatedStats += "\nTurn: " + algoDefense.getCurrentTurn();
         infoLabel.setText(updatedStats);
-        consoleTextArea.setText("Welcome to AlgoDefense! Your goal is to avoid enemies reach the end of the path by building" +
-                " defenses over the plots across the map. Just click on any plot to know which defenses you can build there.\n" +
-                "Each defense has different prices and characteristics, so choose them carefully. Once you have finished building" +
-                " your defenses, click \"Next turn\" button to let enemies advance.\nWe initially provided you with " +
-                algoDefense.getPlayer().getPlayerCredits().getQuantity() + " credits to buy your first defenses.\nHow you gain" +
-                " more credits? As your defenses destroy enemies, they will provide you with some.\n Like your defenses, different" +
-                " enemies vary in skills. You can check their speed, life points and damage hovering your mouse over them.\n" +
-                "Ants and spiders don't do much. They just go through the path.\nMoles are a bit more annoying. As they go" +
-                " underground, towers can't harm them. You can just slow them down with sandy traps. Not only that, but also" +
-                " do they speed up as the game advances.\nLastly, the owls. They will do two straight lines (first vertically" +
-                " and then horizontally) to the end path. but if your towers damage them half their life points, they will go" +
-                " through the shortest way to the end.\nGood luck and thanks for playing!");
+        consoleTextArea.setText("Events display here.");
         printMap();
     }
 
