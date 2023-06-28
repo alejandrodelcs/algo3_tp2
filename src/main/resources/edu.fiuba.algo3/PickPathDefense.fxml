@@ -16,7 +16,7 @@
         <VBox onMouseClicked="#sandyTrap" alignment="CENTER" spacing="10" >
             <ImageView fitWidth="150" fitHeight="150">
                 <image>
-                    <Image url="@img/sandyTrap.jpg" />
+                    <Image url="@img/sandyTrap.png" />
                 </image>
             </ImageView>
             <Text >Sandy Trap: </Text>
