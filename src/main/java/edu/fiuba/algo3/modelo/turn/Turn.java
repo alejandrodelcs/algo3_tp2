@@ -13,6 +13,7 @@ import edu.fiuba.algo3.modelo.player.Player;
 import java.util.ArrayList;
 import java.util.Dictionary;
 import java.util.Enumeration;
+import java.util.Iterator;
 
 public class Turn {
     private int currentTurn;
@@ -30,8 +31,13 @@ public class Turn {
 
     public void updateDefense(ArrayList<Defense> defenses, GameBoard gameBoard, Player player) {
         ArrayList<Enemy> enemies = gameBoard.getEnemies();
-        for(Defense aDefense: defenses ){
-                aDefense.attack(enemies);
+        Iterator<Defense> iterator = defenses.iterator();
+        while (iterator.hasNext()) {
+            Defense aDefense = iterator.next();
+            aDefense.attack(enemies);
+            if (aDefense.isDestroyed()){
+                gameBoard.removeDefense(aDefense);
+            }
         }
         for (Enemy enemy: enemies
              ) {

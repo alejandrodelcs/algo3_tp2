@@ -30,7 +30,7 @@ public abstract class Defense {
         return (state.getClass() != DestructedState.class) && (state.getClass() == OperationalState.class) || (state.getClass() != DestructedState.class) && (state.getClass() == TemporallyState.class);
     }
     public boolean isDestroyed() {
-        return state.getClass() == DestructedState.class;
+        return state instanceof DestructedState;
     }
     public ArrayList<Point> getPlotsInRange() {
         return attack.getPlotsInRange(coordinates);
