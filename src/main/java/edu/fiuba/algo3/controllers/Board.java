@@ -11,8 +11,10 @@ import edu.fiuba.algo3.modelo.gameboard.Plot;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
@@ -112,35 +114,38 @@ public class Board extends controler {
 
         stackPane.setOnMouseClicked(someEvent -> {
             try {
-                if (gameBoard.availableForBuilding(point) && (!gameBoard.isEnemyPath(backwards))) {
-                    Stage newWindow = createDefensesTowerMenuWindow();
-                    Button whiteTowerButton = createWhiteTowerButton();
-                    whiteTowerButton.setOnAction(e -> {
-                        whiteTowerButtonEvent(stackPane, clickedRow, clickedColumn);
-                        newWindow.close();
-                    });
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/edu.fiuba.algo3/PickDefense.fxml"));
+                Parent root = null;
 
-                    Button silverTowerButton = createSilverTowerButton();
-                    silverTowerButton.setOnAction(e -> {
-                        silverTowerButtonEvent(stackPane, clickedRow, clickedColumn);
-                        newWindow.close();
-                    });
-
-                    createDefensesMenuStack(silverTowerButton, whiteTowerButton, newWindow);
-                    newWindow.showAndWait();
-
-                } else if ((gameBoard.isEnemyPath(backwards)) && gameBoard.availableForBuilding(point)) {
+                FXMLLoader loaderPath = new FXMLLoader(getClass().getResource("/edu.fiuba.algo3/PickPathDefense.fxml"));
+                Parent rootPath = null;
+                try {
+                    root = loader.load();
+                    rootPath = loaderPath.load();
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+                if(gameBoard.availableForBuilding(point) && (!gameBoard.isEnemyPath(backwards))){
+                    Stage dirtDefenseStage = new Stage();
+                    Scene scene = new Scene(root);
+                    dirtDefenseStage.setScene(scene);
+                    PickDefense pickDefense = loader.getController();
+                    pickDefense.setStage(dirtDefenseStage);
+                    pickDefense.setDefense(stackPane,point, backwards, clickedRow, clickedColumn, algoDefense, infoLabel);
+                    dirtDefenseStage.showAndWait();
+                    setConstrutable(stackPane);
+                }else if ((gameBoard.isEnemyPath(backwards)) && gameBoard.availableForBuilding(point)) {
                     if (gameBoard.isStart(backwards) || (gameBoard.isFinish(backwards))) {
                         alertStartFinish();
                     } else {
-                        Stage newWindow = createDefensesTowerMenuWindow();
-                        Button sandyTrapButton = createSandyTrapButton();
-                        sandyTrapButton.setOnAction(e -> {
-                            sandyTrapButtonEvent(stackPane, clickedRow, clickedColumn);
-                            newWindow.close();
-                        });
-                        createDefensesOnEnemyPathMenuStack(sandyTrapButton, newWindow);
-                        newWindow.showAndWait();
+                        Stage pathDefenseStage = new Stage();
+                        Scene scene = new Scene(rootPath);
+                        pathDefenseStage.setScene(scene);
+                        PickPathDefense pickDefense = loaderPath.getController();
+                        pickDefense.setStage(pathDefenseStage);
+                        pickDefense.setDefense(stackPane,point, backwards, clickedRow, clickedColumn, algoDefense, infoLabel);
+                        pathDefenseStage.showAndWait();
+                        setConstrutable(stackPane);
                     }
                 }
             } catch (NonConstructibleArea exception) {
@@ -155,146 +160,12 @@ public class Board extends controler {
         });
     }
 
-    private void sandyTrapButtonEvent(StackPane stackPane, int clickedRow, int clickedColumn) {
-        DefenseFactory sandyFactory = new SandyTrapFactory();
-
-        try{
-            ImageView imageView = buildImageViewOfDefense(new Image(getClass().getResource("/img/sandyTrap.png").toString(), true));
-            Point coordinatesToEnemyPath = new Point(clickedRow,clickedColumn);
-            Defense sandyTrap = sandyFactory.createDefense(coordinatesToEnemyPath);
-            algoDefense.buildsADefense(sandyTrap);
-            this.updateTooltip(gameBoard.getPlot(clickedRow,clickedColumn),sandyTrap.show(),stackPane,clickedRow,clickedColumn);
-            String updatedStats = algoDefense.getPlayerInfo();
-            updatedStats += "\nTurn: " + algoDefense.getCurrentTurn();
-            infoLabel.setText(updatedStats);
-
-            stackPane.getChildren().add(imageView);
-            Sound.get().playFX("buildDefense");
-        }catch  (InsufficientCredits insufficientCredits){
-            alertInssuficientCredits();
-        }
-    }
-    private void silverTowerButtonEvent(StackPane stackPane, int clickedRow, int clickedColumn) {
-        DefenseFactory silverFactory = new SilverTowerFactory();
-        try{
-            ImageView imageView = buildImageViewOfDefense(new Image(getClass().getResource("/img/under-contruction.png").toString(), true));
-            Point coordinatesToADirt = new Point(clickedRow,clickedColumn);
-            Defense silverTower = silverFactory.createDefense(coordinatesToADirt);
-            algoDefense.buildsADefense(silverTower);
-            this.updateTooltip(gameBoard.getPlot(clickedRow,clickedColumn),"Silver Tower under-construction",stackPane,clickedRow,clickedColumn);
-            String updatedStats = algoDefense.getPlayerInfo();
-            updatedStats += "\nTurn: " + algoDefense.getCurrentTurn();
-            infoLabel.setText(updatedStats);
-
-            stackPane.getChildren().add(imageView);
-            Sound.get().playFX("buildDefense");
-        }catch  (InsufficientCredits insufficientCredits){
-            alertInssuficientCredits();
-        }
-    }
-
-    private void whiteTowerButtonEvent(StackPane stackPane, int clickedRow, int clickedColumn) {
-        DefenseFactory whiteFactory = new WhiteTowerFactory();
-        try{
-            ImageView whiteTowerImageView = buildImageViewOfDefense(new Image(getClass().getResource("/img/under-contruction.png").toString(), true));
-            Point coordinatesToADirt = new Point(clickedRow,clickedColumn);
-            Defense whiteTower = whiteFactory.createDefense(coordinatesToADirt);
-            algoDefense.buildsADefense(whiteTower);
-            this.updateTooltip(gameBoard.getPlot(clickedRow,clickedColumn),"White Tower under-construction",stackPane, clickedRow,clickedColumn);
-            String updatedStats = algoDefense.getPlayerInfo();
-            updatedStats += "\nTurn: " + algoDefense.getCurrentTurn();
-            infoLabel.setText(updatedStats);
-
-            stackPane.getChildren().add(whiteTowerImageView);
-            Sound.get().playFX("buildDefense");
-        }catch  (InsufficientCredits insufficientCredits){
-            alertInssuficientCredits();
-        }
-    }
-    private Button createSandyTrapButton() {
-        Button sandyTrapButton = new Button("Sandy Trap: \n Price: 25\n Availability:\n  Instant\n * Vanishes in\n  3 turns \n * Desaccelerate\n enemies by 50% ");
-        ImageView imageViewSilverTower = new ImageView(getClass().getResource("/img/sandyTrap.png").toString());
-        imageViewSilverTower.setFitHeight(100);
-        imageViewSilverTower.setPreserveRatio(true);
-        sandyTrapButton.setGraphic(imageViewSilverTower);
-        sandyTrapButton.setContentDisplay(ContentDisplay.TOP);
-        sandyTrapButton.setStyle(bringStyles());
-        return sandyTrapButton;
-    }
-    private Button createSilverTowerButton() {
-        Button silverTowerButton = new Button("Silver Tower: \n Price: 20 \n Range: 5\n Damage: 2\n Availability\n  2 turns");
-        ImageView imageViewSilverTower = new ImageView(getClass().getResource("/img/silverTower.png").toString());
-        imageViewSilverTower.setFitHeight(100);
-        imageViewSilverTower.setPreserveRatio(true);
-        silverTowerButton.setGraphic(imageViewSilverTower);
-        silverTowerButton.setContentDisplay(ContentDisplay.TOP);
-        silverTowerButton.setId("button");
-        //silverTowerButton.getStyleClass().clear();
-        //silverTowerButton.getStyleClass().add("button");
-        silverTowerButton.setStyle(bringStyles());
-        return silverTowerButton;
-    }
-
-    private Button createWhiteTowerButton() {
-
-        Button whiteTowerButton = new Button("White Tower: \n Price: 10 \n Range: 3\n Damage: 1 \n Availability:\n  1 turn");
-        ImageView imageViewWhiteTower = new ImageView(getClass().getResource("/img/magic2.png").toString());
-        imageViewWhiteTower.setFitHeight(100);
-        imageViewWhiteTower.setPreserveRatio(true);
-        whiteTowerButton.setGraphic(imageViewWhiteTower);
-        whiteTowerButton.setContentDisplay(ContentDisplay.TOP);
-        whiteTowerButton.setId("button");
-        whiteTowerButton.setStyle(bringStyles());
-        return whiteTowerButton;
-    }
-
-    private Stage createDefensesTowerMenuWindow() {
-        Label label = new Label("Available Defenses");
-        StackPane layout = new StackPane();
-        layout.getChildren().add(label);
-        Scene secondScene = new Scene(layout, 450, 240);
-        //secondScene.getStylesheets().add(getClass().getResource("/edu.fiuba.algo3/styles.css").toString());
-        secondScene.setFill(Color.BLACK);
-        Stage newWindow = new Stage();
-        newWindow.setTitle("Available Defenses");
-        newWindow.getStyle();
-        newWindow.setScene(secondScene);
-        return newWindow;
-    }
-    private void createDefensesMenuStack(Button silverTowerButton, Button whiteTowerButton, Stage newWindow) {
-        var bottomStackPane = new StackPane(new HBox(
-                silverTowerButton,
-                whiteTowerButton
-        ));
-
-        Text text = new Text();
-        text.setText("Pick a defense for this plot: ");
-        text.setId("@font-face");
-        text.setStyle(setTextStyle());
-        var verticalStackPane = new StackPane(new VBox(
-                text,
-                bottomStackPane
-        ));
-
-        verticalStackPane.setAlignment(Pos.TOP_CENTER);
-        verticalStackPane.setBackground(Background.fill(Color.DARKGREY));
-        newWindow.setScene(new Scene(verticalStackPane, 450, 240));
-    }
-
-    private void createDefensesOnEnemyPathMenuStack(Button sandyTrapButton, Stage newWindow) {
-        var bottomStackPane = new StackPane(new HBox(
-                sandyTrapButton
-        ));
-        Text text = new Text();
-        text.setText("Pick a defense:");
-        text.setStyle(setTextStyle());
-        var verticalStackPane = new StackPane(new VBox(
-                text,
-                bottomStackPane
-        ));
-        verticalStackPane.setAlignment(Pos.TOP_CENTER);
-        verticalStackPane.setBackground(Background.fill(Color.DARKGREY));
-        newWindow.setScene(new Scene(verticalStackPane, 250, 270));
+    private void setConstrutable(StackPane stackPane){
+        ImageView imageView = buildImageViewOfDefense(new Image(getClass().getResource("/img/under-contruction.png").toString(), true));
+        String updatedStats = algoDefense.getPlayerInfo();
+        infoLabel.setText(updatedStats);
+        stackPane.getChildren().add(imageView);
+        Sound.get().playFX("buildDefense");
     }
 
     private void alertStartFinish() {
@@ -310,14 +181,6 @@ public class Board extends controler {
         imageView.setFitWidth(50);
         imageView.setPreserveRatio(true);
         return imageView;
-    }
-
-    private void alertInssuficientCredits() {
-        Sound.get().playFX("insufficientCredits");
-        Alert alertWithoutFunds = new Alert(Alert.AlertType.ERROR);
-        alertWithoutFunds.setTitle("Insufficient credits");
-        alertWithoutFunds.setContentText("Insufficient credits, your current balance is: " + algoDefense.getPlayer().playersBalance());
-        alertWithoutFunds.showAndWait();
     }
 
     private StackPane loadCellImage(int row, int column) {
