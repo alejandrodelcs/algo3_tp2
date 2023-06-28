@@ -350,6 +350,11 @@ public class Board extends controler {
         }
     }
 
+    @FXML
+    private void muteSounds() {
+
+    }
+
     public void inicializarSonido() {
         Sound sound = Sound.get();
         sound.loadMusic("backMusic.mp3", "temaPrincipal");

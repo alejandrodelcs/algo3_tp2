@@ -37,9 +37,9 @@
     -fx-translate-y: 0.93;
 }
 
-#musicButton {
+#musicButton, #soundsButton {
     -fx-padding: 5px;
-    -fx-pref-width: 38px;
+    -fx-pref-width: 120px;
     -fx-pref-height: 38px;
 }
 

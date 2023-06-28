@@ -10,7 +10,7 @@
 .button {
     -fx-letter-spacing: 2px;
     -fx-background-radius: 100px;
-    -fx-font-family: -fx-font-family: 'Press Start 2P';
+    -fx-font-family: 'Press Start 2P';
     -fx-text-fill: #ffffff;
     -fx-font-size: 14px;
     -fx-font-weight: 400;

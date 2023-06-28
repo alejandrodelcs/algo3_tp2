@@ -62,16 +62,28 @@
                                     <Insets bottom="10" right="10"/>
                                  </VBox.margin>
                               </Button>
-                              <Button onAction="#muteMusic" fx:id="musicButton">
-                                 <VBox.margin>
-                                    <Insets bottom="10" right="10"/>
-                                 </VBox.margin>
-                                 <graphic>
-                                    <ImageView fitWidth="28.00" fitHeight="28.00">
-                                       <Image url="@../img/sound-on.png"/>
-                                    </ImageView>
-                                 </graphic>
-                              </Button>
+                              <HBox spacing="10" prefWidth="250" style="-fx-padding: 0 0 10 0;">
+                                 <Button onAction="#muteMusic" fx:id="musicButton">
+                                    <VBox.margin>
+                                       <Insets bottom="10" right="10"/>
+                                    </VBox.margin>
+                                    <graphic>
+                                       <ImageView fitWidth="28.00" fitHeight="28.00">
+                                          <Image url="@../img/sound-on.png"/>
+                                       </ImageView>
+                                    </graphic>
+                                 </Button>
+                                 <Button onAction="#muteSounds" fx:id="soundsButton">
+                                    <VBox.margin>
+                                       <Insets bottom="10" right="10"/>
+                                    </VBox.margin>
+                                    <graphic>
+                                       <ImageView fitWidth="28.00" fitHeight="28.00">
+                                          <Image url="@../img/sound-on.png"/>
+                                       </ImageView>
+                                    </graphic>
+                                 </Button>
+                              </HBox>
                            </VBox>
                         </children>
                      </HBox>
@@ -92,40 +104,3 @@
       </VBox>
    </center>
 </BorderPane>
-
-<!--
-<BorderPane xmlns="http://javafx.com/javafx/15" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.fiuba.algo3.controllers.Board" styleClass="playing-background">
-   <left>
-      <GridPane fx:id="gridPane" maxWidth="-Infinity" maxHeight="-Infinity" alignment="CENTER" BorderPane.alignment="CENTER_LEFT" BorderPane.margin="$Insets">
-      </GridPane>
-   </left>
-   <right>
-      <VBox HBox.hgrow="ALWAYS" fx:id="rightContainer">
-         <VBox VBox.vgrow="ALWAYS" style="-fx-pref-height: 70%;">
-            <Label fx:id="infoLabel" text="" VBox.vgrow="NEVER" style="-fx-text-fill: white;">
-               <VBox.margin>
-                  <Insets top="10" right="10"/>
-               </VBox.margin>
-            </Label>
-            <Region VBox.vgrow="ALWAYS" />
-            <Button onAction="#updateImages" text="Next Turn">
-               <VBox.margin>
-                  <Insets bottom="10" right="10"/>
-               </VBox.margin>
-            </Button>
-            <Button text="Restart game">
-               <VBox.margin>
-                  <Insets bottom="10" right="10"/>
-               </VBox.margin>
-            </Button>
-         </VBox>
-         <HBox fx:id="notificationsContainer" VBox.vgrow="ALWAYS" style="-fx-pref-height: 30%;">
-            <Label fx:id="notificationsLabel">Lorem ipsum dolor sit amet .</Label>
-         </HBox>
-      </VBox>
-   </right>
-   <padding>
-      <Insets fx:id="Insets" left="0" top="0" right="0" bottom="0"/>
-   </padding>
-</BorderPane>
--->
