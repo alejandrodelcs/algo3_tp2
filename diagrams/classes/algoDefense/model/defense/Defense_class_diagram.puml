@@ -1,12 +1,12 @@
 @startuml
 'https://plantuml.com/class-diagram
 
-!include Tower_class_diagram.puml
-!include State_class_diagram.puml
+!include Defense.puml
 !include ../credit/Credit.puml
+!include State.puml
+!include ../attack/Attack.puml
+Attack <--* Defense
+Defense *--> State
+Credit <- Defense
 
-TowerFactory -> Tower
-Tower --> State
-Credit <-- Tower
-top to bottom direction
 @enduml

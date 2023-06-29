@@ -1,8 +1,7 @@
 @startuml
 'https://plantuml.com/class-diagram
-!include State.puml
 package model {
-    class ConstructionState extends State {
+    class ConstructionState {
         - remainingConstructionTurns: int
         + ConstructionState(int defenseConstructionTurns)
         + attack(Defense defense, ArrayList<Enemy> enemies): void

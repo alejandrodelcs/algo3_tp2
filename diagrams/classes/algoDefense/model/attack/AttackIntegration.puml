@@ -1,0 +1,10 @@
+@startuml
+'https://plantuml.com/class-diagram
+skinparam linetype ortho
+!include Attack.puml
+!include SimpleRangeAttack.puml
+!include SlowDown.puml
+
+Attack <|-- SlowDown
+Attack <|-- SimpleRangeAttack
+@enduml

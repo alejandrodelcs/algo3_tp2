@@ -1,8 +1,7 @@
 @startuml
 'https://plantuml.com/class-diagram
-!include State.puml
 package model{
-    class TemporallyState extends State {
+    class TemporallyState {
         - TurnAlive: int
         - attack: Attack
         + TemporallyState(Attack newAttack, int operativeTurns)

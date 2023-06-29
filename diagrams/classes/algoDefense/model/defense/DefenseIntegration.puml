@@ -1,0 +1,14 @@
+@startuml
+'https://plantuml.com/class-diagram
+skinparam linetype ortho
+!include Defense.puml
+!include Tower.puml
+!include Trap.puml
+!include SandyTrap.puml
+!include WhiteTower.puml
+!include SilverTower.puml
+
+Defense <|-- Tower
+Trap --|> Defense
+SandyTrap --|> Trap
+@enduml

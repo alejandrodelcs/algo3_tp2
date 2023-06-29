@@ -1,0 +1,12 @@
+@startuml
+'https://plantuml.com/class-diagram
+skinparam linetype ortho
+!include DefenseFactory.puml
+!include WhiteTowerFactory.puml
+!include SilverTowerFactory.puml
+!include SandyTrapFactory.puml
+DefenseFactory <|-- WhiteTowerFactory
+DefenseFactory <|-- SilverTowerFactory
+DefenseFactory <|-- SandyTrapFactory
+
+@enduml

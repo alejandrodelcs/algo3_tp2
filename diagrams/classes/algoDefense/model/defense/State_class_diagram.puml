@@ -1,8 +1,16 @@
 @startuml
 'https://plantuml.com/class-diagram
+skinparam linetype ortho
 !include OperationalState.puml
 !include ConstructionState.puml
+!include TemporallyState.puml
+!include DestructedState.puml
+!include State.puml
 
-left to right direction
+ConstructionState --|> State
+TemporallyState --|> State
+State <|-- DestructedState
+State <|-- OperationalState
+
 
 @enduml
