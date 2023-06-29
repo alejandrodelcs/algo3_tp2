@@ -20,6 +20,7 @@ public class Sound {
     private final SimpleDoubleProperty volumeFx = new SimpleDoubleProperty(defaultVolume);
 
     private static final Sound singleton = new Sound();
+    private boolean muted = false;
 
     private Sound(){
     }
@@ -33,7 +34,7 @@ public class Sound {
         if (!soundEffectsFiles.containsKey(identifier))
             throw new ErrorIdentifierDoesNotMatchAnyLoadedSong();
 
-        if (effect != null)
+        if (effect != null || muted == true)
             effect.stop();
 
         effect = soundEffectsFiles.get(identifier);
@@ -94,6 +95,10 @@ public class Sound {
     public void muteMusic(boolean mute_music){
         currentPlayback.setMute(mute_music);
     }
+    public void muteFXSounds(boolean muteValue) {
+        effect.setMute(muteValue);
+        muted = muteValue;
+    }
     public SimpleDoubleProperty getMusicVolume(){
         return musicVolumeProperty;
     }
@@ -104,5 +109,8 @@ public class Sound {
 
     public boolean musicIsMute() {
         return currentPlayback.isMute();
+    }
+    public boolean soundsAreMuted() {
+        return muted;
     }
 }

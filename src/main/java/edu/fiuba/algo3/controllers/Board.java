@@ -47,6 +47,8 @@ public class Board extends controler {
     private TextArea consoleTextArea;
     @FXML
     private Button musicButton;
+    @FXML
+    private Button soundsButton;
     StackPane lastClicked;
     @FXML
     private MenuItem fullScreenMenuBarOption;
@@ -325,16 +327,23 @@ public class Board extends controler {
         ImageView innerButtonImg = (ImageView) musicButton.getGraphic();
         if (Sound.get().musicIsMute()) {
             Sound.get().muteMusic(false);
-            innerButtonImg.setImage(new Image(getClass().getResource("/img/sound-on.png").toString()));
+            innerButtonImg.setImage(new Image(getClass().getResource("/img/music-on.png").toString()));
         } else {
             Sound.get().muteMusic(true);
-            innerButtonImg.setImage(new Image(getClass().getResource("/img/sound-off.png").toString()));
+            innerButtonImg.setImage(new Image(getClass().getResource("/img/music-off.png").toString()));
         }
     }
 
     @FXML
     private void muteSounds() {
-
+        ImageView innerButtonImg = (ImageView) soundsButton.getGraphic();
+        if (Sound.get().soundsAreMuted()) {
+            Sound.get().muteFXSounds(false);
+            innerButtonImg.setImage(new Image(getClass().getResource("/img/sound-on.png").toString()));
+        } else {
+            Sound.get().muteFXSounds(true);
+            innerButtonImg.setImage(new Image(getClass().getResource("/img/sound-off.png").toString()));
+        }
     }
 
     public void inicializarSonido() {
