@@ -7,6 +7,8 @@ import edu.fiuba.algo3.modelo.exceptions.InsufficientCredits;
 import edu.fiuba.algo3.modelo.exceptions.InvalidPlayersName;
 import edu.fiuba.algo3.modelo.health.Health;
 
+import java.awt.*;
+import java.util.ArrayList;
 
 public class Player {
     private String playersName;

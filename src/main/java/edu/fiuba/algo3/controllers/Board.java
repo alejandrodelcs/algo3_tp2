@@ -21,7 +21,6 @@ import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
-
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
@@ -48,6 +47,8 @@ public class Board extends controler {
     private TextArea consoleTextArea;
     @FXML
     private Button musicButton;
+    @FXML
+    private Button soundsButton;
     StackPane lastClicked;
     @FXML
     private MenuItem fullScreenMenuBarOption;
@@ -69,7 +70,7 @@ public class Board extends controler {
                 final int clickedRow = i;
                 final int clickedColumn = j;
                 Point point = new Point(i,j);
-                Point backwards = new Point(j,i);
+                Point backwards = new Point(j,i); //TODO: REVERT X Y so this variable won't be used anymore
                 pickADefenseEvent(stackPane, point, backwards, clickedRow, clickedColumn);
                 showRangeEvent(i, j, stackPane);
             }
@@ -104,7 +105,7 @@ public class Board extends controler {
                 }
             });
         }
-    };
+    }
 
     private void pickADefenseEvent(StackPane stackPane,Point point, Point backwards, int clickedRow, int clickedColumn) {
 
@@ -126,8 +127,7 @@ public class Board extends controler {
                     Scene scene = new Scene(root);
                     dirtDefenseStage.setScene(scene);
                     PickDefense pickDefense = loader.getController();
-                    pickDefense.setStage(dirtDefenseStage);
-                    pickDefense.setDefense(stackPane,point, backwards, clickedRow, clickedColumn, algoDefense, infoLabel);
+                    pickDefense.setDefense(dirtDefenseStage, clickedRow, clickedColumn, algoDefense);
                     dirtDefenseStage.showAndWait();
                     if(algoDefense.isOccupyByADefense(point)){
                         setConstrutable(stackPane);
@@ -140,8 +140,7 @@ public class Board extends controler {
                         Scene scene = new Scene(rootPath);
                         pathDefenseStage.setScene(scene);
                         PickPathDefense pickDefense = loaderPath.getController();
-                        pickDefense.setStage(pathDefenseStage);
-                        pickDefense.setDefense(stackPane,point, backwards, clickedRow, clickedColumn, algoDefense, infoLabel);
+                        pickDefense.setDefense(pathDefenseStage, clickedRow, clickedColumn, algoDefense);
                         pathDefenseStage.showAndWait();
                         if(algoDefense.isOccupyByADefense(point)){
                             setConstrutable(stackPane);
@@ -169,10 +168,20 @@ public class Board extends controler {
     }
 
     private void alertStartFinish() {
-        Alert startFinishAlertWithoutFunds = new Alert(Alert.AlertType.ERROR);
-        startFinishAlertWithoutFunds.setTitle("Invalid Plot To build");
-        startFinishAlertWithoutFunds.setContentText("You cannot build on start or finish line");
-        startFinishAlertWithoutFunds.showAndWait();
+        FXMLLoader loadAlert = new FXMLLoader(getClass().getResource("/edu.fiuba.algo3/AlertInvalidPlotToBuild.fxml"));
+        Parent rootAlert = null;
+        try {
+            rootAlert = loadAlert.load();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+            Stage alertStage = new Stage();
+            Scene scene = new Scene(rootAlert);
+            alertStage.setScene(scene);
+            AlertInvalidPlotToBuild alert = loadAlert.getController();
+            alert.setStage(alertStage);
+            Sound.get().playFX("levelWin");
+            alertStage.showAndWait();
     }
 
     private ImageView buildImageViewOfDefense(Image image) {
@@ -215,6 +224,7 @@ public class Board extends controler {
     private void updateImages() throws IOException {
         gridPane.getChildren().clear();
         algoDefense.nextTurn();
+        playEnemiesSound();
         explitDatos();
         String updatedStats = algoDefense.getPlayerInfo();
         updatedStats += "\nTurn: " + algoDefense.getCurrentTurn();
@@ -229,10 +239,20 @@ public class Board extends controler {
                 App.setRoot("LOSS");
                 Sound.get().playFX("levelLose");
             }
-
         }
         printMap();
     }
+    @FXML
+    private void playEnemiesSound() {
+        ArrayList<Enemy> enemies = gameBoard.getEnemiesInTheFirstPath();
+        Sound soundController = Sound.get();
+        for (Enemy enemy:enemies
+             ) {
+            soundController.playFX(enemy.getClass().getSimpleName());
+            //soundController.playFX("spiderAttack");
+        }
+    }
+
     @FXML
     public void resetGame() {
         algoDefense.reset(algoDefense.getPlayer());
@@ -288,7 +308,7 @@ public class Board extends controler {
         mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
         mediaPlayer.setVolume(0.3);
         mediaPlayer.play();*/
-        inicializarSonido();
+        initializeSound();
         Sound.get().playMusic("temaPrincipal");
         Image aTerrainImage = new Image(getClass().getResource("/img/path.png").toString(), true);
         terrainImages.add(aTerrainImage);
@@ -309,26 +329,6 @@ public class Board extends controler {
         printMap();
     }
 
-    private String bringStyles() {
-        return "    -fx-padding: 10px 0;\n" +
-                "    -fx-pref-width: 250px;\n" +
-                "    -fx-letter-spacing: 2px;\n" +
-                "    -fx-background-radius: 20px;\n" +
-                "    -fx-font-family: 'Press Start 2P';\n" +
-                "    -fx-text-fill: #ffffff;\n" +
-                "    -fx-font-size: 14px;\n" +
-                "    -fx-font-weight: 400;\n" +
-                "    -fx-effect: innershadow(gaussian, rgba(1, 1, 1, 0.82), 3, 0, 0, 0);\n" +
-                "    -fx-border-width: 4px;\n" +
-                "    -fx-border-color: rgba(129, 229, 209, 0.51);\n" +
-                "    -fx-border-radius: 20px;\n" +
-                "    -fx-background-color: radial-gradient(center 20% 30%, radius 50%, rgba(75, 117, 137, 0.78) 0%, rgba(41, 87, 145, 0.72) 100%);";
-    }
-    private String setTextStyle() {
-        return "    -fx-font-family: 'Press Start 2P';\n" +
-                "    -fx-font-size: 14px;\n" +
-                "    -fx-text-fill: #ffffff;";
-    }
     @FXML
     private void explitDatos(){
         consoleTextArea.setText(Logger.getExit() + "\n ////////////////////////////////");
@@ -339,28 +339,37 @@ public class Board extends controler {
         ImageView innerButtonImg = (ImageView) musicButton.getGraphic();
         if (Sound.get().musicIsMute()) {
             Sound.get().muteMusic(false);
-            innerButtonImg.setImage(new Image(getClass().getResource("/img/sound-on.png").toString()));
+            innerButtonImg.setImage(new Image(getClass().getResource("/img/music-on.png").toString()));
         } else {
             Sound.get().muteMusic(true);
-            innerButtonImg.setImage(new Image(getClass().getResource("/img/sound-off.png").toString()));
+            innerButtonImg.setImage(new Image(getClass().getResource("/img/music-off.png").toString()));
         }
     }
 
     @FXML
     private void muteSounds() {
-
+        ImageView innerButtonImage = (ImageView) soundsButton.getGraphic();
+        Sound.get().muteFXSounds();
+        if (Sound.get().soundsAreMuted()) {
+            innerButtonImage.setImage(new Image(getClass().getResource("/img/sound-off.png").toString()));
+        } else {
+            innerButtonImage.setImage(new Image(getClass().getResource("/img/sound-on.png").toString()));
+        }
     }
 
-    public void inicializarSonido() {
+    public void initializeSound() {
         Sound sound = Sound.get();
         sound.loadMusic("backMusic.mp3", "temaPrincipal");
         sound.loadSound("build-defense.mp3","buildDefense");
         sound.loadSound("insufficient-credits.wav","insufficientCredits");
         sound.loadSound("level-lose.wav","levelLose");
         sound.loadSound("level-win.wav","levelWin");
-        sound.loadSound("spider_attack.mp3","spiderAttack");
+        sound.loadSound("spider-spawn.mp3","Spider");
+        sound.loadSound("Mole-Spawn.wav","Mole");
+        sound.loadSound("spawn-Owl.mp3","Owl");
+        sound.loadSound("Ant-Spawn.wav","Ant");
         sound.loadSound("tower-attack.mp3","towerAttack");
         sound.modifyEffectVolume(50);
-        sound.modifyMusicVolume(40);
+        sound.modifyMusicVolume(25);
     }
 }

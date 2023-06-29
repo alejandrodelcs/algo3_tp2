@@ -1,6 +1,5 @@
 package edu.fiuba.algo3.modelo.turn;
 
-
 import edu.fiuba.algo3.modelo.credit.Credit;
 import edu.fiuba.algo3.modelo.defense.Defense;
 import edu.fiuba.algo3.modelo.enemy.Ant;
@@ -35,6 +34,7 @@ public class Turn {
             aDefense.attack(enemies);
             if (aDefense.isDestroyed()){
                 gameBoard.removeDefense(aDefense);
+                iterator.remove();
             }
         }
         for (Enemy enemy: enemies

@@ -1,6 +1,5 @@
 package edu.fiuba.algo3.modelo.enemy;
 
-
 import edu.fiuba.algo3.modelo.credit.Credit;
 import edu.fiuba.algo3.modelo.damage.Damage;
 import edu.fiuba.algo3.modelo.defense.Defense;
@@ -13,7 +12,6 @@ import edu.fiuba.algo3.modelo.speed.Move;
 import java.util.ArrayList;
 
 public class Owl extends Enemy {
-    //private boolean destroyedTower;
     private Health healthToChangeMovement;
     public Owl(Damage damage, Health health, Credit credit, Move movement, Health healthToChangeMovement) {
         super(damage, health, credit, movement);

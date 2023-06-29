@@ -7,9 +7,9 @@ import edu.fiuba.algo3.modelo.gameboard.Plot;
 import edu.fiuba.algo3.modelo.health.*;
 import edu.fiuba.algo3.modelo.speed.Move;
 
-
 import java.awt.*;
 import java.util.ArrayList;
+
 
 public abstract class Enemy {
     protected Damage damage;

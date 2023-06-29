@@ -5,9 +5,7 @@ import edu.fiuba.algo3.modelo.damage.Damage;
 import edu.fiuba.algo3.modelo.defense.Defense;
 import edu.fiuba.algo3.modelo.health.Health;
 import edu.fiuba.algo3.modelo.speed.Move;
-
 import java.util.ArrayList;
-
 
 public class Ant extends Enemy {
     public Ant(Damage damage, Health health, Credit credit, Move movement) {

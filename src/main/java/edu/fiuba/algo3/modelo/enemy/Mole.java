@@ -7,7 +7,6 @@ import edu.fiuba.algo3.modelo.gameboard.Plot;
 import edu.fiuba.algo3.modelo.health.Health;
 import edu.fiuba.algo3.modelo.speed.Move;
 
-
 import java.awt.*;
 import java.util.ArrayList;
 
@@ -40,15 +39,6 @@ public class Mole extends Enemy {
     @Override
     public Defense destroyTower(ArrayList<Defense> defenses) {
         return null;
-    }
-
-    public void acelerate() {
-        updateMole();
-        if (moves >= MOVES_NEEDED_FOR_SPEED_2 && moves < MOVES_NEEDED_FOR_SPEED_3) {
-             move.accelerate(2);
-        } else if (moves >= MOVES_NEEDED_FOR_SPEED_3){
-            move.accelerate(3);
-        }
     }
 
     public void updateMole(){

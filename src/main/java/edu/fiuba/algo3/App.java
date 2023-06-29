@@ -1,14 +1,20 @@
 package edu.fiuba.algo3;
+import edu.fiuba.algo3.controllers.Signup;
 import edu.fiuba.algo3.modelo.AlgoDefense;
 import edu.fiuba.algo3.modelo.Logger;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.stage.Screen;
 import javafx.geometry.Rectangle2D;
+
+import java.awt.*;
+import javafx.scene.text.Font;
 import java.io.IOException;
 import java.util.Objects;
 
