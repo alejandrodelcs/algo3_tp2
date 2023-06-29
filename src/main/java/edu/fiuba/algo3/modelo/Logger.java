@@ -10,7 +10,9 @@ public class Logger {
         return singleton;
     }
     public static String getExit(){return exit ;}
-
+    public void clean(){
+        exit = "";
+    }
     public void toggle(boolean bool){
         loggerEnable = bool;
     }
