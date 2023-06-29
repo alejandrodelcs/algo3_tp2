@@ -55,6 +55,7 @@ public class AlgoDefense {
 
     }
     public void reset(Player aPLayer){
+        Logger.get().clean();
         this.state = new Active();
         this.player = aPLayer.resetStats();
         this.gameboard = new GameboardFacade().loadMap();
