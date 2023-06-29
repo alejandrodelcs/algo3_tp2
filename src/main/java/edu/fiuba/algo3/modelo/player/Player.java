@@ -5,7 +5,6 @@ import edu.fiuba.algo3.modelo.damage.Damage;
 import edu.fiuba.algo3.modelo.defense.Defense;
 import edu.fiuba.algo3.modelo.exceptions.InsufficientCredits;
 import edu.fiuba.algo3.modelo.exceptions.InvalidPlayersName;
-import edu.fiuba.algo3.modelo.exceptions.PlayerIsDeadGameOver;
 import edu.fiuba.algo3.modelo.health.Health;
 
 import java.awt.*;

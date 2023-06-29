@@ -4,7 +4,6 @@ import edu.fiuba.algo3.modelo.credit.Credit;
 import edu.fiuba.algo3.modelo.damage.Damage;
 import edu.fiuba.algo3.modelo.exceptions.InvalidPlayersName;
 import edu.fiuba.algo3.modelo.player.Player;
-import edu.fiuba.algo3.modelo.exceptions.PlayerIsDeadGameOver;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
