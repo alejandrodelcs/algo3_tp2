@@ -1,0 +1,17 @@
+@startuml
+package model {
+    class Mole {
+        - MOVES_NEEDED_FOR_SPEED_2: int
+        - MOVES_NEEDED_FOR_SPEED_3: int
+        - moves: int
+        - damage: Damage
+
+        + Mole(damage: Damage, health: Health, credit: Credit, movement: Move)
+        + move(x: long, y: long, plots: Plot[][], enemyPath: ArrayList<Point>): Point
+        + updateMole(): void
+        + generateCredits(): Credit
+        + show(): String
+        + destroyTower(defenses: ArrayList<Defense>): Defense
+    }
+}
+@enduml

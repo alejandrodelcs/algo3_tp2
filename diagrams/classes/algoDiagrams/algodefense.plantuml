@@ -1,0 +1,24 @@
+@startuml
+
+!theme plain
+top to bottom direction
+skinparam linetype ortho
+
+class Active {
+  + Active(): 
+  + passTurn(AlgoDefense): void
+   gameOver: boolean
+}
+class GameOver {
+  + GameOver(): 
+  + passTurn(AlgoDefense): void
+   gameOver: boolean
+}
+interface GameState << interface >> {
+  + passTurn(AlgoDefense): void
+   gameOver: boolean
+}
+
+Active     -[#008200,dashed]-^  GameState 
+GameOver   -[#008200,dashed]-^  GameState 
+@enduml

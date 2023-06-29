@@ -1,0 +1,19 @@
+@startuml
+
+!theme plain
+top to bottom direction
+skinparam linetype ortho
+
+class Credit {
+  + Credit(int): 
+  + Credit(): 
+  - quantity: int
+  + equalTo(Credit): boolean
+  + arePositive(): boolean
+  + chargeCredits(Credit): void
+  + subtractCredits(Credit): void
+  + areNegative(): boolean
+   quantity: int
+}
+
+@enduml

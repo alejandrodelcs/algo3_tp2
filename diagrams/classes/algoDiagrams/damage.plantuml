@@ -1,0 +1,13 @@
+@startuml
+
+!theme plain
+top to bottom direction
+skinparam linetype ortho
+
+class Damage {
+  + Damage(int): 
+  + applyDamage(Health): void
+   quantity: int
+}
+
+@enduml

@@ -2,7 +2,7 @@
 'https://plantuml.com/class-diagram
 
 package model {
-    interface EnemyFactory {
+    class MoleFactory {
         + createEnemy(): Enemy
     }
 }

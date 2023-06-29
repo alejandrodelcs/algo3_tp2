@@ -1,0 +1,77 @@
+@startuml
+
+!theme plain
+top to bottom direction
+skinparam linetype ortho
+
+class Defense {
+  + Defense(): 
+  # credits: Credit
+  + show(): String
+  + attack(ArrayList<Enemy>): void
+  + destructed(): void
+  + constructionFinished(): void
+   destroyed: boolean
+   credits: Credit
+   available: boolean
+   plotsInRange: ArrayList<Point>
+   point: Point
+}
+interface DefenseFactory << interface >> {
+  + createDefense(Point): Defense
+}
+class Range {
+  + Range(int): 
+  + isInRange(Defense, Enemy): boolean
+  + plotsInRange(Point): ArrayList<Point>
+}
+class SandyTrap {
+  + SandyTrap(Credit, Point, int): 
+  + constructionFinished(): void
+  + updateSandyTrap(): void
+  + show(): String
+}
+class SandyTrapFactory {
+  + SandyTrapFactory(): 
+  + createDefense(Point): Defense
+}
+class SilverTower {
+  + SilverTower(Credit, Range, Damage, int, Point): 
+  + show(): String
+}
+class SilverTowerFactory {
+  + SilverTowerFactory(): 
+  + createDefense(Point): Defense
+}
+class Tower {
+  + Tower(Credit, int, Point): 
+  + constructionFinished(): void
+}
+class Trap {
+  + Trap(Credit, Point, int): 
+}
+class WhiteTower {
+  + WhiteTower(Credit, Range, Damage, int, Point): 
+  + show(): String
+}
+class WhiteTowerFactory {
+  + WhiteTowerFactory(): 
+  + createDefense(Point): Defense
+}
+
+SandyTrap           -[#595959,dashed]->  Range              : "«create»"
+SandyTrap           -[#000082,plain]-^  Trap               
+SandyTrapFactory    -[#008200,dashed]-^  DefenseFactory     
+SandyTrapFactory    -[#595959,dashed]->  SandyTrap          : "«create»"
+SilverTower         -[#000082,plain]-^  Tower              
+SilverTowerFactory  -[#008200,dashed]-^  DefenseFactory     
+SilverTowerFactory  -[#595959,dashed]->  Range              : "«create»"
+SilverTowerFactory  -[#595959,dashed]->  SilverTower        : "«create»"
+Tower               -[#000082,plain]-^  Defense            
+Trap                -[#000082,plain]-^  Defense            
+Trap                -[#595959,dashed]->  Range              : "«create»"
+WhiteTower          -[#000082,plain]-^  Tower              
+WhiteTowerFactory   -[#008200,dashed]-^  DefenseFactory     
+WhiteTowerFactory   -[#595959,dashed]->  Range              : "«create»"
+WhiteTowerFactory   -[#595959,dashed]->  WhiteTower         : "«create»"
+@enduml

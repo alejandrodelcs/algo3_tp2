@@ -1,0 +1,84 @@
+@startuml
+
+!theme plain
+top to bottom direction
+skinparam linetype ortho
+
+class Ant {
+  + Ant(Damage, Health, Credit, Move): 
+  + show(): String
+  + generateCredits(): Credit
+  + destroyTower(ArrayList<Defense>): Defense
+}
+class AntFactory {
+  + AntFactory(): 
+  + createEnemy(): Enemy
+}
+class Enemy {
+  + Enemy(Damage, Health, Credit, Move): 
+  # health: Health
+  # damage: Damage
+  # visible: Boolean
+  + move(long, long, Plot[][], ArrayList<Point>): Point
+  + alreadySlowedDown(): boolean
+  + takeDamage(Damage): void
+  + show(): String
+  + decelerate(double): void
+  + enemyDied(): boolean
+  + generateCredits(): Credit
+  + destroyTower(ArrayList<Defense>): Defense
+   visible: boolean
+   health: Health
+   damage: Damage
+   point: Point
+}
+interface EnemyFactory << interface >> {
+  + createEnemy(): Enemy
+}
+class Mole {
+  + Mole(Damage, Health, Credit, Move): 
+  + show(): String
+  + move(long, long, Plot[][], ArrayList<Point>): Point
+  + destroyTower(ArrayList<Defense>): Defense
+  + generateCredits(): Credit
+  + updateMole(): void
+}
+class MoleFactory {
+  + MoleFactory(): 
+  + createEnemy(): Enemy
+}
+class Owl {
+  + Owl(Damage, Health, Credit, Move, Health): 
+  + generateCredits(): Credit
+  + takeDamage(Damage): void
+  + show(): String
+  + destroyTower(ArrayList<Defense>): Defense
+}
+class OwlFactory {
+  + OwlFactory(): 
+  + createEnemy(): Enemy
+}
+class Spider {
+  + Spider(Damage, Health, Credit, Move): 
+  + show(): String
+  + generateCredits(): Credit
+  + destroyTower(ArrayList<Defense>): Defense
+}
+class SpiderFactory {
+  + SpiderFactory(): 
+  + createEnemy(): Enemy
+}
+
+Ant            -[#000082,plain]-^  Enemy         
+AntFactory     -[#595959,dashed]->  Ant           : "«create»"
+AntFactory     -[#008200,dashed]-^  EnemyFactory  
+Mole           -[#000082,plain]-^  Enemy         
+MoleFactory    -[#008200,dashed]-^  EnemyFactory  
+MoleFactory    -[#595959,dashed]->  Mole          : "«create»"
+Owl            -[#000082,plain]-^  Enemy         
+OwlFactory     -[#008200,dashed]-^  EnemyFactory  
+OwlFactory     -[#595959,dashed]->  Owl           : "«create»"
+Spider         -[#000082,plain]-^  Enemy         
+SpiderFactory  -[#008200,dashed]-^  EnemyFactory  
+SpiderFactory  -[#595959,dashed]->  Spider        : "«create»"
+@enduml

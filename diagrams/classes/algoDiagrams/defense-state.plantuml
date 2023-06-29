@@ -1,0 +1,46 @@
+@startuml
+
+!theme plain
+top to bottom direction
+skinparam linetype ortho
+
+class ConstructionState {
+  + ConstructionState(int): 
+  + attack(Defense, ArrayList<Enemy>): void
+}
+class Defense {
+  + Defense(): 
+  # credits: Credit
+  + show(): String
+  + attack(ArrayList<Enemy>): void
+  + destructed(): void
+  + constructionFinished(): void
+   destroyed: boolean
+   credits: Credit
+   available: boolean
+   plotsInRange: ArrayList<Point>
+   point: Point
+}
+class DestructedState {
+  + DestructedState(): 
+  + attack(Defense, ArrayList<Enemy>): void
+}
+class OperationalState {
+  + OperationalState(Attack): 
+  + attack(Defense, ArrayList<Enemy>): void
+}
+interface State << interface >> {
+  + attack(Defense, ArrayList<Enemy>): void
+}
+class TemporallyState {
+  + TemporallyState(Attack, int): 
+  + attack(Defense, ArrayList<Enemy>): void
+}
+
+ConstructionState  -[#008200,dashed]-^  State             
+Defense            -[#595959,dashed]->  DestructedState   : "«create»"
+Defense           "1" *-[#595959,plain]-> "state\n1" State             
+DestructedState    -[#008200,dashed]-^  State             
+OperationalState   -[#008200,dashed]-^  State             
+TemporallyState    -[#008200,dashed]-^  State             
+@enduml

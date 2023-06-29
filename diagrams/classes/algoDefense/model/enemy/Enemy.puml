@@ -1,20 +1,26 @@
 @startuml
-'https://plantuml.com/class-diagram
 package model {
     abstract class Enemy {
-        # speed: int
-        # point: enemyCoordinates
+        # damage: Damage
+        # health: Health
+        # creditsReward: Credit
+        # enemyCoordinates: Point
+        # move: Move
+        # visible: Boolean
 
-        + Enemy(int speed, Damage damage, int healthPoints)
-        + getSpeed(): int
+        + Enemy(damage: Damage, health: Health, credit: Credit, movement: Move)
         + getDamage(): Damage
+        + getPoint(): Point
         + getHealth(): Health
-        + takeDamage(Damage damageReceive): void
-        + enemyDied(): bool
+        + takeDamage(damageReceive: Damage): void
+        + enemyDied(): boolean
         + generateCredits(): Credit {abstract}
-        + show(): String
+        + show(): String {abstract}
+        + move(x: long, y: long, plots: Plot[][], enemyPath: ArrayList<Point>): Point
+        + decelerate(percentage: double): void
+        + alreadySlowedDown(): boolean
+        + isVisible(): boolean
+        + destroyTower(defenses: ArrayList<Defense>): Defense {abstract}
     }
 }
-
-
 @enduml

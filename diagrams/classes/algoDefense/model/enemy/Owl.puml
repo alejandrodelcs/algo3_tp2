@@ -1,0 +1,16 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+package model {
+    class Owl {
+        - healthToChangeMovement: Health
+
+        + Owl(damage: Damage, health: Health, credit: Credit, movement: Move, healthToChangeMovement: Health)
+        + generateCredits(): Credit
+        + show(): String
+        + takeDamage(damageReceived: Damage): void
+        + destroyTower(defenses: ArrayList<Defense>): Defense
+    }
+}
+
+@enduml

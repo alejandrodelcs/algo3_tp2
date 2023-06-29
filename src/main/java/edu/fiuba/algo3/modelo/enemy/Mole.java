@@ -11,10 +11,10 @@ import java.awt.*;
 import java.util.ArrayList;
 
 public class Mole extends Enemy {
-    private int moves;
-    private Damage damage;
     private final int MOVES_NEEDED_FOR_SPEED_2;
     private final int MOVES_NEEDED_FOR_SPEED_3;
+    private int moves;
+    private Damage damage;
 
     public Mole(Damage damage, Health health, Credit credit, Move movement) {
         super(damage, health, credit, movement);
@@ -24,13 +24,14 @@ public class Mole extends Enemy {
         this.visible = false;
         this.damage = damage;
     }
+
     @Override
     public Point move(long x, long y, Plot[][] plots, ArrayList<Point> enemyPath) {
         enemyCoordinates = move.execute(x, y, plots, enemyPath);
         updateMole();
         if (moves >= MOVES_NEEDED_FOR_SPEED_2 && moves < MOVES_NEEDED_FOR_SPEED_3) {
             move.accelerate(2);
-        } else if (moves >= MOVES_NEEDED_FOR_SPEED_3){
+        } else if (moves >= MOVES_NEEDED_FOR_SPEED_3) {
             move.accelerate(3);
         }
         return enemyCoordinates;
@@ -41,15 +42,15 @@ public class Mole extends Enemy {
         return null;
     }
 
-    public void updateMole(){
-        moves ++;
-        if ( moves % 2 == 0 ) {
+    public void updateMole() {
+        moves++;
+        if (moves % 2 == 0) {
             this.damage = new Damage(2);
-        }
-        else{
+        } else {
             this.damage = new Damage(5);
         }
     }
+
     @Override
     public Credit generateCredits() {
         return creditsReward;
