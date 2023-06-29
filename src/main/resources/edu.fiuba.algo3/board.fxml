@@ -69,7 +69,7 @@
                                     </VBox.margin>
                                     <graphic>
                                        <ImageView fitWidth="28.00" fitHeight="28.00">
-                                          <Image url="@../img/sound-on.png"/>
+                                          <Image url="@../img/music-on.png"/>
                                        </ImageView>
                                     </graphic>
                                  </Button>

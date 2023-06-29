@@ -47,6 +47,8 @@ public class Board extends controler {
     private TextArea consoleTextArea;
     @FXML
     private Button musicButton;
+    @FXML
+    private Button soundsButton;
     StackPane lastClicked;
     @FXML
     private MenuItem fullScreenMenuBarOption;
@@ -294,7 +296,7 @@ public class Board extends controler {
         mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
         mediaPlayer.setVolume(0.3);
         mediaPlayer.play();*/
-        inicializarSonido();
+        initializeSound();
         Sound.get().playMusic("temaPrincipal");
         Image aTerrainImage = new Image(getClass().getResource("/img/path.png").toString(), true);
         terrainImages.add(aTerrainImage);
@@ -325,19 +327,25 @@ public class Board extends controler {
         ImageView innerButtonImg = (ImageView) musicButton.getGraphic();
         if (Sound.get().musicIsMute()) {
             Sound.get().muteMusic(false);
-            innerButtonImg.setImage(new Image(getClass().getResource("/img/sound-on.png").toString()));
+            innerButtonImg.setImage(new Image(getClass().getResource("/img/music-on.png").toString()));
         } else {
             Sound.get().muteMusic(true);
-            innerButtonImg.setImage(new Image(getClass().getResource("/img/sound-off.png").toString()));
+            innerButtonImg.setImage(new Image(getClass().getResource("/img/music-off.png").toString()));
         }
     }
 
     @FXML
     private void muteSounds() {
-
+        ImageView innerButtonImage = (ImageView) soundsButton.getGraphic();
+        Sound.get().muteFXSounds();
+        if (Sound.get().soundsAreMuted()) {
+            innerButtonImage.setImage(new Image(getClass().getResource("/img/sound-off.png").toString()));
+        } else {
+            innerButtonImage.setImage(new Image(getClass().getResource("/img/sound-on.png").toString()));
+        }
     }
 
-    public void inicializarSonido() {
+    public void initializeSound() {
         Sound sound = Sound.get();
         sound.loadMusic("backMusic.mp3", "temaPrincipal");
         sound.loadSound("build-defense.mp3","buildDefense");
@@ -347,6 +355,6 @@ public class Board extends controler {
         sound.loadSound("spider_attack.mp3","spiderAttack");
         sound.loadSound("tower-attack.mp3","towerAttack");
         sound.modifyEffectVolume(50);
-        sound.modifyMusicVolume(40);
+        sound.modifyMusicVolume(25);
     }
 }
