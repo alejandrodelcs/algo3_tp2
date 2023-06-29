@@ -1,10 +1,7 @@
 package edu.fiuba.algo3.modelo.turn;
 
-
-import edu.fiuba.algo3.modelo.Logger;
 import edu.fiuba.algo3.modelo.credit.Credit;
 import edu.fiuba.algo3.modelo.defense.Defense;
-import edu.fiuba.algo3.modelo.defense.Tower;
 import edu.fiuba.algo3.modelo.enemy.Ant;
 import edu.fiuba.algo3.modelo.enemy.Enemy;
 import edu.fiuba.algo3.modelo.gameboard.GameBoard;

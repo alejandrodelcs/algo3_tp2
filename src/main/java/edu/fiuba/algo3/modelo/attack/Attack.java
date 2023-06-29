@@ -3,7 +3,6 @@ package edu.fiuba.algo3.modelo.attack;
 import edu.fiuba.algo3.modelo.defense.Defense;
 import edu.fiuba.algo3.modelo.enemy.Enemy;
 import java.awt.Point;
-import edu.fiuba.algo3.modelo.player.Player;
 
 import java.util.ArrayList;
 
