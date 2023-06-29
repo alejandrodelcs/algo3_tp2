@@ -125,8 +125,7 @@ public class Board extends controler {
                     Scene scene = new Scene(root);
                     dirtDefenseStage.setScene(scene);
                     PickDefense pickDefense = loader.getController();
-                    pickDefense.setStage(dirtDefenseStage);
-                    pickDefense.setDefense(stackPane,point, backwards, clickedRow, clickedColumn, algoDefense, infoLabel);
+                    pickDefense.setDefense(dirtDefenseStage, clickedRow, clickedColumn, algoDefense);
                     dirtDefenseStage.showAndWait();
                     if(algoDefense.isOccupyByADefense(point)){
                         setConstrutable(stackPane);
@@ -139,8 +138,7 @@ public class Board extends controler {
                         Scene scene = new Scene(rootPath);
                         pathDefenseStage.setScene(scene);
                         PickPathDefense pickDefense = loaderPath.getController();
-                        pickDefense.setStage(pathDefenseStage);
-                        pickDefense.setDefense(stackPane,point, backwards, clickedRow, clickedColumn, algoDefense, infoLabel, rootPath);
+                        pickDefense.setDefense(pathDefenseStage, clickedRow, clickedColumn, algoDefense);
                         pathDefenseStage.showAndWait();
                         if(algoDefense.isOccupyByADefense(point)){
                             setConstrutable(stackPane);
