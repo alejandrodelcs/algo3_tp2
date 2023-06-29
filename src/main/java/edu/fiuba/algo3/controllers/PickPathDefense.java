@@ -51,11 +51,8 @@ public class PickPathDefense extends controler {
         }
         Scene newScene = new Scene(rootPath);
         stage.setScene(newScene);
+        AlertNotEnoughCredits alertNotEnoughCredits = loaderPath.getController();
+        alertNotEnoughCredits.setAlert(stage);
         stage.showAndWait();
-        stage.close();
-    }
-    @FXML
-    public void closeMe(){
-        stage.close();
     }
 }
