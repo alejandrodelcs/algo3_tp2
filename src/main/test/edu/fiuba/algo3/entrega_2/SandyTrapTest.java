@@ -1,6 +1,6 @@
 package edu.fiuba.algo3.entrega_2;
 
-import edu.fiuba.algo3.modelo.algodefense.AlgoDefense;
+import edu.fiuba.algo3.modelo.AlgoDefense;
 import edu.fiuba.algo3.modelo.defense.Defense;
 import edu.fiuba.algo3.modelo.defense.SandyTrapFactory;
 import edu.fiuba.algo3.modelo.player.Player;

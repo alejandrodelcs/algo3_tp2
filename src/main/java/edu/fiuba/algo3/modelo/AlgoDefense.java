@@ -1,6 +1,5 @@
-package edu.fiuba.algo3.modelo.algodefense;
+package edu.fiuba.algo3.modelo;
 
-import edu.fiuba.algo3.modelo.Logger;
 import edu.fiuba.algo3.modelo.algodefense.Active;
 import edu.fiuba.algo3.modelo.algodefense.GameOver;
 import edu.fiuba.algo3.modelo.algodefense.GameState;
