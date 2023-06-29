@@ -2,15 +2,7 @@ package edu.fiuba.algo3.modelo.gameboard;
 
 import edu.fiuba.algo3.modelo.defense.Defense;
 import edu.fiuba.algo3.modelo.defense.SandyTrap;
-import edu.fiuba.algo3.modelo.defense.Trap;
 import edu.fiuba.algo3.modelo.enemy.Enemy;
-import javafx.geometry.Insets;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.layout.StackPane;
-import javafx.scene.shape.Circle;
-import javafx.scene.paint.Color;
-import javafx.scene.text.Text;
 
 import java.awt.*;
 import java.util.ArrayList;

@@ -3,8 +3,7 @@ package edu.fiuba.algo3.modelo.defense;
 import edu.fiuba.algo3.modelo.attack.SimpleRangeAttack;
 import edu.fiuba.algo3.modelo.credit.Credit;
 import edu.fiuba.algo3.modelo.damage.Damage;
-import javafx.scene.image.ImageView;
-import javafx.scene.image.Image;
+
 
 import java.awt.*;
 

@@ -5,6 +5,8 @@ import edu.fiuba.algo3.modelo.damage.Damage;
 import edu.fiuba.algo3.modelo.defense.Defense;
 import edu.fiuba.algo3.modelo.health.Health;
 import edu.fiuba.algo3.modelo.speed.Move;
+
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.Random;
 

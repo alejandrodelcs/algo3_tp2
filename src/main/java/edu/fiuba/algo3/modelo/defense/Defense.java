@@ -3,7 +3,6 @@ package edu.fiuba.algo3.modelo.defense;
 import edu.fiuba.algo3.modelo.credit.Credit;
 import edu.fiuba.algo3.modelo.attack.Attack;
 import edu.fiuba.algo3.modelo.enemy.Enemy;
-import javafx.scene.image.ImageView;
 
 import java.awt.*;
 import java.util.ArrayList;

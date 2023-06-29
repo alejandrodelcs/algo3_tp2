@@ -119,19 +119,13 @@ public class AlgoDefense {
             }
         }
 
-        //enemyDestroysDefense(finalListOfEnemies);
     }
 
     public void setPlayer(Player player){
         this.player = player;
     }
 
-    public void loadEnemies() {
-        //TODO: can pick a random JSON file REF
-        //this.gameboard = new GameboardFacade().loadMap();
-        //EnemyFacade
 
-    }
     public GameBoard getGameboard(){
         return gameboard;
     }

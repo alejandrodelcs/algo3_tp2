@@ -4,6 +4,7 @@ import edu.fiuba.algo3.modelo.defense.Defense;
 import edu.fiuba.algo3.modelo.enemy.Enemy;
 import java.awt.Point;
 
+
 import java.util.ArrayList;
 
 public interface Attack {
