@@ -33,12 +33,8 @@ public class App extends Application {
         Screen screen = Screen.getPrimary();
         Rectangle2D bounds = screen.getVisualBounds();
         scene = new Scene(loadFXML("signup"),bounds.getMaxX(), bounds.getMaxY());
-        scene.getStylesheets().add(getClass().getResource("/edu.fiuba.algo3/styles.css").toExternalForm());/*
-        Media media = new Media(getClass().getResource("/sound/backMusic.mp3").toString());
-        MediaPlayer mediaPlayer = new MediaPlayer(media);
-        mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
-        mediaPlayer.setVolume(0.3);
-        mediaPlayer.play();*/
+        scene.getStylesheets().add(getClass().getResource("/edu.fiuba.algo3/styles.css").toExternalForm());
+
         primaryStage.setTitle("Sign-up");
         primaryStage.setScene(scene);
         primaryStage.getIcons().add(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/img/logo.png"))));
