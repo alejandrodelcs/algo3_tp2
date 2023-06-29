@@ -1,9 +1,7 @@
 package edu.fiuba.algo3.controllers;
 import edu.fiuba.algo3.modelo.AlgoDefense;
 import edu.fiuba.algo3.modelo.Logger;
-import edu.fiuba.algo3.modelo.defense.*;
 import edu.fiuba.algo3.modelo.enemy.Enemy;
-import edu.fiuba.algo3.modelo.exceptions.InsufficientCredits;
 import edu.fiuba.algo3.modelo.exceptions.NonConstructibleArea;
 import edu.fiuba.algo3.modelo.gameboard.GameBoard;
 import edu.fiuba.algo3.App;
@@ -12,7 +10,6 @@ import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -24,8 +21,6 @@ import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
-import javafx.scene.paint.Color;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
@@ -130,8 +125,7 @@ public class Board extends controler {
                     Scene scene = new Scene(root);
                     dirtDefenseStage.setScene(scene);
                     PickDefense pickDefense = loader.getController();
-                    pickDefense.setStage(dirtDefenseStage);
-                    pickDefense.setDefense(stackPane,point, backwards, clickedRow, clickedColumn, algoDefense, infoLabel);
+                    pickDefense.setDefense(dirtDefenseStage, clickedRow, clickedColumn, algoDefense);
                     dirtDefenseStage.showAndWait();
                     if(algoDefense.isOccupyByADefense(point)){
                         setConstrutable(stackPane);
@@ -144,8 +138,7 @@ public class Board extends controler {
                         Scene scene = new Scene(rootPath);
                         pathDefenseStage.setScene(scene);
                         PickPathDefense pickDefense = loaderPath.getController();
-                        pickDefense.setStage(pathDefenseStage);
-                        pickDefense.setDefense(stackPane,point, backwards, clickedRow, clickedColumn, algoDefense, infoLabel);
+                        pickDefense.setDefense(pathDefenseStage, clickedRow, clickedColumn, algoDefense);
                         pathDefenseStage.showAndWait();
                         if(algoDefense.isOccupyByADefense(point)){
                             setConstrutable(stackPane);
@@ -173,10 +166,20 @@ public class Board extends controler {
     }
 
     private void alertStartFinish() {
-        Alert startFinishAlertWithoutFunds = new Alert(Alert.AlertType.ERROR);
-        startFinishAlertWithoutFunds.setTitle("Invalid Plot To build");
-        startFinishAlertWithoutFunds.setContentText("You cannot build on start or finish line");
-        startFinishAlertWithoutFunds.showAndWait();
+        FXMLLoader loadAlert = new FXMLLoader(getClass().getResource("/edu.fiuba.algo3/AlertInvalidPlotToBuild.fxml"));
+        Parent rootAlert = null;
+        try {
+            rootAlert = loadAlert.load();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+            Stage alertStage = new Stage();
+            Scene scene = new Scene(rootAlert);
+            alertStage.setScene(scene);
+            AlertInvalidPlotToBuild alert = loadAlert.getController();
+            alert.setStage(alertStage);
+            Sound.get().playFX("levelWin");
+            alertStage.showAndWait();
     }
 
     private ImageView buildImageViewOfDefense(Image image) {
@@ -233,7 +236,6 @@ public class Board extends controler {
                 App.setRoot("LOSS");
                 Sound.get().playFX("levelLose");
             }
-
         }
         printMap();
     }
@@ -313,26 +315,6 @@ public class Board extends controler {
         printMap();
     }
 
-    private String bringStyles() {
-        return "    -fx-padding: 10px 0;\n" +
-                "    -fx-pref-width: 250px;\n" +
-                "    -fx-letter-spacing: 2px;\n" +
-                "    -fx-background-radius: 20px;\n" +
-                "    -fx-font-family: 'Press Start 2P';\n" +
-                "    -fx-text-fill: #ffffff;\n" +
-                "    -fx-font-size: 14px;\n" +
-                "    -fx-font-weight: 400;\n" +
-                "    -fx-effect: innershadow(gaussian, rgba(1, 1, 1, 0.82), 3, 0, 0, 0);\n" +
-                "    -fx-border-width: 4px;\n" +
-                "    -fx-border-color: rgba(129, 229, 209, 0.51);\n" +
-                "    -fx-border-radius: 20px;\n" +
-                "    -fx-background-color: radial-gradient(center 20% 30%, radius 50%, rgba(75, 117, 137, 0.78) 0%, rgba(41, 87, 145, 0.72) 100%);";
-    }
-    private String setTextStyle() {
-        return "    -fx-font-family: 'Press Start 2P';\n" +
-                "    -fx-font-size: 14px;\n" +
-                "    -fx-text-fill: #ffffff;";
-    }
     @FXML
     private void explitDatos(){
         consoleTextArea.setText(Logger.getExit() + "\n ////////////////////////////////");
