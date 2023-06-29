@@ -1,0 +1,9 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+!include HypotenuseMove.puml
+!include MoveInLShape.puml
+!include Move.puml
+!include MoveInEnemiesPath.puml
+
+@enduml

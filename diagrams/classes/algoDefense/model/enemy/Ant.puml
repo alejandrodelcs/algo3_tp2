@@ -1,5 +1,6 @@
 @startuml
 'https://plantuml.com/class-diagram
+!include Enemy.puml
 package model {
     class Ant {
         + Ant(Damage damage, Health health, Credit credit, Move movement)
@@ -8,4 +9,6 @@ package model {
         + destroyTower(ArrayList<Defense> defenses): Defense
     }
 }
+
+Ant -|> Enemy
 @enduml

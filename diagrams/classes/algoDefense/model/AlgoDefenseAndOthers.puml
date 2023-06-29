@@ -1,0 +1,19 @@
+@startuml
+'https://plantuml.com/class-diagram
+skinparam linetype ortho
+!include algodefense/GameState.puml
+!include player/Player.puml
+!include gameboard/GameBoard.puml
+!include AlgoDefense_class.puml
+!include turn/Turn.puml
+!include enemy/EnemyFactory.puml
+!include defense/defense.puml
+Defense <-- AlgoDefense
+Turn <--* AlgoDefense
+Turn "<<create>>" <.- AlgoDefense
+AlgoDefense *--> "4" EnemyFactory
+AlgoDefense *--> GameState
+GameBoard <-* AlgoDefense
+AlgoDefense *-> Player
+
+@enduml

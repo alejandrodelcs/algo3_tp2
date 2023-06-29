@@ -1,0 +1,14 @@
+@startuml
+'https://plantuml.com/class-diagram
+skinparam linetype ortho
+left to right direction
+!include EnemyFactory.puml
+!include AntFactory.puml
+!include SpiderFactory.puml
+!include MoleFactory.puml
+!include OwlFactory.puml
+EnemyFactory <|-- AntFactory
+EnemyFactory <|-- SpiderFactory
+EnemyFactory <|-- MoleFactory
+EnemyFactory <|-- OwlFactory
+@enduml

@@ -1,0 +1,12 @@
+@startuml
+'https://plantuml.com/class-diagram
+skinparam linetype ortho
+!include Enemy.puml
+!include Ant.puml
+!include Spider.puml
+!include Mole.puml
+!include Owl.puml
+
+
+
+@enduml

@@ -1,6 +1,6 @@
 @startuml
 'https://plantuml.com/class-diagram
-
+skinparam linetype ortho
 !include Plot.puml
 !include PlotAvailability.puml
 !include NotPlotAvailability.puml
@@ -11,10 +11,10 @@
 !include Path.puml
 !include FinishLine.puml
 
-Stone --|> Plot
-Path --|> Plot
-Path <|-- FinishLine
-Dirt --|> Plot
+Stone --^ Plot
+Path --^ Plot
+Path ^-- FinishLine
+Dirt --^ Plot
 Plot --> PlotAvailability
 
 'left to right direction

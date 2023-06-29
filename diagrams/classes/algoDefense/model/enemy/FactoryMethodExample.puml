@@ -1,0 +1,10 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+!include MoleFactory.puml
+!include EnemyFactory.puml
+!include Mole.puml
+
+EnemyFactory <|-- MoleFactory
+MoleFactory .> Mole
+@enduml

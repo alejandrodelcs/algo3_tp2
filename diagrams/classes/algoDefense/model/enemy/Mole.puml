@@ -1,6 +1,7 @@
 @startuml
+!include Enemy.puml
 package model {
-    class Mole {
+    class Mole extends Enemy{
         - MOVES_NEEDED_FOR_SPEED_2: int
         - MOVES_NEEDED_FOR_SPEED_3: int
         - moves: int
