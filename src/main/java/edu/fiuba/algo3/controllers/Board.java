@@ -1,5 +1,5 @@
 package edu.fiuba.algo3.controllers;
-import edu.fiuba.algo3.modelo.AlgoDefense;
+import edu.fiuba.algo3.modelo.algodefense.AlgoDefense;
 import edu.fiuba.algo3.modelo.Logger;
 import edu.fiuba.algo3.modelo.enemy.Enemy;
 import edu.fiuba.algo3.modelo.exceptions.NonConstructibleArea;
