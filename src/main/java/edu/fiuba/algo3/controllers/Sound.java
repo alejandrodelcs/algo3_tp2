@@ -95,9 +95,11 @@ public class Sound {
     public void muteMusic(boolean mute_music){
         currentPlayback.setMute(mute_music);
     }
-    public void muteFXSounds(boolean muteValue) {
-        effect.setMute(muteValue);
-        muted = muteValue;
+    public void muteFXSounds() {
+        for (MediaPlayer mediaPlayer : soundEffectsFiles.values()) {
+            mediaPlayer.setMute(!mediaPlayer.isMute());
+            muted = mediaPlayer.isMute();
+        }
     }
     public SimpleDoubleProperty getMusicVolume(){
         return musicVolumeProperty;

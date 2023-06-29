@@ -296,7 +296,7 @@ public class Board extends controler {
         mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
         mediaPlayer.setVolume(0.3);
         mediaPlayer.play();*/
-        inicializarSonido();
+        initializeSound();
         Sound.get().playMusic("temaPrincipal");
         Image aTerrainImage = new Image(getClass().getResource("/img/path.png").toString(), true);
         terrainImages.add(aTerrainImage);
@@ -336,17 +336,16 @@ public class Board extends controler {
 
     @FXML
     private void muteSounds() {
-        ImageView innerButtonImg = (ImageView) soundsButton.getGraphic();
+        ImageView innerButtonImage = (ImageView) soundsButton.getGraphic();
+        Sound.get().muteFXSounds();
         if (Sound.get().soundsAreMuted()) {
-            Sound.get().muteFXSounds(false);
-            innerButtonImg.setImage(new Image(getClass().getResource("/img/sound-on.png").toString()));
+            innerButtonImage.setImage(new Image(getClass().getResource("/img/sound-off.png").toString()));
         } else {
-            Sound.get().muteFXSounds(true);
-            innerButtonImg.setImage(new Image(getClass().getResource("/img/sound-off.png").toString()));
+            innerButtonImage.setImage(new Image(getClass().getResource("/img/sound-on.png").toString()));
         }
     }
 
-    public void inicializarSonido() {
+    public void initializeSound() {
         Sound sound = Sound.get();
         sound.loadMusic("backMusic.mp3", "temaPrincipal");
         sound.loadSound("build-defense.mp3","buildDefense");
@@ -356,6 +355,6 @@ public class Board extends controler {
         sound.loadSound("spider_attack.mp3","spiderAttack");
         sound.loadSound("tower-attack.mp3","towerAttack");
         sound.modifyEffectVolume(50);
-        sound.modifyMusicVolume(40);
+        sound.modifyMusicVolume(25);
     }
 }
