@@ -41,7 +41,6 @@ public class PickPathDefense extends controler {
         stage.close();
     }
     private void alertInssuficientCredits (){
-
         Sound.get().playFX("insufficientCredits");
         FXMLLoader loaderPath = new FXMLLoader(getClass().getResource("/edu.fiuba.algo3/AlertNotEnoughCredits.fxml"));
         Parent rootPath = null;

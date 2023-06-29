@@ -5,9 +5,13 @@ import edu.fiuba.algo3.modelo.defense.Defense;
 import edu.fiuba.algo3.modelo.defense.*;
 import edu.fiuba.algo3.modelo.exceptions.InsufficientCredits;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.stage.Stage;
 import java.awt.*;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -50,10 +54,22 @@ public class PickDefense extends controler {
         }
         stage.close();
     }
-    private void alertInssuficientCredits () {
-        Alert alertWithoutFunds = new Alert(Alert.AlertType.ERROR);
-        alertWithoutFunds.setTitle("Insufficient credits");
-        alertWithoutFunds.setContentText("Insufficient credits, your current balance is: " + algoDefense.getPlayer().playersBalance());
-        alertWithoutFunds.showAndWait();
+    private void alertInssuficientCredits (){
+        Sound.get().playFX("insufficientCredits");
+        FXMLLoader loaderPath = new FXMLLoader(getClass().getResource("/edu.fiuba.algo3/AlertNotEnoughCredits.fxml"));
+        Parent rootPath = null;
+        try {
+            rootPath = loaderPath.load();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        Scene newScene = new Scene(rootPath);
+        stage.setScene(newScene);
+        stage.showAndWait();
+        stage.close();
+    }
+    @FXML
+    public void closeMe(){
+        stage.close();
     }
 }
