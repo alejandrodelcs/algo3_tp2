@@ -22,8 +22,10 @@ public abstract class Move {
     }
 
     public void decelerate(double percentage) {
-        speed = (int)Math.floor(speed*percentage);
-        turnsLeftToRestoreSpeed = 1;
+        if (turnsLeftToRestoreSpeed == 0) {
+            speed = (int) Math.floor(speed * percentage);
+            turnsLeftToRestoreSpeed = 1;
+        }
     }
 
     public int getSpeed() {
