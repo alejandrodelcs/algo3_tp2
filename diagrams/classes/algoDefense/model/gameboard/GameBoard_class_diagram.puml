@@ -4,6 +4,6 @@ skinparam linetype ortho
 !include Gameboard.puml
 !include Plot.puml
 
-GameBoard -->"1...*" Plot
+GameBoard *--"1...*" Plot
 
 @enduml
