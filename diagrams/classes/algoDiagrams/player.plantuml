@@ -1,0 +1,22 @@
+@startuml
+
+!theme plain
+top to bottom direction
+skinparam linetype ortho
+
+class Player {
+  + Player(String): 
+  + playersBalance(): int
+  - validateName(String): void
+  + buildsADefense(Defense): void
+  + getsDamage(Damage): void
+  + hasFunds(): boolean
+  + resetStats(): Player
+  + playerInfo(): String
+  + subtractCredits(Credit): void
+  + chargeCredits(Credit): void
+   alive: boolean
+   playerCredits: Credit
+}
+
+@enduml
