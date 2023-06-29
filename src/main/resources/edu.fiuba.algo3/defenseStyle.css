@@ -1,0 +1,59 @@
+@font-face {
+    font-family: 'Press Start 2P';
+    src: url('PressStart2P-Regular.ttf');
+}
+
+* {
+    -fx-font-family: 'Press Start 2P';
+    -fx-text-fill: white;
+}
+.button {
+    -fx-letter-spacing: 2px;
+    -fx-background-radius: 100px;
+    -fx-font-family: 'Press Start 2P';
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 14px;
+    -fx-font-weight: 400;
+    -fx-effect: innershadow(gaussian, rgba(1, 1, 1, 0.82), 3, 0, 0, 0);
+    -fx-border-width: 4px;
+    -fx-border-color: rgba(129, 229, 209, 0.51);
+    -fx-border-radius: 20px;
+    -fx-background-color: radial-gradient(center 20% 30%, radius 50%, rgba(75, 117, 137, 0.78) 0%, rgba(41, 87, 145, 0.72) 100%);
+
+}
+
+
+.button.white-tower-button {
+    -fx-background-image: url(img/magic2.png);
+    /* Add more styles as needed */
+}
+
+.button.silver-tower-button {
+    -fx-background-image: url(img/silverTower.png);
+    /* Add more styles as needed */
+}
+
+.background{
+    -fx-background-image: url('../img/background.jpg');
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: cover;
+}
+
+.playing-background {
+    -fx-background-color: #303030;
+}
+.card{
+    -fx-padding: 10px 0;
+    -fx-pref-width: 150px;
+    -fx-letter-spacing: 2px;
+    -fx-background-radius: 20px;
+    -fx-font-family: 'Press Start 2P';
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 14px;
+    -fx-font-weight: 400;
+    -fx-effect: innershadow(gaussian, rgba(1, 1, 1, 0.82), 3, 0, 0, 0);
+    -fx-border-width: 4px;
+    -fx-border-color: rgba(129, 229, 209, 0.51);
+    -fx-border-radius: 20px;
+    -fx-background-color: radial-gradient(center 20% 30%, radius 50%, rgba(75, 117, 137, 0.78) 0%, rgba(41, 87, 145, 0.72) 100%);
+}

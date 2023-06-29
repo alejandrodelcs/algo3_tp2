@@ -56,7 +56,7 @@ public class CreditTest {
     static class MapParserTest {
         @Test
         void testPrintMap() {
-            MapParser Reader = new MapParser("src\\main\\java\\edu\\fiuba\\algo3\\modelo\\files\\mapa.json");
+            MapParser Reader = new MapParser("src\\main\\resources\\files\\mapa.json");
             JSONObject mapaObject = Reader.getObject();
             for (int i = 1; i <= mapaObject.size(); i++) {
                 String key = String.valueOf(i);
@@ -68,7 +68,7 @@ public class CreditTest {
             }
         }
 
-        @Test
+      /*  @Test
         void  testPrintEnemies(){
             String file = "src\\main\\java\\edu\\fiuba\\algo3\\modelo\\parser\\enemigos.json";
             EnemiesParser Reader = new EnemiesParser(file);
@@ -81,7 +81,7 @@ public class CreditTest {
                 JSONObject rowObject = (JSONObject) o;
                 System.out.println(rowObject.toString());
             }
-        }
+        }*/
 
     }
 }

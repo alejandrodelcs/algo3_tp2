@@ -5,7 +5,11 @@ import edu.fiuba.algo3.modelo.enemy.Enemy;
 import edu.fiuba.algo3.modelo.exceptions.NonConstructibleArea;
 import edu.fiuba.algo3.modelo.exceptions.TheEnemyCannotBeOutsideTheRunway;
 import edu.fiuba.algo3.modelo.exceptions.ThereCannotBeEnemiesInThisPlot;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.StackPane;
 
+import java.awt.*;
 import java.util.ArrayList;
 
 public class Stone extends Plot{
@@ -18,8 +22,8 @@ public class Stone extends Plot{
     @Override
     public void setEnemy(ArrayList<Enemy> enemyList) { this.enemyArrayList = enemyList; }
     @Override
-    public String display() {
-        return "xxx";
+    public String show() {
+        return "Stone";
     }
     @Override
     public ArrayList<Enemy> enemiesInPlot(){
@@ -31,6 +35,10 @@ public class Stone extends Plot{
 
     @Override
     public void setDefense(Defense defense) {
+        throw new NonConstructibleArea();
+    }
+    @Override
+    public void removeDefense(Defense defense) {
         throw new NonConstructibleArea();
     }
 }

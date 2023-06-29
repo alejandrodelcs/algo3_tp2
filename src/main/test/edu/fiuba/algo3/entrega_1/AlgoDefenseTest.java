@@ -4,13 +4,8 @@ import edu.fiuba.algo3.modelo.AlgoDefense;
 import edu.fiuba.algo3.modelo.credit.Credit;
 import edu.fiuba.algo3.modelo.damage.Damage;
 import edu.fiuba.algo3.modelo.defense.*;
-import edu.fiuba.algo3.modelo.enemy.AntFactory;
-import edu.fiuba.algo3.modelo.enemy.Enemy;
-import edu.fiuba.algo3.modelo.enemy.EnemyFactory;
-import edu.fiuba.algo3.modelo.enemy.SpiderFactory;
+import edu.fiuba.algo3.modelo.enemy.*;
 import edu.fiuba.algo3.modelo.exceptions.*;
-import edu.fiuba.algo3.modelo.gameboard.*;
-import edu.fiuba.algo3.modelo.parser.EnemiesParser;
 import edu.fiuba.algo3.modelo.player.Player;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -55,8 +50,8 @@ public class AlgoDefenseTest {
        assertThrows(InsufficientCredits.class, () -> player.buildsADefense(invalidSilverTower));
 
        Assertions.assertTrue(player.isAlive());
-
-       assertThrows(PlayerIsDeadGameOver.class, () -> player.getsDamage(theOneThatKills));
+       player.getsDamage(theOneThatKills);
+       Assertions.assertFalse(player.isAlive());
     }
 
     @Test
@@ -77,6 +72,9 @@ public class AlgoDefenseTest {
         algoDefense.nextTurn();
         algoDefense.nextTurn();
         algoDefense.nextTurn();
+        algoDefense.nextTurn();
+        algoDefense.nextTurn();
+
 
 
         //Assert
@@ -148,9 +146,8 @@ public class AlgoDefenseTest {
       //Act
       algoDefense.spawnAnEnemy(enemyArray);
       algoDefense.buildsADefense(whiteTower);
-      algoDefense.nextTurn();
-      algoDefense.nextTurn();
-
+        algoDefense.nextTurn();
+        algoDefense.nextTurn();
       //Assert
       assertTrue(anAnt.enemyDied());
     }
@@ -217,10 +214,12 @@ public class AlgoDefenseTest {
         ArrayList<Enemy> enemyArray = new ArrayList<Enemy>();
         EnemyFactory antFactory = new AntFactory();
         EnemyFactory spiderFactory = new SpiderFactory();
-        Enemy anAnt = spiderFactory.createEnemy();
+        Enemy anAnt = antFactory.createEnemy();
         Enemy aSpider = spiderFactory.createEnemy();
         DefenseFactory factory = new SilverTowerFactory();
         Defense silverTower = factory.createDefense(new Point(7, 13));
+        Defense anotherSilverTower = factory.createDefense(new Point(10, 12));
+        algoDefense.buildsADefense(anotherSilverTower);
         enemyArray.add(anAnt);
         enemyArray.add(aSpider);
 
@@ -247,7 +246,8 @@ public class AlgoDefenseTest {
         algoDefense.nextTurn();
         algoDefense.nextTurn();
         algoDefense.nextTurn();
-        assertTrue(anAnt.enemyDied());
+
+        assertTrue(aSpider.enemyDied());
     }
 
     @Test
@@ -307,19 +307,36 @@ public class AlgoDefenseTest {
         algoDefense.nextTurn();
         algoDefense.nextTurn();
         algoDefense.nextTurn();
-        //algoDefense.nextTurn();
-        //algoDefense.nextTurn(); //In this turn the player dies
-
+        algoDefense.nextTurn();
+        algoDefense.nextTurn();
+        algoDefense.nextTurn();
+        algoDefense.nextTurn();
+        algoDefense.nextTurn();
+        algoDefense.nextTurn();
+        algoDefense.nextTurn();
+        algoDefense.nextTurn();
+        algoDefense.nextTurn();
         //Assert
-
+        assertTrue(algoDefense.gameOver());
         assertTrue(player.isAlive());
     }
 
     @Test
-    public void test12VerifyThatEnemiesKilledPlayer(){
+    public void test12VerifyThatEnemiesKilledPlayer(){//Agregar mas enemigos para matar al jugardor
         //Arrange
         Player player = new Player("Player");
         AlgoDefense algoDefense = new AlgoDefense(player);
+        EnemyFactory factory = new MoleFactory();
+        Enemy mole1 = factory.createEnemy();
+        Enemy mole2 = factory.createEnemy();
+        Enemy mole3 = factory.createEnemy();
+        Enemy mole4 = factory.createEnemy();
+        ArrayList<Enemy> enemies = new ArrayList<Enemy>();
+        enemies.add(mole1);
+        enemies.add(mole2);
+        enemies.add(mole3);
+        //enemies.add(mole4);
+        algoDefense.spawnAnEnemy(enemies);
 
         //Act
         algoDefense.nextTurn();
@@ -337,11 +354,15 @@ public class AlgoDefenseTest {
         algoDefense.nextTurn();
         algoDefense.nextTurn();
         algoDefense.nextTurn();
+        algoDefense.nextTurn();//en esta linea el jugador se muere
         algoDefense.nextTurn();
-        //algoDefense.nextTurn(); //en esta linea el jugador se muere
+        algoDefense.nextTurn();
+
+
 
         //Assert
-        assertTrue(player.isAlive());
+        assertFalse(player.isAlive());
+        assertTrue(algoDefense.gameOver());
     }
 
 }

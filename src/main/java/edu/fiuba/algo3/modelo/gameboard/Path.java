@@ -1,12 +1,18 @@
 package edu.fiuba.algo3.modelo.gameboard;
 
 import edu.fiuba.algo3.modelo.defense.Defense;
+import edu.fiuba.algo3.modelo.defense.SandyTrap;
 import edu.fiuba.algo3.modelo.defense.Trap;
 import edu.fiuba.algo3.modelo.enemy.Enemy;
-import edu.fiuba.algo3.modelo.enemy.EnemyFactory;
-import edu.fiuba.algo3.modelo.exceptions.NonConstructibleArea;
-import edu.fiuba.algo3.modelo.exceptions.NonTowerContructibleArea;
+import javafx.geometry.Insets;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.StackPane;
+import javafx.scene.shape.Circle;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Text;
 
+import java.awt.*;
 import java.util.ArrayList;
 
 public class Path extends Plot{
@@ -20,12 +26,8 @@ public class Path extends Plot{
     public void setEnemy(ArrayList<Enemy> enemyList) {this.enemyArrayList = enemyList;}
     public void addEnemyToPath(Enemy newEnemy){ this.enemyArrayList.add(newEnemy); }
     @Override
-    public String display() {
-
-        if(enemyArrayList == null || enemyArrayList.isEmpty()){
-            return "zzz";
-        }
-        return "ooo";
+    public String show() {
+        return "Path";
     }
     @Override
     public ArrayList<Enemy> enemiesInPlot(){
@@ -37,9 +39,15 @@ public class Path extends Plot{
 
     @Override
     public void setDefense(Defense defense) {
-        if(defense.equals(Trap.class)){
+        if (defense.getClass() == SandyTrap.class) {
             this.defense = defense;
             this.state = new Occupied();
         }
+    }
+
+    @Override
+    public void removeDefense(Defense defense) {
+        this.state = new Available();
+        this.defense = null;
     }
 }

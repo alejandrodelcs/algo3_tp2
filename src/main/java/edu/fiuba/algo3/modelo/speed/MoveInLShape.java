@@ -18,12 +18,20 @@ public class MoveInLShape extends Move {
         int enemyX = (int)x;
         int enemyY = (int)y;
         for (int timesMoved = 0; timesMoved < speed; timesMoved++) {
-            if (enemyY > lastPathY) {
+            if (enemyY >= lastPathY) {
                 enemyX++;
             } else {
                 enemyY++;
             }
         }
+
+        if (turnsLeftToRestoreSpeed > 0) {
+            turnsLeftToRestoreSpeed--;
+            if (turnsLeftToRestoreSpeed == 0) {
+                speed =  initialSpeed;
+            }
+        }
+
         enemyY = Math.min(enemyY, lastPathY);
         enemyX = Math.min(enemyX, lastPathX);
         return new Point(enemyY, enemyX);

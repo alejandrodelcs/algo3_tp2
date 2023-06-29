@@ -1,0 +1,121 @@
+@font-face {
+    font-family: 'Press Start 2P';
+    src: url('PressStart2P-Regular.ttf');
+}
+
+* {
+    -fx-font-family: 'Press Start 2P';
+    -fx-text-fill: white;
+}
+
+.button {
+    -fx-padding: 10px 0;
+    -fx-pref-width: 250px;
+    -fx-letter-spacing: 2px;
+    -fx-background-radius: 20px;
+    -fx-font-family: 'Skranji', cursive;
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 18px;
+    -fx-font-weight: 400;
+    -fx-effect: innershadow(gaussian, rgba(1, 1, 1, 0.82), 3, 0, 0, 0);
+    -fx-border-width: 4px;
+    -fx-border-color: rgba(129, 229, 209, 0.51);
+    -fx-border-radius: 20px;
+    -fx-background-color: radial-gradient(center 20% 30%, radius 50%, rgba(75, 117, 137, 0.78) 0%, rgba(41, 87, 145, 0.72) 100%);
+}
+
+
+.button :hover {
+    -fx-background-color: radial-gradient(center 50% 50%, radius 50%, rgba(54, 73, 108, 0.89) 0%, rgb(177, 230, 239) 100%);
+    -fx-effect: dropshadow(gaussian, rgba(24, 35, 210, 0.16), 5, 0, 0, 0);
+    -fx-cursor: hand;
+}
+
+.button :pressed {
+    -fx-background-color: radial-gradient(center 50% 50%, radius 50%, rgb(109, 139, 143) 0%, rgb(108, 195, 222) 100%);
+    -fx-effect: dropshadow(gaussian, rgb(0, 0, 0), 5, 0, 0, 0);
+    -fx-translate-y: 0.93;
+}
+
+#musicButton, #soundsButton {
+    -fx-padding: 5px;
+    -fx-pref-width: 120px;
+    -fx-pref-height: 38px;
+}
+
+#usernameField {
+    -fx-background-color: rgba(0, 0, 0, 0.7);
+    -fx-alignment: center;
+    -fx-font-size: 30px;
+    -fx-font-weight: lighter;
+    -fx-focus-traversable: false;
+    -fx-text-fill: white;
+
+}
+.label .text-input .text {
+    -fx-prompt-text-fill: #000000;
+}
+
+.background{
+    -fx-background-image: url('../img/background.jpg');
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: cover;
+}
+
+.playing-background {
+    -fx-background-color: #303030;
+}
+
+#infoLabel {
+    -fx-font-size: 20;
+}
+
+.board-plot {
+    -fx-margin: 0;
+}
+
+.board-plot:hover {
+    -fx-effect: innershadow(gaussian, white, 2, 1.0, 0, 0);
+    -fx-cursor: hand;
+}
+
+#rightContainer {
+    -fx-margin: 100px;
+}
+
+#notificationsTextArea {
+    -fx-background-color: #000000;
+    -fx-border-color: white;
+}
+
+.cannotBuild {
+    -fx-effect: innershadow(gaussian, red, 2, 1.0, 0, 0);
+}
+
+.cannotBuild:hover {
+    -fx-effect: innershadow(gaussian, red, 2, 1.0, 0, 0);
+}
+
+.outOfRangePlot {
+    -fx-opacity: 0.3;
+}
+
+.tooltipStyle {
+    -fx-background-color: rgba(240, 240, 240, 0.81);
+    -fx-text-fill: rgba(0, 0, 0, 0.78);
+    -fx-font-size: 12px;
+    -fx-background-radius: 7 7 7 7;
+}
+
+.menuBar {
+    -fx-background-color: #505050;
+}
+
+.menuBar .menu {
+    -fx-background-color: #505050;
+}
+
+.menuBar .menu .menuItem {
+    -fx-background-color: #505050;
+}
+

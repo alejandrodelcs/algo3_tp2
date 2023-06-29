@@ -5,6 +5,7 @@ import edu.fiuba.algo3.modelo.defense.*;
 import edu.fiuba.algo3.modelo.enemy.*;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.mockito.ArgumentCaptor;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -47,43 +48,45 @@ public class TowerTest {
 
     }
 
-/*    @Test
+    @Test
     void test03WhiteTowerAttackWhenEnemyIsWithinRangeEnemyTakesDamage() {
         DefenseFactory factory = new WhiteTowerFactory();
-        Point cordenates = new Point(3,3);
-        Defense WhiteTower = factory.createDefense(cordenates);
+        Point coordinates = new Point(3, 3);
+        Defense whiteTower = factory.createDefense(coordinates);
         Enemy antMock = mock(Ant.class);
-        when(antMock.getPoint()).thenReturn(new Point(9,9));
-        when(antMock.enemyDied()).thenReturn(true);
+        when(antMock.getPoint()).thenReturn(new Point(4, 4));
+        when(antMock.enemyDied()).thenReturn(false);
+        when(antMock.isVisible()).thenReturn(true);
         ArrayList<Enemy> enemies = new ArrayList<>();
         enemies.add(antMock);
 
-        WhiteTower.constructionFinished();
-        WhiteTower.attack(enemies);
+        whiteTower.constructionFinished();
+        whiteTower.attack(enemies);
 
-        verify(antMock, atLeastOnce()).takeDamage(new Damage(1));
-        Assertions.assertTrue(antMock.enemyDied());
-    }*/
+        ArgumentCaptor<Damage> damageCaptor = ArgumentCaptor.forClass(Damage.class);
+        verify(antMock, atLeastOnce()).takeDamage(damageCaptor.capture());
+    }
 
-/*    @Test
+     @Test
     void test04SilverTowerAttackWhenEnemyIsWithinRangeEnemyTakesDamage() {
         DefenseFactory factory = new SilverTowerFactory();
         Point cordenates = new Point(3,3);
         Defense SilverTower = factory.createDefense(cordenates);
         Enemy spiderMock = mock(Spider.class);
         when(spiderMock.getPoint()).thenReturn(new Point(4,4));
-        when(spiderMock.enemyDied()).thenReturn(true);
+        when(spiderMock.enemyDied()).thenReturn(false);
+        when(spiderMock.isVisible()).thenReturn(true);
         ArrayList<Enemy> enemies = new ArrayList<>();
         enemies.add(spiderMock);
-
 
 
         SilverTower.constructionFinished();
         SilverTower.attack(enemies);
 
-        verify(spiderMock, atLeastOnce()).takeDamage(new Damage(2));
-        Assertions.assertTrue(spiderMock.enemyDied());
-    }*/
+         ArgumentCaptor<Damage> damageCaptor = ArgumentCaptor.forClass(Damage.class);
+         verify(spiderMock, atLeastOnce()).takeDamage(damageCaptor.capture());
+
+    }
 
     @Test
     void test05SilverTowerCannotAttackAnEnemyOutOfRange() {
@@ -96,8 +99,6 @@ public class TowerTest {
         ArrayList<Enemy> enemies = new ArrayList<>();
         enemies.add(spiderMock);
 
-
-
         SilverTower.constructionFinished();
         SilverTower.attack(enemies);
 
@@ -107,6 +108,7 @@ public class TowerTest {
 
     @Test
     void test06SilverTowerCannotAttackAnEnemyOutOfRange() {
+
         DefenseFactory factory = new SilverTowerFactory();
         Point cordenates = new Point(3,3);
         Defense SilverTower = factory.createDefense(cordenates);
@@ -115,8 +117,6 @@ public class TowerTest {
         when(spiderMock.enemyDied()).thenReturn(false);
         ArrayList<Enemy> enemies = new ArrayList<>();
         enemies.add(spiderMock);
-
-
 
         SilverTower.constructionFinished();
         SilverTower.attack(enemies);

@@ -3,10 +3,13 @@ package edu.fiuba.algo3.modelo.gameboard;
 import edu.fiuba.algo3.modelo.defense.Defense;
 import edu.fiuba.algo3.modelo.defense.Tower;
 import edu.fiuba.algo3.modelo.enemy.Enemy;
-import edu.fiuba.algo3.modelo.exceptions.NonTrapConstructibleArea;
 import edu.fiuba.algo3.modelo.exceptions.TheEnemyCannotBeOutsideTheRunway;
 import edu.fiuba.algo3.modelo.exceptions.ThereCannotBeEnemiesInThisPlot;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.StackPane;
 
+import java.awt.*;
 import java.util.ArrayList;
 
 public class Dirt extends Plot{
@@ -19,9 +22,8 @@ public class Dirt extends Plot{
     @Override
     public void setEnemy(ArrayList<Enemy> enemyList) {this.enemyArrayList = enemyList;}
     @Override
-    public String display() {
-        if(state.itsOccupied()){return "|&|";}
-        else{return "...";}
+    public String show() {
+        return "Dirt";
     }
     @Override
     public ArrayList<Enemy> enemiesInPlot(){
@@ -35,5 +37,9 @@ public class Dirt extends Plot{
         this.defense = defense;
         this.state = new Occupied();
     }
-
+    @Override
+    public void removeDefense(Defense defense){
+        this.state = new Available();
+        this.defense = null;
+    }
 }

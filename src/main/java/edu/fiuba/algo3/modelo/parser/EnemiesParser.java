@@ -76,25 +76,23 @@ public class EnemiesParser {
             EnemyFactory spiderFactory = new SpiderFactory();
             loadEnemies(spiderAmount,spiderFactory,enemies);
 
-/*            if(!enemiesByTurn.containsKey("topo")){
+            if(!enemiesByTurn.containsKey("topo")){
                 throw new EnemyObjectDoesNotExists();
             }
             Object mole = enemiesByTurn.get("topo");
             String moleValue = mole.toString();
             int moleAmount = Integer.parseInt(moleValue);
             EnemyFactory moleFactory = new MoleFactory();
-            loadEnemies(moleAmount,moleFactory,enemiesStrategy);
+            loadEnemies(moleAmount,moleFactory,enemies);
 
- */
-
-            /*if(!enemiesByTurn.containsKey("lechuza")){
+            if(!enemiesByTurn.containsKey("lechuza")){
                 throw new EnemyObjectDoesNotExists();
             }
             Object owl = enemiesByTurn.get("lechuza");
             String owlValue = owl.toString();
             int owlAmount = Integer.parseInt(owlValue);
             EnemyFactory owlFactory = new OwlFactory();
-            loadEnemies(owlAmount,owlFactory,enemiesStrategy);*/
+            loadEnemies(owlAmount,owlFactory,enemies);
 
             System.out.println(enemies);
             turnsAndEnemies.put(turnNumber, enemies);

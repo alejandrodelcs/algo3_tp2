@@ -12,6 +12,6 @@ public class OperationalState implements State {
     }
     @Override
     public void attack(Defense defense, ArrayList<Enemy> enemies){
-        attack.performAttack(defense,enemies);
+        attack.performAttackOnEnemies(defense,enemies);
     }
 }

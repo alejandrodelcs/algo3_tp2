@@ -5,8 +5,6 @@ import edu.fiuba.algo3.modelo.damage.Damage;
 import edu.fiuba.algo3.modelo.defense.Defense;
 import edu.fiuba.algo3.modelo.exceptions.InsufficientCredits;
 import edu.fiuba.algo3.modelo.exceptions.InvalidPlayersName;
-import edu.fiuba.algo3.modelo.exceptions.PlayerIsDeadGameOver;
-import edu.fiuba.algo3.modelo.health.Damageable;
 import edu.fiuba.algo3.modelo.health.Health;
 
 import java.awt.*;
@@ -21,7 +19,7 @@ public class Player {
 
         validateName(playersName);
         this.playersName = playersName;
-        this.playersLifePoints = new Damageable(20);
+        this.playersLifePoints = new Health(20);
         this.playersCredits = new Credit(100);
 
     }
@@ -40,11 +38,7 @@ public class Player {
     }
 
     public void getsDamage(Damage damage) {
-
         damage.applyDamage(playersLifePoints);
-        if (playersLifePoints.entityDied()) {
-            throw new PlayerIsDeadGameOver();
-        }
     }
 
     public void chargeCredits(Credit credits) {
@@ -64,20 +58,24 @@ public class Player {
 
     }
 
-    public boolean canBuy(int value) { return (this.getPlayerCredits().getQuantity() - value)>=0;}
-
-    public Point selectPlaceDefense(ArrayList<Point> listOfPlacesWhereADefenseCanBeBuild) {
-        //TODO//implement
-        return null;
-    }
-
-
     public boolean isAlive() {
+        System.out.println("Player current life: " + playersLifePoints.getHealthPoints());
+        System.out.println("Player current credits: " + playersCredits.getQuantity() + "\n");
         return(!playersLifePoints.entityDied());
     }
 
+    public String playerInfo(){
+        return "Player Name:" + playersName + "\nCurrent life: " + playersLifePoints.getHealthPoints() + "\nCredits: "+ playersCredits.getQuantity();
+    }
     public boolean hasFunds() {
         return playersCredits.arePositive();
+    }
+
+    public int playersBalance(){
+        return playersCredits.getQuantity();
+    }
+    public Player resetStats() {
+        return new Player(playersName);
     }
 }
 

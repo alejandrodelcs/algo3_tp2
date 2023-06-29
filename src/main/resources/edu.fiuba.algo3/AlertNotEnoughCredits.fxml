@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+
+<?import javafx.scene.control.Button?>
+<HBox stylesheets="@defenseStyle.css" alignment="CENTER" spacing="10" xmlns="http://javafx.com/javafx/15" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.fiuba.algo3.controllers.AlertNotEnoughCredits" styleClass="playing-background" >
+    <padding>
+        <Insets left="10" top="5" right="10" bottom="5"/>
+    </padding>
+
+    <StackPane onMouseClicked="#closeMe" >
+        <VBox alignment="CENTER" spacing="10" >
+            <ImageView fitWidth="50" fitHeight="50" >
+                <image>
+                    <Image url="@img/alert.png" />
+                </image>
+            </ImageView>
+            <Text fill="cornsilk">Not Enough Credits</Text>
+            <Button onMouseClicked="#closeMe"> OK, get me out of here</Button>
+        </VBox>
+    </StackPane>
+</HBox>
