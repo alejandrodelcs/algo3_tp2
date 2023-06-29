@@ -4,9 +4,11 @@
 
 package model {
     class EnemiesParser {
+        - fileRelativeSource: String
+        + EnemiesParser(String fileSource)
         + getArray(): JSONArray
         + parserFile(): Dictionary
-        - loadEnemies(int antAmount, int spiderAmount): ArrayList<Enemy>
+        - loadEnemies(int antAmount, int spiderAmount): void
     }
 }
 

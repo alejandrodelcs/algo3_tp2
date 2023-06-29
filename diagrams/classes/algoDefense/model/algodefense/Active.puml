@@ -1,0 +1,10 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+package model {
+    class Active {
+        + passTurn(AlgoDefense algoDefense)
+        + isGameOver(): boolean
+    }
+}
+@enduml

@@ -1,0 +1,18 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+package model {
+    abstract class Move {
+      - initialSpeed: int
+      - speed: int
+      - turnsLeftToRestoreSpeed: int
+      + Move(speed: int)
+      + execute(x: long, y: long, plots: Plot[][], enemyPath: ArrayList<Point>): Point
+      + accelerate(newVelocity: int): void
+      + decelerate(percentage: double): void
+      + getSpeed(): int
+      + isSlowedDown(): boolean
+    }
+}
+
+@enduml

@@ -5,11 +5,11 @@ package model {
     class Owl {
         - healthToChangeMovement: Health
 
-        + Owl(damage: Damage, health: Health, credit: Credit, movement: Move, healthToChangeMovement: Health)
+        + Owl(Damage damage, Health health, Credit credit, Move movement, Health healthToChangeMovement)
         + generateCredits(): Credit
         + show(): String
-        + takeDamage(damageReceived: Damage): void
-        + destroyTower(defenses: ArrayList<Defense>): Defense
+        + takeDamage(Damage damageReceived): void
+        + destroyTower(ArrayList<Defense> defenses): Defense
     }
 }
 

@@ -3,11 +3,9 @@
 !include State.puml
 package model {
     class ConstructionState extends State {
-        - cont: int
-        - state: boolean
-        + ConstructionState(int cont)
-        + attack(Tower tower, Enemy enemy, boolean isOnRange): void
-        + isItBuild(): boolean
+        - remainingConstructionTurns: int
+        + ConstructionState(int defenseConstructionTurns)
+        + attack(Defense defense, ArrayList<Enemy> enemies): void
     }
 }
 

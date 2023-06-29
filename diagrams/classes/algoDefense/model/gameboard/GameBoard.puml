@@ -2,19 +2,35 @@
 'https://plantuml.com/class-diagram
 'TODO: GambeBoard has ArrayList<Point> and ArrayList<Plot> all private
 package model {
-    class GameBoard {
-        - enemyPath: ArrayList<Point>
-        + GameBoard(Plot[][] expectedPlots)
-        + availableForBuilding(Tower tower, Point coordinates): boolean
-        + buildDefense(Tower tower, Point coordinates): void
-        + enemiesInRange(Tower tower): ArrayList<Enemy>
-        + expectedRange(int range, Point coordinates): ArrayList<Plot>
-        + spawnEnemy(ArrayList<Enemy> enemyArrayList): void
-        + constructPath(): ArrayList<Point>
-        + printMap(): void
-        + moveEnemies(): void
-        + getEnemiesInTheLastPath(): ArrayList<Enemy>
-    }
+class GameBoard {
+    - plots: Plot[][]
+    - enemyPath: ArrayList<Point>
+    + start: Point
+    + finishLine: Point
+    + GameBoard(expectedPlots: Plot[][])
+    + availableForBuilding(coordinates: Point): boolean
+    + buildDefense(defense: Defense): void
+    + getEnemies(): ArrayList<Enemy>
+    + getNextPath(plotCoords: Point): Point
+    + spawnEnemy(enemyArrayList: ArrayList<Enemy>): void
+    + constructPath(): ArrayList<Point>
+    + setFinishLine(point: Point): void
+    + getFinishLine(): Point
+    + getStart(): Point
+    + setStart(point: Point): void
+    + printMap(): void
+    + moveEnemies(): void
+    + getPlot(x: int, y: int): Plot
+    + isEnemyPath(expectedEnemyPathCoordinates: Point): boolean
+    + isStart(point: Point): boolean
+    + isFinish(point: Point): boolean
+    + getEnemiesInThelastPath(): ArrayList<Enemy>
+    + destroyDefense(defenses: ArrayList<Defense>, owl: Enemy): void
+    + removeDefense(defense: Defense): void
+    + height(): long
+    + width(): long
+    + getEnemyPath(): ArrayList<Point>
+}
 }
 
 @enduml

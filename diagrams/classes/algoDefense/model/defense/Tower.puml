@@ -5,14 +5,8 @@ package model {
         # rangeAttack: int
         # point: Point
 
-        + Tower(Credit credits, int rangeAttack, int damage, int cont)
-        + attack(Enemy enemy, boolean isOnRange): void
+        + Tower(Credit credits, int constructionTurns,Point cordinatesTower)
         + constructionFinished(): void
-        + getCredits(): Credits
-        + getDamage(): int
-        + getStatus(): State
-        + updateStatus(): void
-        + getAttackRange(): int
     }
 }
 

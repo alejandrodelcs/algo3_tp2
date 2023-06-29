@@ -3,11 +3,14 @@
 
 package model {
     class Dirt {
-        + Dirt()
-        + setEnemy(Enemy enemy): void
-        + display(): String
-        + enemiesInPlot(): ArrayList<Enemy>
-        + addEnemyToPath(Enemy newEnemy): void
+      - enemyArrayList: ArrayList<Enemy>
+      + Dirt()
+      + setEnemy(enemyList: ArrayList<Enemy>): void
+      + show(): String
+      + enemiesInPlot(): ArrayList<Enemy>
+      + addEnemyToPath(newEnemy: Enemy): void
+      + setDefense(defense: Defense): void
+      + removeDefense(defense: Defense): void
     }
 }
 

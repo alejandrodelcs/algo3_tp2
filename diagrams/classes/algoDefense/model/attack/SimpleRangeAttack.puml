@@ -1,0 +1,14 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+package model {
+    class SimpleRangeAttack {
+      - damage: Damage
+      - rangeAttack: Range
+      + SimpleRangeAttack(range: Range, damage: Damage)
+      + performAttackOnEnemies(defense: Defense, enemies: ArrayList<Enemy>): void
+      + getPlotsInRange(point: Point): ArrayList<Point>
+    }
+}
+
+@enduml

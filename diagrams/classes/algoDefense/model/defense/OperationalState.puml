@@ -3,8 +3,9 @@
 !include State.puml
 package model {
     class OperationalState extends State{
-        + attack(Tower tower, Enemy enemy): void
-        + isItBuild(): boolean
+        - attack: Attack
+        + OperationalState(Attack newAttack)
+        + attack(Defense defense, ArrayList<Enemy> enemies): void
     }
 }
 

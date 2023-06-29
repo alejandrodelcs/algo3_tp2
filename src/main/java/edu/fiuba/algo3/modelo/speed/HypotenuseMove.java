@@ -6,12 +6,8 @@ import java.awt.*;
 import java.util.ArrayList;
 
 public class HypotenuseMove extends Move{
-    int specificCoordMoves;
-    int specificOtherCoordMoves;
     public HypotenuseMove(int speed) {
         super(speed);
-        this.specificCoordMoves = 0;
-        this.specificOtherCoordMoves = 0;
     }
 
     @Override

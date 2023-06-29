@@ -1,0 +1,12 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+package model {
+    class FileHandler {
+        ~ fileSource String
+        + FileHandler(String file)
+        + validJSONFile(): void
+    }
+}
+
+@enduml

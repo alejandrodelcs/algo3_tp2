@@ -1,0 +1,19 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+package model {
+    class Turn {
+      - currentTurn: int
+      - enemyDictionary: Dictionary
+      - killedAnts: int
+      + Turn(enemyStrategy: Dictionary)
+      + passTurn(): ArrayList<Enemy>
+      + updateDefense(defenses: ArrayList<Defense>, gameBoard: GameBoard, player: Player): void
+      + playerHasEnemies(enemyStrategy: Dictionary, gameBoard: GameBoard): boolean
+      + dictionaryHasEnemies(dictionary: Dictionary): boolean
+      + switchCredits(enemy: Enemy): Credit
+      + getCurrentTurn(): String
+    }
+}
+
+@enduml

@@ -5,10 +5,10 @@ import edu.fiuba.algo3.modelo.algodefense.GameOver;
 import edu.fiuba.algo3.modelo.algodefense.GameState;
 import edu.fiuba.algo3.modelo.defense.Defense;
 import edu.fiuba.algo3.modelo.enemy.*;
+import edu.fiuba.algo3.modelo.exceptions.NonConstructibleArea;
 import edu.fiuba.algo3.modelo.facade.EnemyFacade;
 import edu.fiuba.algo3.modelo.facade.GameboardFacade;
 import edu.fiuba.algo3.modelo.gameboard.GameBoard;
-import edu.fiuba.algo3.modelo.exceptions.NonConstructibleArea;
 import edu.fiuba.algo3.modelo.player.Player;
 import edu.fiuba.algo3.modelo.turn.Turn;
 
@@ -29,7 +29,7 @@ public class AlgoDefense {
 
     private ArrayList<Defense> defenses;
 
-    public AlgoDefense(){
+    public AlgoDefense() {
         this.state = new Active();
         this.gameboard = new GameboardFacade().loadMap();
         this.defenses = new ArrayList<Defense>();
@@ -41,7 +41,7 @@ public class AlgoDefense {
         this.owlFactory = new OwlFactory();
     }
 
-    public AlgoDefense(Player aPLayer){
+    public AlgoDefense(Player aPLayer) {
         this.state = new Active();
         this.player = aPLayer;
         this.gameboard = new GameboardFacade().loadMap();
@@ -54,7 +54,8 @@ public class AlgoDefense {
         this.owlFactory = new OwlFactory();
 
     }
-    public void reset(Player aPLayer){
+
+    public void reset(Player aPLayer) {
         this.state = new Active();
         this.player = aPLayer.resetStats();
         this.gameboard = new GameboardFacade().loadMap();
@@ -62,23 +63,26 @@ public class AlgoDefense {
         this.enemyStrategy = new EnemyFacade().loadEnemiesStrategy();
         this.turn = new Turn(enemyStrategy);
     }
-    public void nextTurn(){
+
+    public void nextTurn() {
         state.passTurn(this);
     }
+
     public void executeTurn() {
         ArrayList<Enemy> newEnemies = turn.passTurn();
         gameboard.moveEnemies();
         spawnAnEnemy(newEnemies);
-        turn.updateDefense(defenses,gameboard,player);
+        turn.updateDefense(defenses, gameboard, player);
         damageThePlayer();
-        if(!turn.playerHasEnemies(enemyStrategy,gameboard) && player.isAlive()){
+        if (!turn.playerHasEnemies(enemyStrategy, gameboard) && player.isAlive()) {
             Logger.get().log("You have won the game");
             state = new GameOver();
         }
     }
+
     public void buildsADefense(Defense defense) {
 
-        if(!gameboard.availableForBuilding(defense.getPoint())){
+        if (!gameboard.availableForBuilding(defense.getPoint())) {
             throw new NonConstructibleArea();
         }
 
@@ -86,14 +90,16 @@ public class AlgoDefense {
         gameboard.buildDefense(defense);
         defenses.add(defense);
     }
-    public void spawnAnEnemy(ArrayList<Enemy> enemyArrayList){
+
+    public void spawnAnEnemy(ArrayList<Enemy> enemyArrayList) {
         gameboard.spawnEnemy(enemyArrayList);
     }
-    private void  enemyDestroysDefense(ArrayList<Enemy> enemyArrayList){
-        if((!defenses.isEmpty()) && (enemyArrayList != null) && (!enemyArrayList.isEmpty())){
-            for(Enemy enemy : enemyArrayList){
-                if(enemy instanceof Owl){
-                    gameboard.destroyDefense(defenses,enemy);
+
+    private void enemyDestroysDefense(ArrayList<Enemy> enemyArrayList) {
+        if ((!defenses.isEmpty()) && (enemyArrayList != null) && (!enemyArrayList.isEmpty())) {
+            for (Enemy enemy : enemyArrayList) {
+                if (enemy instanceof Owl) {
+                    gameboard.destroyDefense(defenses, enemy);
                 }
             }
         }
@@ -102,17 +108,18 @@ public class AlgoDefense {
     public boolean isOccupyByADefense(Point coordenatesToDirt) {
         return (!gameboard.availableForBuilding(coordenatesToDirt));
     }
-    private void damageThePlayer(){
+
+    private void damageThePlayer() {
         ArrayList<Enemy> finalListOfEnemies = gameboard.getEnemiesInThelastPath();
-        for(Enemy enemy : finalListOfEnemies){
-            if(enemy instanceof Owl){
-                gameboard.destroyDefense(defenses,enemy);
-            }else{
+        for (Enemy enemy : finalListOfEnemies) {
+            if (enemy instanceof Owl) {
+                gameboard.destroyDefense(defenses, enemy);
+            } else {
                 player.getsDamage(enemy.getDamage());
-                Logger.get().log("The "+ enemy.getClass().getSimpleName() + " reaches the goal, causing "+ enemy.getDamage().getQuantity()+" damage to the player");
+                Logger.get().log("The " + enemy.getClass().getSimpleName() + " reaches the goal, causing " + enemy.getDamage().getQuantity() + " damage to the player");
             }
 
-            if (!player.isAlive()){
+            if (!player.isAlive()) {
                 Logger.get().log("The player is dead.");
                 state = new GameOver();
                 break;
@@ -122,17 +129,14 @@ public class AlgoDefense {
         //enemyDestroysDefense(finalListOfEnemies);
     }
 
-    public void setPlayer(Player player){
-        this.player = player;
-    }
-
     public void loadEnemies() {
         //TODO: can pick a random JSON file REF
         //this.gameboard = new GameboardFacade().loadMap();
         //EnemyFacade
 
     }
-    public GameBoard getGameboard(){
+
+    public GameBoard getGameboard() {
         return gameboard;
     }
 
@@ -140,12 +144,16 @@ public class AlgoDefense {
         return player.playerInfo();
     }
 
-    public boolean gameOver(){
+    public boolean gameOver() {
         return state.isGameOver();
     }
 
-    public Player getPlayer(){
+    public Player getPlayer() {
         return player;
+    }
+
+    public void setPlayer(Player player) {
+        this.player = player;
     }
 
     public String getCurrentTurn() {

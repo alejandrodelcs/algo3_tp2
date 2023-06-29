@@ -1,0 +1,11 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+package model {
+    class MoveInLShape {
+        + MoveInLShape(int speed)
+        + execute(long x, long y, Plot[][] plots, ArrayList<Point> enemyPath): Point
+    }
+}
+
+@enduml

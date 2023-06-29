@@ -3,11 +3,10 @@
 !include Tower.puml
 
 package model {
-    class WhiteTower {
-        + WhiteTower(Credit credit, int rangeAttack, Damage damage, int constructionTurns, Points coordinatesTower)
+    class WhiteTower extends Tower{
+        + WhiteTower(Credit credit, Range rangeAttack, Damage damage, int constructionTurns, Point cordinatesTower)
+        + show(): String
     }
 }
-
-WhiteTower --|> Tower
 
 @enduml

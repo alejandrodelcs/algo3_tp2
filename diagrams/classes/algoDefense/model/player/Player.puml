@@ -3,19 +3,20 @@
 
 package model {
     class Player {
-        - playersName: String
-        - playersLifePoints: Health
-        - playersCredits: Credits
-
-        + Player(String playersName)
-        + validateName(String name): void
-        + getPlayerCredits(): Credits
-        + getsDamage(Damage damage): void
-        + chargeCredits(Credit credits): void
-        + substractCredit(Credit credits): void
-        + buildsADefense(Tower tower): void
-        + canBuy(int value): boolean
-        + isAlive(): boolean
+      - playersName: String
+      - playersLifePoints: Health
+      - playersCredits: Credit
+      + Player(playersName: String)
+      + getPlayerCredits(): Credit
+      + getsDamage(damage: Damage): void
+      + chargeCredits(credits: Credit): void
+      + subtractCredits(credits: Credit): void
+      + buildsADefense(defense: Defense): void
+      + isAlive(): boolean
+      + playerInfo(): String
+      + hasFunds(): boolean
+      + playersBalance(): int
+      + resetStats(): Player
     }
 }
 

@@ -1,0 +1,11 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+package model {
+    interface Attack {
+        ~ performAttackOnEnemies(Defense defense, ArrayList<Enemy> enemies): void
+        ~ getPlotsInRange(Point point): Defense defense, ArrayList<Point>
+    }
+}
+
+@enduml

@@ -1,15 +1,19 @@
 @startuml
 'https://plantuml.com/class-diagram
 package model {
-    abstract class Plot {
-        + readyToBuild(): boolean
-        + setDefense(Tower tower): void
-        + setEnemy(ArrayList<Enemy> enemyList): void {abstract}
-        + addEnemyToPath(Enemy newEnemy) {abstract}
-        + enemiesInPlot(): ArrayList<Enemy> {abstract}
-        + display(): String {abstract}
-        + getDefense(): Tower
-    }
+abstract class Plot {
+  - defense: Defense
+  - enemy: Enemy
+  - state: PlotAvailability
+  + readyToBuild(): boolean
+  + setDefense(defense: Defense): void
+  + setEnemy(enemyList: ArrayList<Enemy>): void
+  + show(): String
+  + addEnemyToPath(newEnemy: Enemy): void
+  + enemiesInPlot(): ArrayList<Enemy>
+  + getDefense(): Defense
+  + removeDefense(defense: Defense): void
+}
 }
 
 @enduml

@@ -3,14 +3,32 @@
 
 package model {
     class AlgoDefense {
-        - turn: int
-
-        + AlgoDefense(Player aPLayer,GameBoard gameboard, ArrayList<Enemy> enemies)
-        + buildsATower(): void
-        + spawnAnEnemy(Enemy enemy, Point coordinates): void
-        + newTurn(): void
-        + enemyIsOnRange(Tower tower,Point coordenatesEnemy, Point coordenatesDirtPlot): boolean
-        + canPlayerBuyATower(Tower tower)
+      - state: GameState
+      - player: Player
+      - gameboard: GameBoard
+      - turn: Turn
+      - enemyStrategy: Dictionary
+      - antFactory: EnemyFactory
+      - spiderFactory: EnemyFactory
+      - moleFactory: EnemyFactory
+      - owlFactory: EnemyFactory
+      - defenses: ArrayList<Defense>
+      + AlgoDefense()
+      + AlgoDefense(aPlayer: Player)
+      + reset(aPlayer: Player): void
+      + nextTurn(): void
+      + executeTurn(): void
+      + buildsADefense(defense: Defense): void
+      + spawnAnEnemy(enemyArrayList: ArrayList<Enemy>): void
+      + isOccupyByADefense(coordenatesToDirt: Point): boolean
+      + damageThePlayer(): void
+      + setPlayer(player: Player): void
+      + loadEnemies(): void
+      + getGameboard(): GameBoard
+      + getPlayerInfo(): String
+      + gameOver(): boolean
+      + getPlayer(): Player
+      + getCurrentTurn(): String
     }
 }
 

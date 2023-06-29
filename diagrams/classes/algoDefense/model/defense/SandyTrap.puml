@@ -1,0 +1,15 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+package model {
+    class SandyTrap {
+      - turns: int
+      - operativeTurn: int
+      + constructionFinished(): void
+      + SandyTrap(credits: Credit, coordinatesTrap: Point, operativeTurns: int)
+      + updateSandyTrap(): void
+      + show(): String
+    }
+}
+
+@enduml

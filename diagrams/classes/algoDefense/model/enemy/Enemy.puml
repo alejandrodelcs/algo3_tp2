@@ -1,26 +1,25 @@
 @startuml
 package model {
     abstract class Enemy {
-        # damage: Damage
-        # health: Health
-        # creditsReward: Credit
-        # enemyCoordinates: Point
-        # move: Move
-        # visible: Boolean
-
-        + Enemy(damage: Damage, health: Health, credit: Credit, movement: Move)
-        + getDamage(): Damage
-        + getPoint(): Point
-        + getHealth(): Health
-        + takeDamage(damageReceive: Damage): void
-        + enemyDied(): boolean
-        + generateCredits(): Credit {abstract}
-        + show(): String {abstract}
-        + move(x: long, y: long, plots: Plot[][], enemyPath: ArrayList<Point>): Point
-        + decelerate(percentage: double): void
-        + alreadySlowedDown(): boolean
-        + isVisible(): boolean
-        + destroyTower(defenses: ArrayList<Defense>): Defense {abstract}
+      - damage: Damage
+      - health: Health
+      - creditsReward: Credit
+      - enemyCoordinates: Point
+      - move: Move
+      - visible: Boolean
+      + Enemy(damage: Damage, health: Health, credit: Credit, movement: Move)
+      + getDamage(): Damage
+      + getPoint(): Point
+      + getHealth(): Health
+      + takeDamage(damageReceive: Damage): void
+      + enemyDied(): boolean
+      + generateCredits(): Credit
+      + show(): String
+      + move(x: long, y: long, plots: Plot[][], enemyPath: ArrayList<Point>): Point
+      + decelerate(percentage: double): void
+      + alreadySlowedDown(): boolean
+      + isVisible(): boolean
+      + destroyTower(defenses: ArrayList<Defense>): Defense
     }
 }
 @enduml

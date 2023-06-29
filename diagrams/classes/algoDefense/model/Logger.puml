@@ -1,0 +1,17 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+package model {
+    class Logger {
+        - singleton: Logger
+        - loggerEnable: boolean
+        - exit: String
+        - Logger()
+        + get(): Logger
+        + getExit(): String
+        + toggle(boolean bool): void
+        + log(String loggedMessage): void
+    }
+}
+
+@enduml

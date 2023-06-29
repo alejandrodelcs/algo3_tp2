@@ -1,0 +1,17 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+package model {
+    class FinishLine {
+        - enemyArrayList: ArrayList<Enemy>
+        + FinishLine()
+        + setEnemy(enemyList: ArrayList<Enemy>): void
+        + addEnemyToPath(newEnemy: Enemy): void
+        + show(): String
+        + enemiesInPlot(): ArrayList<Enemy>
+        + setDefense(defense: Defense): void
+        + removeDefense(defense: Defense): void
+    }
+}
+
+@enduml

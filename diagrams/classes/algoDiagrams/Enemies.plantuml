@@ -19,6 +19,7 @@ class Enemy {
   # health: Health
   # damage: Damage
   # visible: Boolean
+  # enemyCoordinates: Point
   + move(long, long, Plot[][], ArrayList<Point>): Point
   + alreadySlowedDown(): boolean
   + takeDamage(Damage): void
@@ -27,10 +28,6 @@ class Enemy {
   + enemyDied(): boolean
   + generateCredits(): Credit
   + destroyTower(ArrayList<Defense>): Defense
-   visible: boolean
-   health: Health
-   damage: Damage
-   point: Point
 }
 interface EnemyFactory << interface >> {
   + createEnemy(): Enemy

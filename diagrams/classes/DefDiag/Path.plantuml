@@ -1,0 +1,88 @@
+@startuml
+
+top to bottom direction
+skinparam linetype ortho
+
+class Dirt {
+  + Dirt(): 
+  + show(): String
+  + addEnemyToPath(Enemy): void
+  + removeDefense(Defense): void
+  + enemiesInPlot(): ArrayList<Enemy>
+   enemy: ArrayList<Enemy>
+   defense: Defense
+}
+class FinishLine {
+  + FinishLine(): 
+  + addEnemyToPath(Enemy): void
+  + enemiesInPlot(): ArrayList<Enemy>
+  + show(): String
+  + removeDefense(Defense): void
+   enemy: ArrayList<Enemy>
+   defense: Defense
+}
+class GameBoard {
+  + GameBoard(Plot[][]): 
+  + start: Point
+  - enemyPath: ArrayList<Point>
+  + finishLine: Point
+  + removeDefense(Defense): void
+  + buildDefense(Defense): void
+  + spawnEnemy(ArrayList<Enemy>): void
+  + width(): long
+  + isStart(Point): boolean
+  + destroyDefense(ArrayList<Defense>, Enemy): void
+  + isFinish(Point): boolean
+  + getNextPath(Point): Point
+  + moveEnemies(): void
+  + getPlot(int, int): Plot
+  + printMap(): void
+  + constructPath(): ArrayList<Point>
+  + isEnemyPath(Point): boolean
+  + availableForBuilding(Point): boolean
+  + height(): long
+   enemiesInThelastPath: ArrayList<Enemy>
+   finishLine: Point
+   enemyPath: ArrayList<Point>
+   start: Point
+   enemies: ArrayList<Enemy>
+}
+class Path {
+  + Path(): 
+  + enemiesInPlot(): ArrayList<Enemy>
+  + removeDefense(Defense): void
+  + addEnemyToPath(Enemy): void
+  + show(): String
+   enemy: ArrayList<Enemy>
+   defense: Defense
+}
+class Plot {
+  + Plot(): 
+  # defense: Defense
+  # enemy: Enemy
+  + removeDefense(Defense): void
+  + show(): String
+  + addEnemyToPath(Enemy): void
+  + readyToBuild(): boolean
+  + enemiesInPlot(): ArrayList<Enemy>
+   enemy: ArrayList<Enemy>
+   defense: Defense
+}
+class Stone {
+  + Stone(): 
+  + enemiesInPlot(): ArrayList<Enemy>
+  + addEnemyToPath(Enemy): void
+  + removeDefense(Defense): void
+  + show(): String
+   enemy: ArrayList<Enemy>
+   defense: Defense
+}
+
+GameBoard  "1" *--> "plots\n*" Plot
+GameBoard   ->  FinishLine : "«create»"
+Dirt        -^  Plot
+FinishLine  -^  Path
+GameBoard   ->  Path       : "«create»"
+Path        -^  Plot
+Stone       -^  Plot
+@enduml

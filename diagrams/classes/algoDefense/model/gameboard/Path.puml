@@ -3,11 +3,14 @@
 
 package model {
     class Path {
-        + Path()
-        + setEnemy(Enemy enemy): void
-        + addEnemyToPath(Enemy newEnemy): void
-        + display(): String
-        + enemiesInPlot(): ArrayList<Enemy>
+      - enemyArrayList: ArrayList<Enemy>
+      + Path()
+      + setEnemy(enemyList: ArrayList<Enemy>): void
+      + show(): String
+      + enemiesInPlot(): ArrayList<Enemy>
+      + addEnemyToPath(newEnemy: Enemy): void
+      + setDefense(defense: Defense): void
+      + removeDefense(defense: Defense): void
     }
 }
 

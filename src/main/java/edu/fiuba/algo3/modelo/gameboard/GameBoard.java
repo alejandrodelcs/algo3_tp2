@@ -2,8 +2,6 @@ package edu.fiuba.algo3.modelo.gameboard;
 import edu.fiuba.algo3.modelo.Logger;
 import edu.fiuba.algo3.modelo.defense.Defense;
 import edu.fiuba.algo3.modelo.enemy.Enemy;
-import javafx.scene.image.Image;
-import javafx.scene.layout.StackPane;
 
 
 import java.awt.*;
@@ -22,12 +20,6 @@ public class GameBoard {
         int x = (int) Math.round(enemyPath.get(enemyPath.size()-1).getX());
         int y = (int) Math.round(enemyPath.get(enemyPath.size()-1).getY());
         plots[y][x].setEnemy(new ArrayList<Enemy>());
-/*        Image aTerrainImage = new Image(getClass().getResource("/img/path.png").toString(), true);
-        terrainImages.add(aTerrainImage);
-        aTerrainImage = new Image(getClass().getResource("/img/dirt.png").toString(), true);
-        terrainImages.add(aTerrainImage);
-        aTerrainImage = new Image(getClass().getResource("/img/rock2.png").toString(), true);
-        terrainImages.add(aTerrainImage);*/
     }
     public boolean availableForBuilding(Point coordinates) {
 
@@ -155,32 +147,6 @@ public class GameBoard {
                 }
             }
         }
-
-//        for (int i = enemyPath.size() - 1; i >= 0; i--) {
-//            boolean shouldClear = false;
-//
-//            long x = Math.round(enemyPath.get(i).getX());
-//            long y = Math.round(enemyPath.get(i).getY());
-//            for (Enemy enemy : plots[(int) y][(int) x].enemiesInPlot()) {
-//                Point enemyCoordinates =  enemy.move(i, enemyPath);
-//
-//                if (!enemy.enemyDied()) {
-//                    int newx = (int) Math.round(enemyCoordinates.getX());
-//                    int newy =(int) Math.round(enemyCoordinates.getY());
-//                    if(((newx != ((int) y)) || (newy != ((int) x))) && (lastY != y || lastX != x)) {
-//                        plots[newx][newy].addEnemyToPath(enemy);
-//                    }
-//                }
-//            }
-//
-//            if (!shouldClear && (x != lastX || y != lastY)) {
-//                shouldClear = true;
-//            }
-//            if (shouldClear) {
-//                plots[(int) y][(int) x].enemiesInPlot().clear();
-//
-//            }
-//        }
 
     }
     public Plot getPlot(int x, int y){

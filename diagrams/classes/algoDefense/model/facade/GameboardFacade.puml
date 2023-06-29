@@ -3,6 +3,8 @@
 
 package model {
     class GameboardFacade {
+    - fileSource: String
+    + GameboardFacade()
     + loadMap(): GameBoard
     }
 }

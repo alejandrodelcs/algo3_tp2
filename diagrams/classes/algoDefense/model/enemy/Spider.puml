@@ -5,10 +5,10 @@ package model {
     class Spider {
         - CREDITS_MIN_RANGE: int
         - CREDITS_MAX_RANGE: int
-
-        + Spider(int speed, Damage damage, int healthPoints)
         + generateCredits(): Credit
+        + Spider(Damage damage, Health health, Credit credit, Move movement)
         + show(): String
+        + destroyTower(ArrayList<Defense> defenses): Defense
     }
 }
 

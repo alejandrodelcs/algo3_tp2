@@ -3,6 +3,8 @@
 
 package model {
     class EnemyFacade {
+        - fileSource: String
+        + EnemyFacade()
         + loadEnemiesStrategy(): Dictionary
     }
 }

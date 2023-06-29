@@ -7,12 +7,14 @@
 !include Occupied.puml
 !include Available.puml
 !include Dirt.puml
-!include Path.puml
 !include Stone.puml
+!include Path.puml
+!include FinishLine.puml
 
 Stone --|> Plot
-Dirt --|> Plot
 Path --|> Plot
+Path <|-- FinishLine
+Dirt --|> Plot
 Plot --> PlotAvailability
 
 'left to right direction

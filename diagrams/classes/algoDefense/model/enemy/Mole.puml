@@ -6,12 +6,12 @@ package model {
         - moves: int
         - damage: Damage
 
-        + Mole(damage: Damage, health: Health, credit: Credit, movement: Move)
-        + move(x: long, y: long, plots: Plot[][], enemyPath: ArrayList<Point>): Point
+        + Mole(Damage damage, Health health, Credit credit, Move movement)
+        + move(long x, long y, Plot[][] plots, ArrayList<Point> enemyPath): Point
+        + destroyTower(ArrayList<Defense> defenses): Defense
         + updateMole(): void
         + generateCredits(): Credit
         + show(): String
-        + destroyTower(defenses: ArrayList<Defense>): Defense
     }
 }
 @enduml

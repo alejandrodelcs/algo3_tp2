@@ -3,10 +3,14 @@
 
 package model {
     class Stone {
-        + Stone()
-        + setEnemy(ArrayList<Enemy> enemyList): void
-        + enemiesInPlot(): AttayList<Enemy>
-        + show(): String
+      - enemyArrayList: ArrayList<Enemy>
+      + Stone()
+      + setEnemy(enemyList: ArrayList<Enemy>): void
+      + show(): String
+      + enemiesInPlot(): ArrayList<Enemy>
+      + addEnemyToPath(newEnemy: Enemy): void
+      + setDefense(defense: Defense): void
+      + removeDefense(defense: Defense): void
     }
 }
 
