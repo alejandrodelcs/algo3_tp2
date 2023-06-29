@@ -5,21 +5,8 @@ import edu.fiuba.algo3.modelo.damage.Damage;
 import edu.fiuba.algo3.modelo.defense.Defense;
 import edu.fiuba.algo3.modelo.health.Health;
 import edu.fiuba.algo3.modelo.speed.Move;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-
-import java.awt.*;
 import java.util.ArrayList;
 import java.util.Random;
-
-
-/*
-    @Override
-    public Point updateCoordinates(int positionInPath, ArrayList<Point> enemyPath, Plot[][] plots){
-        enemyCoordinates = speed.enemyCoordinatesVelocityCalculator(positionInPath, enemyPath, plots);
-        return enemyCoordinates;
-    }
-}*/
 
 public class Spider extends Enemy {
 

@@ -1,7 +1,6 @@
 package edu.fiuba.algo3.modelo.damage;
 
 import edu.fiuba.algo3.modelo.health.Health;
-import edu.fiuba.algo3.modelo.player.Player;
 
 public class Damage {
 

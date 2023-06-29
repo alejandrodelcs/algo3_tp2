@@ -105,7 +105,7 @@ public class Board extends controler {
                 }
             });
         }
-    };
+    }
 
     private void pickADefenseEvent(StackPane stackPane,Point point, Point backwards, int clickedRow, int clickedColumn) {
 

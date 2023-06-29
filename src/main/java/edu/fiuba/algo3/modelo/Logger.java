@@ -3,12 +3,9 @@ package edu.fiuba.algo3.modelo;
 public class Logger {
 
     private static final Logger singleton = new Logger();
-
     private static boolean loggerEnable = true;
     private static String exit = "";
-
     private Logger() {}
-
     public static Logger get() {
         return singleton;
     }
