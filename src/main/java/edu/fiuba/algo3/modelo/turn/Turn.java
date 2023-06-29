@@ -37,6 +37,7 @@ public class Turn {
             aDefense.attack(enemies);
             if (aDefense.isDestroyed()){
                 gameBoard.removeDefense(aDefense);
+                iterator.remove();
             }
         }
         for (Enemy enemy: enemies
