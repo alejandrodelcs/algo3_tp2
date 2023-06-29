@@ -235,4 +235,11 @@ public class GameBoard {
     public ArrayList<Point> getEnemyPath() {
         return enemyPath;
     }
+
+    public ArrayList<Enemy> getEnemiesInTheFirstPath() {
+        int firstX = (int) Math.round(enemyPath.get(0).getX());
+        int firstY = (int) Math.round(enemyPath.get(0).getY());
+        ArrayList<Enemy> enemies = new ArrayList<>(plots[firstY][firstX].enemiesInPlot());
+        return enemies;
+    }
 }

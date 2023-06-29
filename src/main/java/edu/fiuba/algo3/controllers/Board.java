@@ -224,6 +224,7 @@ public class Board extends controler {
     private void updateImages() throws IOException {
         gridPane.getChildren().clear();
         algoDefense.nextTurn();
+        playEnemiesSound();
         explitDatos();
         String updatedStats = algoDefense.getPlayerInfo();
         updatedStats += "\nTurn: " + algoDefense.getCurrentTurn();
@@ -241,6 +242,17 @@ public class Board extends controler {
         }
         printMap();
     }
+    @FXML
+    private void playEnemiesSound() {
+        ArrayList<Enemy> enemies = gameBoard.getEnemiesInTheFirstPath();
+        Sound soundController = Sound.get();
+        for (Enemy enemy:enemies
+             ) {
+            soundController.playFX(enemy.getClass().getSimpleName());
+            //soundController.playFX("spiderAttack");
+        }
+    }
+
     @FXML
     public void resetGame() {
         algoDefense.reset(algoDefense.getPlayer());
@@ -352,7 +364,10 @@ public class Board extends controler {
         sound.loadSound("insufficient-credits.wav","insufficientCredits");
         sound.loadSound("level-lose.wav","levelLose");
         sound.loadSound("level-win.wav","levelWin");
-        sound.loadSound("spider_attack.mp3","spiderAttack");
+        sound.loadSound("spider-spawn.mp3","Spider");
+        sound.loadSound("Mole-Spawn.wav","Mole");
+        sound.loadSound("spawn-Owl.mp3","Owl");
+        sound.loadSound("Ant-Spawn.wav","Ant");
         sound.loadSound("tower-attack.mp3","towerAttack");
         sound.modifyEffectVolume(50);
         sound.modifyMusicVolume(25);
