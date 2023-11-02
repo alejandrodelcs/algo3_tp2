@@ -1,31 +1,27 @@
 ![tp2](https://github.com/alejandrodelcs/algo3_tp2/actions/workflows/build.yml/badge.svg) [![codecov](https://codecov.io/gh/alejandrodelcs/algo3_tp2/branch/master/graph/badge.svg)](https://codecov.io/gh/alejandrodelcs/algo3_tp2)
 
-# TP2 Algoritmos 3: AlgoDefense 
+# AlgoDefense 
 
-Trabajo Práctico número 2 de la materia Algoritmos y Programación III de FIUBA
+## Collaborators
 
-## Grupo {N}
+* **1** - [Zoilo Pazos](https://github.com/zzoip)
+* **2** - [Alejandro Del Carpio](https://github.com/alejandrodelcs)
+* **3** - [Liu Gutierrez](https://github.com/liuvaneshka)
+* **4** - [Ruy Mori](https://github.com/Ruyllex)
+* **5** - [Bruno Contreras](https://github.com/Brun0cnt)
 
-* **Integrante 1** - [Zoilo Pazos](https://github.com/zzoip)
-* **Integrante 2** - [Alejandro Del Carpio](https://github.com/alejandrodelcs)
-* **Integrante 3** - [Liu Gutierrez](https://github.com/liuvaneshka)
-* **Integrante 4** - [Ruy Mori](https://github.com/Ruyllex)
-* **Integrante 5** - [Bruno Contreras](https://github.com/Brun0cnt)
+## App
 
-Corrector: **{Corrector}**
-
-## Aplicación
-
-La versión más reciente de la aplicación puede encontrarse en la pestaña [releases](https://github.com/alejandrodelcs/algo3_tp2/releases/latest) y ejecutarse en Linux, Windows o Mac de esta forma:
+The most recent version of the application can be found in the tab.[releases](https://github.com/alejandrodelcs/algo3_tp2/releases/latest) And can be run on Linux, Windows, or Mac in this way:
 
 ```bash
 $ java -jar <archivo.jar>
 ```
 
-## Desarrollo
+## Development
 
-Aquellos que deseen colaborar con el proyecto pueden consultar la [guía de desarrollo](./docs/Desarrollo.md).
+Those who wish to collaborate with the project can consult the: [guía de desarrollo](./docs/Desarrollo.md).
 
-## Licencia
+## License
 
-Este repositorio se encuentra bajo la Licencia MIT.
+This repository is under the MIT License.
